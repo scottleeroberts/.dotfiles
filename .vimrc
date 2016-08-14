@@ -67,6 +67,7 @@ set undofile
 
 " Theme
 colorscheme onedark 
+
 let g:airline_theme='murmur'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#checks = []
@@ -87,6 +88,7 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
+"Rails file navigation
 nnoremap <leader>c :Econtroller<CR>
 nnoremap <leader>m :Emodel<CR>
 nnoremap <leader>v :Eview<CR>
@@ -123,7 +125,6 @@ augroup CursorLine
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   au WinLeave * setlocal nocursorline
 augroup END
-
 
 " Highlight current column in active pane only
 augroup CursorColumn
