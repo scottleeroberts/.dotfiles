@@ -6,25 +6,35 @@ call plug#begin('~/.vim/plugged')
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
 Plug 'rking/ag.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'slim-template/vim-slim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-buftabline'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'Townk/vim-autoclose'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 filetype plugin indent on
 syntax on
-set guifont=meslo
+set guifont=Inconsolata\ for\ Powerline:h18
+set statusline+=%F
+set term=xterm-256color
+set termencoding=utf-8
+set clipboard=unnamed 
 set gdefault
 set encoding=utf-8
 set colorcolumn=80
@@ -33,6 +43,7 @@ set fileencoding=utf-8
 set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
 set undodir=~/.vim/tmp
+set ls=2
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set laststatus=2 " Always show last status
@@ -52,9 +63,13 @@ set hidden
 set mouse=a
 set splitright
 set backspace=indent,eol,start
+set undofile
 
 " Theme
 colorscheme onedark 
+let g:airline_theme='murmur'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#whitespace#checks = []
 
 " Key Mappings
 inoremap jj <Esc>
@@ -72,6 +87,27 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
+nnoremap <leader>c :Econtroller<CR>
+nnoremap <leader>m :Emodel<CR>
+nnoremap <leader>v :Eview<CR>
+nnoremap <leader>s :Espec<CR>
+nnoremap <leader>u :Eunittest<CR>
+" Resizing splits
+nnoremap <silent> <Up> :resize -2<CR>
+nnoremap <silent> <Down> :resize +2<CR>
+nnoremap <silent> <Left> :vertical resize +2<CR>
+nnoremap <silent> <Right> :vertical resize -2<CR>
+
+" Close the buffer and reuse the window for an existing buffer
+nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+
+nnoremap <leader><tab> mtgg=G`t
+
+" Always assume paste mode when pasting from system clipboard
+noremap <silent> <C-r>* <C-o>:setl paste<CR><C-r>*<C-o>:setl nopaste<CR>
+
+map <C-n> :NERDTreeToggle<CR>
+
 set rtp+=~/.fzf
 
 " Searching
@@ -88,9 +124,36 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+
 " Highlight current column in active pane only
 augroup CursorColumn
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
   au WinLeave * setlocal nocursorcolumn
 augroup END
+
+" copy current file name (relative/absolute) to system clipboard
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cf :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>cF :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>ct :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
+endif
+
+" nerd commenter
+ let g:NERDSpaceDelims = 1
+ let g:NERDDefaultAlign = 'left'
+ let g:NERDCompactSexyComs = 1
+ let g:NERDCommentEmptyLines = 1
+ let g:NERDTrimTrailingWhitespace = 1
+
+" https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
+let g:ruby_indent_block_style = 'do'
+ 
