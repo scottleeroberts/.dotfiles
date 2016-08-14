@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="cloud"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(zeus brew bundler git git-flow osx rails3 redis-cli ruby rvm powder pow history)
@@ -27,8 +27,10 @@ export CTAGS_COMMAND="/usr/local/bin/ctags --extra=+f -R --exclude=.git --exclud
 source ~/.dotfiles/zsh/.zsh/base16-ocean.dark.sh
 
 #aliases
-#alias vrc "vim $HOME/.vimrc"
-#alias vzrc "vim $HOME/.zshrc"
+alias v="nvim"
+alias retag="$CTAGS_COMMAND"
+alias vrc="vim $HOME/.vimrc"
+alias vzrc="vim $HOME/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -38,3 +40,6 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^v" edit-command-line
+
+
+
