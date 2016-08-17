@@ -1,0 +1,19 @@
+[include]
+        path = ~/.gitconfig.local
+[core]
+        editor = vim
+        excludesfile = ~/.dotfiles/git/.gitignore
+[color]
+	ui = true
+[format]
+        pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an %ae>%Creset
+[alias]
+	st = status
+	co = checkout
+	lol = log --oneline --graph --decorate
+[push]
+	default = current
+[credential]
+	helper = osxkeychain
+[commit]
+    template = ~/.gitmessage
