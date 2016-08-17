@@ -24,7 +24,6 @@ export RUBY_GC_HEAP_FREE_MIN=500000
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export CTAGS_COMMAND="/usr/local/bin/ctags --extra=+f -R --exclude=.git --exclude=log --exclude=tmp *"
-source ~/.dotfiles/zsh/.zsh/base16-ocean.dark.sh
 
 #aliases
 alias v="nvim"
@@ -32,6 +31,7 @@ alias retag="$CTAGS_COMMAND"
 alias vrc="vim $HOME/.vimrc"
 alias vzrc="vim $HOME/.zshrc"
 
+export FZF_COMPLETION_TRIGGER=",,"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey -v
@@ -41,5 +41,4 @@ bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^v" edit-command-line
 
-
-
+alias vim="stty stop '' -ixoff; vim"

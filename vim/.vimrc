@@ -25,6 +25,7 @@ Plug 'Townk/vim-autoclose'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
+Plug 'cyphactor/vim-open-alternate'
 
 call plug#end()
 
@@ -87,6 +88,9 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+nnoremap <leader> :w<CR>
+
+nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
 
 "Rails file navigation
 nnoremap <leader>c :Econtroller<CR>
@@ -109,6 +113,7 @@ nnoremap <leader><tab> mtgg=G`t
 noremap <silent> <C-r>* <C-o>:setl paste<CR><C-r>*<C-o>:setl nopaste<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+map <leader>r :NERDTreeToggle %<cr>
 
 set rtp+=~/.fzf
 
@@ -118,6 +123,11 @@ set ignorecase
 set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
+
+" Use CTRL-S for saving, also in Insert mode
+ noremap <C-S> :update<CR>
+ vnoremap <C-S> <C-C>:update<CR>
+ inoremap <C-S> <C-O>:update<CR>
 
 " Highlight current line in active pane only
 augroup CursorLine
