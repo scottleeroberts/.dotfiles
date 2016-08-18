@@ -1,10 +1,5 @@
 
 ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="cloud"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -24,6 +19,12 @@ export RUBY_GC_HEAP_FREE_MIN=500000
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export CTAGS_COMMAND="/usr/local/bin/ctags --extra=+f -R --exclude=.git --exclude=log --exclude=tmp *"
+
+#use colors
+source ~/.zsh/base16-ocean.dark.sh
+# makes color constants available
+autoload -U colors
+colors
 
 #aliases
 alias v="nvim"

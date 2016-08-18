@@ -26,7 +26,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'cyphactor/vim-open-alternate'
-
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -67,7 +67,9 @@ set backspace=indent,eol,start
 set undofile
 
 " Theme
-colorscheme onedark 
+set background=dark
+let base16colorspace=256
+colorscheme base16-ocean
 
 let g:airline_theme='murmur'
 let g:airline_powerline_fonts=1
