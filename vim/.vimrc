@@ -114,8 +114,7 @@ nnoremap <leader><tab> mtgg=G`t
 " Always assume paste mode when pasting from system clipboard
 noremap <silent> <C-r>* <C-o>:setl paste<CR><C-r>*<C-o>:setl nopaste<CR>
 
-map <C-n> :NERDTreeToggle<CR>
-map <leader>r :NERDTreeToggle %<cr>
+map <C-n> :NERDTreeFind<CR>
 
 set rtp+=~/.fzf
 
