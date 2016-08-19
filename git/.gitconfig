@@ -2,18 +2,27 @@
         path = ~/.gitconfig.local
 [core]
         editor = vim
-        excludesfile = ~/.dotfiles/git/.gitignore
+	excludesfile = /Users/scottroberts/.dotfiles/git/.gitignore
 [color]
 	ui = true
 [format]
         pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an %ae>%Creset
 [alias]
+        a = add
+        aa = add --all
 	st = status
 	co = checkout
+        cv = commit -v
 	lol = log --oneline --graph --decorate
+        lst = log --graph --abbrev-commit --date=relative --stat
+        unstage = reset HEAD 
+        wip = !git add --all && git commit -m 'WIP' && git push
 [push]
 	default = current
 [credential]
 	helper = osxkeychain
 [commit]
     template = ~/.gitmessage
+[rebase]
+      autostash = true
+      autosquash = true
