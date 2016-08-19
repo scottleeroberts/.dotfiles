@@ -32,6 +32,10 @@ alias retag="$CTAGS_COMMAND"
 alias vrc="vim $HOME/.vimrc"
 alias vzrc="vim $HOME/.zshrc"
 
+#git aliases
+alias cfu="git commit --fixup"
+alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
+
 export FZF_COMPLETION_TRIGGER=",,"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
