@@ -27,6 +27,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'cyphactor/vim-open-alternate'
 Plug 'chriskempson/base16-vim'
+Plug 'thoughtbot/vim-rspec'
 call plug#end()
 
 filetype plugin indent on
@@ -94,6 +95,12 @@ nnoremap <leader> :w<CR>
 
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
 
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 "Rails file navigation
 nnoremap <leader>c :Econtroller<CR>
 nnoremap <leader>m :Emodel<CR>
@@ -129,6 +136,16 @@ set incsearch " Search as typing
  noremap <C-S> :update<CR>
  vnoremap <C-S> <C-C>:update<CR>
  inoremap <C-S> <C-O>:update<CR>
+
+"copy and pasting
+vmap <Leader>y "+y
+nmap <Leader>p "+p" 
+nmap <Leader>P "+P
+nmap <Leader><Leader> V
+"jump to the end on paste
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 " Highlight current line in active pane only
 augroup CursorLine
