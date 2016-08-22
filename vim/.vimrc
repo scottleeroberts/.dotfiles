@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'cyphactor/vim-open-alternate'
 Plug 'chriskempson/base16-vim'
 Plug 'thoughtbot/vim-rspec'
+Plug 'benmills/vimux'
 call plug#end()
 
 filetype plugin indent on
@@ -96,6 +97,7 @@ nnoremap <leader> :w<CR>
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
 
 " RSpec.vim mappings
+let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
@@ -131,11 +133,6 @@ set ignorecase
 set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
-
-" Use CTRL-S for saving, also in Insert mode
- noremap <C-S> :update<CR>
- vnoremap <C-S> <C-C>:update<CR>
- inoremap <C-S> <C-O>:update<CR>
 
 "copy and pasting
 vmap <Leader>y "+y
