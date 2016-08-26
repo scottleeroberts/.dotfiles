@@ -27,10 +27,10 @@ autoload -U colors
 colors
 
 #aliases
-alias v="nvim"
 alias retag="$CTAGS_COMMAND"
 alias vrc="vim $HOME/.vimrc"
 alias vzrc="vim $HOME/.zshrc"
+alias beg="bundle exec guard"
 
 #git aliases
 alias cfu="git commit --fixup"
