@@ -118,6 +118,7 @@ nnoremap <silent> <Right> :vertical resize -2<CR>
 " Close the buffer and reuse the window for an existing buffer
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
+"format entire file
 nnoremap <leader><tab> mtgg=G`t
 
 " Always assume paste mode when pasting from system clipboard
@@ -174,12 +175,12 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
 endif
 
 " nerd commenter
- let g:NERDSpaceDelims = 1
- let g:NERDDefaultAlign = 'left'
- let g:NERDCompactSexyComs = 1
- let g:NERDCommentEmptyLines = 1
- let g:NERDTrimTrailingWhitespace = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCompactSexyComs = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
 
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
- 
+
