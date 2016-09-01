@@ -29,8 +29,9 @@ colors
 #aliases
 alias retag="$CTAGS_COMMAND"
 alias vrc="vim $HOME/.vimrc"
-alias vzrc="vim $HOME/.zshrc"
+alias vzshrc="vim $HOME/.zshrc"
 alias beg="bundle exec guard"
+alias bai="cd ~/Documents/baldwin-web"
 
 #git aliases
 alias cfu="git commit --fixup"
