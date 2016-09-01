@@ -2,6 +2,9 @@ set nocompatible
 au FileType * setlocal ai sw=2 sts=2 et
 let mapleader = "\<Space>" 
 
+filetype plugin indent on
+syntax on
+
 call plug#begin('~/.vim/plugged')
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
@@ -31,8 +34,6 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'benmills/vimux'
 call plug#end()
 
-filetype plugin indent on
-syntax on
 set guifont=Inconsolata\ for\ Powerline:h18
 set statusline+=%F
 set term=xterm-256color
@@ -68,7 +69,7 @@ set splitright
 set backspace=indent,eol,start
 set undofile
 
-" Theme
+" Theme stuff
 set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
@@ -79,6 +80,7 @@ let g:airline#extensions#whitespace#checks = []
 
 " Key Mappings
 inoremap jj <Esc>
+inoremap jw <Esc>:w<cr>
 inoremap <Esc> <noop>
 map ; :
 
@@ -136,14 +138,14 @@ set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
 "copy and pasting
-vmap <Leader>y "+y
-nmap <Leader>p "+p" 
-nmap <Leader>P "+P
-nmap <Leader><Leader> V
-"jump to the end on paste
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+vnoremap <Leader>y "+y
+vnoremap <Leader>p "+p 
+vnoremap <Leader>P "+P
+
+noremap <Leader>y "+y
+noremap <Leader>p "+p 
+noremap <Leader>P "+P
+noremap <Leader><Leader> V
 
 " Highlight current line in active pane only
 augroup CursorLine
@@ -173,13 +175,6 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " directory name (/something/src)
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
-
-" nerd commenter
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCompactSexyComs = 1
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
 
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
