@@ -1,0 +1,17 @@
+alias retag="$CTAGS_COMMAND"
+alias vrc="vim $HOME/.vimrc"
+alias vzshrc="vim $HOME/.zshrc"
+alias beg="bundle exec guard"
+alias bai="cd Documents/baldwin-web"
+
+alias :q="exit"
+alias la="ls -Gpa"
+alias ls="ls -Gp"
+alias ll="ls -Gplh"
+
+#git aliases
+alias cfu="git commit --fixup"
+alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
+
+[[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh ]]
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local ]] ]]]]

@@ -1,12 +1,3 @@
-
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="cloud"
-
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(zeus brew bundler git git-flow osx rails3 redis-cli ruby rvm powder pow history)
-
-source $ZSH/oh-my-zsh.sh
-
 # Customize to your needs...
 export EDITOR=vim
 export PATH="/usr/local/rvm/bin/:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH"
@@ -26,12 +17,10 @@ source ~/.zsh/base16-ocean.dark.sh
 autoload -U colors
 colors
 
-#aliases
-alias retag="$CTAGS_COMMAND"
-alias vrc="vim $HOME/.vimrc"
-alias vzshrc="vim $HOME/.zshrc"
-alias beg="bundle exec guard"
-alias bai="cd ~/Documents/baldwin-web"
+#load custom functions
+for function in ~/.zsh/functions/*; do
+  source $function
+done
 
 #git aliases
 alias cfu="git commit --fixup"
@@ -48,3 +37,11 @@ bindkey "^R" history-incremental-search-backward
 bindkey "^v" edit-command-line
 
 alias vim="stty stop '' -ixoff; vim"
+
+autoload -U promptinit && promptinit
+prompt filthy
+
+opentmux
+
+[[ -f ~/.aliases ]] && source ~/.alias
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local ]]
