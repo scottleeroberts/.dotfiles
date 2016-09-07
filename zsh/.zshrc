@@ -43,5 +43,5 @@ prompt filthy
 
 opentmux
 
-[[ -f ~/.aliases ]] && source ~/.alias
+[[ -f ~/.aliases ]] && source ~/.aliases ]]
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local ]]

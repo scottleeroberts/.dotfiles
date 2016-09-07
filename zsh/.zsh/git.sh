@@ -61,6 +61,9 @@ compdef g=git
 alias cfu="git commit --fixup"
 alias co="git checkout"
 alias cl="git clone"
+alias gss="git status"
+alias gcd="git checkout develop"
+alias gcm="git checkout master "
 
 alias d="git diff"
 alias ds="git diff --staged"
