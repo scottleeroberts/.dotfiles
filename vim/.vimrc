@@ -117,6 +117,10 @@ nnoremap <silent> <Down> :resize +2<CR>
 nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Close the buffer and reuse the window for an existing buffer
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
