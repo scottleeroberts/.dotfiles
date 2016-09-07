@@ -32,6 +32,7 @@ Plug 'cyphactor/vim-open-alternate'
 Plug 'chriskempson/base16-vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'benmills/vimux'
+Plug 'neomake/neomake'
 call plug#end()
 
 set guifont=Inconsolata\ for\ Powerline:h18
@@ -181,3 +182,4 @@ endif
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
 
+autocmd! BufWritePost,BufEnter * Neomake
