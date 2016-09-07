@@ -1,4 +1,3 @@
-set nocompatible 
 au FileType * setlocal ai sw=2 sts=2 et
 let mapleader = "\<Space>" 
 
@@ -33,6 +32,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'benmills/vimux'
 Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 set guifont=Inconsolata\ for\ Powerline:h18
@@ -183,3 +183,5 @@ endif
 let g:ruby_indent_block_style = 'do'
 
 autocmd! BufWritePost,BufEnter * Neomake
+
+let g:deoplete#enable_at_startup = 1
