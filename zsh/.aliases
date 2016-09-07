@@ -1,6 +1,7 @@
+alias vim="nvim"
 alias retag="$CTAGS_COMMAND"
-alias vrc="vim $HOME/.vimrc"
-alias vzshrc="vim $HOME/.zshrc"
+alias vrc="nvim $HOME/.config/nvim/init.vim"
+alias zrc="nvim $HOME/.zshrc"
 alias beg="bundle exec guard"
 alias bai="cd Documents/baldwin-web"
 
@@ -13,5 +14,5 @@ alias ll="ls -Gplh"
 alias cfu="git commit --fixup"
 alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
 
-[[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh ]]
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local ]] ]]]]
+[[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

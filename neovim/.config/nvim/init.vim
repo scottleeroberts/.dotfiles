@@ -5,7 +5,7 @@ let mapleader = "\<Space>"
 filetype plugin indent on
 syntax on
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
 Plug 'rking/ag.vim'
@@ -36,17 +36,15 @@ call plug#end()
 
 set guifont=Inconsolata\ for\ Powerline:h18
 set statusline+=%F
-set term=xterm-256color
 set termencoding=utf-8
-set clipboard=unnamed 
 set gdefault
 set encoding=utf-8
 set colorcolumn=80
 set encoding=utf-8
 set fileencoding=utf-8
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
-set undodir=~/.vim/tmp
+set backupdir=~/.config/nvim/tmp
+set directory=~/.config/nvim/tmp
+set undodir=~/.config/nvim/undodir
 set ls=2
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
