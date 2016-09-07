@@ -58,6 +58,7 @@ ir() {
 # Complete g like git
 compdef g=git
 
+alias gco="git checkout"
 alias cfu="git commit --fixup"
 alias co="git checkout"
 alias cl="git clone"
