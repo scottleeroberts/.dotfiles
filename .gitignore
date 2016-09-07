@@ -1,6 +1,10 @@
-TAGS
-tags
-gems.ctags
 .DS_Store
-.ruby-gemset
-metadocs/
+TAGS
+
+.netrwhist
+
+vim/.vim/tmp/*
+
+neovim/.config/nvim/tmp/*
+neovim/.config/nvim/undodir/*
+neovim/.config/nvim/plugged

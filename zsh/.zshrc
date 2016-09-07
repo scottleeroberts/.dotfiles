@@ -1,5 +1,5 @@
 # Customize to your needs...
-export EDITOR=vim
+export EDITOR=nvim
 export PATH="/usr/local/rvm/bin/:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH"
 
 export RUBY_GC_HEAP_INIT_SLOTS=1000000
@@ -22,10 +22,6 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
-#git aliases
-alias cfu="git commit --fixup"
-alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
-
 export FZF_COMPLETION_TRIGGER=",,"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -35,8 +31,6 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^v" edit-command-line
-
-alias vim="stty stop '' -ixoff; vim"
 
 autoload -U promptinit && promptinit
 prompt filthy

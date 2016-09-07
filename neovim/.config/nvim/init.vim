@@ -1,11 +1,10 @@
-set nocompatible 
 au FileType * setlocal ai sw=2 sts=2 et
 let mapleader = "\<Space>" 
 
 filetype plugin indent on
 syntax on
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
 Plug 'rking/ag.vim'
@@ -32,21 +31,21 @@ Plug 'cyphactor/vim-open-alternate'
 Plug 'chriskempson/base16-vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'benmills/vimux'
+Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 set guifont=Inconsolata\ for\ Powerline:h18
 set statusline+=%F
-set term=xterm-256color
 set termencoding=utf-8
-set clipboard=unnamed 
 set gdefault
 set encoding=utf-8
 set colorcolumn=80
 set encoding=utf-8
 set fileencoding=utf-8
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
-set undodir=~/.vim/tmp
+set backupdir=~/.config/nvim/tmp
+set directory=~/.config/nvim/tmp
+set undodir=~/.config/nvim/undodir
 set ls=2
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
@@ -183,3 +182,6 @@ endif
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
 
+autocmd! BufWritePost,BufEnter * Neomake
+
+let g:deoplete#enable_at_startup = 1
