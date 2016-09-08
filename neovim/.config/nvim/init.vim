@@ -140,16 +140,6 @@ set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
-"copy and pasting
-vnoremap <Leader>y "+y
-vnoremap <Leader>p "+p 
-vnoremap <Leader>P "+P
-
-noremap <Leader>y "+y
-noremap <Leader>p "+p 
-noremap <Leader>P "+P
-noremap <Leader><Leader> V
-
 " Highlight current line in active pane only
 augroup CursorLine
   au!
