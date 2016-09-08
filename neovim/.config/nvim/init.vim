@@ -35,7 +35,6 @@ Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
-set guifont=Inconsolata\ for\ Powerline:h18
 set statusline+=%F
 set termencoding=utf-8
 set gdefault
