@@ -164,21 +164,6 @@ augroup CursorColumn
   au WinLeave * setlocal nocursorcolumn
 augroup END
 
-" copy current file name (relative/absolute) to system clipboard
-if has("mac") || has("gui_macvim") || has("gui_mac")
-  " relative path  (src/foo.txt)
-  nnoremap <leader>cf :let @*=expand("%")<CR>
-
-  " absolute path  (/something/src/foo.txt)
-  nnoremap <leader>cF :let @*=expand("%:p")<CR>
-
-  " filename       (foo.txt)
-  nnoremap <leader>ct :let @*=expand("%:t")<CR>
-
-  " directory name (/something/src)
-  nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
-endif
-
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
 
