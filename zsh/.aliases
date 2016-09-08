@@ -3,7 +3,7 @@ alias retag="$CTAGS_COMMAND"
 alias vrc="nvim $HOME/.config/nvim/init.vim"
 alias zrc="nvim $HOME/.zshrc"
 alias beg="bundle exec guard"
-alias bai="cd Documents/baldwin-web"
+alias bai="cd $HOME/Documents/baldwin-web"
 
 alias :q="exit"
 alias la="ls -Gpa"
