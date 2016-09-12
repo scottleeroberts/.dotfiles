@@ -33,6 +33,7 @@ bindkey "^R" history-incremental-search-backward
 bindkey "^v" edit-command-line
 
 autoload -U promptinit && promptinit
+autoload -Uz compinit && compinit
 prompt filthy
 
 opentmux
