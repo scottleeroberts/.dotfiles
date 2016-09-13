@@ -39,7 +39,6 @@ set statusline+=%F
 set termencoding=utf-8
 set gdefault
 set encoding=utf-8
-set colorcolumn=80
 set encoding=utf-8
 set fileencoding=utf-8
 set backupdir=~/.config/nvim/tmp
@@ -66,6 +65,10 @@ set mouse=a
 set splitright
 set backspace=indent,eol,start
 set undofile
+
+"highlight at column 80 only if the line exceeds
+highlight ColorColumn ctermbg=red ctermfg=black
+call matchadd('ColorColumn', '\%81v\s*\S', 100)
 
 " Theme stuff
 set background=dark
@@ -159,3 +162,4 @@ let g:ruby_indent_block_style = 'do'
 autocmd! BufWritePost,BufEnter * Neomake
 
 let g:deoplete#enable_at_startup = 1
+
