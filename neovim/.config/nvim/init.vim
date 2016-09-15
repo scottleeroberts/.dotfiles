@@ -33,6 +33,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'benmills/vimux'
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim'
+Plug 'chrisbra/vim-diff-enhanced'
 call plug#end()
 
 set statusline+=%F
@@ -162,4 +163,5 @@ let g:ruby_indent_block_style = 'do'
 autocmd! BufWritePost,BufEnter * Neomake
 
 let g:deoplete#enable_at_startup = 1
+
 
