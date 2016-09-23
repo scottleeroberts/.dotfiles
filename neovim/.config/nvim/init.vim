@@ -32,7 +32,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'benmills/vimux'
 Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'fishbullet/deoplete-ruby'
 call plug#end()
