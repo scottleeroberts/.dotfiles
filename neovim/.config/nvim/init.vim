@@ -129,9 +129,6 @@ nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 "format entire file
 nnoremap <leader><tab> mtgg=G`t
 
-" Always assume paste mode when pasting from system clipboard
-noremap <silent> <C-r>* <C-o>:setl paste<CR><C-r>*<C-o>:setl nopaste<CR>
-
 map <C-n> :NERDTreeFind<CR>
 
 set rtp+=~/.fzf
