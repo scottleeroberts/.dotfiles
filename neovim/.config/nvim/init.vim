@@ -34,6 +34,7 @@ Plug 'benmills/vimux'
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'fishbullet/deoplete-ruby'
 call plug#end()
 
 set statusline+=%F
