@@ -35,6 +35,7 @@ Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'fishbullet/deoplete-ruby'
+Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 set statusline+=%F
@@ -162,4 +163,5 @@ autocmd! BufWritePost,BufEnter * Neomake
 
 let g:deoplete#enable_at_startup = 1
 
-
+" Default peekaboo window
+ let g:peekaboo_window = 'vertical botright 30new'
