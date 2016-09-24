@@ -1,7 +1,53 @@
 config defaultToCurrentScreen true
+config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
 config windowHintsShowIcons true
+config windowHintsBackgroundColor 96;96;64;0.5
+config windowHintsIgnoreHiddenWindows true
+#config windowHintsOrder persist
+config windowHintsSpread true
+config windowHintsSpreadPadding 40
+config windowHintsSpreadSearchWidth 80
+config windowHintsSpreadSearchHeight 80
+config switchIconPadding 2
+config switchBackgroundColor 50;53;58;0.7
+config switchSelectedPadding 4
+config switchIconSize 96
+config switchShowTitles true
+config switchFontSize 11  
+config switchRoundedCornerSize 4
+config undoOps move,resize
 
-# Window Hints
+# Abstract positions
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias tophalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
+alias bottomhalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+alias center move screenOriginX+screenSizeX/6;screenOriginY+screenSizeY/6 2*screenSizeX/3;2*screenSizeY/3
+alias bigCenter move screenOriginX+screenSizeX/12;screenOriginY+screenSizeY/12 10*screenSizeX/12;10*screenSizeY/12
+
+# Bind command+option+b to google chrome
 bind b:cmd focus 'Google Chrome'
 bind g:cmd focus 'iTerm2'
 bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN
+
+# The triple keys
+alias triple ctrl;shift;cmd
+
+# Location bindings
+bind left:${triple} ${lefthalf}
+bind m:${triple} ${full}
+bind right:${triple} ${righthalf}
+bind up:${triple} ${tophalf}
+bind down:${triple} ${bottomhalf}
+bind c:${triple} ${center}
+bind v:${triple} ${bigCenter}
+
+# Monitor switching bindings
+bind right:alt,ctrl throw 1 resize
+bind left:alt,ctrl throw 0 resize
