@@ -40,3 +40,8 @@ opentmux
 
 [[ -f ~/.aliases ]] && source ~/.aliases ]]
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local ]]
+
+# install zsh-syntax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# install zsh autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
