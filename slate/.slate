@@ -1,0 +1,7 @@
+config defaultToCurrentScreen true
+config windowHintsShowIcons true
+
+# Window Hints
+bind b:cmd focus 'Google Chrome'
+bind g:cmd focus 'iTerm2'
+bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN
