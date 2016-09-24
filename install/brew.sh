@@ -29,4 +29,10 @@ brew install python
 brew install sqlite
 brew install tmux
 
+brew cask install iTerm2
+brew cask install 1Password
+brew cask install Skype
+brew cask install Chrome
+brew cask install Evernote
+brew cask install Firefox
 exit 0
