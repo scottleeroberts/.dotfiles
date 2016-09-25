@@ -8,6 +8,9 @@ fi
 echo -e "\n\nInstalling homebrew packages..."
 echo "=============================="
 
+brew tap neovim/neovim
+brew tap universal-ctags/universal-ctags
+
 brew install cmake
 brew install git
 brew install git-flow
@@ -15,7 +18,6 @@ brew install imagemagick
 brew install neovim
 brew install zsh
 brew install vim
-brew install neovim
 brew install redis
 brew install reattach-to-user-namespace
 brew install ruby
