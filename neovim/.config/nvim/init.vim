@@ -36,7 +36,8 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'junegunn/vim-peekaboo'
 call plug#end()
-
+" Don't show the startup message
+set shortmess=I
 set statusline+=%F
 set termencoding=utf-8
 set gdefault
