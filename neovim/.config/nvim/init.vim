@@ -1,5 +1,5 @@
 au FileType * setlocal ai sw=2 sts=2 et
-let mapleader = "\<Space>" 
+let mapleader = "\<Space>"
 
 filetype plugin indent on
 syntax on
@@ -11,7 +11,6 @@ Plug 'rking/ag.vim'
 Plug 'slim-template/vim-slim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ap/vim-buftabline'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -78,9 +77,12 @@ set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
 
-let g:airline_theme='murmur'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#checks = []
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Key Mappings
 inoremap jj <Esc>
