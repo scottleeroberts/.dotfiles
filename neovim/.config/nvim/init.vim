@@ -36,8 +36,10 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'junegunn/vim-peekaboo'
 call plug#end()
+
 " Don't show the startup message
 set shortmess=I
+
 set statusline+=%F
 set termencoding=utf-8
 set gdefault
@@ -84,6 +86,8 @@ let g:airline#extensions#whitespace#checks = []
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Key Mappings
 inoremap jj <Esc>
