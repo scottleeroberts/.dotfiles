@@ -10,13 +10,21 @@
 [alias]
         a = add
         aa = add --all
-	st = status
+	st = status --short --branch
 	co = checkout
         cv = commit -v
-	lol = log --oneline --graph --decorate
-        lst = log --graph --abbrev-commit --date=relative --stat
-        unstage = reset HEAD 
+        unstage = reset HEAD
         wip = !git add --all && git commit -m 'WIP' && git push
+        staash = stash --include-untracked
+        pop =  stash pop
+        ls = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+        lg = !"git lg1-specific --all"
+        lgx = !"git lg2-specific --all"
+        lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+        lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+
+         # list aliases
+         la = "!git config -l | grep alias | cut -c 7-"
 [push]
 	default = current
 [credential]
@@ -28,7 +36,7 @@
       autosquash = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
