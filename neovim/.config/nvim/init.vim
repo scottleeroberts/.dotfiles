@@ -120,7 +120,6 @@ map <Leader>a :call RunAllSpecs()<CR>
 nnoremap <leader>c :Econtroller<CR>
 nnoremap <leader>m :Emodel<CR>
 nnoremap <leader>v :Eview<CR>
-nnoremap <leader>s :Espec<CR>
 nnoremap <leader>u :Eunittest<CR>
 " Resizing splits
 nnoremap <silent> <Up> :resize -2<CR>
