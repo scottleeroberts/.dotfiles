@@ -36,6 +36,7 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'junegunn/vim-peekaboo'
 Plug 'pangloss/vim-javascript'
+Plug 'ecomba/vim-ruby-refactoring'
 call plug#end()
 
 " Don't show the startup message
