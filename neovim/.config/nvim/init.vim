@@ -35,6 +35,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'junegunn/vim-peekaboo'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 " Don't show the startup message
