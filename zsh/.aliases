@@ -25,7 +25,7 @@ alias bai="cd $HOME/Documents/baldwin-web"
 
 alias :q="exit"
 
-alias l="ls -lah ${colorflag}"
+alias ls="ls -lah ${colorflag}"
 alias la="ls -AF ${colorflag}"
 alias ll="ls -lFh ${colorflag}"
 alias lld="ls -l | grep ^d"
@@ -35,12 +35,14 @@ alias grep='grep --color=auto'
 alias df='df -h' # disk free, in Gigabytes, not bytes
 alias du='du -h -c' # calculate disk usage for a folder
 
+pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 
 #git aliases
 alias cfu="git commit --fixup"
 alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
 alias gs="git st"
 alias gl="git lg"
+alias gcv="git commit -v"
 
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
