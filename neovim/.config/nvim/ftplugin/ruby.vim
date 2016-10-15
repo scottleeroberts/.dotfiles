@@ -1,1 +1,1 @@
-au BufWritePost * :call jobstart($CTAGS_COMMAND)
+au BufWritePost * :call jobstart($RUBY_TAG_COMMAND)

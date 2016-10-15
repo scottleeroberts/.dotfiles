@@ -16,8 +16,7 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-
-alias retag="$CTAGS_COMMAND"
+alias rt=$RUBY_TAG_COMMAND
 alias vrc="nvim $HOME/.config/nvim/init.vim"
 alias zrc="nvim $HOME/.zshrc"
 alias beg="bundle exec guard"

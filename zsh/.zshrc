@@ -9,7 +9,6 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 export RUBY_GC_HEAP_FREE_MIN=500000
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export CTAGS_COMMAND="/usr/local/bin/ctags --extra=+f -R --exclude=.git --exclude=log --exclude=tmp *"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
