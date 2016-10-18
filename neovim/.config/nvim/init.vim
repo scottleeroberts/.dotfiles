@@ -169,7 +169,7 @@ augroup END
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
 
-autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufRead * Neomake
 
 let g:deoplete#enable_at_startup = 1
 
