@@ -73,6 +73,8 @@ set splitright
 set backspace=indent,eol,start
 set undofile
 
+au FocusLost * :wa  " Set vim to save the file on focus out.
+
 "highlight at column 80 only if the line exceeds
 highlight ColorColumn ctermbg=red ctermfg=black
 call matchadd('ColorColumn', '\%81v\s*\S', 100)
