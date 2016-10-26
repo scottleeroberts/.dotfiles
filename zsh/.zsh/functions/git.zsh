@@ -1,7 +1,5 @@
 # vi: set ft=sh :
 
-# No arguments: `git status`
-# With arguments: acts like `git`
 g() {
   if [[ $# > 0 ]]; then
     git $@
@@ -54,12 +52,53 @@ ir() {
     git rebase -i master
   fi
 }
+br() {
+  if [[ $# == 0 ]]; then
+    branches=$(git branch)
+    if [ "$TMUX" = "" ]; then
+      target=$(echo $branches | fzf)
+    else
+      target=$(echo $branches | fzf-tmux)
+    fi
+
+    if [[ $target != '' ]]; then
+      git checkout $(echo $target)
+    fi
+  fi
+}
+
+a() {
+  if [ "$TMUX" = "" ]; then
+    git add $(git status -s | awk '{ print $2 }' | fzf -m)
+  else
+    git add $(git status -s | awk '{ print $2 }' | fzf-tmux -m)
+  fi
+}
+
+ap() {
+  if [ "$TMUX" = "" ]; then
+    git add -p $(git status -s | awk '{ print $2 }' | fzf -m)
+  else
+    git add -p $(git status -s | awk '{ print $2 }' | fzf-tmux -m)
+  fi
+}
+
+cfu() {
+  if [ "$TMUX" = "" ]; then
+    target=$(git log --pretty=oneline develop..$(git current-branch) | fzf | awk '{ print $1 }')
+  else
+    target=$(git log --pretty=oneline develop..$(git current-branch) | fzf-tmux | awk '{ print $1 }')
+  fi
+
+  if [[ $target != '' ]]; then
+    git commit --fixup $(echo $target)
+  fi
+}
 
 # Complete g like git
 compdef g=git
 
 alias gco="git checkout"
-alias cfu="git commit --fixup"
 alias co="git checkout"
 alias cl="git clone"
 alias gss="git status"
