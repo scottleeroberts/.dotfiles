@@ -64,7 +64,9 @@ cfu() {
   fi
 }
 
-# Complete g like git
+migrations() {
+  git diff --name-only develop..master | grep migrate
+}
 
 alias gco="git checkout"
 alias co="git checkout"
