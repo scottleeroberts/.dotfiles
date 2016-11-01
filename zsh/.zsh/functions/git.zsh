@@ -16,42 +16,11 @@ cm() {
   fi
 }
 
-git-nuke() {
-  if [[ $# == 1 ]]; then
-    confirm && git branch -D $1 && git push origin :$1
-  else
-    echo "No single branch name given"
-    return 1;
-  fi
-}
 
 dev() {
   git checkout develop && git up
 }
 
-hotfix() {
-  branch=$(echo "$@" | tr ' ' '-')
-  git checkout master && git up && git checkout -b "hotfix/$branch"
-}
-
-feature() {
-  branch=$(echo "$@" | tr ' ' '-')
-  dev && git checkout -b "feature/$branch"
-}
-
-support() {
-  branch=$(echo "$@" | tr ' ' '-')
-  dev && git checkout -b "support/$branch"
-}
-
-ir() {
-  git rev-parse --verify develop
-  if [[ $? == 0 ]]; then
-    git rebase -i develop
-  else
-    git rebase -i master
-  fi
-}
 br() {
   if [[ $# == 0 ]]; then
     branches=$(git branch)
@@ -96,7 +65,6 @@ cfu() {
 }
 
 # Complete g like git
-compdef g=git
 
 alias gco="git checkout"
 alias co="git checkout"
