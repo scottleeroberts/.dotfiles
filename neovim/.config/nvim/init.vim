@@ -74,8 +74,6 @@ set splitright
 set backspace=indent,eol,start
 set undofile
 
-au FocusLost * :wa  " Set vim to save the file on focus out.
-
 "highlight at column 80 only if the line exceeds
 highlight ColorColumn ctermbg=red ctermfg=black
 call matchadd('ColorColumn', '\%81v\s*\S', 100)
@@ -215,30 +213,3 @@ endfunction
 au BufNewFile,BufReadPost *.rb :call BoilerBuilder()
 " }}}
 
-" Auto make directories {{{
-function! AskQuit (msg, options, quit_option)
-  if confirm(a:msg, a:options) == a:quit_option
-    exit
-  endif
-endfunction
-
-function! EnsureDirExists ()
-  let required_dir = expand("%:h")
-  if !isdirectory(required_dir)
-    call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
-          \       "&Create it\nor &Quit?", 2)
-
-    try
-      call mkdir( required_dir, 'p' )
-    catch
-      call AskQuit("Can't create '" . required_dir . "'",
-            \            "&Quit\nor &Continue anyway?", 1)
-    endtry
-  endif
-endfunction
-
-augroup AutoMkdir
-  autocmd!
-  autocmd  BufNewFile  *  :call EnsureDirExists()
-augroup END
-" }}}
