@@ -64,10 +64,6 @@ cfu() {
   fi
 }
 
-migrations() {
-  git diff --name-only develop..master | grep migrate
-}
-
 alias gco="git checkout"
 alias co="git checkout"
 alias cl="git clone"
