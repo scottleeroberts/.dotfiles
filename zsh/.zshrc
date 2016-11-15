@@ -28,8 +28,6 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
-export FZF_COMPLETION_TRIGGER=",,"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey -v
 bindkey jj vi-cmd-mode
@@ -40,6 +38,9 @@ bindkey "^R" history-incremental-search-backward
 autoload -U promptinit && promptinit
 autoload -Uz compinit && compinit
 prompt filthy
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export fzf_completion_trigger=",,"
 
 opentmux
 
