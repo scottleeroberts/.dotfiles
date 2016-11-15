@@ -28,12 +28,14 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
-
+autoload -z edit-command-line
+zle -N edit-command-line
 bindkey -v
 bindkey jj vi-cmd-mode
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
+bindkey "^v" edit-command-line
 
 autoload -U promptinit && promptinit
 autoload -Uz compinit && compinit
