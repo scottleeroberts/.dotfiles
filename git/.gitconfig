@@ -26,12 +26,15 @@
 
          # list aliases
          la = "!git config -l | grep alias | cut -c 7-"
+[pull]
+  default = current
+  rebase = true
 [push]
 	default = current
 [credential]
 	helper = osxkeychain
 [commit]
-    template = ~/.gitmessage
+	template = ~/.gitmessage
 [rebase]
       autostash = true
       autosquash = true
@@ -49,3 +52,6 @@
 	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 [interactive]
 	diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+[user]
+	name =
+	email =
