@@ -8,7 +8,6 @@ export RUBY_GC_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=100000000
 export RUBY_GC_HEAP_FREE_MIN=500000
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -41,15 +40,16 @@ autoload -U promptinit && promptinit
 autoload -Uz compinit && compinit
 prompt filthy
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export fzf_completion_trigger=",,"
-
-opentmux
 
 # install zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # install zsh autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-[[ -f ~/.aliases ]] && source ~/.aliases ]]
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local ]]
+[[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.zshrc.local ]] &&  source ~/.zshrc.local
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+opentmux
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
