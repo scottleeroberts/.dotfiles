@@ -64,6 +64,20 @@ cfu() {
   fi
 }
 
+set_base_branch() {
+  git rev-parse --verify develop
+  if [[ $? == 0 ]]; then
+    BASE_BRANCH="develop"
+  else
+    BASE_BRANCH="master"
+  fi
+}
+
+ir() {
+  set_base_branch
+  git rebase -i $BASE_BRANCH
+}
+
 alias gco="git checkout"
 alias co="git checkout"
 alias cl="git clone"
