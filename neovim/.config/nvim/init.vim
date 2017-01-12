@@ -103,6 +103,7 @@ nnoremap <leader>[ :bprev<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>/ :Files<CR>
+nnoremap <leader>g <C-]>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
