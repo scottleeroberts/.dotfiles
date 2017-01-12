@@ -112,7 +112,6 @@ nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <leader> :w<CR>
 
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
-nnoremap <leader>rt :call jobstart("$RUBY_TAG_COMMAND")<CR> " tag ruby
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
