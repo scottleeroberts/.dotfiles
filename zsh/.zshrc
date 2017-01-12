@@ -46,14 +46,9 @@ prompt filthy
 export FZF_DEFAULT_COMMAND='ag -g "" --hidden --ignore .git'
 export fzf_completion_trigger=",,"
 
-# install zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# install zsh autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.zshrc.local ]] &&  source ~/.zshrc.local
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 opentmux
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
