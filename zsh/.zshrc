@@ -38,8 +38,10 @@ bindkey "^v" edit-command-line
 
 autoload -U promptinit && promptinit
 autoload -Uz compinit && compinit
+
 prompt filthy
 
+export FZF_DEFAULT_COMMAND='ag -g "" --hidden --ignore .git'
 export fzf_completion_trigger=",,"
 
 # install zsh-syntax-highlighting
