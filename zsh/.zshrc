@@ -36,6 +36,8 @@ bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^v" edit-command-line
 
+fpath=(~/.zsh/filthy $fpath)
+
 autoload -U promptinit && promptinit
 autoload -Uz compinit && compinit
 
