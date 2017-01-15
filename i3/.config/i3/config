@@ -130,7 +130,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Volume
 bindsym $mod+shift+x exec i3lock
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+XF86AudioMute exec pavucontrol
 
 # Widow Colours
 client.focused $bg-color  $bg-color  $text-color  #00ff00
@@ -143,6 +148,7 @@ hide_edge_borders both
 # Bar
   bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        position top
         colors {
         background $bg-color
         separator #757575
