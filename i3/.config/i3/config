@@ -159,4 +159,6 @@ hide_edge_borders both
   gaps inner 6
   gaps outer 4
   smart_gaps on
+
+exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id compton
