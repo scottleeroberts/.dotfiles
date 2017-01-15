@@ -21,7 +21,7 @@ alias vrc="nvim $HOME/.config/nvim/init.vim"
 alias zrc="nvim $HOME/.zshrc"
 alias beg="bundle exec guard"
 alias bai="cd $HOME/development/baldwin-web"
-
+alias vu="nvim +PlugInstall"
 alias :q="exit"
 
 alias ls="ls -lah ${colorflag}"
