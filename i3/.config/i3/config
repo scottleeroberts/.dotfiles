@@ -169,3 +169,14 @@ exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id compton
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
+
+exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/google-chrome-stable'
+exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/skype'
+exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/slack'
+exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/yakyak'
+exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
+
+# Assign windows to their respective workspaces.
+assign [class="Termite"] $workspace1
+assign [class="Chromium|Firefox|Google-chrome"] $workspace2
+assign [class="Skype|yakyak|Slack"] $workspace3
