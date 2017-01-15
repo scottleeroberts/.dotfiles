@@ -1,0 +1,16 @@
+stow -vv compton
+stow -vv ctags
+stow -vv fonts
+stow -vv gem
+stow -vv git
+stow -vv gtk2
+stow -vv gtk3
+stow -vv i3
+stow -vv less
+stow -vv neovim
+stow -vv reek
+stow -vv rofi
+stow -vv termite
+stow -vv tmux
+stow -vv yaourt
+stow -vv zsh
