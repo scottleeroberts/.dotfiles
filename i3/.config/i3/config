@@ -130,6 +130,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# move workspace to left and right monitors
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
 # Volume
 bindsym $mod+shift+x exec i3lock
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
