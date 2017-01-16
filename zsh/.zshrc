@@ -1,4 +1,5 @@
-# Customize to your needs...
+unsetopt nomatch
+setopt extendedglob
 export EDITOR=nvim
 export PATH="/usr/local/rvm/bin/:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH"
 
@@ -7,7 +8,6 @@ export RUBY_GC_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_GC_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=100000000
 export RUBY_GC_HEAP_FREE_MIN=500000
-
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
