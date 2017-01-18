@@ -169,6 +169,8 @@ hide_edge_borders both
   gaps outer 4
   smart_gaps on
   smart_borders on
+
+exec --no-startup-id redshift-gtk
 exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id compton
 exec --no-startup-id blueman-applet
