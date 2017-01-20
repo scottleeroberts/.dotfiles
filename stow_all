@@ -14,5 +14,5 @@ stow -vv rofi
 stow -vv termite
 stow -vv tmux
 stow -vv yaourt
-stoe -vv xmodmap
+stow -vv xmodmap
 stow -vv zsh
