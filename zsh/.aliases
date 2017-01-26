@@ -38,9 +38,9 @@ alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
 
 #db
 alias mdb="RAILS_ENV=development bundle exec rake db:migrate"
-
 alias tdb="RAILS_ENV=test bundle exec rake db:drop db:create db:migrate db:seed"
 alias pdb="RAILS_ENV=test bundle exec rake parallel:drop[8]; bundle exec rake parallel:create[8]; bundle exec rake parallel:migrate[8]; bundle exec rake parallel:seed[8]"
+
 alias prspec="RAILS_ENV=test bundle exec rake parallel:spec[8]"
 
 #git aliases
