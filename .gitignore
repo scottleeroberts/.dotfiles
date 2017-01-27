@@ -1,10 +1,8 @@
 .DS_Store
 TAGS
-
+tags
 .netrwhist
-
 vim/.vim/tmp/*
-
 neovim/.config/nvim/tmp/*
 neovim/.config/nvim/undodir/*
 neovim/.config/nvim/plugged
