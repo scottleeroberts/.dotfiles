@@ -1,5 +1,5 @@
 #Constants
-set $bg-color           #10141c
+set $bg-color           #9684c9
 set $inactive-bg-color  #2f343f
 set $text-color         #f3f4f5
 set $inactive-text-color #676e7d
