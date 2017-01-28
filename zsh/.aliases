@@ -21,7 +21,9 @@ alias vrc="nvim $HOME/.config/nvim/init.vim"
 alias zrc="nvim $HOME/.zshrc"
 alias beg="bundle exec guard"
 alias bai="cd $HOME/development/baldwin-web"
+alias vbai="cd $HOME/development/baldwin-web; vim"
 alias dot="cd $HOME/.dotfiles"
+alias vdot="cd $HOME/.dotfiles; vim"
 alias vu="nvim +PlugInstall"
 alias :q="exit"
 
@@ -30,6 +32,7 @@ alias la="ls -AF ${colorflag}"
 alias ll="ls -lFh ${colorflag}"
 alias lld="ls -l | grep ^d"
 
+#audio helpers
 alias aud="pavucontrol"
 alias eq="qpaeq"
 
