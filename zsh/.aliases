@@ -20,12 +20,9 @@ alias rt=$RUBY_TAG_COMMAND
 alias vrc="nvim $HOME/.config/nvim/init.vim"
 alias zrc="nvim $HOME/.zshrc"
 alias beg="bundle exec guard"
-alias bai="cd $HOME/development/baldwin-web"
 alias vbai="cd $HOME/development/baldwin-web; vim"
-alias dot="cd $HOME/.dotfiles"
 alias vdot="cd $HOME/.dotfiles; vim"
-alias vu="nvim +PlugInstall"
-alias :q="exit"
+alias vu="nvim +PlugInstall" alias :q="exit"
 
 alias ls="ls -lah ${colorflag}"
 alias la="ls -AF ${colorflag}"
