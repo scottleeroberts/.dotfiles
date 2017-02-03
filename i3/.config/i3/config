@@ -178,7 +178,6 @@ exec --no-startup-id compton
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 
-
 # Assign windows to their respective workspaces.
 assign [class="Termite"] $workspace1
 assign [class="Chromium|Firefox|Google-chrome"] $workspace2
@@ -187,7 +186,7 @@ assign [class="Enpass"] $workspace4
 assign [class="Skype"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
-exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/google-chrome-stable'
+exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/slack'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
 exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/skype'
