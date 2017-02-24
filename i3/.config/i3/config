@@ -169,8 +169,11 @@ smart_gaps on
 smart_borders on
 
 bindsym $mod+Control+g [class=Termite] focus
+bindsym $mod+Control+k [class=Termite] focus
 bindsym $mod+Control+b [class=Firefox] focus
+bindsym $mod+Control+d [class=Firefox] focus
 bindsym $mod+Control+t [class=Slack] focus
+bindsym $mod+Control+w [class=whats-app-native*] focus
 
 exec --no-startup-id redshift-gtk
 exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
@@ -181,13 +184,14 @@ exec --no-startup-id nm-applet
 # Assign windows to their respective workspaces.
 assign [class="Termite"] $workspace1
 assign [class="Chromium|Firefox|Google-chrome"] $workspace2
-assign [class="Slack|yakyak"] $workspace3
+assign [class="Slack|yakyak|whats-app-native*"] $workspace3
 assign [class="Enpass"] $workspace4
 assign [class="Skype"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/slack'
+exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/whatsapp-web-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
 exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/skype'
 
