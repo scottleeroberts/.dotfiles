@@ -46,6 +46,8 @@ prompt filthy
 export FZF_DEFAULT_COMMAND='ag -g "" --hidden --ignore .git'
 export fzf_completion_trigger=",,"
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.zshrc.local ]] &&  source ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
