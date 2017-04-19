@@ -103,6 +103,7 @@ nnoremap <leader>[ :bprev<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>/ :Files<CR>
+nnoremap <leader>l :BCommits<CR>
 nnoremap <leader>g <C-]>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -118,7 +119,6 @@ nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
 let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 "Rails file navigation
