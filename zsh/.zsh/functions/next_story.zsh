@@ -1,3 +1,3 @@
 function next_story() {
-  start_pivotal_story $(echo $command_prefix && unstarted_pivotal_stories | fzf-tmux | awk '{print $1;}')
+  wf --start-card --card $(wf --list-unstarted-cards | fzf-tmux | awk '{print $1;}')
 }
