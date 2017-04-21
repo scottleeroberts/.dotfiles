@@ -1,1 +1,1 @@
-au BufWritePost * :call jobstart("ctags .")
+au BufWritePost * :call jobstart("rm tags;ctags .")
