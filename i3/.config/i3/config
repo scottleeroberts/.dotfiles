@@ -64,7 +64,6 @@ set $workspace1 "1: Dev"
 set $workspace2 "2: Browser"
 set $workspace3 "3: Chat"
 set $workspace4 "4: Security"
-set $workspace5 "5: Skype"
 set $workspace10 "10:Music "
 
 # switch to workspace
@@ -210,12 +209,9 @@ assign [class="Termite"] $workspace1
 assign [class="Chromium|Firefox|Google-chrome"] $workspace2
 assign [class="Slack|whats-app-native*"] $workspace3
 assign [class="Enpass"] $workspace4
-assign [class="skypeforlinux"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/slack'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/whatsapp-web-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
-exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/skypeforlinux'
-
