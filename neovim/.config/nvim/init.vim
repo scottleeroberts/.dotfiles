@@ -12,7 +12,6 @@ Plug 'slim-template/vim-slim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-rails'
@@ -103,7 +102,6 @@ nnoremap <leader>[ :bprev<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>/ :Files<CR>
-nnoremap <leader>l :BCommits<CR>
 nnoremap <leader>g <C-]>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
