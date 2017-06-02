@@ -240,3 +240,6 @@ endfunction
 au BufNewFile,BufReadPost *.rb :call BoilerBuilder()
 " }}}
 
+"Tags
+set tags+=TAGS,gems.tags
+au BufWritePost *.rb :call jobstart('ctags')
