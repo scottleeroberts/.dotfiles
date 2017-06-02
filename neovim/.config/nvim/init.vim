@@ -110,14 +110,17 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <leader> :w<CR>
-
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
+
+"tig and git mappings
+nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
+nnoremap <leader>vv :silent !tmux split-window -h "tig blame %"<CR>
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>rf :call RunCurrentSpecFile()<CR>
+map <Leader>rr :call RunNearestSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
 
 "Rails file navigation
 nnoremap <leader>c :Econtroller<CR>
