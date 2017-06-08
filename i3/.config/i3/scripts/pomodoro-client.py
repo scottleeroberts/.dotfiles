@@ -34,7 +34,7 @@ def format_is_paused(is_paused):
 
 def format_state(state):
     return {
-        "pomodoro": "Pomodoro",
+        "pomodoro": "",
         "short-break": "Break",
         "long-break": "Long Break",
     }[state]
