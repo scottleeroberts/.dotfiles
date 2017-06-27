@@ -5,73 +5,79 @@ filetype plugin indent on
 syntax on
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-endwise'
-Plug 'rking/ag.vim'
-Plug 'slim-template/vim-slim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'kchmck/vim-coffee-script'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Townk/vim-autoclose'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'unblevable/quick-scope'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'benmills/vimux'
+Plug 'chrisbra/vim-diff-enhanced'
+Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'cyphactor/vim-open-alternate'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'Townk/vim-autoclose'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'cyphactor/vim-open-alternate'
-Plug 'chriskempson/base16-vim'
-Plug 'thoughtbot/vim-rspec'
-Plug 'benmills/vimux'
-Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'chrisbra/vim-diff-enhanced'
-Plug 'fishbullet/deoplete-ruby'
-Plug 'junegunn/vim-peekaboo'
-Plug 'pangloss/vim-javascript'
 Plug 'ecomba/vim-ruby-refactoring'
+Plug 'fishbullet/deoplete-ruby'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'kchmck/vim-coffee-script'
+Plug 'neomake/neomake'
+Plug 'pangloss/vim-javascript'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'slim-template/vim-slim'
+Plug 'slim-template/vim-slim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'unblevable/quick-scope'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
 " Don't show the startup message
-set shortmess=I
-
-set statusline+=%F
-set termencoding=utf-8
-set gdefault
+set backspace=indent,eol,start
+set backupdir=~/.config/nvim/tmp
+set directory=~/.config/nvim/tmp
 set encoding=utf-8
 set encoding=utf-8
 set fileencoding=utf-8
-set backupdir=~/.config/nvim/tmp
-set directory=~/.config/nvim/tmp
-set undodir=~/.config/nvim/undodir
-set ls=2
-set undolevels=1000         " How many undos
-set undoreload=10000        " number of lines to save for undo
+set gdefault
+set hidden
 set laststatus=2 " Always show last status
+set ls=2
+set mouse=a
 set nowrap
 set number
 set relativenumber
 set ruler " Show cursor position
 set scrolloff=1 " Always show at least one line above and below cursor
+set shortmess=I
 set showcmd " Show partially typed commands
 set showmatch " Matches () etc
+set splitright
+set statusline+=%F
+set termencoding=utf-8
 set timeout
 set timeoutlen=1000
 set ttimeoutlen=100
+set undodir=~/.config/nvim/undodir
+set undofile
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
 set visualbell " Flash the cursor on error instead of beeping
 set wildmenu " Show menu options for completion
-set hidden
-set mouse=a
-set splitright
-set backspace=indent,eol,start
-set undofile
+
+" Searching
+set hlsearch
+set ignorecase
+set smartcase " Only search upcase if provided with capital letter
+set gdefault " Assume /g flag on :%s to replace all matches on line
+set incsearch " Search as typing
 
 "highlight at column 80 only if the line exceeds
 highlight ColorColumn ctermbg=red ctermfg=black
@@ -146,13 +152,6 @@ nnoremap <leader><tab> mtgg=G`t
 map <C-n> :NERDTreeFind<CR>
 
 set rtp+=~/.fzf
-
-" Searching
-set hlsearch
-set ignorecase
-set smartcase " Only search upcase if provided with capital letter
-set gdefault " Assume /g flag on :%s to replace all matches on line
-set incsearch " Search as typing
 
 " Highlight current line in active pane only
 augroup CursorLine
