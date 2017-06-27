@@ -9,6 +9,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Townk/vim-autoclose'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-buftabline'
 Plug 'benmills/vimux'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'chriskempson/base16-vim'
@@ -34,8 +35,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
@@ -60,7 +59,6 @@ set shortmess=I
 set showcmd " Show partially typed commands
 set showmatch " Matches () etc
 set splitright
-set statusline+=%F
 set termencoding=utf-8
 set timeout
 set timeoutlen=1000
@@ -88,14 +86,19 @@ set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
 
-let g:airline_theme='base16'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#whitespace#checks = []
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+" bufftabline settings
+let g:buftabline_indicators = 1
+let g:buftabline_separators = 1
+
+
+" status line configuration
+set statusline=
+set statusline+=\ %F
+set statusline+=\ %m
+set statusline+=%r
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %l:%c
 
 " Key Mappings
 inoremap jj <Esc>
