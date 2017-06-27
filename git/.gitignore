@@ -3,3 +3,6 @@ gems.ctags
 .DS_Store
 .ruby-gemset
 metadocs/
+weechat/.weechat/*.log
+weechat/.weechat/logs
+weechat/.weechat/xfer

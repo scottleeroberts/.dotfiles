@@ -6,3 +6,6 @@ vim/.vim/tmp/*
 neovim/.config/nvim/tmp/*
 neovim/.config/nvim/undodir/*
 neovim/.config/nvim/plugged
+weechat/.weechat/*.log
+weechat/.weechat/logs
+weechat/.weechat/xfer

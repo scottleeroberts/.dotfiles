@@ -13,6 +13,8 @@ stow -vv reek
 stow -vv rofi
 stow -vv termite
 stow -vv tmux
-stow -vv yaourt
+stow -vv urlview
+stow -vv weechat
 stow -vv xmodmap
+stow -vv yaourt
 stow -vv zsh
