@@ -25,7 +25,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'kchmck/vim-coffee-script'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
-Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'slim-template/vim-slim'
@@ -249,3 +248,5 @@ au BufNewFile,BufReadPost *.rb :call BoilerBuilder()
 set tags+=TAGS,gems.tags
 au BufWritePost *.rb :call jobstart('ctags')
 
+"ripgrep
+command! -bang -nargs=* F call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)

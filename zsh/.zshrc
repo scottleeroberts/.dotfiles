@@ -43,7 +43,7 @@ autoload -Uz compinit && compinit
 
 prompt filthy
 
-export FZF_DEFAULT_COMMAND='ag -g "" --hidden --ignore .git'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export fzf_completion_trigger=",,"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
