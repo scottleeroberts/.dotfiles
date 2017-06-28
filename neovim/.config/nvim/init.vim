@@ -121,6 +121,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <leader> :w<CR>
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
+nnoremap <leader>f :F<space>
 
 "tig and git mappings
 nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
