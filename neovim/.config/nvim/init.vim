@@ -90,7 +90,6 @@ colorscheme base16-ocean
 let g:buftabline_indicators = 1
 let g:buftabline_separators = 1
 
-
 " status line configuration
 set statusline=
 set statusline+=\ %F
@@ -99,6 +98,9 @@ set statusline+=%r
 set statusline+=%=
 set statusline+=\ %y
 set statusline+=\ %l:%c
+"Statusline changes color based on mode
+au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
+au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 
 " Key Mappings
 inoremap jj <Esc>
@@ -246,3 +248,4 @@ au BufNewFile,BufReadPost *.rb :call BoilerBuilder()
 "Tags
 set tags+=TAGS,gems.tags
 au BufWritePost *.rb :call jobstart('ctags')
+
