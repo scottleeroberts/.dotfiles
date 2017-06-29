@@ -123,6 +123,8 @@ nnoremap <leader> :w<CR>
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
 nnoremap <leader>f :F<space>
 nnoremap <leader>fs :F<space><c-R><c-W><CR>
+nnoremap <leader>vs :vs<CR>
+nnoremap <leader>sp :sp<CR>
 
 "tig and git mappings
 nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
