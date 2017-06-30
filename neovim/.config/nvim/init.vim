@@ -121,8 +121,9 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <leader> :w<CR>
 nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
-nnoremap <leader>f :F<space>
-nnoremap <leader>fs :F<space><c-R><c-W><CR>
+nnoremap <leader>ff :Find<space>
+nnoremap <leader>fs :Find<space><c-R><c-W><CR>
+nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>sp :sp<CR>
 
@@ -253,4 +254,4 @@ set tags+=TAGS,gems.tags
 au BufWritePost *.rb :call jobstart('ctags')
 
 "ripgrep
-command! -bang -nargs=* F call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
