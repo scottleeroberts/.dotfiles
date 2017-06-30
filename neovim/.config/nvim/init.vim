@@ -58,6 +58,7 @@ set shortmess=I
 set showcmd " Show partially typed commands
 set showmatch " Matches () etc
 set splitright
+set splitbelow
 set termencoding=utf-8
 set timeout
 set timeoutlen=1000
