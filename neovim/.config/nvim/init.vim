@@ -89,6 +89,7 @@ colorscheme base16-ocean
 " bufftabline settings
 let g:buftabline_indicators = 1
 let g:buftabline_separators = 1
+hi! link BufTabLineActive Comment
 
 " status line configuration
 set statusline=
