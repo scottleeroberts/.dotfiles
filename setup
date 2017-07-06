@@ -91,6 +91,7 @@ else
   gem install neovim
   gem install reek
   gem install rubocop
+  gem install ripper-tags
 fi
 
 if [ -d ~/.fzf ]; then
