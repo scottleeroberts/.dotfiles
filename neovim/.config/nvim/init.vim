@@ -23,7 +23,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kchmck/vim-coffee-script'
-Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
@@ -35,6 +34,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
+Plug 'w0rp/ale'
 call plug#end()
 
 " Don't show the startup message
@@ -180,8 +180,6 @@ augroup END
 
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
-
-autocmd! BufWritePost,BufRead * Neomake
 
 let g:deoplete#enable_at_startup = 1
 
