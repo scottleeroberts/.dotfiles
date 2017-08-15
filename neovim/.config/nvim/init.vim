@@ -14,7 +14,6 @@ Plug 'benmills/vimux'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'cyphactor/vim-open-alternate'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ecomba/vim-ruby-refactoring'
@@ -103,6 +102,23 @@ set statusline+=\ %l:%c
 au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 
+"Rails open associated spec files or vice versa
+function! RailsOpenAltCommand(path, vim_command)
+  if a:path =~ "spec/"
+    let l:alternate = substitute(a:path, "spec/", "app/", "")
+    let l:alternate = substitute(l:alternate, "_spec", "", "")
+  elseif a:path =~ "app/"
+    let l:alternate = substitute(a:path, "app/", "spec/", "")
+    let l:alternate = substitute(l:alternate, ".rb", "_spec.rb", "")
+  endif
+
+  if empty(l:alternate)
+    echo "No alternate file for " . a:path . " exists!"
+  else
+    exec a:vim_command . " " . l:alternate
+  endif
+endfunction
+
 " Key Mappings
 inoremap jj <Esc>
 inoremap jw <Esc>:w<cr>
@@ -121,8 +137,8 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+nnoremap <leader>. :call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>
 nnoremap <leader> :w<CR>
-nnoremap <leader>. :vs<CR>:OpenAlternate<CR>
 nnoremap <leader>ff :Find<space>
 nnoremap <leader>fs :Find<space><c-R><c-W><CR>
 nnoremap <leader>fv :vs<CR>:Find<space>
