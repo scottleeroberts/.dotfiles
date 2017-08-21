@@ -39,6 +39,7 @@ call plug#end()
 " Don't show the startup message
 set backspace=indent,eol,start
 set backupdir=~/.config/nvim/tmp
+set clipboard=unnamedplus
 set directory=~/.config/nvim/tmp
 set encoding=utf-8
 set encoding=utf-8
