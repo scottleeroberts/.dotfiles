@@ -146,6 +146,7 @@ nnoremap <leader>fs :Find<space><c-R><c-W><CR>
 nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>sp :sp<CR>
+nnoremap <leader>mi :edit db/migrate<CR>G
 
 "tig and git mappings
 nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
