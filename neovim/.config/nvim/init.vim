@@ -125,6 +125,7 @@ inoremap jw <Esc>:w<cr>
 inoremap <Esc> <noop>
 map ; :
 
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
 nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>[ :bprev<CR>
 nnoremap <leader>] :bnext<CR>
