@@ -88,20 +88,21 @@ changes() {
 }
 
 alias gco="git checkout"
-alias co="git checkout"
-alias cl="git clone"
 alias gss="git status"
 alias gcd="git checkout develop"
 alias gcm="git checkout master "
-
+alias stash="git stash"
+alias pop="git stash pop"
+alias back='git reset HEAD~1'
 alias d="git diff"
 alias ds="git diff --staged"
-
-alias gp="git push"
-alias gb="git branch"
-alias gcp="git cherry-pick"
+alias push="git push"
+alias pull="git pull"
+alias unstage="git unstage"
+alias cherry="git cherry-pick"
 alias gun="git reset HEAD"
-
 alias releases="git log | grep -v 'tag: ' | grep -i 'feature\|hotfix'"
-
 alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
+alias gs="git st"
+alias gl="git lg"
+alias gcv="git commit -v"

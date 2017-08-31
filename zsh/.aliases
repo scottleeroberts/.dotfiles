@@ -48,10 +48,6 @@ alias pdb="RAILS_ENV=test bundle exec rake parallel:drop[8]; bundle exec rake pa
 alias prspec="RAILS_ENV=test bundle exec rake parallel:spec[8]"
 
 #git aliases
-alias churn="git log --all --name-only --format='format:' | grep -v '^$' | sort | uniq -c | sort -n | tail"
-alias gs="git st"
-alias gl="git lg"
-alias gcv="git commit -v"
 
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
