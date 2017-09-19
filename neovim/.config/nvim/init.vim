@@ -142,8 +142,8 @@ nnoremap <leader> :w<CR>
 nnoremap <leader>ff :Find<space>
 nnoremap <leader>fs :Find<space><c-R><c-W><CR>
 nnoremap <leader>fv :vs<CR>:Find<space>
-nnoremap <leader>vs :vs<CR>
-nnoremap <leader>sp :sp<CR>
+nnoremap <leader><leader>v :vs<CR>
+nnoremap <leader><leader>s :sp<CR>
 nnoremap <leader>mi :edit db/migrate<CR>G
 
 "tig and git mappings
