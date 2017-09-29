@@ -10,6 +10,8 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 export RUBY_GC_HEAP_FREE_MIN=500000
 export BROWSER="firefox"
 
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
