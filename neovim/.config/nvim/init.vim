@@ -146,7 +146,8 @@ nnoremap <leader>mi :edit db/migrate<CR>G
 
 "tig and git mappings
 nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
-nnoremap <leader>vv :silent !tmux split-window -h "tig blame %"<CR>
+nnoremap <leader>vb :silent !tmux split-window -h "tig blame %"<CR>
+nnoremap <leader>vv :silent !tmux split-window -h "tig"<CR>
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
