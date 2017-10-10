@@ -278,13 +278,11 @@ set tags+=TAGS,gems.tags
 au BufWritePost *.rb :call jobstart('ripper-tags -R --exclude spec/ --exclude db/')
 
 "ripgrep
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 command! -bang -nargs=* Find
       \ call fzf#vim#grep(
       \'rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
       \   fzf#vim#with_preview('up:60%')
       \ )
-" }}}
 
 
 
