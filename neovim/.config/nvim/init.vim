@@ -21,6 +21,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kchmck/vim-coffee-script'
+Plug 'kthibodeaux/tig.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
@@ -170,17 +171,9 @@ nnoremap <leader><tab> mtgg=G`t
 map <C-n> :NERDTreeFind<CR>
 "
 "tig and git mappings
-nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
-nnoremap <leader>vv :silent !tmux split-window -h "tig"<CR>
-function ShowBlameAndFocusCurrentLine()
-  let l:line = line(".")
-  let l:file = expand("%")
-  let l:tig_command = "tig blame +" . l:line . " " . l:file
-  let l:tmux_command = "!tmux split-window -h " . l:tig_command
-
-  execute l:tmux_command
-endfunction
-nnoremap <leader>vb :call ShowBlameAndFocusCurrentLine()<CR><CR>
+nnoremap <leader>vc :silent TigFileHistory<CR>
+nnoremap <leader>vv :silent TigLatestCommitForLine<CR>
+nnoremap <leader>vb :silent TigBlame<CR>
 
 set rtp+=~/.fzf
 
