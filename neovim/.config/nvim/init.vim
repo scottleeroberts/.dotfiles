@@ -129,7 +129,6 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>[ :bprev<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>d :bd<CR>
-nnoremap <leader>/ :Files<CR>
 nnoremap <leader>g <C-]>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -175,6 +174,10 @@ nnoremap <leader><tab> mtgg=G`t
 map <C-n> :NERDTreeFind<CR>
 
 set rtp+=~/.fzf
+
+nnoremap <leader>/ :Files<CR>
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " Highlight current line in active pane only
 augroup CursorLine
