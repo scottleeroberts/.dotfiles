@@ -143,10 +143,6 @@ nnoremap <leader>fs :Find<space><c-R><c-W><CR>
 nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
 
-"tig and git mappings
-nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
-nnoremap <leader>vb :silent !tmux split-window -h "tig blame %"<CR>
-nnoremap <leader>vv :silent !tmux split-window -h "tig"<CR>
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
@@ -172,6 +168,19 @@ nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <leader><tab> mtgg=G`t
 
 map <C-n> :NERDTreeFind<CR>
+"
+"tig and git mappings
+nnoremap <leader>vc :silent !tmux split-window -h "tig --follow %"<CR>
+nnoremap <leader>vv :silent !tmux split-window -h "tig"<CR>
+function ShowBlameAndFocusCurrentLine()
+  let l:line = line(".")
+  let l:file = expand("%")
+  let l:tig_command = "tig blame +" . l:line . " " . l:file
+  let l:tmux_command = "!tmux split-window -h " . l:tig_command
+
+  execute l:tmux_command
+endfunction
+nnoremap <leader>vb :call ShowBlameAndFocusCurrentLine()<CR><CR>
 
 set rtp+=~/.fzf
 
