@@ -21,46 +21,33 @@ dev() {
   git checkout develop && git up
 }
 
-br() {
-  if [[ $# == 0 ]]; then
-    branches=$(git branch)
-    if [ "$TMUX" = "" ]; then
-      target=$(echo $branches | fzf)
-    else
-      target=$(echo $branches | fzf-tmux)
-    fi
-
-    if [[ $target != '' ]]; then
-      git checkout $(echo $target)
-    fi
-  fi
-}
 
 a() {
   if [ "$TMUX" = "" ]; then
-    git add $(git status -s | awk '{ print $2 }' | fzf -m)
+    git add $(git status -s | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
-    git add $(git status -s | awk '{ print $2 }' | fzf-tmux -m)
+    git add $(git status -s | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
   fi
 }
+
 
 ap() {
   if [ "$TMUX" = "" ]; then
-    git add -p $(git status -s | awk '{ print $2 }' | fzf -m)
+    git add -p $(git status -s | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
-    git add -p $(git status -s | awk '{ print $2 }' | fzf-tmux -m)
+    git add -p $(git status -s | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
   fi
 }
 
-cfu() {
-  if [ "$TMUX" = "" ]; then
-    target=$(git log --pretty=oneline develop.. | fzf | awk '{ print $1 }')
+co() {
+  if [[ $# > 0 ]]; then
+    git co $@
   else
-    target=$(git log --pretty=oneline develop.. | fzf-tmux | awk '{ print $1 }')
-  fi
-
-  if [[ $target != '' ]]; then
-    git commit --fixup $(echo $target)
+    if [ "$TMUX" = "" ]; then
+      git co $(git status -s | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+    else
+      git co $(git status -s | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
+    fi
   fi
 }
 
@@ -78,12 +65,33 @@ ir() {
   git rebase -i $BASE_BRANCH
 }
 
-changes() {
-  if [[ $# > 0 ]]; then
-    tig "$@".."$(git rev-parse --abbrev-ref HEAD)"
-  else
+br() {
+  if [[ $# == 0 ]]; then
     set_base_branch
-    tig $BASE_BRANCH.."$(git rev-parse --abbrev-ref HEAD)"
+
+    branches=$(git branch)
+    if [ "$TMUX" = "" ]; then
+      target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $BASE_BRANCH..{} | head')
+    else
+      target=$(echo $branches | awk '{$1=$1};1' | fzf-tmux --preview 'git short-log $BASE_BRANCH..{} | head')
+    fi
+
+    if [[ $target != '' ]]; then
+      git checkout $(echo $target)
+    fi
+  fi
+}
+
+cfu() {
+  set_base_branch
+  if [ "$TMUX" = "" ]; then
+    target=$(git log --pretty=oneline $BASE_BRANCH.. | fzf --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
+  else
+    target=$(git log --pretty=oneline $BASE_BRANCH.. | fzf-tmux --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
+  fi
+
+  if [[ $target != '' ]]; then
+    git commit --fixup $(echo $target)
   fi
 }
 
