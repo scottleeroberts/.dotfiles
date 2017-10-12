@@ -170,7 +170,10 @@ nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <leader><tab> mtgg=G`t
 
 map <C-n> :NERDTreeFind<CR>
-"
+
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
 "tig and git mappings
 nnoremap <leader>vc :silent TigFileHistory<CR>
 nnoremap <leader>vv :silent TigLatestCommitForLine<CR>
