@@ -77,9 +77,6 @@ set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
-"highlight at column 80 only if the line exceeds
-highlight ColorColumn ctermbg=red ctermfg=black
-call matchadd('ColorColumn', '\%81v\s*\S', 100)
 
 " Theme stuff
 set background=dark
@@ -286,3 +283,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "abbreviations
 iabbr pry ::Kernel.binding.pry
+
+"highlight at column 80 only if the line exceeds
+highlight ColorColumn ctermbg=blue
+call matchadd('ColorColumn', '\%81v', 100)
