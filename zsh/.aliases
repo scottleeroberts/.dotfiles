@@ -33,6 +33,7 @@ alias lld="ls -l | grep ^d"
 #audio helpers
 alias aud="pavucontrol"
 alias eq="qpaeq"
+alias yadl='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
 
 # Helpers
 alias grep='grep --color=auto'
