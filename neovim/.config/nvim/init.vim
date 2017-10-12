@@ -281,7 +281,8 @@ command! -bang -nargs=* Find
       \   fzf#vim#with_preview('up:60%')
       \ )
 
-
+"Open to last position in file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "abbreviations
 iabbr pry ::Kernel.binding.pry
