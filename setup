@@ -22,6 +22,8 @@ yaourt_install() {
 }
 
 pacman_install "blueman"
+pacman_install "docker"
+pacman_install "docker-compose"
 pacman_install "feh"
 pacman_install "htop"
 pacman_install "i3lock"
