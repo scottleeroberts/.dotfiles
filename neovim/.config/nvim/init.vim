@@ -267,7 +267,6 @@ au BufNewFile,BufReadPost *.rb silent! :call BoilerBuilder()
 " }}}
 
 "Tags
-set tags+=TAGS,gems.tags
 au BufWritePost *.rb :call jobstart('ripper-tags -R --exclude spec/ --exclude db/')
 
 "ripgrep
