@@ -69,7 +69,7 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set visualbell " Flash the cursor on error instead of beeping
 set wildmenu " Show menu options for completion
-
+set colorcolumn=80
 " Searching
 set hlsearch
 set ignorecase
@@ -283,7 +283,3 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "abbreviations
 iabbr pry ::Kernel.binding.pry
-
-"highlight at column 80 only if the line exceeds
-highlight ColorColumn ctermbg=blue
-call matchadd('ColorColumn', '\%81v', 100)
