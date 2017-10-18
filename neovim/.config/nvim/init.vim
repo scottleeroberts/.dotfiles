@@ -152,6 +152,9 @@ map <C-n> :NERDTreeFind<CR>
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
+" source $MYVIMRC reloads the saved $MYVIMRC
+nnoremap <Leader>s :source $MYVIMRC<CR>
+
 "tig and git mappings
 nnoremap <leader>vc :silent TigFileHistory<CR>
 nnoremap <leader>vv :silent TigLatestCommitForLine<CR>
