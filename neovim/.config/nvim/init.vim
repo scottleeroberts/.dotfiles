@@ -216,22 +216,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-"Boiler configuration
-" Ruby file templates {{{
-function BoilerBuilder()
-  if filereadable("boiler") == 1
-    if filereadable(@%) == 0
-      read !ruby boiler %
-      norm ggdd
-    elseif line('$') == 1 && col('$') == 1
-      read !ruby boiler %
-      norm ggdd
-    endif
-  endif
-endfunction
-au BufNewFile,BufReadPost *.rb silent! :call BoilerBuilder()
-" }}}
-
 "Tags
 au BufWritePost *.rb :call jobstart('ripper-tags -R --exclude spec/ --exclude db/')
 
