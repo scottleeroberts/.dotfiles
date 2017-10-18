@@ -18,8 +18,6 @@
         unstage = reset HEAD
         short-log = log --pretty=format:'%C(yellow)%h%Creset %s'
         wip = !git add --all && git commit -m 'WIP' && git push
-        staash = stash --include-untracked
-        pop =  stash pop
         ls = log --graph --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
         lst = log --graph --abbrev-commit --date=relative --stat
         lg = !"git lg1-specific "
