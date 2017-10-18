@@ -14,7 +14,6 @@ Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'danro/rename.vim'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'junegunn/fzf'
@@ -96,6 +95,7 @@ set statusline+=%r
 set statusline+=%=
 set statusline+=\ %y
 set statusline+=\ %l:%c
+"
 "Statusline changes color based on mode
 au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
