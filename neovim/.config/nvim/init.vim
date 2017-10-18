@@ -119,12 +119,10 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <leader>. :call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>
-nnoremap <leader> :w<CR>
 nnoremap <leader>ff :Find<space>
 nnoremap <leader>fs :Find<space><c-R><c-W><CR>
 nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
-
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
