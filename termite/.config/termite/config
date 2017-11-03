@@ -1,5 +1,5 @@
 [options]
-font = Meslo LG S for Powerline 14
+font = consolas 12
 audible_bell = false
 cursor_blink = off
 cursor_shape = block
