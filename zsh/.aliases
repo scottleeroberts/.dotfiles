@@ -50,7 +50,7 @@ alias prspec="RAILS_ENV=test bundle exec rake parallel:spec[8]"
 
 #git aliases
 alias stash="git stash --include-untracked"
-alias pop="git pop"
+alias pop="git stash pop"
 
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
