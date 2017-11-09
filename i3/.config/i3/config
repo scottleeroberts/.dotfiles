@@ -184,12 +184,6 @@ client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
     }
   }
 
-#gnome-pomodoro
-bindsym $mod+Control+1 exec "python ~/.config/i3/scripts/pomodoro-client.py start"
-bindsym $mod+Control+2 exec "python ~/.config/i3/scripts/pomodoro-client.py toggle"
-bindsym $mod+Control+3 exec "python ~/.config/i3/scripts/pomodoro-client.py skip"
-bindsym $mod+Control+4 exec "python ~/.config/i3/scripts/pomodoro-client.py stop"
-
 #gaps
 hide_edge_borders both
 for_window [class="^.*"] border pixel 3
