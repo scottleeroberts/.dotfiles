@@ -41,13 +41,6 @@ alias df='df -h' # disk free, in Gigabytes, not bytes
 alias du='du -h -c' # calculate disk usage for a folder
 alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
 
-#db
-alias mdb="RAILS_ENV=development bundle exec rake db:migrate"
-alias tdb="RAILS_ENV=test bundle exec rake db:drop db:setup"
-alias pdb="RAILS_ENV=test bundle exec rake parallel:drop[8] parallel:setup[8]"
-
-alias prspec="RAILS_ENV=test bundle exec rake parallel:spec[8]"
-
 #git aliases
 alias stash="git stash --include-untracked"
 alias pop="git stash pop"
