@@ -192,7 +192,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
-
+let NERDTreeShowHidden=1
 "Tags
 au BufWritePost *.rb :call jobstart('ripper-tags -R --exclude spec/ --exclude db/')
 
