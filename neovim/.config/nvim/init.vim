@@ -125,7 +125,7 @@ nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
 
 " RSpec.vim mappings
-let g:rspec_command = 'call VimuxRunCommand("bundle exec rspec {spec}\n")'
+let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'
 map <Leader>rf :call RunCurrentSpecFile()<CR>
 map <Leader>rr :call RunNearestSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
