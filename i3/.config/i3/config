@@ -126,8 +126,8 @@ mode "resize" {
 ########
 # Multi Monitor Support
 ########
-set $mon_lap eDP1
-set $mon_ext DP1
+set $mon_lap eDP-1
+set $mon_ext DP-1
 set $mon_ext_hdmi HDMI3
 
 bindsym $mod+m mode "monitor_select"
@@ -186,9 +186,9 @@ client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 
 #gaps
 hide_edge_borders both
-for_window [class="^.*"] border pixel 3
-gaps inner 6
-gaps outer 4
+for_window [class="^.*"] border pixel 1
+gaps inner 2
+gaps outer 1
 smart_gaps on
 smart_borders on
 
