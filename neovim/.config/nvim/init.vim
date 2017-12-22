@@ -156,9 +156,9 @@ map 0 ^
 nnoremap <Leader>s :source $MYVIMRC<CR>
 
 "tig and git mappings
-nnoremap <leader>vc :silent TigFileHistory<CR>
-nnoremap <leader>vv :silent TigLatestCommitForLine<CR>
-nnoremap <leader>vb :silent TigBlame<CR>
+nmap <leader>vc <Plug>TigFileHistory
+nmap <leader>vv <Plug>TigBlame
+nmap <leader>vb <Plug>TigLatestCommitForLine
 
 set rtp+=~/.fzf
 
