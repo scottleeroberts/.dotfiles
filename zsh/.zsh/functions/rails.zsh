@@ -7,15 +7,16 @@ docker_or_local() {
 }
 
 be() { docker_or_local "bundle exec $@" }
+
 ber() { docker_or_local "bundle exec rails $@" }
 bes() { docker_or_local "bundle exec rspec $@" }
-bu() { docker_or_local "bundle update $@" }
-bi() { docker_or_local "bundle install $@" }
+bep() { docker_or_local "bundle exec rake parallel:spec[8]" }
 
-ddb() { docker_or_local "bundle exec rake db:drop db:setup" }
-pdb() { docker_or_local "bundle exec rake parallel:drop[8] parallel:setup[8]" }
-mdb() { docker_or_local "bundle exec rake db:migrate" }
-mpdb() { docker_or_local "bundle exec rake parallel:migrate[8]" }
+mi() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=development" }
+mit() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=test" }
+pmit() { docker_or_local "bundle exec rake parallel:migrate[8]" }
 
-prspec() { docker_or_local "bundle exec rake parallel:spec[8]" }
+clean_devdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=development" }
+clean_testdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=test" }
+pclean_testdb() { docker_or_local "bundle exec rake parallel:drop[8] parallel:setup[8] RAILS_ENV=test" }
 
