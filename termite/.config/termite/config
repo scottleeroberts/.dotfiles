@@ -1,5 +1,5 @@
 [options]
-font = consolas 12
+font = camingocode 16
 audible_bell = false
 cursor_blink = off
 cursor_shape = block
