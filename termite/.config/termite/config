@@ -1,5 +1,5 @@
 [options]
-font = camingocode 16
+font = robotomono 14
 audible_bell = false
 cursor_blink = off
 cursor_shape = block
