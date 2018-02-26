@@ -26,6 +26,9 @@ tmux send-keys "cd ~/Development/baldwin-web" C-m
 # create a new window
 tmux new-window -t $session -n zsh
 tmux send-keys "cd ~/Development/baldwin-web" C-m
+tmux send-keys "xrandr --output eDP1 --mode 1920x1200" C-m
+tmux send-keys "pactl load-module module-dbus-protocol" C-m
+tmux send-keys "pactl load-module module-equalizer-sink " C-m
 
 # create a new window
 tmux new-window -t $session -n weechat
