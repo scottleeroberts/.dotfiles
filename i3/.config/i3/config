@@ -213,6 +213,5 @@ assign [class="Enpass"] $workspace4
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/slack'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/whatsapp-web-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
