@@ -8,7 +8,7 @@ class PullRequests
   REVIEWED_LABEL = 'Changes Requested'
   ALREADY_REVIEWED_LABEL = 'Scott Signed Off'
   GITHUB_USERNAME = 'scottleeroberts'
-  REPO = 'developertown/baldwin-web'
+  REPO = 'baldwinaviation/baldwin-web'
 
   def self.process
     new.process
