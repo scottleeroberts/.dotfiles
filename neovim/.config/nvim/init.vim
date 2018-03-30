@@ -159,7 +159,7 @@ set rtp+=~/.fzf
 
 nnoremap <leader>/ :Files<CR>
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " Highlight current column in active pane only
 augroup CursorColumn
@@ -174,19 +174,19 @@ let g:ruby_indent_block_style = 'do'
 let g:deoplete#enable_at_startup = 1
 
 " Default peekaboo window
- let g:peekaboo_window = 'vertical botright 30new'
+let g:peekaboo_window = 'vertical botright 30new'
 
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ "Unknown"   : "?"
+      \ }
 let NERDTreeShowHidden=1
 "Tags
 au BufWritePost *.rb :call jobstart('ripper-tags -R --exclude spec/ --exclude db/')
