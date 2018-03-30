@@ -9,7 +9,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-buftabline'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'chriskempson/base16-vim'
@@ -70,6 +69,7 @@ set undoreload=10000        " number of lines to save for undo
 set visualbell " Flash the cursor on error instead of beeping
 set wildmenu " Show menu options for completion
 set colorcolumn=80
+
 " Searching
 set hlsearch
 set ignorecase
@@ -77,16 +77,10 @@ set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
-
 " Theme stuff
 set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
-
-" bufftabline settings
-let g:buftabline_indicators = 1
-let g:buftabline_separators = 1
-hi! link BufTabLineActive Comment
 
 " status line configuration
 set statusline=
