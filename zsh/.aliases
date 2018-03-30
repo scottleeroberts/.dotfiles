@@ -8,7 +8,7 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
 fi
 
 alias ll="ls -Gplh"
-
+alias c="docker-compose"
 alias vim="nvim"
 
 # Filesystem aliases
