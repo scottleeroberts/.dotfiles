@@ -190,7 +190,7 @@ let g:NERDTreeIndicatorMapCustom = {
       \ }
 let NERDTreeShowHidden=1
 "Tags
-au BufWritePost *.rb :call jobstart('ripper-tags -R --exclude spec/ --exclude db/')
+au BufWritePost *.rb :call jobstart('sh ~/.dotfiles/bin/run_tags')
 
 "ripgrep
 command! -bang -nargs=* Find
