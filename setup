@@ -22,6 +22,7 @@ yaourt_install() {
 }
 
 pacman_install "blueman"
+pacman_install "ctags"
 pacman_install "docker"
 pacman_install "docker-compose"
 pacman_install "feh"
@@ -66,7 +67,6 @@ yaourt_install "teensy-loader-cli"
 yaourt_install "tig"
 yaourt_install "tmate"
 yaourt_install "ttf-camingocode "
-yaourt_install "universal-ctags-git"
 yaourt_install "urlview"
 yaourt_install "whatsapp-web-desktop"
 yaourt_install "zsh-syntax-highlighting"
