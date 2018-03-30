@@ -6,6 +6,7 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
   else # OS X `ls`
   colorflag="-G"
 fi
+
 alias ll="ls -Gplh"
 
 alias vim="nvim"
@@ -17,11 +18,6 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias rt=$RUBY_TAG_COMMAND
-alias vrc="nvim $HOME/.config/nvim/init.vim"
-alias zrc="nvim $HOME/.zshrc"
-alias beg="bundle exec guard"
-alias vbai="cd $HOME/development/baldwin-web; vim"
-alias vdot="cd $HOME/.dotfiles; vim"
 alias vu="nvim +PlugInstall"
 alias :q="exit"
 
