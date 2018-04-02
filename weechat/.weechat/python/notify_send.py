@@ -95,14 +95,16 @@ OPTIONS = {
         'buffer (in milliseconds; set to 0 to show all notifications).'
     ),
     'ignore_messages_tagged_with': (
-        # irc_join:      Joined IRC
-        # irc_quit:      Quit IRC
-        # irc_part:      Parted a channel
-        # irc_status:    Status messages
-        # irc_nick_back: A nick is back on server
-        # irc_401:       No such nick/channel
-        # irc_402:       No such server
-        'irc_join,irc_quit,irc_part,irc_status,irc_nick_back,irc_401,irc_402',
+        ','.join([
+            'notify_none',    # Buffer with line is not added to hotlist
+            'irc_join',       # Joined IRC
+            'irc_quit',       # Quit IRC
+            'irc_part',       # Parted a channel
+            'irc_status',     # Status messages
+            'irc_nick_back',  # A nick is back on server
+            'irc_401',        # No such nick/channel
+            'irc_402',        # No such server
+        ]),
         'A comma-separated list of message tags for which no notifications '
         'should be shown.'
     ),
@@ -214,8 +216,7 @@ def nick_that_sent_message(tags, prefix):
 
 
 def parse_tags(tags):
-    """Parses the given "list" of tags (str) from WeeChat into a list.
-    """
+    """Parses the given "list" of tags (str) from WeeChat into a list."""
     return tags.split(',')
 
 
@@ -295,7 +296,7 @@ def is_below_min_notification_delay(buffer):
     When called, this function updates the time of the last notification.
     """
     # We store the time of the last notification in a buffer-local variable to
-    # make it persistent over the lifetime of this plugin.
+    # make it persistent over the lifetime of this script.
     LAST_NOTIFICATION_TIME_VAR = 'notify_send_last_notification_time'
     last_notification_time = buffer_get_float(
         buffer,
@@ -355,11 +356,11 @@ def names_for_buffer(buffer):
     if short_name:
         buffer_names.append(short_name)
         # Consider >channel and #channel to be equal buffer names. The reason
-        # is that the https://github.com/rawdigits/wee-slack plugin replaces
+        # is that the https://github.com/rawdigits/wee-slack script replaces
         # '#' with '>' to indicate that someone in the buffer is typing. This
         # fixes the behavior of several configuration options (e.g.
         # 'notify_on_all_messages_in_buffers') when weechat_notify_send is used
-        # together with the wee_slack plugin.
+        # together with the wee_slack script.
         #
         # Note that this is only needed to be done for the short name. Indeed,
         # the full name always stays unchanged.
