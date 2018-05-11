@@ -8,7 +8,6 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
 fi
 
 alias ll="ls -Gplh"
-alias c="docker-compose"
 alias vim="nvim"
 
 # Filesystem aliases
@@ -40,6 +39,15 @@ alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
 #git aliases
 alias stash="git stash --include-untracked"
 alias pop="git stash pop"
+
+#i3 monitor management
+alias xr="xrandr --output eDP1 --mode 1920x1200"
+
+#heroku
+alias hlogin="heroku login"
+alias hremote="heroku git:remote -a "
+alias hpush="git push heroku master"
+alias hmigrate="heroku run rails db:migrate"
 
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

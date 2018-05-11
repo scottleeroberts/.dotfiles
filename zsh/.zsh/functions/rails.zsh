@@ -1,3 +1,5 @@
+alias console="docker-compose run web bundle exec rails console"
+
 docker_or_local() {
   if [[ -f docker-compose.yml ]]; then
     eval {"docker-compose run --rm --no-deps -e SKIP_SIMPLECOV=true web $@"}

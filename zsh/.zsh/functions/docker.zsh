@@ -1,7 +1,8 @@
 alias dkr="docker"
-alias dkrc="docker-compose"
+alias c="docker-compose"
 alias up="docker-compose up"
 alias down="docker-compose down"
+alias rw="docker-compose run web bundle exec rake resque:work QUEUE=*"
 
 dr_nuke_containers() {
   docker rm -f $(docker ps -a -q)
