@@ -55,6 +55,8 @@ yaourt_install "google-chrome"
 yaourt_install "google-talkplugin"
 yaourt_install "i3-gaps-next-git"
 yaourt_install "i3blocks"
+yaourt_install "neovim"
+yaourt_install "python-pip"
 yaourt_install "pgcli-git"
 yaourt_install "roboto-mono"
 yaourt_install "rofi"
@@ -95,7 +97,6 @@ else
   rvm --default use $RUBY_VERSION
   rvm use $RUBY_VERSION
   gem install bundler
-  gem install neovim
   gem install reek
   gem install rubocop
   gem install ripper-tags
