@@ -9,6 +9,7 @@ docker_or_local() {
 }
 
 be() { docker_or_local "bundle exec $@" }
+bu() { docker_or_local "bundle update $@" }
 
 ber() { docker_or_local "bundle exec rails $@" }
 bes() { docker_or_local "bundle exec rspec $@" }
