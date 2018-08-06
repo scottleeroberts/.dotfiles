@@ -200,8 +200,6 @@ bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=whats-app-native*] focus
 
 exec --no-startup-id redshift-gtk
-exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
-exec --no-startup-id compton
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 
