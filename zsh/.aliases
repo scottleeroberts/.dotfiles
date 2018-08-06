@@ -48,6 +48,7 @@ alias hlogin="heroku login"
 alias hremote="heroku git:remote -a "
 alias hpush="git push heroku master"
 alias hmigrate="heroku run rails db:migrate"
+alias hupdate="heroku update"
 
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
