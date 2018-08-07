@@ -1,5 +1,5 @@
 [options]
-font = robotomono 14
+font = fantasquesansmono 18
 audible_bell = false
 cursor_blink = off
 cursor_shape = block
