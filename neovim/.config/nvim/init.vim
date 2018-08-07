@@ -208,3 +208,5 @@ let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
+highlight ALEWarning ctermbg=88 ctermfg=255
