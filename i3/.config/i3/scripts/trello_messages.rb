@@ -3,6 +3,9 @@ require 'yaml'
 require 'uri'
 require 'json'
 require 'net/http'
+if ENV["BLOCK_BUTTON"].to_i == 1
+  `firefox www.trello.com`
+end
 
 CONFIG = YAML.load(File.open("#{ ENV['HOME'] }/.trello.yml"))
 member_id = CONFIG.fetch('trello').fetch('member_id')

@@ -3,6 +3,10 @@ require 'json'
 
 TOKEN = File.readlines("#{ ENV['HOME'] }/.github_token").first.chomp
 
+if ENV["BLOCK_BUTTON"].to_i == 1
+  `firefox https://github.com/BaldwinAviation/baldwin-web/pulls`
+end
+
 class PullRequests
   READY_TO_REVIEW_LABEL = 'Ready For Review'
   REVIEWED_LABEL = 'Changes Requested'
