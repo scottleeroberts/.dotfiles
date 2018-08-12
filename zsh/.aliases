@@ -53,3 +53,6 @@ alias hupdate="heroku update"
 
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+#misc
+alias wtr="curl wttr.in/hhh"
