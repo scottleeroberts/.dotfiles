@@ -4,7 +4,7 @@ require 'uri'
 require 'json'
 require 'net/http'
 
-CONFIG = YAML.load(File.open("#{ ENV['HOME'] }/.trello.yml"))
+CONFIG = YAML.safe_load(File.open("#{ENV['HOME']}/.trello.yml"))
 member_id = CONFIG.fetch('trello').fetch('member_id')
 key = CONFIG.fetch('trello').fetch('key')
 token = CONFIG.fetch('trello').fetch('token')
