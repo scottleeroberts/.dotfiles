@@ -122,6 +122,8 @@ nnoremap <leader>ff :Find<space>
 nnoremap <leader>fs :Find<space><c-R><c-W><CR>
 nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
+nnoremap <leader>o :vs<CR>
+nnoremap <leader>i :sp<CR>
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'
