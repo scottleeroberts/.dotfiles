@@ -24,18 +24,18 @@ dev() {
 
 a() {
   if [ "$TMUX" = "" ]; then
-    git add $(git status -s | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+    git add $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
-    git add $(git status -s | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
+    git add $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
   fi
 }
 
 
 ap() {
   if [ "$TMUX" = "" ]; then
-    git add -p $(git status -s | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+    git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
-    git add -p $(git status -s | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
+    git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
   fi
 }
 
@@ -44,9 +44,9 @@ co() {
     git co $@
   else
     if [ "$TMUX" = "" ]; then
-      git co $(git status -s | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+      git co $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
     else
-      git co $(git status -s | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
+      git co $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
     fi
   fi
 }
