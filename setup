@@ -3,7 +3,7 @@
 # Keep-alive: update existing `sudo` time stamp until `setup` has finished
 while true; do sudo -n true; sleep 120; kill -0 "$$" || exit; done 2>/dev/null &
 
-RUBY_VERSION="2.2.2"
+mkdir ~/src
 
 pacman_install() {
   if pacman -Qe $1 > /dev/null; then
@@ -53,7 +53,6 @@ yaourt_install "google-chrome"
 yaourt_install "google-talkplugin"
 yaourt_install "i3-gaps-next-git"
 yaourt_install "i3blocks"
-yaourt_install "neovim"
 yaourt_install "python-pip"
 yaourt_install "pgcli-git"
 yaourt_install "roboto-mono"
@@ -80,29 +79,51 @@ else
   chsh -s /usr/bin/zsh
 fi
 
-if [ -d ~/.rvm ]; then
-  echo "skipping rvm: already installed"
-else
-  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-  curl -sSL https://get.rvm.io | bash -s stable
-fi
+install_ruby() {
+  if [ -d ~/.rubies/ruby-$1 ]; then
+    echo "skipping install ruby $1: already installed"
+  else
+    ruby-install ruby-$1
+    source /usr/local/share/chruby/chruby.sh
+    chruby $1
+    gem install bundler
+    gem install git-up
+    gem install neovim
+    gem install reek
+    gem install rubocop
+  fi
+  echo ""
+}
 
-echo "sourcing rvm script"
-source "$HOME/.rvm/scripts/rvm"
+install_chruby() {
+  if ! [ -f /usr/local/share/chruby/chruby.sh ]; then
+    cd ~/src
+    wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+    tar -xzvf chruby-0.3.9.tar.gz
+    cd chruby-0.3.9/
+    sudo make install
+    cd -
+  else
+    echo "skipping install chruby: already installed"
+  fi
+}
 
-if rvm use $RUBY_VERSION > /dev/null; then
-  echo "skipping install ruby $RUBY_VERSION: already installed"
-else
-  rvm install $RUBY_VERSION
-  rvm --default use $RUBY_VERSION
-  rvm use $RUBY_VERSION
-  gem install bundler
-  gem install reek
-  gem install rubocop
-  gem install ripper-tags
-  gem install git-up
+install_ruby_install() {
+  if ! [ "$(command -v ruby-install)" ]; then
+    cd ~/src
+    wget -O ruby-install-0.6.1.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.1.tar.gz
+    tar -xzvf ruby-install-0.6.1.tar.gz
+    cd ruby-install-0.6.1/
+    sudo make install
+    cd -
+  else
+    echo "skipping install ruby-install: already installed"
+  fi
+}
 
-fi
+install_chruby
+install_ruby_install
+install_ruby "2.5.1"
 
 if [ -d ~/.fzf ]; then
   echo "skipping fzf: already installed"

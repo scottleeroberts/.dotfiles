@@ -1,7 +1,7 @@
 unsetopt nomatch
 setopt extendedglob
 export EDITOR=nvim
-export PATH="/usr/local/rvm/bin/:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH"
 
 export RUBY_GC_HEAP_INIT_SLOTS=1000000
 export RUBY_GC_HEAP_SLOTS_INCREMENT=1000000
@@ -53,6 +53,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.zshrc.local ]] &&  source ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /usr/local/share/chruby/chruby.sh
+chruby ruby-2.5.1
 
 opentmux
 
