@@ -188,13 +188,10 @@ client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 hide_edge_borders both
 for_window [class="^.*"] border pixel 5
 gaps inner 3
-gaps outer 3
 smart_gaps on
 smart_borders on
 
-bindsym $mod+Control+g [class=Termite] focus
 bindsym $mod+Control+k [class=Termite] focus
-bindsym $mod+Control+b [class=Firefox] focus
 bindsym $mod+Control+d [class=Firefox] focus
 bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=whats-app-native*] focus
