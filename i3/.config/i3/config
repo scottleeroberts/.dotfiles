@@ -172,22 +172,24 @@ client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 
 # Bar
   bar {
+	font pango: Fantasque 12
+	i3bar_command i3bar -t
         status_command    i3blocks -c ~/.config/i3/i3blocks.conf
         position          top
         colors {
-          background        #10141c
-          separator         #757575
-          #                  border             background         text
-          focused_workspace  #9684c9            #9684c9            $text-color
-          inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-          urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-    }
+		separator         #757575
+		background #09090990
+		background #09090990
+		focused_workspace #09090990 #09090990 #8ee38e
+		inactive_workspace #09090990 #09090990 #576d57
+        }
   }
 
 #gaps
 hide_edge_borders both
-for_window [class="^.*"] border pixel 5
-gaps inner 3
+for_window [class="^.*"] border pixel 2
+gaps inner 20
+gaps outer 0
 smart_gaps on
 smart_borders on
 
