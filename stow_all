@@ -1,3 +1,4 @@
+stow -vv compton
 stow -vv ctags
 stow -vv fonts
 stow -vv gem
