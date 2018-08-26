@@ -23,6 +23,7 @@ yaourt_install() {
 
 pacman_install "blueman"
 pacman_install "ctags"
+pacman_install "compton"
 pacman_install "docker"
 pacman_install "docker-compose"
 pacman_install "htop"
