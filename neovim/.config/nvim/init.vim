@@ -102,7 +102,6 @@ au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 " Key Mappings
 inoremap jj <Esc>
 inoremap jw <Esc>:w<cr>
-inoremap <Esc> <noop>
 
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
 nnoremap <CR> :noh<CR><CR>
