@@ -22,6 +22,7 @@ yaourt_install() {
 }
 
 pacman_install "aspell-en"
+pacman_install "bat"
 pacman_install "blueman"
 pacman_install "ctags"
 pacman_install "compton"

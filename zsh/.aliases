@@ -19,6 +19,7 @@ alias .....="cd ../../../.."
 alias rt=$RUBY_TAG_COMMAND
 alias vu="nvim +PlugInstall"
 alias :q="exit"
+alias cat='bat'
 
 alias ls="ls -lah ${colorflag}"
 alias la="ls -AF ${colorflag}"
