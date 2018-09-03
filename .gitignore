@@ -3,6 +3,7 @@ TAGS
 tags
 .netrwhist
 vim/.vim/tmp/*
+fonts/.fonts/.uuid
 neovim/.config/nvim/tmp/*
 neovim/.config/nvim/undodir/*
 neovim/.config/nvim/plugged
@@ -12,3 +13,4 @@ weechat/.weechat/xfer
 newsboat/.newsboat/history.cmdline
 newsboat/.newsboat/history.search
 newsboat/.newsboat/cache.db
+newsboat/.newsboat/urls
