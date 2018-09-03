@@ -1,0 +1,18 @@
+#!/bin/sh
+export DISPLAY=:0
+case "$@" in
+  *.jpg*)
+    feh $@
+    ;;
+  *.jpeg*)
+    feh $@
+    ;;
+  *.png*)
+    feh $@
+    ;;
+  *.gif*)
+    mpv $@
+    ;;
+  *)
+  xdg-open $@
+esac
