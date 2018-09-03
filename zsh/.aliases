@@ -57,3 +57,4 @@ alias hupdate="heroku update"
 
 #misc
 alias wtr="curl wttr.in/hhh"
+alias nb="newsboat"
