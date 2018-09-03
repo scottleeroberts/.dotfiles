@@ -9,3 +9,6 @@ neovim/.config/nvim/plugged
 weechat/.weechat/*.log
 weechat/.weechat/logs
 weechat/.weechat/xfer
+newsboat/.newsboat/history.cmdline
+newsboat/.newsboat/history.search
+newsboat/.newsboat/cache.db
