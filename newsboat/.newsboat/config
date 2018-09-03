@@ -41,7 +41,7 @@ bind-key G end
 bind-key g home
 bind-key l open
 bind-key h quit
-bind-key a toggle-article-read
+bind-key r toggle-article-read
 bind-key n next-unread
 bind-key N prev-unread
 bind-key u show-urls
