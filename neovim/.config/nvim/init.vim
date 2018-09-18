@@ -9,6 +9,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'alvan/vim-closetag'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'chriskempson/base16-vim'
@@ -216,3 +217,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 highlight ALEWarning ctermbg=88 ctermfg=255
+
+"auto-pairs configuration
+let g:AutoPairsMultilineClose=0
