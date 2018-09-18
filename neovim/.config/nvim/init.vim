@@ -74,6 +74,7 @@ set undoreload=10000        " number of lines to save for undo
 set visualbell " Flash the cursor on error instead of beeping
 set wildmenu " Show menu options for completion
 set colorcolumn=80
+set shortmess=at
 
 " Searching
 set hlsearch
