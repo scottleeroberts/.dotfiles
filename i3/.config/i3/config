@@ -60,17 +60,18 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Dev"
-set $workspace2 "2: Browser"
-set $workspace3 "3: Chat"
-set $workspace4 "4: Security"
+set $workspace1 "1:   Dev"
+set $workspace2 "2:   Browser"
+set $workspace3 "3:   Chat"
+set $workspace4 "4:   Security"
+set $workspace5 "5:   Chrome"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace 5
+bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -215,6 +216,7 @@ bindsym $mod+Control+k [class=Termite] focus
 bindsym $mod+Control+d [class=Firefox] focus
 bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=whats-app-native*] focus
+bindsym $mod+Control+c [class=google-chrome-stable] focus
 
 #startup
 exec --no-startup-id "xrandr --output eDP1 --mode 1920x1200"
@@ -227,11 +229,13 @@ exec --no-startup-id nm-applet
 
 # Assign windows to their respective workspaces.
 assign [class="Termite"] $workspace1
-assign [class="Chromium|Firefox|Google-chrome"] $workspace2
+assign [class="Firefox"] $workspace2
 assign [class="Slack|whats-app-native*"] $workspace3
 assign [class="Enpass"] $workspace4
+assign [class="Chromium|Google-chrome"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/whatsapp-web-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
+exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/google-chrome-stable'
