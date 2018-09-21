@@ -7,7 +7,8 @@ mouse_autohide = true
 clickable_url = true
 scrollback_lines = 15000
 dynamic_title = true
-background = rgba(63, 63, 63, 0.8)
+
 [colors]
 cursor = #dfe1e8
+background = rgba(30, 30, 30, 0.6)
 cursor_foreground = #2b303b

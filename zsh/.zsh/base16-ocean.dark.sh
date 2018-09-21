@@ -30,7 +30,6 @@ color19="4f/5b/66" # Base 02
 color20="a7/ad/ba" # Base 04
 color21="df/e1/e8" # Base 06
 color_foreground="c0/c5/ce" # Base 05
-color_background=$color00 # Base 00
 color_cursor="c0/c5/ce" # Base 05
 
 # Commented out because it works in tmux without the special case

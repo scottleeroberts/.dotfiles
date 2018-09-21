@@ -219,5 +219,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 highlight ALEWarning ctermbg=88 ctermfg=255
 
+"allow transparency of backgrounds
+highlight Normal guibg=none
+highlight NonText guibg=none
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
 "auto-pairs configuration
 let g:AutoPairsMultilineClose=0
