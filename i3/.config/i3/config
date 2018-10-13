@@ -54,11 +54,8 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+# take a screenshot of selected region
+bindsym --release $mod+shift+a exec scrot -s -e 'caja'
 
 set $workspace1 "1:   Dev"
 set $workspace2 "2:   Browser"
