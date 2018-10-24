@@ -10,5 +10,5 @@ dynamic_title = true
 
 [colors]
 cursor = #dfe1e8
-background = rgba(30, 30, 30, 0.6)
+background = rgba(30, 30, 30, 0.8)
 cursor_foreground = #2b303b
