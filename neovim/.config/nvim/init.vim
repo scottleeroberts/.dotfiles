@@ -5,6 +5,7 @@ filetype plugin indent on
 syntax on
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'FooSoft/vim-argwrap'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -227,3 +228,8 @@ highlight NonText ctermbg=none
 
 "auto-pairs configuration
 let g:AutoPairsMultilineClose=0
+
+let g:argwrap_padded_braces = '{'
+let g:argwrap_tail_comma = 1
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
