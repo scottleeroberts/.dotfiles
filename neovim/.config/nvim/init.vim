@@ -34,6 +34,7 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
+Plug 'ryanoasis/vim-devicons'
 "
 " locked until https://github.com/slim-template/vim-slim/pull/70 is merged
 " Plug 'slim-template/vim-slim'
@@ -46,9 +47,8 @@ set backspace=indent,eol,start
 set backupdir=~/.config/nvim/tmp
 set clipboard=unnamedplus
 set directory=~/.config/nvim/tmp
-set encoding=utf-8
-set encoding=utf-8
-set fileencoding=utf-8
+set encoding=UTF-8
+set fileencoding=UTF-8
 set gdefault
 set hidden
 set laststatus=2 " Always show last status
