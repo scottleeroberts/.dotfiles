@@ -35,10 +35,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 Plug 'ryanoasis/vim-devicons'
-"
-" locked until https://github.com/slim-template/vim-slim/pull/70 is merged
-" Plug 'slim-template/vim-slim'
-Plug 'lisinge/vim-slim', { 'commit': '10871cd7c94d2b3264a19d98ce2c9690342d9652' }
+Plug 'lisinge/vim-slim'
 
 call plug#end()
 
