@@ -57,7 +57,7 @@ bindsym $mod+space focus mode_toggle
 # take a screenshot of selected region
 bindsym --release $mod+shift+a exec scrot -s -e 'caja'
 
-set $workspace1 "1:   Dev"
+set $workspace1 "1:   Code"
 set $workspace2 "2:   Browser"
 set $workspace3 "3:   Chat"
 set $workspace4 "4:   Security"
