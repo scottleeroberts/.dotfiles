@@ -34,7 +34,6 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
-Plug 'ryanoasis/vim-devicons'
 Plug 'lisinge/vim-slim'
 
 call plug#end()
