@@ -21,46 +21,46 @@
 # %(?..) => prompt conditional - %(condition.true.false)
 
 prompt_filthy_nice_exit_code() {
-	local exit_status="${1:-$(print -P %?)}";
-	# nothing to do here
-	[[ ${FILTHY_SHOW_EXIT_CODE:=0} != 1 || -z $exit_status || $exit_status == 0 ]] && return;
+  local exit_status="${1:-$(print -P %?)}";
+  # nothing to do here
+  [[ ${FILTHY_SHOW_EXIT_CODE:=0} != 1 || -z $exit_status || $exit_status == 0 ]] && return;
 
-	local sig_name;
+  local sig_name;
 
-	# is this a signal name (error code = signal + 128) ?
-	case $exit_status in
-		129)  sig_name=HUP ;;
-		130)  sig_name=INT ;;
-		131)  sig_name=QUIT ;;
-		132)  sig_name=ILL ;;
-		134)  sig_name=ABRT ;;
-		136)  sig_name=FPE ;;
-		137)  sig_name=KILL ;;
-		139)  sig_name=SEGV ;;
-		141)  sig_name=PIPE ;;
-		143)  sig_name=TERM ;;
-	esac
+  # is this a signal name (error code = signal + 128) ?
+  case $exit_status in
+    129)  sig_name=HUP  ;;
+    130)  sig_name=INT  ;;
+    131)  sig_name=QUIT ;;
+    132)  sig_name=ILL  ;;
+    134)  sig_name=ABRT ;;
+    136)  sig_name=FPE  ;;
+    137)  sig_name=KILL ;;
+    139)  sig_name=SEGV ;;
+    141)  sig_name=PIPE ;;
+    143)  sig_name=TERM ;;
+  esac
 
-	# usual exit codes
-	case $exit_status in
-		-1)   sig_name=FATAL ;;
-		1)    sig_name=WARN ;; # Miscellaneous errors, such as "divide by zero"
-		2)    sig_name=BUILTINMISUSE ;; # misuse of shell builtins (pretty rare)
-		126)  sig_name=CCANNOTINVOKE ;; # cannot invoke requested command (ex : source script_with_syntax_error)
-		127)  sig_name=CNOTFOUND ;; # command not found (ex : source script_not_existing)
-	esac
+  # usual exit codes
+  case $exit_status in
+    -1)   sig_name=FATAL         ;;
+    1)    sig_name=WARN          ;; # Miscellaneous errors, such as "divide by zero"
+    2)    sig_name=BUILTINMISUSE ;; # misuse of shell builtins (pretty rare)
+    126)  sig_name=CCANNOTINVOKE ;; # cannot invoke requested command (ex : source script_with_syntax_error)
+    127)  sig_name=CNOTFOUND     ;; # command not found (ex : source script_not_existing)
+  esac
 
-	# assuming we are on an x86 system here
-	# this MIGHT get annoying since those are in a range of exit codes
-	# programs sometimes use.... we'll see.
-	case $exit_status in
-		19)  sig_name=STOP ;;
-		20)  sig_name=TSTP ;;
-		21)  sig_name=TTIN ;;
-		22)  sig_name=TTOU ;;
-	esac
+  # assuming we are on an x86 system here
+  # this MIGHT get annoying since those are in a range of exit codes
+  # programs sometimes use.... we'll see.
+  case $exit_status in
+    19)  sig_name=STOP ;;
+    20)  sig_name=TSTP ;;
+    21)  sig_name=TTIN ;;
+    22)  sig_name=TTOU ;;
+  esac
 
-	echo "$ZSH_PROMPT_EXIT_SIGNAL_PREFIX${exit_status}:${sig_name:-$exit_status}$ZSH_PROMPT_EXIT_SIGNAL_SUFFIX ";
+  echo "$ZSH_PROMPT_EXIT_SIGNAL_PREFIX${exit_status}:${sig_name:-$exit_status}$ZSH_PROMPT_EXIT_SIGNAL_SUFFIX ";
 }
 
 # turns seconds into human readable time
@@ -71,23 +71,23 @@ prompt_filthy_human_time() {
   local hours=$(( tmp / 60 / 60 % 24 ))
   local minutes=$(( tmp / 60 % 60 ))
   local seconds=$(( tmp % 60 ))
-  (( $days > 0 )) && print -n "${days}d "
-  (( $hours > 0 )) && print -n "${hours}h "
+  (( $days > 0 ))    && print -n "${days}d "
+  (( $hours > 0 ))   && print -n "${hours}h "
   (( $minutes > 0 )) && print -n "${minutes}m "
-  (( $seconds > 5 )) && print -n "${seconds}s"
-  (( $tmp <= 5 )) && print -n "${1}ms"
+  (( $seconds > 5 )) && print -n "${seconds}s "
+  (( $tmp <= 5 ))    && print -n "${1}ms"
 }
 
 # displays the exec time of the last command if set threshold was exceeded
 prompt_filthy_cmd_exec_time() {
-  local stop=$((EPOCHREALTIME*1000))
+  local stop=$(( EPOCHREALTIME * 1000 ))
   local start=${cmd_timestamp:-$stop}
   integer elapsed=$stop-$start
-  (($elapsed > ${FILTHY_CMD_MAX_EXEC_TIME:=500})) && prompt_filthy_human_time $elapsed
+  (( $elapsed > ${FILTHY_CMD_MAX_EXEC_TIME:=500} )) && prompt_filthy_human_time $elapsed
 }
 
 prompt_filthy_preexec() {
-  cmd_timestamp=$((EPOCHREALTIME*1000))
+  cmd_timestamp=$(( EPOCHREALTIME * 1000 ))
 
   # shows the current dir and executed command in the title when a process is active
   print -Pn "\e]0;"
@@ -106,11 +106,14 @@ prompt_filthy_precmd() {
   # Ensure prompt starts on a new line
   prompt_filthy_preprompt="\n"
 
-	# check if we're in a git repo, and show git info if we are
-	if command git rev-parse --is-inside-work-tree &>/dev/null; then
+  # Print connection info
+  prompt_filthy_preprompt+="$(prompt_filthy_connection_info)"
+
+  # check if we're in a git repo, and show git info if we are
+  if [[ FILTHY_ALWAYS_SHOW_FULL_PATH -ne 1 ]] && command git rev-parse --is-inside-work-tree &>/dev/null; then
     # Print the name of the repository
     git_root=$(git rev-parse --show-toplevel)
-    prompt_filthy_preprompt+="%B%F{blue}$(basename ${git_root})%b%f"
+    prompt_filthy_preprompt+="%B%F{yellow}$(basename ${git_root})%b%f"
 
     # Print the current_path relative to the git root
     current_path=$(git rev-parse --show-prefix)
@@ -141,15 +144,63 @@ prompt_filthy_precmd() {
 }
 
 prompt_filthy_rprompt() {
-	# check if we're in a git repo, and show git info if we are
-	if command git rev-parse --is-inside-work-tree &>/dev/null; then
-		# Print the repository status
-		branch=$(prompt_filthy_git_branch)
-		repo_status=$(prompt_filthy_git_repo_status)
-		print "${repo_status} ${branch}"
-	fi
+  # check if we're in a git repo, and show git info if we are
+  if command git rev-parse --is-inside-work-tree &>/dev/null; then
+    # Print the repository status
+    branch=$(prompt_filthy_git_branch)
+    repo_status=$(prompt_filthy_git_repo_status)
+    ci_status=$(prompt_filthy_ci_status)
+  fi
+
+  echo -n "${branch}${repo_status}${ci_status}"
+
+  if [[ $FILTHY_SHOW_ZSH_VERSION -eq 1 ]]; then
+    echo -n "%F{yellow} ${ZSH_VERSION}%f"
+  fi
 }
 
+prompt_filthy_ci_status() {
+  local state git_dir_local state_file
+
+  [[ $FILTHY_SHOW_CI_STATUS -eq 0 ]] && return
+
+  builtin type hub >/dev/null 2>&1 || return
+
+  git_dir_local="$(git rev-parse --git-dir)"
+  state_file="${git_dir_local}/ci-status"
+
+  function _retrieve_ci_status() {
+    # Delay the asynchronous process, otherwise the status file
+    # will be empty when we read it
+    sleep 1
+
+    state=$(hub ci-status 2>&1)
+    cat /dev/null >! "${state_file}" 2>/dev/null
+    case $state in
+      success )
+        print '%F{green}●%f' >> "${state_file}"
+        ;;
+      pending )
+        print '%F{yellow}○%f' >> "${state_file}"
+        ;;
+      failure )
+        print '%F{red}●%f' >> "${state_file}"
+        ;;
+      error )
+        print '%F{red}‼%f' >> "${state_file}"
+        ;;
+      'no status' )
+        print '%F{242}○%f' >> "${state_file}"
+        ;;
+    esac
+  }
+
+  _retrieve_ci_status >/dev/null 2>&1 &!
+
+  state=$(cat "${state_file}" 2>/dev/null)
+
+  [[ -n $state ]] && print " $state"
+}
 
 prompt_filthy_git_repo_status() {
   # Do a fetch asynchronously
@@ -162,7 +213,10 @@ prompt_filthy_git_repo_status() {
   local down
 
   dirty="$(git diff --ignore-submodules=all HEAD 2>/dev/null)"
-  [[ $dirty != "" ]] && rtn+=" %F{red}x%f"
+  [[ $dirty != "" ]] && rtn+=" %F{242}…%f"
+
+  staged="$(git diff --staged HEAD 2>/dev/null)"
+  [[ $staged != "" ]] && rtn+=" %F{242}*%f"
 
   # check if there is an upstream configured for this branch
   # exit if there isn't, as we can't check for remote changes
@@ -175,13 +229,13 @@ prompt_filthy_git_repo_status() {
     down="$count[(w)2]"
 
     # Check if either push or pull is needed
-    [[ $up > 0 || $down > 0 ]] && rtn+=" "
+    [[ $up -gt 0 || $down -gt 0 ]] && rtn+=" "
 
     # Push is needed, show up arrow
-    [[ $up > 0 ]] && rtn+="%F{yellow}⇡%f"
+    [[ $up -gt 0 ]] && rtn+="%F{yellow}⇡$up%f"
 
     # Pull is needed, show down arrow
-    [[ $down > 0 ]] && rtn+="%F{yellow}⇣%f"
+    [[ $down -gt 0 ]] && rtn+="%F{yellow}⇣$down%f"
   fi
 
   print $rtn
@@ -225,6 +279,22 @@ prompt_filthy_git_branch() {
   print "$rtn"
 }
 
+prompt_filthy_connection_info() {
+  # show username@host if logged in through SSH
+  if [[ "x$SSH_CONNECTION" != "x" ]]; then
+    echo '%(!.%B%F{red}%n%f%b.%F{242}%n%f)%F{242}@%m%f '
+  else
+    echo '%(!.%B%F{red}%n%f%b%F{242}@%m%f .)'
+  fi
+}
+
+prompt_filthy_prompt_char() {
+  case $KEYMAP in
+    vicmd) echo "%(?.%F{blue}.%F{red}$(prompt_filthy_nice_exit_code))${PROMPT_FILTHY_VICMD_CHAR:-●}%f"   ;;
+    *)     echo "%(?.%F{green}.%F{red}$(prompt_filthy_nice_exit_code))${PROMPT_FILTHY_PROMPT_CHAR:-❯}%f" ;;
+  esac
+}
+
 prompt_filthy_setup() {
   # prevent percentage showing up
   # if output doesn't end with a newline
@@ -234,20 +304,14 @@ prompt_filthy_setup() {
 
   zmodload zsh/datetime
   autoload -Uz add-zsh-hook
-  # autoload -Uz git-info
 
   add-zsh-hook precmd prompt_filthy_precmd
   add-zsh-hook preexec prompt_filthy_preexec
 
-  # Define prompts.
-
-  # show username@host if logged in through SSH
-  # username turns red if user is privileged
-  # RPROMPT='%(!.%F{red}%n%f%F{242}.%F{green}%n%f%F{242})@%m%f'
-  RPROMPT='$(prompt_filthy_rprompt)'
-
   # prompt turns red if the previous command didn't exit with 0
-  PROMPT='%(?.%F{green}.%F{red}$(prompt_filthy_nice_exit_code))❯%f '
+  PROMPT='$(prompt_filthy_prompt_char) '
+
+  RPROMPT='$(prompt_filthy_rprompt)'
 }
 
 prompt_filthy_setup "$@"
