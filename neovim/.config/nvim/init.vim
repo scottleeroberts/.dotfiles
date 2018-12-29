@@ -222,6 +222,13 @@ highlight Normal guibg=none
 highlight NonText guibg=none
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
+highlight ColorColumn guibg=lightgrey ctermbg=237
+highlight LineNr ctermbg=none
+highlight SignColumn ctermbg=none
+highlight GitGutterAdd ctermbg=none
+highlight GitGutterChange ctermbg=none
+highlight GitGutterDelete ctermbg=none
+highlight GitGutterChangeDelete ctermbg=none
 
 "auto-pairs configuration
 let g:AutoPairsMultilineClose=0
