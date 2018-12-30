@@ -6,13 +6,13 @@ if [ "${TERM%%-*}" = 'linux' ]; then
     return 2>/dev/null || exit 0
 fi
 
-color00="#2E/34/40" # Base 00 - Black
-color02="88/C0/D0" # Base 08 - Red
-color01="BF/61/6A" # Base 0B - Green
-color03="5E/81/AC" # Base 0A - Yellow
-color04="EB/CB/8B" # Base 0D - Blue
-color05="A3/BE/8C" # Base 0E - Magenta
-color06="D0/87/70" # Base 0C - Cyan
+color00="2E/34/40" # Base 00 - Black
+color02="88/C0/D0" # Base 08 - blue
+color01="B6/6A/72" # Base 0B - Red
+color03="5E/81/AC" # Base 0A - Darker blue
+color04="d1/A9/59" # Base 0D - Yellow
+color05="96/b6/81" # Base 0E - Green
+color06="D0/87/70" # Base 0C - Orangy Red
 color07="E5/E9/F0" # Base 05 - White
 color08="4C/56/6A" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
@@ -23,7 +23,7 @@ color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
 color15="8F/BC/BB" # Base 07 - Bright White
 color16="81/A1/C1" # Base 09
-color17="B4/8E/AD" # Base 0F
+color17="B4/8E/AD" # Base 0F - Pinky
 color18="3B/42/52" # Base 01
 color19="43/4C/5E" # Base 02
 color20="D8/DE/E9" # Base 04
