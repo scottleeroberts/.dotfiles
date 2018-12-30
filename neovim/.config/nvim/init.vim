@@ -84,7 +84,7 @@ set incsearch " Search as typing
 " Theme stuff
 set background=dark
 let base16colorspace=256
-colorscheme base16-ocean
+colorscheme base16-nord
 
 " status line configuration
 set statusline=

@@ -20,7 +20,7 @@ setopt inc_append_history
 setopt extended_history
 
 #use colors
-source ~/.zsh/base16-ocean.dark.sh
+source ~/.zsh/base16-nord.dark.sh
 # makes color constants available
 autoload -U colors
 colors
