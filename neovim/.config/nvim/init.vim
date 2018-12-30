@@ -215,7 +215,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-highlight ALEWarning ctermbg=239 ctermfg=none
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+highlight ALEWarning ctermbg=18 ctermfg=none
 
 "allow transparency of backgrounds
 highlight Normal guibg=none
