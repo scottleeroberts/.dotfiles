@@ -224,7 +224,8 @@ highlight Normal guibg=none
 highlight NonText guibg=none
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
-highlight ColorColumn guibg=lightgrey ctermbg=237
+highlight ColorColumn ctermbg=235
+highlight CursorColumn ctermbg=235
 highlight LineNr ctermbg=none
 highlight SignColumn ctermbg=none
 highlight GitGutterAdd ctermbg=none
