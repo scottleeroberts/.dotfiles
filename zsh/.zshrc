@@ -1,15 +1,5 @@
 unsetopt nomatch
 setopt extendedglob
-export EDITOR=nvim
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH"
-
-export RUBY_GC_HEAP_INIT_SLOTS=1000000
-export RUBY_GC_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_GC_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=100000000
-export RUBY_GC_HEAP_FREE_MIN=500000
-export BROWSER="firefox"
-
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 HISTFILE=~/.zsh_history
@@ -45,8 +35,6 @@ autoload -U promptinit && promptinit
 autoload -Uz compinit && compinit
 
 prompt filthy
-
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
