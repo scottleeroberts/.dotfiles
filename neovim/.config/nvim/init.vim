@@ -36,6 +36,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 Plug 'lisinge/vim-slim'
+Plug 'luochen1990/rainbow'
 
 call plug#end()
 
@@ -210,6 +211,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "abbreviations
 iabbr pry ::Kernel.binding.pry
 
+" Rainbow Parentheses on
+let g:rainbow_active = 1
+
 let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -239,4 +243,3 @@ let g:AutoPairsMultilineClose=0
 let g:argwrap_padded_braces = '{'
 let g:argwrap_tail_comma = 1
 nnoremap <silent> <leader>a :ArgWrap<CR>
-
