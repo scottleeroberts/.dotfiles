@@ -137,7 +137,7 @@ mode "monitor_select" {
   bindsym 1 exec --no-startup-id xrandr --output $mon_ext --off; mode "default"
 
   # new left and right monitors
-  bindsym l exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --left-of $mon_lap ; mode "default"
+  bindsym l exec --no-startup-id xrandr --output $mon_lap --mode 1920x1200 --output $mon_ext --auto --left-of $mon_lap ; mode "default"; exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
   bindsym r exec --no-startup-id xrandr --output $mon_lap --mode 1920x1200 --output $mon_ext --auto --right-of $mon_lap ; mode "default"; exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
   bindsym h exec --no-startup-id xrandr --output $mon_lap --mode 1920x1200 --output $mon_ext_hdmi --auto --left-of $mon_lap ; mode "default; exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg"
 
