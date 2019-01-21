@@ -53,6 +53,7 @@ pacman_install "crystal"
 pacman_install "shards"
 
 yaourt_install "bcwc-pcie-git"
+pacman_install "dunst-round-corners-git"
 yaourt_install "enpass-bin"
 yaourt_install "gparted"
 yaourt_install "google-chrome"
