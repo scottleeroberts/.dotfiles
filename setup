@@ -51,6 +51,7 @@ pacman_install "xclip"
 pacman_install "zsh"
 pacman_install "crystal"
 pacman_install "shards"
+pacman_install "avr-libc"
 
 yaourt_install "bcwc-pcie-git"
 pacman_install "dunst-round-corners-git"
