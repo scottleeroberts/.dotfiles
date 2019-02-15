@@ -168,9 +168,20 @@ client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-c
 client.unfocused $inactive-bg-color  $inactive-bg-color  $inactive-text-color  #00ff0
 client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 
+# pomodoro management
+set $pomo Pomorodo (g) Start, (f) Cancel
+mode "$pomo" {
+    bindsym g exec --no-startup-id start_pomo, mode "default"
+    bindsym f exec --no-startup-id cancel_pomo, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+g mode "$pomo"
+
 # logout
 set $Locker i3lock -c 000000 && sleep 1
-
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
