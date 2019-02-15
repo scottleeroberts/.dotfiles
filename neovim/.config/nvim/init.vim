@@ -36,7 +36,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 Plug 'lisinge/vim-slim'
-Plug 'luochen1990/rainbow'
+Plug 'andymass/vim-matchup'
 
 call plug#end()
 
@@ -84,7 +84,7 @@ set incsearch " Search as typing
 " Theme stuff
 set background=dark
 let base16colorspace=256
-colorscheme base16-nord
+colorscheme base16-gruvbox-dark-hard
 
 " status line configuration
 set statusline=
@@ -208,8 +208,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "abbreviations
 iabbr pry ::Kernel.binding.pry
 
-" Rainbow Parentheses on
-let g:rainbow_active = 1
+" vim-matchup highlight color
+:hi MatchParen ctermbg=239
 
 let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnips'
 let g:UltiSnipsExpandTrigger="<tab>"
