@@ -14,6 +14,7 @@ bu() { docker_or_local "bundle update $@" }
 ber() { docker_or_local "bundle exec rails $@" }
 bes() { docker_or_local "bundle exec rspec $@" }
 bep() { docker_or_local "bundle exec rake parallel:spec[8]" }
+bi() { docker_or_local "bundle install $@" }
 
 mi() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=development" }
 mit() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=test" }
