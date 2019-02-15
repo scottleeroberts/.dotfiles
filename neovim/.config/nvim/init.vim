@@ -100,8 +100,7 @@ au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 
 " Key Mappings
-inoremap jj <Esc>
-inoremap jw <Esc>:w<cr>
+inoremap jj <Esc>:w<cr>
 
 noremap <c-z> <Nop>
 
