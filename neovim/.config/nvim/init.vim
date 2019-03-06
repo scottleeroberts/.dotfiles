@@ -198,9 +198,11 @@ au BufWritePost *.rb :call jobstart('sh ~/.dotfiles/bin/run_tags')
 "ripgrep
 command! -bang -nargs=* Find
       \ call fzf#vim#grep(
-      \'rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+      \'rg --column  --no-heading --fixed-strings --smart-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
       \   fzf#vim#with_preview('up:60%')
       \ )
+
+let g:fzf_layout = { 'down': '~60%' }
 
 "Open to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
