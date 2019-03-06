@@ -6,7 +6,7 @@
 #              Requires libnotify.
 # License:     MIT (see below)
 #
-# Copyright (c) 2015-2017 by Petr Zemek <s3rvac@gmail.com> and contributors
+# Copyright (c) 2015 by Petr Zemek <s3rvac@gmail.com> and contributors
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,10 @@
 # SOFTWARE.
 #
 
+from __future__ import print_function
+
 import os
+import re
 import subprocess
 import sys
 import time
@@ -37,8 +40,7 @@ import time
 try:
     import weechat
 except ImportError:
-    print('This script has to run under WeeChat (https://weechat.org/).')
-    sys.exit(1)
+    sys.exit('This script has to run under WeeChat (https://weechat.org/).')
 
 
 # Name of the script.
@@ -48,7 +50,7 @@ SCRIPT_NAME = 'notify_send'
 SCRIPT_AUTHOR = 's3rvac'
 
 # Version of the script.
-SCRIPT_VERSION = '0.8 (dev)'
+SCRIPT_VERSION = '0.9 (dev)'
 
 # License under which the script is distributed.
 SCRIPT_LICENSE = 'MIT'
@@ -88,6 +90,16 @@ OPTIONS = {
         '',
         'A comma-separated list of buffers for which you want to receive '
         'notifications on all messages that appear in them.'
+    ),
+    'notify_on_all_messages_in_buffers_that_match': (
+        '',
+        'A comma-separated list of regex patterns of buffers for which you '
+        'want to receive notifications on all messages that appear in them.'
+    ),
+    'notify_on_messages_that_match': (
+        '',
+        'A comma-separated list of regex patterns that you want to receive '
+        'notifications on when message body matches.'
     ),
     'min_notification_delay': (
         '500',
@@ -228,17 +240,17 @@ def message_printed_callback(data, buffer, date, tags, is_displayed,
     tags = parse_tags(tags)
     nick = nick_that_sent_message(tags, prefix)
 
-    if notification_should_be_sent(buffer, tags, nick, is_displayed, is_highlight):
+    if notification_should_be_sent(buffer, tags, nick, is_displayed, is_highlight, message):
         notification = prepare_notification(buffer, nick, message)
         send_notification(notification)
 
     return weechat.WEECHAT_RC_OK
 
 
-def notification_should_be_sent(buffer, tags, nick, is_displayed, is_highlight):
+def notification_should_be_sent(buffer, tags, nick, is_displayed, is_highlight, message):
     """Should a notification be sent?"""
     if notification_should_be_sent_disregarding_time(buffer, tags, nick,
-                                                     is_displayed, is_highlight):
+                                                     is_displayed, is_highlight, message):
         # The following function should be called only when the notification
         # should be sent (it updates the last notification time).
         if not is_below_min_notification_delay(buffer):
@@ -247,7 +259,7 @@ def notification_should_be_sent(buffer, tags, nick, is_displayed, is_highlight):
 
 
 def notification_should_be_sent_disregarding_time(buffer, tags, nick,
-                                                  is_displayed, is_highlight):
+                                                  is_displayed, is_highlight, message):
     """Should a notification be sent when not considering time?"""
     if not nick:
         # A nick is required to form a correct notification source/message.
@@ -282,6 +294,9 @@ def notification_should_be_sent_disregarding_time(buffer, tags, nick,
 
     if is_highlight:
         return notify_on_highlights()
+
+    if notify_on_messages_that_match(message):
+        return True
 
     if notify_on_all_messages_in_buffer(buffer):
         return True
@@ -415,6 +430,10 @@ def split_option_value(option, separator=','):
     returns the result in a list.
     """
     values = weechat.config_get_plugin(option)
+    if not values:
+        # When there are no values, return the empty list instead of [''].
+        return []
+
     return [value.strip() for value in values.split(separator)]
 
 
@@ -486,6 +505,18 @@ def ignored_nick_prefixes():
         yield prefix
 
 
+def notify_on_messages_that_match(message):
+    """Should we send a notification for the given message, provided it matches
+    any of the requested patterns?
+    """
+    message_patterns = split_option_value('notify_on_messages_that_match')
+    for pattern in message_patterns:
+        if re.search(pattern, message):
+            return True
+
+    return False
+
+
 def buffers_to_notify_on_all_messages():
     """A generator of buffer names in which the user wants to be notified for
     all messages.
@@ -494,13 +525,30 @@ def buffers_to_notify_on_all_messages():
         yield buffer
 
 
+def buffer_patterns_to_notify_on_all_messages():
+    """A generator of buffer-name patterns in which the user wants to be
+    notifier for all messages.
+    """
+    for pattern in split_option_value('notify_on_all_messages_in_buffers_that_match'):
+        yield pattern
+
+
 def notify_on_all_messages_in_buffer(buffer):
     """Does the user want to be notified for all messages in the given buffer?
     """
     buffer_names = names_for_buffer(buffer)
+
+    # Option notify_on_all_messages_in_buffers:
     for buf in buffers_to_notify_on_all_messages():
         if buf in buffer_names:
             return True
+
+    # Option notify_on_all_messages_in_buffers_that_match:
+    for pattern in buffer_patterns_to_notify_on_all_messages():
+        for buf in buffer_names:
+            if re.search(pattern, buf):
+                return True
+
     return False
 
 
@@ -627,16 +675,24 @@ def send_notification(notification):
     ]
 
     # Prevent notify-send from messing up the WeeChat screen when occasionally
-    # emitting assertion messages by redirecting the output to /dev/null (you
+    # emitting assertion messages by redirecting the output to /dev/null (users
     # would need to run /redraw to fix the screen).
     # In Python < 3.3, there is no subprocess.DEVNULL, so we have to use a
     # workaround.
     with open(os.devnull, 'wb') as devnull:
-        subprocess.check_call(
-            notify_cmd,
-            stderr=subprocess.STDOUT,
-            stdout=devnull,
-        )
+        try:
+            subprocess.check_call(
+                notify_cmd,
+                stderr=subprocess.STDOUT,
+                stdout=devnull,
+            )
+        except Exception as ex:
+            error_message = '{} (reason: {!r}). {}'.format(
+                'Failed to send the notification via notify-send',
+                '{}: {}'.format(ex.__class__.__name__, ex),
+                'Ensure that you have notify-send installed in your system.',
+            )
+            print(error_message, file=sys.stderr)
 
 
 if __name__ == '__main__':
