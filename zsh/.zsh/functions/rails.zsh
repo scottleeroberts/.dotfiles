@@ -22,6 +22,7 @@ pmit() { docker_or_local "bundle exec rake parallel:migrate[8]" }
 rollback() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=development" }
 
 rrq() { docker_or_local "bundle exec rails resque:work QUEUES=*" }
+rrs() { docker_or_local "bundle exec rake resque:scheduler" }
 
 clean_devdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=development" }
 clean_testdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=test" }
