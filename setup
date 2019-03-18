@@ -53,7 +53,6 @@ pacman_install "crystal"
 pacman_install "shards"
 pacman_install "avr-libc"
 pacman_install "gcalcli"
-pacman_install "cronie"
 
 yaourt_install "bcwc-pcie-git"
 pacman_install "dunst-round-corners-git"
