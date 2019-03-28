@@ -180,6 +180,7 @@ let g:deoplete#enable_at_startup = 1
 " Default peekaboo window
 let g:peekaboo_window = 'vertical botright 30new'
 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeIndicatorMapCustom = {
       \ "Modified"  : "✹",
       \ "Staged"    : "✚",
