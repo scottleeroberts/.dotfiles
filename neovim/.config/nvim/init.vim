@@ -182,13 +182,13 @@ let g:peekaboo_window = 'vertical botright 30new'
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeIndicatorMapCustom = {
-      \ "Modified"  : "✹",
-      \ "Staged"    : "✚",
-      \ "Untracked" : "✭",
+      \ "Modified"  : "*",
+      \ "Staged"    : "+",
+      \ "Untracked" : "o",
       \ "Renamed"   : "➜",
-      \ "Unmerged"  : "═",
-      \ "Deleted"   : "✖",
-      \ "Dirty"     : "✗",
+      \ "Unmerged"  : "=",
+      \ "Deleted"   : "x",
+      \ "Dirty"     : "X",
       \ "Clean"     : "✔︎",
       \ "Unknown"   : "?"
       \ }
