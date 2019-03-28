@@ -29,7 +29,7 @@ article-sort-order date-asc
 feed-sort-order date-desc
 
 # Render all HTML to this maximum line length.
-text-width 120
+text-width 80
 
 bind-key j down
 bind-key k up
