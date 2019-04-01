@@ -131,6 +131,9 @@ inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :q<CR>
 inoremap <C-q> <Esc>:q<CR>
 
+"paste on line below the cursor
+map ,p :pu<CR>
+
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'
 map <Leader>rf :call RunCurrentSpecFile()<CR>
