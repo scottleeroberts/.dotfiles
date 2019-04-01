@@ -96,6 +96,7 @@ set statusline+=\ %y
 set statusline+=\ %l:%c
 
 "Statusline changes color based on mode
+
 au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 
@@ -245,3 +246,6 @@ let g:AutoPairsMultilineClose=0
 let g:argwrap_padded_braces = '{'
 let g:argwrap_tail_comma = 1
 nnoremap <silent> <leader>a :ArgWrap<CR>
+
+"New line in commented section is not commented
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
