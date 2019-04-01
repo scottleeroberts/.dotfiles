@@ -94,7 +94,7 @@ set statusline+=%r
 set statusline+=%=
 set statusline+=\ %y
 set statusline+=\ %l:%c
-"
+
 "Statusline changes color based on mode
 au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
@@ -122,6 +122,8 @@ nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
 nnoremap <leader>o :vs<CR>
 nnoremap <leader>i :sp<CR>
+nnoremap <leader>zi <C-w><Bar><C-w>_<cr>
+nnoremap <leader>zo <C-w>=
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'
