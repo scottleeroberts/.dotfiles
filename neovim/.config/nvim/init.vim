@@ -96,7 +96,6 @@ set statusline+=\ %y
 set statusline+=\ %l:%c
 
 "Statusline changes color based on mode
-
 au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 
@@ -183,6 +182,7 @@ let g:deoplete#enable_at_startup = 1
 " Default peekaboo window
 let g:peekaboo_window = 'vertical botright 30new'
 
+let NERDTreeMinimalUI = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeIndicatorMapCustom = {
       \ "Modified"  : "*",
