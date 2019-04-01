@@ -125,6 +125,12 @@ nnoremap <leader>i :sp<CR>
 nnoremap <leader>zi <C-w><Bar><C-w>_<cr>
 nnoremap <leader>zo <C-w>=
 
+"remap save on ctrl+s
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-q> :q<CR>
+inoremap <C-q> <Esc>:q<CR>
+
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'
 map <Leader>rf :call RunCurrentSpecFile()<CR>
