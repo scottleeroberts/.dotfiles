@@ -122,8 +122,8 @@ nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
 nnoremap <leader>o :vs<CR>
 nnoremap <leader>i :sp<CR>
-nnoremap <leader>zi <C-w><Bar><C-w>_<cr>
-nnoremap <leader>zo <C-w>=
+nnoremap zi <C-w><Bar><C-w>_<cr>
+nnoremap zo <C-w>=
 
 "remap save on ctrl+s
 nnoremap <C-s> :w<CR>
