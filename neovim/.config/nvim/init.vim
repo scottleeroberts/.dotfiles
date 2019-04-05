@@ -37,6 +37,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 Plug 'lisinge/vim-slim'
 Plug 'andymass/vim-matchup'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -208,6 +209,12 @@ let g:NERDTreeIndicatorMapCustom = {
       \ "Unknown"   : "?"
       \ }
 let NERDTreeShowHidden=1
+" Disable arrow icons at the left side of folders for NERDTree.
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+
 "Tags
 au BufWritePost *.rb :call jobstart('sh ~/.dotfiles/bin/run_tags')
 
