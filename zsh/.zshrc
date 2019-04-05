@@ -10,7 +10,7 @@ setopt inc_append_history
 setopt extended_history
 
 #use colors
-source ~/.zsh/base16-nord.dark.sh
+source ~/.zsh/base16-gruvbox-dark-hard.sh
 # makes color constants available
 autoload -U colors
 colors
