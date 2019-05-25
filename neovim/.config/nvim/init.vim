@@ -105,7 +105,7 @@ au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 inoremap jj <Esc>:w<cr>
 
 noremap <c-z> <Nop>
-nnoremap <cr> @q
+nnoremap <CR> :noh<CR><CR>
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
 nnoremap <c-p> A <esc>p
 nnoremap <leader>[ :bprev<CR>
