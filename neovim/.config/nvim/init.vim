@@ -38,6 +38,7 @@ Plug 'w0rp/ale'
 Plug 'lisinge/vim-slim'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
