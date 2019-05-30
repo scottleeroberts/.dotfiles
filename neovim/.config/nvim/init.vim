@@ -271,6 +271,9 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 "New line in commented section is not commented
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+"set commmenting pattern for yml and yaml - prepend weith '#'
+autocmd FileType yaml, yml setlocal commentstring=\#\ %s
+
 " Run both javascript and vue linters for vue files.
 let b:ale_linter_aliases = ['javascript', 'vue']
 " Select the eslint and vls linters.
