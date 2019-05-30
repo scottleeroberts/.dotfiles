@@ -245,7 +245,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-highlight ALEWarning ctermbg=18 ctermfg=none
+highlight ALEWarning ctermbg=19 ctermfg=none
 
 "allow transparency of backgrounds
 highlight Normal guibg=none
