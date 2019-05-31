@@ -1,6 +1,7 @@
 alias console="docker-compose run web bundle exec rails console"
 
 docker_or_local() {
+
   if [[ -f docker-compose.yml ]]; then
     eval {"docker-compose run --rm --no-deps -e SKIP_SIMPLECOV=true web $@"}
   else
@@ -13,7 +14,7 @@ bu() { docker_or_local "bundle update $@" }
 
 ber() { docker_or_local "bundle exec rails $@" }
 bes() { docker_or_local "bundle exec rspec $@" }
-bep() { docker_or_local "bundle exec rake parallel:spec[8]" }
+bep() { docker_or_local "bundle exec rake parallel:spec[7]" }
 bi() { docker_or_local "bundle install $@" }
 
 mi() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=development" }
