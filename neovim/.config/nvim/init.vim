@@ -285,3 +285,5 @@ set suffixesadd=.vue
 set includeexpr=Dashcase(v:fname)
 set path=.,app/javascript/**
 
+let g:closetag_filetypes = 'html,vue,xhtml'
+let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
