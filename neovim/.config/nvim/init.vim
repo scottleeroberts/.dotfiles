@@ -39,6 +39,7 @@ Plug 'lisinge/vim-slim'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'posva/vim-vue'
+Plug 'Konfekt/FastFold'
 
 call plug#end()
 
@@ -125,8 +126,7 @@ nnoremap <leader>fv :vs<CR>:Find<space>
 nnoremap <leader>mi :edit db/migrate<CR>G
 nnoremap <leader>o :vs<CR>
 nnoremap <leader>i :sp<CR>
-nnoremap zi <C-w><Bar><C-w>_<cr>
-nnoremap zo <C-w>=
+nnoremap <leader>z zR
 
 "remap save on ctrl+s
 nnoremap <C-s> :w<CR>
@@ -281,6 +281,7 @@ function! Dashcase(word)
   let word = substitute(word,'_','-','g')
   return word
 endfunction
+
 set suffixesadd=.vue
 set includeexpr=Dashcase(v:fname)
 set path=.,app/javascript/**

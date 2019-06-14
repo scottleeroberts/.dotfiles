@@ -29,4 +29,4 @@ clean_devdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=dev
 clean_testdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=test" }
 pclean_testdb() { docker_or_local "bundle exec rake parallel:drop[8] parallel:setup[8] RAILS_ENV=test" }
 
-
+ya() { docker_or_local "yarn $@" }
