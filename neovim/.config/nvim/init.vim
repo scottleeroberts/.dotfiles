@@ -40,6 +40,7 @@ Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'posva/vim-vue'
 Plug 'Konfekt/FastFold'
+Plug 'ap/vim-css-color'
 
 call plug#end()
 
