@@ -6,11 +6,14 @@ syntax on
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'FooSoft/vim-argwrap'
+Plug 'Konfekt/FastFold'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
+Plug 'andymass/vim-matchup'
+Plug 'ap/vim-css-color'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'chriskempson/base16-vim'
@@ -24,7 +27,10 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
+Plug 'lisinge/vim-slim'
 Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-commentary'
@@ -35,12 +41,6 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
-Plug 'lisinge/vim-slim'
-Plug 'andymass/vim-matchup'
-Plug 'ryanoasis/vim-devicons'
-Plug 'posva/vim-vue'
-Plug 'Konfekt/FastFold'
-Plug 'ap/vim-css-color'
 
 call plug#end()
 
