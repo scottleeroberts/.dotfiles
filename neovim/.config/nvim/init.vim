@@ -7,6 +7,7 @@ syntax on
 call plug#begin('~/.config/nvim/plugged')
 Plug 'FooSoft/vim-argwrap'
 Plug 'Konfekt/FastFold'
+Plug 'RRethy/vim-illuminate'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -278,3 +279,5 @@ set path=.,app/javascript/**
 
 let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
+
+let g:Illuminate_delay = 250
