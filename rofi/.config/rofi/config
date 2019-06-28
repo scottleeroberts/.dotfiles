@@ -5,13 +5,10 @@ rofi.color-active:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #e
 rofi.color-urgent:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #eff1f5
 rofi.lines:             10
 rofi.fullscreen:        false
-rofi.font:              System San Francisco 18
-rofi.separator-style:   solid
+rofi.font:              fantasquesansmono 24
 rofi.bw:                0
 rofi.eh:                1
 rofi.line-margin:       10
 rofi.hide-scrollbar:    true
-rofi.width:             100
-rofi.height:            100
-rofi.padding:           500
 rofi.fake-transparency: true
+rofi.theme: gruvbox
