@@ -16,6 +16,7 @@ ber() { docker_or_local "bundle exec rails $@" }
 bes() { docker_or_local "bundle exec rspec $@" }
 bep() { docker_or_local "bundle exec rake parallel:spec[7]" }
 bi() { docker_or_local "bundle install $@" }
+bemi() { docker_or_local "bundle exec rails generate migration $@" }
 
 mi() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=development" }
 mit() { docker_or_local "bundle exec rake db:migrate RAILS_ENV=test" }
@@ -30,3 +31,4 @@ clean_testdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=te
 pclean_testdb() { docker_or_local "bundle exec rake parallel:drop[8] parallel:setup[8] RAILS_ENV=test" }
 
 ya() { docker_or_local "yarn $@" }
+
