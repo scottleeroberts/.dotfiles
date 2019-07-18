@@ -42,6 +42,7 @@ alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
 alias stash="git stash --include-untracked"
 alias pop="git stash pop"
 alias clean="git clean -f"
+alias t='tig'
 
 #i3 monitor management
 alias xr="xrandr --output eDP1 --mode 1920x1200"
