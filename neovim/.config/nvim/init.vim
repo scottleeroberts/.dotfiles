@@ -281,3 +281,6 @@ let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
 
 let g:Illuminate_delay = 250
+
+nmap <leader>lq <Plug>UseQwertyNavigation
+nmap <leader>lc <Plug>UseColemakNavigation
