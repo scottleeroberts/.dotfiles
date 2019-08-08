@@ -142,6 +142,8 @@ map ,p :pu<CR>
 "make vim-surround do words more easily
 map sw ysiw
 
+map Y y$
+
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'
 map <Leader>rf :call RunCurrentSpecFile()<CR>
