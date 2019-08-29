@@ -216,8 +216,8 @@ bindsym $mod+z mode "$mode_system"
 #gaps
 hide_edge_borders both
 for_window [class="^.*"] border pixel 3
-gaps inner 0
-gaps outer 10
+gaps inner 10
+gaps outer 0
 smart_borders on
 
 bindsym $mod+Control+k [class=Termite] focus
