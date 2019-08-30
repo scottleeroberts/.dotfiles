@@ -163,6 +163,8 @@ nnoremap <silent> <Right> :vertical resize -2<CR>
 
 " Close the buffer and reuse the window for an existing buffer
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <leader>/ :Files<CR>
+nnoremap <leader>g :GFiles?<CR>
 
 "format entire file
 nnoremap <leader><tab> mtgg=G`t
@@ -182,7 +184,6 @@ nmap <leader>vb <Plug>TigLatestCommitForLine
 
 set rtp+=~/.fzf
 
-nnoremap <leader>/ :Files<CR>
 command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
