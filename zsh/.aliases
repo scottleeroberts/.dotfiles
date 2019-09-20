@@ -17,6 +17,10 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias cp="cp -v"
+alias mv="mv -v"
+alias rm="rm -v"
+
 alias rt=$RUBY_TAG_COMMAND
 alias vu="nvim +PlugInstall"
 alias :q="exit"
