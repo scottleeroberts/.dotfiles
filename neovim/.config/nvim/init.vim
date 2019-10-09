@@ -106,7 +106,7 @@ au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2
 au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=4
 
 " Key Mappings
-inoremap jj <Esc>:w<cr>
+inoremap jj <Esc>
 
 noremap <c-z> <Nop>
 nnoremap <CR> :noh<CR><CR>
@@ -280,6 +280,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Vue `gf` for components
 set suffixesadd=.vue
 set path=.,app/javascript/**
+
+let g:vue_pre_processors = 'detect_on_enter'
 
 let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
