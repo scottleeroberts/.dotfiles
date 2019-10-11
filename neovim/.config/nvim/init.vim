@@ -286,6 +286,8 @@ let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
 
 let g:Illuminate_delay = 250
 
+let g:vue_pre_processors = 'detect_on_enter'
+
 nmap <leader>lq <Plug>UseQwertyNavigation
 nmap <leader>lc <Plug>UseColemakNavigation
 
