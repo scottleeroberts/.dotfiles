@@ -43,7 +43,7 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'slm-lang/vim-slm'
 Plug 'w0rp/ale'
-
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 " Don't show the startup message
@@ -288,3 +288,8 @@ let g:Illuminate_delay = 250
 
 nmap <leader>lq <Plug>UseQwertyNavigation
 nmap <leader>lc <Plug>UseColemakNavigation
+
+if $TMUX =~ 'tmate'
+  colorscheme solarized8
+  set colorcolumn=400
+endif
