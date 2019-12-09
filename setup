@@ -20,7 +20,6 @@ pacaur -S --noconfirm \
   aspell \
   aws-cli \
   bat \
-  bcwc-pcie-git \
   chromium \
   chruby \
   docker \
@@ -63,6 +62,7 @@ pacaur -S --noconfirm \
   tig \
   tmate \
   tmux \
+  termite \
   ttf-camingocode \
   ttf-fantasque-sans-mono \
   ttf-hack \
