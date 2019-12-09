@@ -43,7 +43,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source /usr/share/chruby/chruby.sh
-chruby ruby-2.5.1
+chruby ruby-2.6.3
 
 opentmux
 
