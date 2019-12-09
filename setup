@@ -49,7 +49,7 @@ pacaur -S --noconfirm \
   pgcli-git \
   pulseaudio-bluetooth \
   python-neovim \
-  python2-websocket-client \
+  python-websocket-client \
   redshift-gtk-git \
   ripgrep \
   rofi \
