@@ -72,7 +72,7 @@ pacaur -S --noconfirm \
   weechat \
   xclip \
   youtube-dl \
-  zsh
+  zsh \
   zsh-syntax-highlighting \
 
 fc-cache -f -v
