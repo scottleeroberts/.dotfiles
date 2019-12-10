@@ -221,10 +221,10 @@ gaps outer 0
 smart_borders on
 
 bindsym $mod+Control+k [class=Termite] focus
-bindsym $mod+Control+d [class=Firefox] focus
+bindsym $mod+Control+d [class=firefox] focus
 bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=Signal] focus
-bindsym $mod+Control+c [class=chrome] focus
+bindsym $mod+Control+c [class=Chromium] focus
 
 #startup
 bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
@@ -240,12 +240,12 @@ exec --no-startup-id while true; do /usr/bin/gcalcli remind; sleep 300; done
 assign [class="Termite"] $workspace1
 assign [class="Firefox"] $workspace2
 assign [class="Slack|Signal"] $workspace3
-assign [class="Chromium|Google-chrome"] $workspace5
+assign [class="Chromium|chrome"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
-exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/google-chrome-stable'
+exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/chromium'
 
 exec --no-startup-id "xrandr --output eDP1 --mode 1920x1200"
