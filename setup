@@ -18,7 +18,7 @@ sudo pacman -S --noconfirm pacaur stow
 . ~/.dotfiles/stow_all
 
 pacaur -S --noconfirm \
-  aspell \
+  aspell-en \
   aws-cli \
   bat \
   chromium \
