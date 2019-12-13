@@ -49,6 +49,7 @@ pacaur -S --noconfirm \
   pavucontrol \
   pgcli-git \
   pulseaudio-bluetooth \
+  pulseaudio-equalizer \
   python-neovim \
   python-websocket-client \
   redshift-gtk-git \
