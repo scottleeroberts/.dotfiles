@@ -112,8 +112,6 @@ noremap <c-z> <Nop>
 nnoremap <CR> :noh<CR><CR>
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
 nnoremap <c-p> A <esc>p
-nnoremap <leader>[ :bprev<CR>
-nnoremap <leader>] :bnext<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>g <C-]>
 nnoremap <leader>b :Buffer<CR>
