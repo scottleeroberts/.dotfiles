@@ -209,11 +209,11 @@ let g:NERDTreeIndicatorMapCustom = {
       \ "Unknown"   : "?"
       \ }
 let NERDTreeShowHidden=1
-" Disable arrow icons at the left side of folders for NERDTree.
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+highlight! link NERDTreeFlags NERDTreeDir
 
 "Tags
 au BufWritePost *.rb :call jobstart('sh ~/.dotfiles/bin/run_tags')
@@ -258,7 +258,6 @@ highlight GitGutterAdd ctermbg=none
 highlight GitGutterChange ctermbg=none
 highlight GitGutterDelete ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
-
 "auto-pairs configuration
 let g:AutoPairsMultilineClose=0
 
