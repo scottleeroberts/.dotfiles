@@ -228,6 +228,7 @@ bindsym $mod+Control+c [class=Chromium] focus
 
 #startup
 bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
+exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
 exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id compton
 exec --no-startup-id redshift-gtk
