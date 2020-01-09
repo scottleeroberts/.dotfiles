@@ -174,6 +174,7 @@ nnoremap <Leader>s :source $MYVIMRC<CR>
 nmap <leader>vc <Plug>TigFileHistory
 nmap <leader>vv <Plug>TigBlame
 nmap <leader>vb <Plug>TigLatestCommitForLine
+nnoremap <leader>vg :GFiles?<CR>
 
 set rtp+=~/.fzf
 
