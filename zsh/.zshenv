@@ -1,6 +1,5 @@
 export DOTFILES=$HOME/.dotfiles
 
-
 export EDITOR=nvim
 export BROWSER="firefox"
 
@@ -15,6 +14,7 @@ export RUBY_GC_HEAP_FREE_MIN=500000
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_COMPLETION_TRIGGER=',,'
-
+export RSPEC_CORES=8
 export FILTHY_SHOW_EXIT_CODE=1
 
+[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
