@@ -9,7 +9,7 @@ mv ~/.Xresources ~/.Xresources.original
 mv ~/.gtkrc-2.0 ~/.gtkrc-2.0.original
 mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.original
 mv ~/.config/dunst ~/.config/dunst.original
-mv ~/.config/compton.conf ~/.config/compton.conf.orig
+mv ~/.config/picom.conf ~/.config/picom.conf.orig
 
 sudo pacman -Syu
 

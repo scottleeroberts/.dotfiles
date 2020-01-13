@@ -1,4 +1,4 @@
-stow -vv compton
+stow -vv picom
 stow -vv ctags
 stow -vv dunst
 stow -vv fonts
