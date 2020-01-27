@@ -176,7 +176,7 @@ nnoremap <leader>vg :GFiles?<CR>
 set rtp+=~/.fzf
 
 command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('up:70%'), <bang>0)
 
 " Highlight current column in active pane only
 augroup CursorColumn
@@ -220,7 +220,7 @@ au BufWritePost *.rb :call jobstart('sh ~/.dotfiles/bin/run_tags')
 command! -bang -nargs=* Find
       \ call fzf#vim#grep(
       \'rg --column  --no-heading --smart-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview('up:60%')
+      \   fzf#vim#with_preview('up:70%')
       \ )
 
 "Open to last position in file
