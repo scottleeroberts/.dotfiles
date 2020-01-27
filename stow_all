@@ -15,6 +15,7 @@ stow -vv reek
 stow -vv rofi
 stow -vv termite
 stow -vv tmux
+stow -vv tmate
 stow -vv urlview
 stow -vv xmodmap
 stow -vv yaourt
