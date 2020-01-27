@@ -59,7 +59,7 @@ pacaur -S --noconfirm \
   ruby-install \
   safe-rm \
   scrot \
-  signal-desktop-bin \
+  signal-desktop \
   teensy-loader-cli \
   tig \
   tmate \
