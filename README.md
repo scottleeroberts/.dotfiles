@@ -13,3 +13,4 @@ git clone git@github.com:scottleeroberts/.dotfiles.git
 cd .dotfiles
 bash setup
 ```
+Note to self: rtl88x2bu-dkms-git needed for usb wifi adapter in arch
