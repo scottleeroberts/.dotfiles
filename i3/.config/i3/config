@@ -182,13 +182,11 @@ bindsym $mod+g mode "$pomo"
 
 # logout
 set $Locker i3lock -c 000000 && sleep 1
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+p) shutdown
+set $mode_system System Lock:(l),   Logout:(shift-e),   Reboot:(shift-r) reboot,   Shutdown(shift+p)
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+p exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
