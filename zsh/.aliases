@@ -8,8 +8,8 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
 fi
 
 alias ll="ls -Gplh"
-alias vim="nvim"
-alias v="nvim"
+alias vim="nvim -c ':NERDTree|:wincmd w'
+alias v="nvim -c ':NERDTree|:wincmd w'
 
 # Filesystem aliases
 alias ..='cd ..'
