@@ -44,6 +44,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'slm-lang/vim-slm'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-solarized8'
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
 " Don't show the startup message
@@ -128,6 +130,10 @@ nnoremap <leader>mi :edit db/migrate<CR>G
 nnoremap <leader>o :vs<CR>
 nnoremap <leader>i :sp<CR>
 nnoremap <leader>z zR
+
+noremap  <leader>t  :FloatermToggle<CR>
+tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+let g:floaterm_position = 'center'
 
 "paste on line below the cursor
 map ,p :pu<CR>
