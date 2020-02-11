@@ -164,7 +164,6 @@ nnoremap <silent> <Right> :vertical resize -2<CR>
 " Close the buffer and reuse the window for an existing buffer
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <leader>/ :Files<CR>
-nnoremap <leader>fg :GFiles?<CR>
 
 "format entire file
 nnoremap <leader><tab> mtgg=G`t
@@ -178,7 +177,8 @@ nnoremap <Leader>s :source $MYVIMRC<CR>
 nmap <leader>vc <Plug>TigFileHistory
 nmap <leader>vv <Plug>TigBlame
 nmap <leader>vb <Plug>TigLatestCommitForLine
-nnoremap <leader>vg :GFiles?<CR>
+nmap <leader>vx :Commits<CR>
+nmap <leader>vz :GFiles?<CR>
 
 set rtp+=~/.fzf
 
