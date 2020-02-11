@@ -130,6 +130,7 @@ nnoremap <leader>mi :edit db/migrate<CR>G
 nnoremap <leader>o :vs<CR>
 nnoremap <leader>i :sp<CR>
 nnoremap <leader>z zR
+nmap <leader>h <Plug>GitGoBack
 
 noremap  <leader>t  :FloatermToggle<CR>
 tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
