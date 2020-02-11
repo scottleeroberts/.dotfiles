@@ -58,6 +58,9 @@ alias hpush="git push heroku master"
 alias hmigrate="heroku run rails db:migrate"
 alias hupdate="heroku update"
 
+alias j="joplin --profile ~/.config/joplin-desktop/"
+alias jd="joplin-desktop"
+
 [[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
 

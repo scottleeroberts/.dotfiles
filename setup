@@ -36,6 +36,7 @@ pacaur -S --noconfirm \
   heroku-cli \
   i3blocks \
   inkscape \
+  joplin \
   mpv \
   mosh \
   ncdu \
