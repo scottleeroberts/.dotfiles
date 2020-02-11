@@ -30,6 +30,7 @@ pacaur -S --noconfirm \
   evince \
   feh \
   firefox \
+  gcalcli \
   gdk-pixbuf2 \
   gitflow-avh \
   glib2 \
