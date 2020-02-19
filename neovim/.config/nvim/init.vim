@@ -323,4 +323,4 @@ function! FloatingFZF(width, height, border_highlight)
   autocmd BufWipeout <buffer> execute 'bwipeout' s:frame
 endfunction
 
-let g:fzf_layout = { 'window': 'call FloatingFZF(0.7, 0.7, "Comment")' }
+let g:fzf_layout = { 'window': 'call FloatingFZF(0.85, 0.85, "Comment")' }

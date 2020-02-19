@@ -21,7 +21,7 @@ pacaur -S --noconfirm \
   aspell-en \
   aws-cli \
   bat \
-  chromium \
+  brave \
   chruby \
   docker \
   docker-compose \
