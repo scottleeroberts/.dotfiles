@@ -45,7 +45,7 @@ Plug 'slm-lang/vim-slm'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-solarized8'
 Plug 'voldikss/vim-floaterm'
-
+Plug 'pedrohdz/vim-yaml-folds'
 call plug#end()
 
 " Don't show the startup message
