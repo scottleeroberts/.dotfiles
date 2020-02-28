@@ -10,6 +10,7 @@ install_ruby() {
     gem install neovim
     gem install reek
     gem install rubocop
+    gem install solargraph
   fi
   echo ""
 }

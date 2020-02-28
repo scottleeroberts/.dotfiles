@@ -8,8 +8,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'FooSoft/vim-argwrap'
 Plug 'Konfekt/FastFold'
 Plug 'RRethy/vim-illuminate'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
@@ -20,7 +18,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'digitaltoad/vim-pug'
 Plug 'ecomba/vim-ruby-refactoring'
-Plug 'fishbullet/deoplete-ruby'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -28,11 +25,15 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
+Plug 'lifepillar/vim-solarized8'
 Plug 'lisinge/vim-slim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
+Plug 'pedrohdz/vim-yaml-folds'
 Plug 'posva/vim-vue'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
+Plug 'slm-lang/vim-slm'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -41,17 +42,14 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
-Plug 'slm-lang/vim-slm'
-Plug 'w0rp/ale'
-Plug 'lifepillar/vim-solarized8'
 Plug 'voldikss/vim-floaterm'
-Plug 'pedrohdz/vim-yaml-folds'
 call plug#end()
 
 " Don't show the startup message
 set backspace=indent,eol,start
 set backupdir=~/.config/nvim/tmp
 set clipboard=unnamedplus
+set colorcolumn=80
 set directory=~/.config/nvim/tmp
 set encoding=UTF-8
 set fileencoding=UTF-8
@@ -66,10 +64,12 @@ set relativenumber
 set ruler " Show cursor position
 set scrolloff=1 " Always show at least one line above and below cursor
 set shortmess=I
+set shortmess=atc
 set showcmd " Show partially typed commands
 set showmatch " Matches () etc
-set splitright
+set signcolumn=yes
 set splitbelow
+set splitright
 set termencoding=utf-8
 set timeout
 set timeoutlen=1000
@@ -78,10 +78,9 @@ set undodir=~/.config/nvim/undodir
 set undofile
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+set updatetime=300
 set visualbell " Flash the cursor on error instead of beeping
 set wildmenu " Show menu options for completion
-set colorcolumn=80
-set shortmess=at
 
 " Searching
 set hlsearch
@@ -98,6 +97,7 @@ colorscheme base16-gruvbox-dark-hard
 set statusline=
 set statusline+=\ %F
 set statusline+=\ %m
+set statusline+=\ %{coc#status()}
 set statusline+=%r
 set statusline+=%=
 set statusline+=\ %y
@@ -195,8 +195,6 @@ augroup END
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
 
-let g:deoplete#enable_at_startup = 1
-
 " Default peekaboo window
 let g:peekaboo_window = 'vertical botright 30new'
 
@@ -220,9 +218,6 @@ let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 highlight! link NERDTreeFlags NERDTreeDir
 
-"Tags
-au BufWritePost *.rb :call jobstart('sh ~/.dotfiles/bin/run_tags')
-
 "ripgrep
 command! -bang -nargs=* Find
       \ call fzf#vim#grep(
@@ -239,15 +234,6 @@ iabbr pry ::Kernel.binding.pry
 " vim-matchup highlight color
 :hi MatchParen ctermbg=239
 
-let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-highlight ALEWarning ctermbg=19 ctermfg=none
-
 "allow transparency of backgrounds
 highlight Normal guibg=none
 highlight NonText guibg=none
@@ -261,6 +247,7 @@ highlight GitGutterAdd ctermbg=none
 highlight GitGutterChange ctermbg=none
 highlight GitGutterDelete ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
+
 "auto-pairs configuration
 let g:AutoPairsMultilineClose=0
 
@@ -324,3 +311,70 @@ function! FloatingFZF(width, height, border_highlight)
 endfunction
 
 let g:fzf_layout = { 'window': 'call FloatingFZF(0.85, 0.85, "Comment")' }
+
+" {{{ coc.vim
+" {{{ functions
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" }}}
+" {{{ mappings
+inoremap <silent><expr> <c-n> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" :coc#refresh()
+inoremap <expr><S-c-n> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+" Use <c-n> to trigger completion.
+inoremap <silent><expr> <c-n> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if has('patch8.1.1068')
+  " Use `complete_info` if your (Neo)Vim version supports it.
+  inoremap <expr> <tab> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <tab> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+" }}}
+" {{{ commands
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" }}}
+" {{{ snippets
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_prev = '<c-p>'
+let g:coc_snippet_next = '<c-n>'
+" }}}
