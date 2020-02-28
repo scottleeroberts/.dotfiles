@@ -14,10 +14,3 @@ cd .dotfiles
 bash setup
 ```
 Note to self: rtl88x2bu-dkms-git needed for usb wifi adapter in arch
-
-## vim
-Install coc extensions (need to automate this)
-
-```
-:CocInstall coc-css coc-eslint coc-html coc-json coc-snippets coc-solargraph coc-tsserver coc-vetur coc-yaml
-```
