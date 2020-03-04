@@ -8,5 +8,8 @@
   "solargraph.formatting": true,
   "solargraph.completion": true,
   "solargraph.hover": true,
-  "vetur.format.defaultFormatter.js": "prettier-eslint"
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "diagnostic.errorSign"  : "🕱",
+  "diagnostic.warningSign": "☢",
+  "diagnostic.infoSign"   : ""
 }
