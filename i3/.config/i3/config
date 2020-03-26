@@ -226,23 +226,25 @@ bindsym $mod+Control+c [class=Brave] focus
 
 #startup
 bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
-exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
-exec --no-startup-id xrandr --output eDP1 --mode 1920x1200
+#exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
+#exec --no-startup-id xrandr --output eDP1 --mode 1920x1200
+exec --no-startup-id xrandr --output HDMI1 --mode 2560x1440
 exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
-exec --no-startup-id picom
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
+exec --no-startup-id picom
 exec --no-startup-id while true; do /usr/bin/gcalcli remind; sleep 300; done
 
 # Assign windows to their respective workspaces.
 assign [class="Termite"] $workspace1
 assign [class="Firefox"] $workspace2
 assign [class="Slack|Signal"] $workspace3
+assign [class="Enpass"] $workspace4
+assign [class="Brave"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
-exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
 exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/brave'
