@@ -84,6 +84,7 @@ set wildmenu " Show menu options for completion
 
 " Searching
 set hlsearch
+set ignorecase
 set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
