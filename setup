@@ -20,7 +20,6 @@ sudo pacman -S --noconfirm pacaur stow
 pacaur -S --noconfirm \
   aspell-en \
   aws-cli \
-  bat \
   brave \
   chruby \
   docker \
