@@ -241,10 +241,10 @@ exec --no-startup-id while true; do /usr/bin/gcalcli remind; sleep 300; done
 assign [class="Termite"] $workspace1
 assign [class="Firefox"] $workspace2
 assign [class="Slack|Signal"] $workspace3
-assign [class="Enpass"] $workspace4
 assign [class="Brave"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
+exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
 exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/brave'
