@@ -1,5 +1,5 @@
 [options]
-font = fantasquesansmono 18
+font = monaco 24
 audible_bell = false
 cursor_blink = system
 cursor_shape = block

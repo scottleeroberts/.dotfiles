@@ -69,6 +69,7 @@ pacaur -S --noconfirm \
   ttf-camingocode \
   ttf-fantasque-sans-mono \
   ttf-hack \
+  ttf-monaco \
   universal-ctags-git \
   unzip \
   urlview-git \
