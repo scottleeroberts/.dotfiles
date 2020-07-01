@@ -9,10 +9,11 @@ end
 
 class PullRequests
   READY_TO_REVIEW_LABEL = 'Ready For Review'
-  REVIEWED_LABEL = 'Changes Requested'
+  CHANGES_REQUESTED_LABEL = 'Changes Requested'
   ALREADY_REVIEWED_LABEL = 'Scott Signed Off'
   GITHUB_USERNAME = 'scottleeroberts'
   REPO = 'baldwinaviation/baldwin-web'
+  AWAITING_RESPONSE_LABEL = 'Awaiting Response'
 
   def self.process
     new.process
@@ -25,14 +26,17 @@ class PullRequests
 
   private
 
+  def my_pull_requests
+    pull_requests.select { |pr| pr.creator == GITHUB_USERNAME }
+  end
+
   def needs_attention_count
     my_reviewed_pull_requests.size + pull_requests_to_review.size
   end
 
   def my_reviewed_pull_requests
-    pull_requests
-      .select { |pr| pr.creator == GITHUB_USERNAME }
-      .select { |pr| pr.labels.include?(REVIEWED_LABEL) }
+    my_pull_requests.select { |pr| pr.labels.include?(CHANGES_REQUESTED_LABEL) } +
+      my_pull_requests.select { |pr| pr.labels.include?(AWAITING_RESPONSE_LABEL) }
   end
 
   def pull_requests_to_review
