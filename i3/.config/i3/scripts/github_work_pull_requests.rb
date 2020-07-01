@@ -1,9 +1,11 @@
 #!/usr/bin/env /home/sroberts/.rubies/ruby-2.6.3/bin/ruby
+# frozen_string_literal: true
+
 require 'json'
 
-TOKEN = File.readlines("#{ ENV['HOME'] }/.github_token").first.chomp
+TOKEN = File.readlines("#{ENV['HOME']}/.github_token").first.chomp
 
-if ENV["BLOCK_BUTTON"].to_i == 1
+if ENV['BLOCK_BUTTON'].to_i == 1
   `firefox https://github.com/BaldwinAviation/baldwin-web/pulls`
 end
 
@@ -20,7 +22,8 @@ class PullRequests
   end
 
   def process
-    return unless needs_attention_count > 0
+    return unless needs_attention_count.positive?
+
     puts needs_attention_count
   end
 
@@ -47,8 +50,10 @@ class PullRequests
   end
 
   def pull_requests
-    @pull_requests ||= JSON.parse(`curl --silent -H "Authorization: token #{ TOKEN }" -H "Content-Type: application/json" "https://api.github.com/repos/#{ REPO }/issues"`)
-      .select { |e| e.has_key?('pull_request') }
+    @pull_requests ||=
+      JSON
+      .parse(`curl --silent -H "Authorization: token #{TOKEN}" -H "Content-Type: application/json" "https://api.github.com/repos/#{REPO}/issues"`)
+      .select { |e| e.key?('pull_request') }
       .map { |e| PullRequest.new(e) }
   end
 
@@ -68,9 +73,9 @@ class PullRequests
     end
 
     private
+
     attr_reader :json_data
   end
 end
 
 PullRequests.process
-
