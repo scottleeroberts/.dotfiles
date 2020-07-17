@@ -204,7 +204,7 @@ let g:peekaboo_window = 'vertical botright 30new'
 let NERDTreeMinimalUI = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeIndicatorMapCustom = {
-      \ "Modified"  : "*",
+      \ "Modified"  : "✹",
       \ "Staged"    : "+",
       \ "Untracked" : "o",
       \ "Renamed"   : "➜",
