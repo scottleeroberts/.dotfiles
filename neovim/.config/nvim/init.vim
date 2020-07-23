@@ -29,7 +29,6 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'lisinge/vim-slim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
-Plug 'pedrohdz/vim-yaml-folds'
 Plug 'posva/vim-vue'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
