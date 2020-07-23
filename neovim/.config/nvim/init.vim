@@ -264,8 +264,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set suffixesadd=.vue
 set path=.,app/javascript/**
 
-let g:vue_pre_processors = 'detect_on_enter'
-
 let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
 
