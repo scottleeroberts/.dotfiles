@@ -202,7 +202,8 @@ let g:peekaboo_window = 'vertical botright 30new'
 
 let NERDTreeMinimalUI = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeIndicatorMapCustom = {
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ "Modified"  : "✹",
       \ "Staged"    : "+",
       \ "Untracked" : "o",
@@ -216,6 +217,7 @@ let g:NERDTreeIndicatorMapCustom = {
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
+
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 highlight! link NERDTreeFlags NERDTreeDir
@@ -263,6 +265,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Vue `gf` for components
 set suffixesadd=.vue
 set path=.,app/javascript/**
+
+let g:vue_pre_processors = 'detect_on_enter'
 
 let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
