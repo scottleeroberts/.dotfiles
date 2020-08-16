@@ -3,7 +3,7 @@ alias console="docker-compose run web bundle exec rails console"
 docker_or_local() {
 
   if [[ -f docker-compose.yml ]]; then
-    eval {"docker-compose run --rm --no-deps -e SKIP_SIMPLECOV=true web $@"}
+    eval {"docker-compose run --rm --no-deps -e SKIP_SIMPLECOV=true web /bin/bash -c \"$@\""}
   else
     eval {"SKIP_SIMPLECOV=true $@"}
   fi
@@ -31,4 +31,6 @@ clean_testdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=te
 pclean_testdb() { docker_or_local "bundle exec rake parallel:drop[$RSPEC_CORES] parallel:setup[$RSPEC_CORES] RAILS_ENV=test" }
 
 ya() { docker_or_local "yarn $@" }
-
+edit_credentials() {
+  docker_or_local "apt-get install -y vim && EDITOR=vim bundle exec rails credentials:edit --environment=$@"
+}
