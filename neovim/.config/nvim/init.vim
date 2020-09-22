@@ -132,7 +132,8 @@ nnoremap <leader>i :sp<CR>
 nnoremap <leader>z zR
 nnoremap qq :q<CR>
 nmap <leader>h <Plug>GitGoBack
-
+nnoremap <leader>f :tab new<CR>
+nnoremap <leader><CR> gt
 noremap  <leader>t  :FloatermToggle<CR>
 tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_position = 'center'
