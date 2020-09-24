@@ -3,7 +3,9 @@
 WEB_STATUS=$(aws elasticbeanstalk describe-environments --environment-name $2 --query Environments[].HealthStatus --output text --profile $1)
 WORKER_STATUS=$(aws elasticbeanstalk describe-environments --environment-name $3 --query Environments[].HealthStatus --output text --profile $1)
 
-if [[ "${WEB_STATUS}" == "Ok" ]] && [[ "${WORKER_STATUS}" == "Ok" ]]; then
+if [[ "${WEB_STATUS}" == "Info" ]] || [[ "${WORKER_STATUS}" == "Info" ]]; then
+   EB_STATUS="!deploying!"
+elif [[ "${WEB_STATUS}" == "Ok" ]] && [[ "${WORKER_STATUS}" == "Ok" ]]; then
    EB_STATUS="ok"
 else
   EB_STATUS="!!!DEGRADED!!!"
