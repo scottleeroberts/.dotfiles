@@ -51,9 +51,9 @@ if @cards.fetch(:testing_in_progress).any?
                     end
   puts "In Testing: #{release_name}#{rejected_string}"
 elsif @cards.fetch(:ready_for_release).any?
-  puts "Ready for Release: #{release_name_for_list(:ready_for_release)}"
+  puts "Releasable: #{release_name_for_list(:ready_for_release)}"
 elsif @cards.fetch(:ready_for_testing).any?
-  puts "Ready for Testing: #{release_name_for_list(:ready_for_testing)}"
+  puts "Testable: #{release_name_for_list(:ready_for_testing)}"
 elsif @cards.fetch(:on_deck).any?
   puts "Next: #{release_name_for_list(:on_deck)}"
 end
