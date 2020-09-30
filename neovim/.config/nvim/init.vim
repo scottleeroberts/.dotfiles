@@ -14,7 +14,6 @@ Plug 'alvan/vim-closetag'
 Plug 'ap/vim-css-color'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'digitaltoad/vim-pug'
 Plug 'ecomba/vim-ruby-refactoring'
@@ -24,7 +23,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'lisinge/vim-slim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
@@ -41,6 +39,7 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'voldikss/vim-floaterm'
+Plug 'lifepillar/vim-gruvbox8'
 call plug#end()
 
 " Don't show the startup message
@@ -87,10 +86,13 @@ set smartcase " Only search upcase if provided with capital letter
 set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
-" Theme stuff
-set background=dark
-let base16colorspace=256
-colorscheme base16-gruvbox-dark-hard
+"theme
+colorscheme gruvbox8
+autocmd VimEnter * hi Normal ctermbg=none
+
+"quickscope
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 " status line configuration
 set statusline=
@@ -275,11 +277,6 @@ let g:vue_pre_processors = 'detect_on_enter'
 nmap <leader>lq <Plug>UseQwertyNavigation
 nmap <leader>lc <Plug>UseColemakNavigation
 
-if $TMUX =~ 'tmate'
-  colorscheme solarized8
-  set colorcolumn=400
-endif
-
 function! FloatingFZF(width, height, border_highlight)
   function! s:create_float(hl, opts)
     let buf = nvim_create_buf(v:false, v:true)
@@ -391,3 +388,5 @@ let g:coc_global_extensions = [
       \'coc-yaml',
       \]
 " }}}
+
+
