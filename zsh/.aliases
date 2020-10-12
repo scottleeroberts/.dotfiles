@@ -66,3 +66,5 @@ alias jd="joplin-desktop"
 #misc
 alias wtr="curl wttr.in/hhh"
 alias nb="newsboat"
+
+alias push='git push; git push --follow --tags; git checkout master; git push; git checkout develop'
