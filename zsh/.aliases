@@ -40,8 +40,6 @@ alias grep='grep --color=auto'
 alias df='df -h' # disk free, in Gigabytes, not bytes
 alias du='du -h -c' # calculate disk usage for a folder
 alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
-alias drdus="docker-compose down; RESEED=true docker-compose up"
-alias drdu="docker-compose down; docker-compose up"
 
 #git aliases
 alias stash="git stash --include-untracked"

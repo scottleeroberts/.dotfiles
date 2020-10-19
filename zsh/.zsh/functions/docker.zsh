@@ -1,24 +1,11 @@
-alias dkr="docker"
-alias c="docker-compose"
-alias up="docker-compose up"
+alias dr="docker"
+alias drc="docker-compose"
+alias drup="docker-compose up"
 alias down="docker-compose down"
 alias rw="docker-compose run web bundle exec rake resque:work QUEUE=*"
-
-dr_nuke_containers() {
-  docker rm -f $(docker ps -a -q)
-}
-
-dr_nuke_images() {
-  docker rmi -f $(docker images -a -q)
-}
-
-dr_nuke_volumes(){
-  docker volume rm $(docker volume ls -q)
-}
-
-dr_nuke_networks(){
-  docker network rm $(docker network ls | tail -n+2 | awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
-}
+alias drdus="docker-compose down; RESEED=true docker-compose up"
+alias drdu="docker-compose down; docker-compose up"
+alias drnuke="docker container prune -f; docker volume prune -f; docker image prune -f"
 
 dr_db() {
   containers=$(docker ps -a --format "{{.ID}} {{.Names}} {{.Image}}" | grep unsafe_postgres)
