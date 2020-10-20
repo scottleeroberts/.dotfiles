@@ -1,5 +1,5 @@
-alias dr="docker"
-alias drc="docker-compose"
+alias d="docker"
+alias c="docker-compose"
 alias drup="docker-compose up"
 alias down="docker-compose down"
 alias rw="docker-compose run web bundle exec rake resque:work QUEUE=*"
