@@ -17,4 +17,6 @@ export FZF_COMPLETION_TRIGGER=',,'
 export RSPEC_CORES=8
 export FILTHY_SHOW_EXIT_CODE=1
 
+export NODE_OPTIONS="--max-old-space-size=16384"
+
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
