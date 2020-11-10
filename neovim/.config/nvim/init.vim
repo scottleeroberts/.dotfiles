@@ -184,8 +184,12 @@ nmap <leader>vz :GFiles?<CR>
 
 set rtp+=~/.fzf
 
-command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('up:70%'), <bang>0)
+command! FZF FloatermNew fzf
+command! -bang -nargs=* Find
+      \ call fzf#vim#grep(
+      \'rg --column  --no-heading --smart-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview('right:60%')
+      \ )
 
 " Highlight current column in active pane only
 augroup CursorColumn
@@ -218,13 +222,6 @@ let g:NERDTreeDirArrowCollapsible = "\u00a0"
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 highlight! link NERDTreeFlags NERDTreeDir
-
-"ripgrep
-command! -bang -nargs=* Find
-      \ call fzf#vim#grep(
-      \'rg --column  --no-heading --smart-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview('up:70%')
-      \ )
 
 "Open to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
