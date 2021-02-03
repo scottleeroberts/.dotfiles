@@ -176,7 +176,7 @@ set rtp+=~/.fzf
 command! FZF FloatermNew fzf
 command! -bang -nargs=* Find
       \ call fzf#vim#grep(
-      \'rg --column  --no-heading --smart-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+      \'rg --column  --no-heading --smart-case  --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1,
       \   fzf#vim#with_preview('right:60%')
       \ )
 
