@@ -134,8 +134,8 @@ nnoremap <leader>z zR
 nmap <leader>h <Plug>GitGoBack
 nnoremap <leader>f :tab new<CR>
 nnoremap <leader><CR> gt
-noremap  <leader>t  :FloatermToggle<CR>
-tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+noremap  <leader>tt  :FloatermToggle<CR>
+tnoremap <leader>tt  <C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_position = 'center'
 
 "paste on line below the cursor
