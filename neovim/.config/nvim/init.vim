@@ -115,7 +115,7 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
 nnoremap <c-p> A <esc>p
 nnoremap <leader>d :bd<CR>
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :update< CR>
 nnoremap <leader>g <C-]>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
