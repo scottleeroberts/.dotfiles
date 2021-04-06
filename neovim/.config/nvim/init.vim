@@ -115,7 +115,8 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
 nnoremap <c-p> A <esc>p
 nnoremap <leader>d :bd<CR>
-nnoremap <leader>w :update< CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>w :update<CR>
 nnoremap <leader>g <C-]>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -153,7 +154,6 @@ nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
 
 " Close the buffer and reuse the window for an existing buffer
-nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <leader>/ :Files<CR>
 
 "format entire file
