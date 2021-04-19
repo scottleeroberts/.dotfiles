@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' 
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'lisinge/vim-slim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
@@ -38,7 +39,6 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'voldikss/vim-floaterm'
-Plug 'lifepillar/vim-gruvbox8'
 call plug#end()
 
 " Don't show the startup message
