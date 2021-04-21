@@ -1,6 +1,5 @@
 au FileType * setlocal ai sw=2 sts=2 et
 let mapleader = "\<Space>"
-
 filetype plugin indent on
 syntax on
 
@@ -22,7 +21,7 @@ Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' 
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'lisinge/vim-slim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
@@ -42,6 +41,7 @@ Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " Don't show the startup message
+set termguicolors
 set backspace=indent,eol,start
 set backupdir=~/.config/nvim/tmp
 set clipboard=unnamedplus
@@ -86,7 +86,9 @@ set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
 "theme
-colorscheme gruvbox8
+let g:tokyonight_transparent_background = 1
+let g:tokyonight_style = "storm"
+colorscheme tokyonight
 autocmd VimEnter * hi Normal ctermbg=none
 
 "quickscope
@@ -279,5 +281,4 @@ let g:coc_global_extensions = [
       \'coc-yaml',
       \]
 " }}}
-
 
