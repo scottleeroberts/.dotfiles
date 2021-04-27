@@ -21,7 +21,7 @@ Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' 
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
-Plug 'mhartington/oceanic-next'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'lisinge/vim-slim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
@@ -86,8 +86,8 @@ set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
 "theme
-colorscheme OceanicNext
-let g:oceanic_next_terminal_bold = 1
+colorscheme tokyonight
+let g:tokyonight_transparent_background=1
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
