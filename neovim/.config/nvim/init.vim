@@ -226,9 +226,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "abbreviations
 iabbr pry ::Kernel.binding.pry
 
-" vim-matchup highlight color
-:hi MatchParen ctermbg=239
-
 "allow transparency of backgrounds
 highlight Normal guibg=none
 highlight NonText guibg=none
