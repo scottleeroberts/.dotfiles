@@ -196,23 +196,22 @@ bindsym $mod+z mode "$mode_system"
 
 # Bar
   bar {
-	font pango: Hack 12
+	font pango: Monaco 12
 	i3bar_command i3bar -t
         status_command    i3blocks -c ~/.config/i3/i3blocks.conf
         position          top
         colors {
 		separator         #757575
 		background #09090990
-		background #09090990
-		focused_workspace #09090990 #09090990 #8ee38e
-		inactive_workspace #09090990 #09090990 #576d57
+		focused_workspace #09090990 #09090990 #0096FF
+		inactive_workspace #09090990 #09090990 #7393B3
         }
   }
 
 #gaps
 hide_edge_borders both
 for_window [class="^.*"] border pixel 3
-gaps inner 10
+gaps inner 0
 gaps outer 0
 smart_borders on
 
