@@ -18,6 +18,7 @@ sudo pacman -S --noconfirm pacaur stow
 . ~/.dotfiles/stow_all
 
 pacaur -S --noconfirm \
+  alacritty \
   aspell-en \
   aws-cli \
   brave \
@@ -66,7 +67,6 @@ pacaur -S --noconfirm \
   tig \
   tmate \
   tmux \
-  termite \
   ttf-fantasque-sans-mono \
   ttf-hack \
   ttf-monaco \

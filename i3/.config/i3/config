@@ -14,7 +14,7 @@ font pango:System San Francisco Display 16
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -215,7 +215,7 @@ gaps inner 0
 gaps outer 0
 smart_borders on
 
-bindsym $mod+Control+k [class=Termite] focus
+bindsym $mod+Control+k [class=Alacritty] focus
 bindsym $mod+Control+d [class=firefox] focus
 bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=Signal] focus
@@ -235,12 +235,12 @@ exec --no-startup-id picom
 exec --no-startup-id while true; do /usr/bin/gcalcli remind; sleep 300; done
 
 # Assign windows to their respective workspaces.
-assign [class="Termite"] $workspace1
+assign [class="Alacritty"] $workspace1
 assign [class="Firefox"] $workspace2
 assign [class="Slack|Signal"] $workspace3
 assign [class="Brave"] $workspace5
 
-exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/termite'
+exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/alacritty'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'

@@ -1,3 +1,4 @@
+stow -vv alacritty
 stow -vv picom
 stow -vv ctags
 stow -vv dunst
@@ -13,7 +14,6 @@ stow -vv readline
 stow -vv redshift
 stow -vv reek
 stow -vv rofi
-stow -vv termite
 stow -vv tmux
 stow -vv tmate
 stow -vv urlview
