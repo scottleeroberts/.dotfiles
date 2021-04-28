@@ -5,8 +5,6 @@ syntax on
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'FooSoft/vim-argwrap'
-Plug 'Konfekt/FastFold'
-Plug 'RRethy/vim-illuminate'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
@@ -15,11 +13,8 @@ Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'digitaltoad/vim-pug'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }
 Plug 'kchmck/vim-coffee-script'
-Plug 'kthibodeaux/pull-review'
 Plug 'kthibodeaux/tig.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'lisinge/vim-slim'
