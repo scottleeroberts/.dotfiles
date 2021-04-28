@@ -244,6 +244,7 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 
 "New line in commented section is not commented
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType vue setlocal commentstring=//\ %s
 
 " Vue `gf` for components
 set suffixesadd=.vue
