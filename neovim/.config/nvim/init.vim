@@ -13,10 +13,10 @@ Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'digitaltoad/vim-pug'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/tig.vim'
-Plug 'ghifarit53/tokyonight-vim'
 Plug 'lisinge/vim-slim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
