@@ -134,12 +134,17 @@ nnoremap <leader>i :sp<CR>
 nnoremap <leader>z zR
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap <leader>( :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
+nnoremap <leader>) :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
 
 nmap <leader>h <Plug>GitGoBack
+
 nnoremap <leader>f :tab new<CR>
 nnoremap <leader><CR> gt
 noremap  <leader>tt  :FloatermToggle<CR>
 tnoremap <leader>tt  <C-\><C-n>:FloatermToggle<CR>
+
+
 let g:floaterm_position = 'center'
 
 "paste on line below the cursor
@@ -277,4 +282,5 @@ let g:coc_global_extensions = [
       \'coc-yaml',
       \]
 " }}}
+
 
