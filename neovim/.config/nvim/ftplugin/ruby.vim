@@ -13,4 +13,6 @@ nnoremap <leader>m :Emodel<CR>
 nnoremap <leader>v :Eview<CR>
 nnoremap <leader>u :Eunittest<CR>
 
-nmap <buffer> <leader><tab> :call CocAction('format')<CR>
+if expand('%')[len(expand('%'))-4:len(expand('%'))] != 'slim'
+  autocmd BufWritePre <buffer> call CocAction('format')
+endif
