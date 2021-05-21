@@ -31,7 +31,7 @@ alias ll="ls -lFh ${colorflag}"
 alias lld="ls -l | grep ^d"
 
 #audio helpers
-alias aud="pavucontrol"
+alias aud="DISPLAY=:0 pavucontrol"
 alias eq="qpaeq"
 alias yadl='youtube-dl --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata'
 alias yyy='youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 160K --yes-playlist '
