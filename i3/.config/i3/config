@@ -1,4 +1,4 @@
-set $bg-color           #9684c9
+set $bg-color           #0096FF
 set $inactive-bg-color  #2f343f
 set $text-color         #f3f4f5
 set $inactive-text-color #676e7d
@@ -211,7 +211,7 @@ bindsym $mod+z mode "$mode_system"
 #gaps
 hide_edge_borders both
 for_window [class="^.*"] border pixel 3
-gaps inner 10
+gaps inner 5
 gaps outer 0
 smart_borders on
 smart_gaps on
