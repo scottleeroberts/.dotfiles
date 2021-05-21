@@ -13,7 +13,7 @@ Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'digitaltoad/vim-pug'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'owozsh/amora'
 Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/tig.vim'
@@ -81,8 +81,7 @@ set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
 "theme
-colorscheme tokyonight
-let g:tokyonight_transparent_background=1
+colorscheme amora
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
@@ -231,8 +230,6 @@ highlight Normal guibg=none
 highlight NonText guibg=none
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
-highlight ColorColumn ctermbg=235
-highlight CursorColumn ctermbg=235
 highlight LineNr ctermbg=none
 highlight SignColumn ctermbg=none
 highlight GitGutterAdd ctermbg=none
@@ -255,12 +252,8 @@ autocmd FileType vue setlocal commentstring=//\ %s
 set suffixesadd=.vue
 set path=.,app/javascript/**
 
-let g:vue_pre_processors = 'detect_on_enter'
-
 let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
-
-let g:Illuminate_delay = 250
 
 let g:vue_pre_processors = 'detect_on_enter'
 
