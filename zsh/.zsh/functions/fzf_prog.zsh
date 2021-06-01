@@ -1,5 +1,5 @@
 fzf_prog(){
-  if [ "$TMUX" = "" ]; then
+  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
     echo "fzf"
   else
     echo "fzf-tmux"

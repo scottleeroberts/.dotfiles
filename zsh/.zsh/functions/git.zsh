@@ -23,7 +23,7 @@ dev() {
 
 
 a() {
-  if [ "$TMUX" = "" ]; then
+  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
     git add $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
     git add $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
@@ -32,7 +32,7 @@ a() {
 
 
 ap() {
-  if [ "$TMUX" = "" ]; then
+  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
     git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
     git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
@@ -43,7 +43,7 @@ co() {
   if [[ $# > 0 ]]; then
     git co $@
   else
-    if [ "$TMUX" = "" ]; then
+    if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
       git co $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
     else
       git co $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
@@ -70,7 +70,7 @@ br() {
     set_base_branch
 
     branches=$(git branch)
-    if [ "$TMUX" = "" ]; then
+    if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
       target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $BASE_BRANCH..{} | head')
     else
       target=$(echo $branches | awk '{$1=$1};1' | fzf-tmux --preview 'git short-log $BASE_BRANCH..{} | head')
@@ -84,7 +84,7 @@ br() {
 
 cfu() {
   set_base_branch
-  if [ "$TMUX" = "" ]; then
+  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
     target=$(git log --pretty=oneline $BASE_BRANCH.. | fzf --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
   else
     target=$(git log --pretty=oneline $BASE_BRANCH.. | fzf-tmux --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
