@@ -1,6 +1,5 @@
 {
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "vue"],
   "javascript.format.enabled": false,
   "solargraph.diagnostics": true,
   "solargraph.autoformat": true,
