@@ -6,3 +6,8 @@ metadocs/
 weechat/.weechat/*.log
 weechat/.weechat/logs
 weechat/.weechat/xfer
+
+node_modules/
+public/packs/
+public/sprockets/
+bundle/
