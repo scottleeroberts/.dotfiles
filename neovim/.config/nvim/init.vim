@@ -39,6 +39,7 @@ call plug#end()
 set termguicolors
 set backspace=indent,eol,start
 set backupdir=~/.config/nvim/tmp
+set backupcopy=yes
 set clipboard=unnamedplus
 set colorcolumn=80
 set directory=~/.config/nvim/tmp
