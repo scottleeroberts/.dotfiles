@@ -82,12 +82,22 @@ set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
 "theme
+" let g:mode = 'mirtilo'
+let g:mode = 'focus'
 colorscheme amora
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
-hi SignColumn guibg=NONE ctermbg=NONE
+
+"allow transparency of backgrounds
+highlight Visual term=reverse cterm=reverse guibg=Grey40
+highlight Normal guibg=NONE ctermbg=NONE
+highlight LineNr guibg=NONE ctermbg=NONE
+highlight SignColumn guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
-autocmd VimEnter * hi Normal ctermbg=none
+highlight NonText guibg=none
+highlight NonText ctermbg=none
+highlight GitGutterAdd ctermbg=none
+highlight GitGutterChange ctermbg=none
+highlight GitGutterDelete ctermbg=none
+highlight GitGutterChangeDelete ctermbg=none
 
 "quickscope
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -221,18 +231,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "abbreviations
 iabbr pry ::Kernel.binding.pry
-
-"allow transparency of backgrounds
-highlight Normal guibg=none
-highlight NonText guibg=none
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight LineNr ctermbg=none
-highlight SignColumn ctermbg=none
-highlight GitGutterAdd ctermbg=none
-highlight GitGutterChange ctermbg=none
-highlight GitGutterDelete ctermbg=none
-highlight GitGutterChangeDelete ctermbg=none
 
 "auto-pairs configuration
 let g:AutoPairsMultilineClose=0
