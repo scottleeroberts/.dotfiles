@@ -275,4 +275,4 @@ let g:coc_global_extensions = [
       \]
 " }}}
 
-
+au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=250, on_visual=true}
