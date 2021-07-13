@@ -13,7 +13,7 @@ Plug 'benmills/vimux'
 Plug 'chrisbra/Recover.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'digitaltoad/vim-pug'
-Plug 'owozsh/amora'
+Plug 'folke/tokyonight.nvim'
 Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'kthibodeaux/tig.vim'
@@ -33,6 +33,8 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'vim-ruby/vim-ruby'
 Plug 'voldikss/vim-floaterm'
+Plug 'nvim-treesitter/nvim-treesitter'
+
 call plug#end()
 
 " Don't show the startup message
@@ -82,24 +84,26 @@ set gdefault " Assume /g flag on :%s to replace all matches on line
 set incsearch " Search as typing
 
 "theme
-" let g:mode = 'mirtilo'
-let g:mode = 'focus'
-colorscheme amora
+let g:tokyonight_transparent = 1
+let g:tokyonight_italic_variables = 1
+let g:tokyonight_italic_functions = 1
+colorscheme tokyonight
 
 "allow transparency of backgrounds
-highlight Visual term=reverse cterm=reverse guibg=Grey40
-highlight Normal guibg=NONE ctermbg=NONE
-highlight LineNr guibg=NONE ctermbg=NONE
-highlight SignColumn guibg=NONE ctermbg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
-highlight NonText guibg=none
-highlight NonText ctermbg=none
-highlight GitGutterAdd ctermbg=none
-highlight GitGutterChange ctermbg=none
-highlight GitGutterDelete ctermbg=none
-highlight GitGutterChangeDelete ctermbg=none
+" highlight Visual term=reverse cterm=reverse guibg=Grey40
+" highlight Normal guibg=NONE ctermbg=NONE
+" highlight LineNr guibg=NONE ctermbg=NONE
+" highlight SignColumn guibg=NONE ctermbg=NONE
+" highlight EndOfBuffer guibg=NONE ctermbg=NONE
+" highlight VertSplit guibg=NONE ctermbg=NONE
+" highlight NonText guibg=none
+" highlight NonText ctermbg=none
+" highlight GitGutterAdd ctermbg=none
+" highlight GitGutterChange ctermbg=none
+" highlight GitGutterDelete ctermbg=none
+" highlight GitGutterChangeDelete ctermbg=none
 
-"quickscope
+""quickscope
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
