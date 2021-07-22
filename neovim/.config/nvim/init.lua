@@ -1,3 +1,16 @@
+-------------
+-- Aliases --
+-------------
+
+local cmd = vim.cmd
+local fn = vim.fn
+local g = vim.g
+local map = vim.api.nvim_set_keymap
+local o = vim.opt
+local api = vim.api
+
+api.nvim_exec([[
+
 au FileType * setlocal ai sw=2 sts=2 et
 let mapleader = "\<Space>"
 filetype plugin indent on
@@ -192,11 +205,7 @@ nmap <leader>vz :GFiles?<CR>
 set rtp+=~/.fzf
 
 command! FZF FloatermNew fzf
-command! -bang -nargs=* Find
-    \ call fzf#vim#grep(
-    \'rg --column  --no-heading --smart-case  --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview('right:60%')
-      \ )
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column  --no-heading --smart-case  --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1,  fzf#vim#with_preview('right:60%')
 
 " Highlight current column in active pane only
 augroup CursorColumn
@@ -211,17 +220,7 @@ let g:ruby_indent_block_style = 'do'
 let NERDTreeMinimalUI = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-      \ "Modified"  : "✹",
-      \ "Staged"    : "+",
-      \ "Untracked" : "o",
-      \ "Renamed"   : "➜",
-      \ "Unmerged"  : "=",
-      \ "Deleted"   : "x",
-      \ "Dirty"     : "X",
-      \ "Clean"     : "✔︎",
-      \ "Unknown"   : "?"
-      \ }
+let g:NERDTreeGitStatusIndicatorMapCustom = { "Modified"  : "✹", "Staged"    : "+", "Untracked" : "o", "Renamed"   : "➜", "Unmerged"  : "=", "Deleted"   : "x", "Dirty"     : "X", "Clean"     : "✔︎", "Unknown"   : "?" }
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
@@ -262,17 +261,7 @@ nmap <leader>lc <Plug>UseColemakNavigation
 let g:coc_snippet_prev = '<c-p>'
 let g:coc_snippet_next = '<c-n>'
 
-let g:coc_global_extensions = [
-      \'coc-css',
-      \'coc-eslint',
-      \'coc-html',
-      \'coc-json',
-      \'coc-snippets',
-      \'coc-solargraph',
-      \'coc-tsserver',
-      \'coc-vetur',
-      \'coc-yaml',
-      \]
-" }}}
+let g:coc_global_extensions = [ 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-snippets', 'coc-solargraph', 'coc-tsserver', 'coc-vetur', 'coc-yaml' ]
 
-au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=250, on_visual=true}
+au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=251, on_visual=true}
+]], false)
