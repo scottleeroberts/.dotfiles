@@ -94,7 +94,6 @@ o.updatetime = 300
 o.visualbell = true
 o.wildmenu = true
 
-
 -------------
 -- theme --
 -------------
@@ -103,22 +102,74 @@ vim.g.tokyonight_italic_variables = 1
 vim.g.tokyonight_italic_functions = 1
 cmd('colorscheme tokyonight')
 
+-------------
+-- Mappings --
+-------------
+local options = { noremap = true }
+local silent_options = { noremap = true, silent = true }
+
+map('i', 'jj', '<Esc>', options)
+map('n', '<CR>', ':noh<CR><CR>', options)
+map('n', 'S', 'i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$', options) -- split line
+map('n', '<leader>d', ':bd<CR>', options)
+map('n', '<leader>q', ':q<CR>', options)
+map('n', '<leader>w', ':update<CR>', options)
+map('n', '<leader>g', '<C-]>', options)
+map('n', '<leader>b', ':Buffer<CR>', options)
+map('n', '<leader>.', ":call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>", options)
+map('n', '<leader>ff', ':Find<space>', options)
+map('n', '<leader>fs', ':Find<space><c-R><c-W><CR>', options)
+map('n', '<leader>fv', ':vs<CR>:Find<space>', options)
+map('n', '<leader>mi', ':edit db/migrate<CR>G', options)
+map('n', '<leader>o', ':vs<CR>', options)
+map('n', '<leader>i', ':sp<CR>', options)
+map('n', '<leader>z', 'zR', options)
+map('n', 'n', 'nzz', options)
+map('n', 'N', 'Nzz', options)
+map('n', '<leader>f', ':tab new<CR>', options)
+map('n', '<leader><CR>', 'gt', options)
+map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
+map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
+map('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
+
+--tmux
+map('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
+map('n', '<c-j>', ':TmuxNavigateDown<cr>', silent_options)
+map('n', '<c-k>', ':TmuxNavigateUp<cr>', silent_options)
+map('n', '<c-l>', ':TmuxNavigateRight<cr>', silent_options)
+
+--floaterm
+map('n', '<leader>tt', ':FloatermToggle<CR>', options)
+map('t', '<leader>tt', "<c-\\><C-n>:FloatermToggle<CR>", options)
+
+--vim-surround
+map('n', 'sw', 'ysiw', options)
+map('n', 'Y', 'y$', options)
+
+-- Resizing splits
+map('n', '<Up>', ':resize -2<CR>', silent_options)
+map('n', '<Down>', ':resize +2<CR>', silent_options)
+map('n', '<Left>', ':vertical resize +2<CR>', silent_options)
+map('n', '<Right>', ':vertical resize -2<CR>', silent_options)
+
+--nerdtree
+map('n', '<C-n>', ':NERDTreeFind<CR>', options)
+
+--tig and git mappings
+map('n', '<leader>vc', '<Plug>TigFileHistory', options)
+map('n', '<leader>vv', '<Plug>TigBlame', options)
+map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', options)
+map('n', '<leader>vx', ':Commits<CR>', options)
+map('n', '<leader>vz', ':GFiles?<CR>', options)
+
+--navigation qwerty vs colemak
+map('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
+map('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
+
+--argwrap
+map('n', '<leader>a', ':ArgWrap<CR>', silent_options)
+
 exec([[
-
-"allow transparency of backgrounds
-" highlight Visual term=reverse cterm=reverse guibg=Grey40
-" highlight Normal guibg=NONE ctermbg=NONE
-" highlight LineNr guibg=NONE ctermbg=NONE
-" highlight SignColumn guibg=NONE ctermbg=NONE
-" highlight EndOfBuffer guibg=NONE ctermbg=NONE
-" highlight VertSplit guibg=NONE ctermbg=NONE
-" highlight NonText guibg=none
-" highlight NonText ctermbg=none
-" highlight GitGutterAdd ctermbg=none
-" highlight GitGutterChange ctermbg=none
-" highlight GitGutterDelete ctermbg=none
-" highlight GitGutterChangeDelete ctermbg=none
-
 ""quickscope
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
@@ -133,77 +184,9 @@ set statusline+=%=
 set statusline+=\ %y
 set statusline+=\ %l:%c
 
-" Key Mappings
-inoremap jj <Esc>
-
-noremap <c-z> <Nop>
-nnoremap <CR> :noh<CR><CR>
-nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$ " split line
-nnoremap <c-p> A <esc>p
-nnoremap <leader>d :bd<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>w :update<CR>
-nnoremap <leader>g <C-]>
-nnoremap <leader>b :Buffer<CR>
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
-nnoremap <leader>. :call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>
-nnoremap <leader>ff :Find<space>
-nnoremap <leader>fs :Find<space><c-R><c-W><CR>
-nnoremap <leader>fv :vs<CR>:Find<space>
-nnoremap <leader>mi :edit db/migrate<CR>G
-nnoremap <leader>o :vs<CR>
-nnoremap <leader>i :sp<CR>
-nnoremap <leader>z zR
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap <leader>( :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
-nnoremap <leader>) :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
-
-nmap <leader>h <Plug>GitGoBack
-
-nnoremap <leader>f :tab new<CR>
-nnoremap <leader><CR> gt
-noremap  <leader>tt  :FloatermToggle<CR>
-tnoremap <leader>tt  <C-\><C-n>:FloatermToggle<CR>
-
 
 let g:floaterm_position = 'center'
 
-"paste on line below the cursor
-map ,p :pu<CR>
-
-"make vim-surround do words more easily
-map sw ysiw
-
-map Y y$
-
-" Resizing splits
-nnoremap <silent> <Up> :resize -2<CR>
-nnoremap <silent> <Down> :resize +2<CR>
-nnoremap <silent> <Left> :vertical resize +2<CR>
-nnoremap <silent> <Right> :vertical resize -2<CR>
-
-" Close the buffer and reuse the window for an existing buffer
-nnoremap <leader>/ :Files<CR>
-
-"format entire file
-nnoremap <leader><tab> mtgg=G`t
-
-map <C-n> :NERDTreeFind<CR>
-
-" source $MYVIMRC reloads the saved $MYVIMRC
-nnoremap <Leader>s :source $MYVIMRC<CR>
-
-"tig and git mappings
-nmap <leader>vc <Plug>TigFileHistory
-nmap <leader>vv <Plug>TigBlame
-nmap <leader>vb <Plug>TigLatestCommitForLine
-nmap <leader>vx :Commits<CR>
-nmap <leader>vz :GFiles?<CR>
 
 set rtp+=~/.fzf
 
@@ -243,7 +226,6 @@ let g:AutoPairsMultilineClose=0
 
 let g:argwrap_padded_braces = '{'
 let g:argwrap_tail_comma = 1
-nnoremap <silent> <leader>a :ArgWrap<CR>
 
 "New line in commented section is not commented
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -257,9 +239,6 @@ let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
 
 let g:vue_pre_processors = 'detect_on_enter'
-
-nmap <leader>lq <Plug>UseQwertyNavigation
-nmap <leader>lc <Plug>UseColemakNavigation
 
 let g:coc_snippet_prev = '<c-p>'
 let g:coc_snippet_next = '<c-n>'
