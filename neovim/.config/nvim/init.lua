@@ -9,6 +9,9 @@ local map = vim.api.nvim_set_keymap
 local o = vim.opt
 local ow = vim.ow
 
+local home = vim.env.HOME
+local config = home .. '/.config/nvim'
+
 -------------
 -- Plugins --
 -------------
@@ -58,10 +61,10 @@ cmd('syntax on')
 -------------
 o.backspace = 'indent,eol,start'
 o.backupcopy = 'yes'
-o.backupdir = '~/.config/nvim/tmp'
+o.backupdir = config .. '/tmp//'
+o.directory = config .. '/tmp//'
 o.clipboard = 'unnamedplus'
 o.colorcolumn = '80'
-o.directory = '~/.config/nvim/tmp'
 o.encoding = 'UTF-8'
 o.fileencoding = 'UTF-8'
 o.gdefault = true
@@ -89,7 +92,7 @@ o.termguicolors = true
 o.timeout = true
 o.timeoutlen = 1000
 o.ttimeoutlen = 100
-o.undodir = '~/.config/nvim/undodir'
+o.undodir = config .. '/undodir//'
 o.undofile = true
 o.undolevels = 1000
 o.undoreload = 10000
