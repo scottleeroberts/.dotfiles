@@ -99,7 +99,7 @@ o.undoreload = 10000
 o.updatetime = 300
 o.visualbell = true
 o.wildmenu = true
-
+o.wrap = false
 -------------
 -- theme --
 -------------
