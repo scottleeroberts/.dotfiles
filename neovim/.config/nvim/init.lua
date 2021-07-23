@@ -2,99 +2,103 @@
 -- Aliases --
 -------------
 
+local exec = vim.api.nvim_exec
 local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 local map = vim.api.nvim_set_keymap
 local o = vim.opt
-local api = vim.api
+local ow = vim.ow
 
-api.nvim_exec([[
+cmd('au FileType * setlocal ai sw=2 sts=2 et')
+cmd('let mapleader = " "')
+cmd('filetype plugin indent on')
+cmd('syntax on')
 
-au FileType * setlocal ai sw=2 sts=2 et
-let mapleader = "\<Space>"
-filetype plugin indent on
-syntax on
+-------------
+-- Plugins --
+-------------
 
-call plug#begin('~/.config/nvim/plugged')
-Plug 'FooSoft/vim-argwrap'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'alvan/vim-closetag'
-Plug 'ap/vim-css-color'
-Plug 'benmills/vimux'
-Plug 'chrisbra/Recover.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'digitaltoad/vim-pug'
-Plug 'folke/tokyonight.nvim'
-Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }
-Plug 'kchmck/vim-coffee-script'
-Plug 'kthibodeaux/tig.vim'
-Plug 'lisinge/vim-slim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript'
-Plug 'posva/vim-vue'
-Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree'
-Plug 'slm-lang/vim-slm'
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'unblevable/quick-scope'
-Plug 'vim-ruby/vim-ruby'
-Plug 'voldikss/vim-floaterm'
-Plug 'nvim-treesitter/nvim-treesitter'
+cmd("call plug#begin('~/.config/nvim/plugged')")
+cmd("Plug 'FooSoft/vim-argwrap'")
+cmd("Plug 'Xuyuanp/nerdtree-git-plugin'")
+cmd("Plug 'airblade/vim-gitgutter'")
+cmd("Plug 'alvan/vim-closetag'")
+cmd("Plug 'ap/vim-css-color'")
+cmd("Plug 'benmills/vimux'")
+cmd("Plug 'chrisbra/Recover.vim'")
+cmd("Plug 'christoomey/vim-tmux-navigator'")
+cmd("Plug 'digitaltoad/vim-pug'")
+cmd("Plug 'folke/tokyonight.nvim'")
+cmd("Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }")
+cmd("Plug 'kchmck/vim-coffee-script'")
+cmd("Plug 'kthibodeaux/tig.vim'")
+cmd("Plug 'lisinge/vim-slim'")
+cmd("Plug 'neoclide/coc.nvim', {'branch': 'release'}")
+cmd("Plug 'nvim-treesitter/nvim-treesitter'")
+cmd("Plug 'pangloss/vim-javascript'")
+cmd("Plug 'posva/vim-vue'")
+cmd("Plug 'ryanoasis/vim-devicons'")
+cmd("Plug 'scrooloose/nerdtree'")
+cmd("Plug 'slm-lang/vim-slm'")
+cmd("Plug 'thoughtbot/vim-rspec'")
+cmd("Plug 'tpope/vim-commentary'")
+cmd("Plug 'tpope/vim-endwise'")
+cmd("Plug 'tpope/vim-rails'")
+cmd("Plug 'tpope/vim-repeat'")
+cmd("Plug 'tpope/vim-surround'")
+cmd("Plug 'unblevable/quick-scope'")
+cmd("Plug 'vim-ruby/vim-ruby'")
+cmd("Plug 'voldikss/vim-floaterm'")
+cmd("call plug#end()")
 
-call plug#end()
+-------------
+-- Settings --
+-------------
+
+o.backspace = 'indent,eol,start'
+o.backupcopy = 'yes'
+o.backupdir = '~/.config/nvim/tmp'
+o.clipboard = 'unnamedplus'
+o.colorcolumn = '80'
+o.directory = '~/.config/nvim/tmp'
+o.encoding = 'UTF-8'
+o.fileencoding = 'UTF-8'
+o.gdefault = true
+o.gdefault = true
+o.hidden = true
+o.hlsearch = true
+o.ignorecase = true
+o.incsearch = true
+o.laststatus = 2
+o.ls = 2
+o.mouse = 'a'
+o.number = true
+o.relativenumber = true
+o.ruler = true
+o.scrolloff = 1
+o.shortmess = 'I'
+o.shortmess = 'atc'
+o.showcmd = true
+o.showmatch = true
+o.signcolumn = 'yes'
+o.smartcase = true
+o.splitbelow = true
+o.splitright = true
+o.termguicolors = true
+o.timeout = true
+o.timeoutlen = 1000
+o.ttimeoutlen = 100
+o.undodir = '~/.config/nvim/undodir'
+o.undofile = true
+o.undolevels = 1000
+o.undoreload = 10000
+o.updatetime = 300
+o.visualbell = true
+o.wildmenu = true
+exec([[
 
 " Don't show the startup message
-set termguicolors
-set backspace=indent,eol,start
-set backupdir=~/.config/nvim/tmp
-set backupcopy=yes
-set clipboard=unnamedplus
-set colorcolumn=80
-set directory=~/.config/nvim/tmp
-set encoding=UTF-8
-set fileencoding=UTF-8
-set gdefault
-set hidden
-set laststatus=2 " Always show last status
-set ls=2
-set mouse=a
-set nowrap
-set number
-set relativenumber
-set ruler " Show cursor position
-set scrolloff=1 " Always show at least one line above and below cursor
-set shortmess=I
-set shortmess=atc
-set showcmd " Show partially typed commands
-set showmatch " Matches () etc
-set signcolumn=yes
-set splitbelow
-set splitright
-set termencoding=utf-8
-set timeout
-set timeoutlen=1000
-set ttimeoutlen=100
-set undodir=~/.config/nvim/undodir
-set undofile
-set undolevels=1000         " How many undos
-set undoreload=10000        " number of lines to save for undo
-set updatetime=300
-set visualbell " Flash the cursor on error instead of beeping
-set wildmenu " Show menu options for completion
-
-" Searching
-set hlsearch
-set ignorecase
-set smartcase " Only search upcase if provided with capital letter
-set gdefault " Assume /g flag on :%s to replace all matches on line
-set incsearch " Search as typing
 
 "theme
 let g:tokyonight_transparent = 1
