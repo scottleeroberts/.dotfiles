@@ -181,17 +181,20 @@ map('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 cmd("highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline")
 cmd("highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline")
 
-exec([[
+-------------
+-- Statusline --
+-------------
+vim.api.nvim_set_option('statusline', ''
+  ..  '%F'
+  .. '%m'
+  .. '%{coc#status()}'
+  .. '%r'
+  .. '%='
+  .. '%y'
+  .. '%l:%c'
+)
 
-" status line configuration
-set statusline=
-set statusline+=\ %F
-set statusline+=\ %m
-set statusline+=\ %{coc#status()}
-set statusline+=%r
-set statusline+=%=
-set statusline+=\ %y
-set statusline+=\ %l:%c
+exec([[
 
 let g:floaterm_position = 'center'
 
@@ -248,7 +251,6 @@ let g:vue_pre_processors = 'detect_on_enter'
 
 let g:coc_snippet_prev = '<c-p>'
 let g:coc_snippet_next = '<c-n>'
-
 let g:coc_global_extensions = [ 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-snippets', 'coc-solargraph', 'coc-tsserver', 'coc-vetur', 'coc-yaml' ]
 
 au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=251, on_visual=true}
