@@ -46,13 +46,16 @@ cmd("Plug 'voldikss/vim-floaterm'")
 cmd("call plug#end()")
 
 -------------
--- Settings --
+-- Setup --
 -------------
 cmd('au FileType * setlocal ai sw=2 sts=2 et')
 cmd('let mapleader = " "')
 cmd('filetype plugin indent on')
 cmd('syntax on')
 
+-------------
+-- Settings --
+-------------
 o.backspace = 'indent,eol,start'
 o.backupcopy = 'yes'
 o.backupdir = '~/.config/nvim/tmp'
@@ -169,10 +172,13 @@ map('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
 --argwrap
 map('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 
+-------------
+-- Quickscope --
+-------------
+cmd("highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline")
+cmd("highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline")
+
 exec([[
-""quickscope
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 " status line configuration
 set statusline=
@@ -184,9 +190,7 @@ set statusline+=%=
 set statusline+=\ %y
 set statusline+=\ %l:%c
 
-
 let g:floaterm_position = 'center'
-
 
 set rtp+=~/.fzf
 
