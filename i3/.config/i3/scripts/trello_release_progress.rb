@@ -1,4 +1,4 @@
-#!/usr/bin/env /home/sroberts/.rubies/ruby-2.6.3/bin/ruby
+#!/usr/bin/env /home/sroberts/.rubies/ruby-2.7.4/bin/ruby
 require 'json'
 require 'yaml'
 

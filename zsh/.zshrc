@@ -45,7 +45,7 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 source /usr/share/chruby/chruby.sh
-chruby ruby-2.6.3
+chruby ruby-2.7.4
 
 opentmux
 
