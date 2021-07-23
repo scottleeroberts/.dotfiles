@@ -1,7 +1,6 @@
 -------------
 -- Aliases --
 -------------
-
 local exec = vim.api.nvim_exec
 local cmd = vim.cmd
 local fn = vim.fn
@@ -10,15 +9,9 @@ local map = vim.api.nvim_set_keymap
 local o = vim.opt
 local ow = vim.ow
 
-cmd('au FileType * setlocal ai sw=2 sts=2 et')
-cmd('let mapleader = " "')
-cmd('filetype plugin indent on')
-cmd('syntax on')
-
 -------------
 -- Plugins --
 -------------
-
 cmd("call plug#begin('~/.config/nvim/plugged')")
 cmd("Plug 'FooSoft/vim-argwrap'")
 cmd("Plug 'Xuyuanp/nerdtree-git-plugin'")
@@ -55,6 +48,10 @@ cmd("call plug#end()")
 -------------
 -- Settings --
 -------------
+cmd('au FileType * setlocal ai sw=2 sts=2 et')
+cmd('let mapleader = " "')
+cmd('filetype plugin indent on')
+cmd('syntax on')
 
 o.backspace = 'indent,eol,start'
 o.backupcopy = 'yes'
@@ -96,15 +93,17 @@ o.undoreload = 10000
 o.updatetime = 300
 o.visualbell = true
 o.wildmenu = true
+
+
+-------------
+-- theme --
+-------------
+vim.g.tokyonight_transparent = 1
+vim.g.tokyonight_italic_variables = 1
+vim.g.tokyonight_italic_functions = 1
+cmd('colorscheme tokyonight')
+
 exec([[
-
-" Don't show the startup message
-
-"theme
-let g:tokyonight_transparent = 1
-let g:tokyonight_italic_variables = 1
-let g:tokyonight_italic_functions = 1
-colorscheme tokyonight
 
 "allow transparency of backgrounds
 " highlight Visual term=reverse cterm=reverse guibg=Grey40
