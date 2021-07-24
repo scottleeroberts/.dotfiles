@@ -215,8 +215,15 @@ g.NERDTreeGitStatusIndicatorMapCustom = {
   Clean='✔︎',
   Unknown='?'
 }
-exec([[autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif]], false)
-cmd("highlight! link NERDTreeFlags NERDTreeDir")
+exec([[
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  highlight! link NERDTreeFlags NERDTreeDir
+]], false)
+
+-- Floatterm
+g.floaterm_position = 'center'
+cmd("command! FZF FloatermNew fzf")
+cmd("command! -bang -nargs=* Find call fzf#vim#grep('rg --column  --no-heading --smart-case  --hidden --follow -g '!.git/*' --color 'always' '.shellescape(<q-args>), 1,  fzf#vim#with_preview('right:60%'))")
 
 -- Highlight current column in active pane only
 vim.api.nvim_exec([[
@@ -230,16 +237,11 @@ vim.api.nvim_exec([[
 
 exec([[
 
-let g:floaterm_position = 'center'
 
-set rtp+=~/.fzf
 
-command! FZF FloatermNew fzf
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column  --no-heading --smart-case  --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1,  fzf#vim#with_preview('right:60%'))
 
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
-
 
 "Open to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -260,11 +262,11 @@ autocmd FileType vue setlocal commentstring=//\ %s
 " Vue `gf` for components
 set suffixesadd=.vue
 set path=.,app/javascript/**
+let g:vue_pre_processors = 'detect_on_enter'
 
 let g:closetag_filetypes = 'html,vue,xhtml'
 let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
 
-let g:vue_pre_processors = 'detect_on_enter'
 
 let g:coc_snippet_prev = '<c-p>'
 let g:coc_snippet_next = '<c-n>'
