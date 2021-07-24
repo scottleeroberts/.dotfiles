@@ -100,6 +100,7 @@ o.updatetime = 300
 o.visualbell = true
 o.wildmenu = true
 o.wrap = false
+
 -------------
 -- theme --
 -------------
@@ -175,15 +176,15 @@ map('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
 --argwrap
 map('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 
--------------
--- Quickscope --
--------------
+----------------
+-- Plugins --
+----------------
+
+-- Quickscope
 cmd("highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline")
 cmd("highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline")
 
--------------
--- Statusline --
--------------
+-- Statusline
 vim.api.nvim_set_option('statusline', ''
   ..  '%F'
   .. '%m'
@@ -195,9 +196,7 @@ vim.api.nvim_set_option('statusline', ''
 )
 
 
--------------
--- NerdTree --
--------------
+-- NerdTree
 g.NERDTreeMinimalUI = 1
 g.NERDTreeShowHidden=1
 g.NERDTreeDirArrowExpandable =  ''
@@ -234,43 +233,41 @@ vim.api.nvim_exec([[
   augroup END
 ]], false)
 
+-- ruby
+g.ruby_indent_block_style = 'do' -- https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 
+-- auto-pairs configuration
+g.AutoPairsMultilineClose=0
+
+--argwrap
+g.argwrap_padded_braces = '{'
+g.argwrap_tail_comma = 1
+
+-- config code commentting
+cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
+cmd("autocmd FileType vue setlocal commentstring=\\\\ %s")
+
+-- Vue `gf` for components
+o.suffixesadd = '.vue'
+o.path = '.,app/javascript/**'
+g.vue_pre_processors = 'detect_on_enter'
+
+--closetag
+g.closetag_filetypes = 'html,vue,xhtml'
+g.closetag_xhtml_filetypes = 'html,vue,xhtml'
+
+--coc
+g.coc_snippet_prev = '<c-p>'
+g.coc_snippet_next = '<c-n>'
+g.coc_global_extensions = { 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-snippets', 'coc-solargraph', 'coc-tsserver', 'coc-vetur', 'coc-yaml' }
+
+--iabbr
+vim.cmd('iabbr pry ::Kernel.binding.pry')
+
+-- Open to last position in file
+exec([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif  ]], false)
+
+--highlight on yank
 exec([[
-
-
-
-
-" https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
-let g:ruby_indent_block_style = 'do'
-
-"Open to last position in file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-"abbreviations
-iabbr pry ::Kernel.binding.pry
-
-"auto-pairs configuration
-let g:AutoPairsMultilineClose=0
-
-let g:argwrap_padded_braces = '{'
-let g:argwrap_tail_comma = 1
-
-"New line in commented section is not commented
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType vue setlocal commentstring=//\ %s
-
-" Vue `gf` for components
-set suffixesadd=.vue
-set path=.,app/javascript/**
-let g:vue_pre_processors = 'detect_on_enter'
-
-let g:closetag_filetypes = 'html,vue,xhtml'
-let g:closetag_xhtml_filetypes = 'html,vue,xhtml'
-
-
-let g:coc_snippet_prev = '<c-p>'
-let g:coc_snippet_next = '<c-n>'
-let g:coc_global_extensions = [ 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-snippets', 'coc-solargraph', 'coc-tsserver', 'coc-vetur', 'coc-yaml' ]
-
-au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=251, on_visual=true}
+  au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=251, on_visual=true}
 ]], false)
