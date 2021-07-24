@@ -194,6 +194,40 @@ vim.api.nvim_set_option('statusline', ''
   .. '%l:%c'
 )
 
+
+-------------
+-- NerdTree --
+-------------
+g.NERDTreeMinimalUI = 1
+g.NERDTreeShowHidden=1
+g.NERDTreeDirArrowExpandable =  ''
+g.NERDTreeDirArrowCollapsible = ''
+g.WebDevIconsNerdTreeBeforeGlyphPadding = ""
+g.WebDevIconsUnicodeDecorateFolderNodes = true
+g.NERDTreeGitStatusIndicatorMapCustom = {
+  Modified='✹',
+  Staged='+',
+  Untracked='o',
+  Renamed='➜',
+  Unmerged='=',
+  Deleted='x',
+  Dirty='X',
+  Clean='✔︎',
+  Unknown='?'
+}
+exec([[autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif]], false)
+cmd("highlight! link NERDTreeFlags NERDTreeDir")
+
+-- Highlight current column in active pane only
+vim.api.nvim_exec([[
+  augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+  augroup END
+]], false)
+
+
 exec([[
 
 let g:floaterm_position = 'center'
@@ -202,27 +236,10 @@ set rtp+=~/.fzf
 
 command! FZF FloatermNew fzf
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column  --no-heading --smart-case  --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1,  fzf#vim#with_preview('right:60%'))
-" Highlight current column in active pane only
-augroup CursorColumn
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
-  au WinLeave * setlocal nocursorcolumn
-augroup END
 
 " https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 let g:ruby_indent_block_style = 'do'
 
-let NERDTreeMinimalUI = 1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeGitStatusIndicatorMapCustom = { "Modified"  : "✹", "Staged"    : "+", "Untracked" : "o", "Renamed"   : "➜", "Unmerged"  : "=", "Deleted"   : "x", "Dirty"     : "X", "Clean"     : "✔︎", "Unknown"   : "?" }
-let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable = "\u00a0"
-let g:NERDTreeDirArrowCollapsible = "\u00a0"
-
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
-let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
-highlight! link NERDTreeFlags NERDTreeDir
 
 "Open to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
