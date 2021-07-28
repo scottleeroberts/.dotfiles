@@ -220,9 +220,15 @@ exec([[
 ]], false)
 
 -- Floatterm
-g.floaterm_position = 'center'
-cmd("command! FZF FloatermNew fzf")
-cmd("command! -bang -nargs=* Find call fzf#vim#grep('rg --column  --no-heading --smart-case  --hidden --follow -g '!.git/*' --color 'always' '.shellescape(<q-args>), 1,  fzf#vim#with_preview('right:60%'))")
+vim.api.nvim_exec([[
+  command! FZF FloatermNew fzf
+]], false)
+
+
+-- fzf
+vim.api.nvim_exec([[
+  command! -bang -nargs=* Find call fzf#vim#grep( 'rg --column  --no-heading --smart-case  --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 0, fzf#vim#with_preview('right:60%'))
+]], false)
 
 -- Highlight current column in active pane only
 vim.api.nvim_exec([[
