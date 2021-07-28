@@ -1,4 +1,4 @@
-------------j
+-------------
 -- Aliases --
 -------------
 local exec = vim.api.nvim_exec
@@ -26,6 +26,7 @@ cmd("Plug 'chrisbra/Recover.vim'")
 cmd("Plug 'christoomey/vim-tmux-navigator'")
 cmd("Plug 'digitaltoad/vim-pug'")
 cmd("Plug 'folke/tokyonight.nvim'")
+cmd("Plug 'junegunn/fzf.vim', { 'commit': '0fe8e198a3a501b54dbc4f9587526c097599f95a' }")
 cmd("Plug 'kchmck/vim-coffee-script'")
 cmd("Plug 'kthibodeaux/tig.vim'")
 cmd("Plug 'lisinge/vim-slim'")
@@ -45,10 +46,6 @@ cmd("Plug 'tpope/vim-surround'")
 cmd("Plug 'unblevable/quick-scope'")
 cmd("Plug 'vim-ruby/vim-ruby'")
 cmd("Plug 'voldikss/vim-floaterm'")
-cmd("Plug 'nvim-lua/popup.nvim'")
-cmd("Plug 'nvim-lua/plenary.nvim'")
-cmd("Plug 'nvim-telescope/telescope.nvim'")
-cmd("Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'}")
 cmd("call plug#end()")
 
 -------------
@@ -127,11 +124,9 @@ map('n', '<leader>w', ':update<CR>', options)
 map('n', '<leader>g', '<C-]>', options)
 map('n', '<leader>b', ':Buffer<CR>', options)
 map('n', '<leader>.', ":call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>", options)
-map('n', '<leader>gs', '<cmd>Telescope git_status<cr>', options)
-map('n', '<leader>/', '<cmd>Telescope git_files<cr>', options)
-map('n', '<leader>fs', '<cmd>Telescope grep_string<CR>', options)
--- map('n', '<leader>ff', '<cmd>Telescope live_grep <CR>', {})
-cmd("nnoremap <leader>ff :lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>")
+map('n', '<leader>ff', ':Find<space>', options)
+map('n', '<leader>fs', ':Find<space><c-R><c-W><CR>', options)
+map('n', '<leader>fv', ':vs<CR>:Find<space>', options)
 map('n', '<leader>mi', ':edit db/migrate<CR>G', options)
 map('n', '<leader>o', ':vs<CR>', options)
 map('n', '<leader>i', ':sp<CR>', options)
@@ -141,6 +136,7 @@ map('n', 'N', 'Nzz', options)
 map('n', '<leader>f', ':tab new<CR>', options)
 map('n', '<leader><CR>', 'gt', options)
 map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
+map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
 map('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
 
 --tmux
@@ -167,9 +163,11 @@ map('n', '<Right>', ':vertical resize -2<CR>', silent_options)
 map('n', '<C-n>', ':NERDTreeFind<CR>', options)
 
 --tig and git mappings
-map('n', '<leader>vc', '<Plug>TigFileHistory', {})
-map('n', '<leader>vv', '<Plug>TigBlame', {})
-map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', {})
+map('n', '<leader>vc', '<Plug>TigFileHistory', options)
+map('n', '<leader>vv', '<Plug>TigBlame', options)
+map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', options)
+map('n', '<leader>vx', ':Commits<CR>', options)
+map('n', '<leader>vz', ':GFiles?<CR>', options)
 
 --navigation qwerty vs colemak
 map('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
@@ -222,6 +220,9 @@ exec([[
 ]], false)
 
 -- Floatterm
+g.floaterm_position = 'center'
+cmd("command! FZF FloatermNew fzf")
+cmd("command! -bang -nargs=* Find call fzf#vim#grep('rg --column  --no-heading --smart-case  --hidden --follow -g '!.git/*' --color 'always' '.shellescape(<q-args>), 1,  fzf#vim#with_preview('right:60%'))")
 
 -- Highlight current column in active pane only
 vim.api.nvim_exec([[
@@ -270,60 +271,3 @@ exec([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "n
 exec([[
   au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=251, on_visual=true}
 ]], false)
-
-
-require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--hidden'
-    },
-    extensions = {
-        fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = false, -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                           -- the default case_mode is "smart_case"
-        }
-    },
-    prompt_prefix = "🔍 ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_config = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
-    file_ignore_patterns = {},
-    file_ignore_patterns = {".git/.*"},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    winblend = 0,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
-    use_less = true,
-    path_display = {},
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-  }
-}
-require('telescope').load_extension('fzf')
