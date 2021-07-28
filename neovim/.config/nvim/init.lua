@@ -1,4 +1,4 @@
--------------
+------------j
 -- Aliases --
 -------------
 local exec = vim.api.nvim_exec
@@ -127,9 +127,11 @@ map('n', '<leader>w', ':update<CR>', options)
 map('n', '<leader>g', '<C-]>', options)
 map('n', '<leader>b', ':Buffer<CR>', options)
 map('n', '<leader>.', ":call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>", options)
-map('n', '<leader>/','<cmd>Telescope git_files find_command=rg,--ignore,--hidden,--files<cr>', options)
-map('n', '<leader>ff','<cmd>Telescope live_grep<CR>', options)
+map('n', '<leader>gs', '<cmd>Telescope git_status<cr>', options)
+map('n', '<leader>/', '<cmd>Telescope git_files<cr>', options)
 map('n', '<leader>fs', '<cmd>Telescope grep_string<CR>', options)
+-- map('n', '<leader>ff', '<cmd>Telescope live_grep <CR>', {})
+cmd("nnoremap <leader>ff :lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>")
 map('n', '<leader>mi', ':edit db/migrate<CR>G', options)
 map('n', '<leader>o', ':vs<CR>', options)
 map('n', '<leader>i', ':sp<CR>', options)
@@ -165,11 +167,9 @@ map('n', '<Right>', ':vertical resize -2<CR>', silent_options)
 map('n', '<C-n>', ':NERDTreeFind<CR>', options)
 
 --tig and git mappings
-map('n', '<leader>vc', '<Plug>TigFileHistory', options)
-map('n', '<leader>vv', '<Plug>TigBlame', options)
-map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', options)
-map('n', '<leader>vx', ':Commits<CR>', options)
-map('n', '<leader>vz', ':GFiles?<CR>', options)
+map('n', '<leader>vc', '<Plug>TigFileHistory', {})
+map('n', '<leader>vv', '<Plug>TigBlame', {})
+map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', {})
 
 --navigation qwerty vs colemak
 map('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
@@ -281,7 +281,8 @@ require('telescope').setup{
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case'
+      '--smart-case',
+      '--hidden'
     },
     extensions = {
         fzf = {
@@ -308,6 +309,7 @@ require('telescope').setup{
       },
     },
     file_ignore_patterns = {},
+    file_ignore_patterns = {".git/.*"},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
