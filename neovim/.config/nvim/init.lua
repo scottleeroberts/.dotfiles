@@ -145,6 +145,8 @@ map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
 map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
 map('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
 
+map('v', 'J', ":m '>+1<CR>gv=gv", options)
+map('v', 'K', ":m '<-1<CR>gv=gv", options)
 
 --tmux
 map('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
