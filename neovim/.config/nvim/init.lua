@@ -144,6 +144,10 @@ map('n', '<leader><CR>', 'gt', options)
 map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
 map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
 map('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
+exec([[
+  nnoremap <expr> k (v:count > 5 ? "m'" . v:count: "") . 'k'
+  nnoremap <expr> j (v:count > 5 ? "m'" . v:count: "") . 'j'
+]], false)
 
 map('v', 'J', ":m '>+1<CR>gv=gv", options)
 map('v', 'K', ":m '<-1<CR>gv=gv", options)
