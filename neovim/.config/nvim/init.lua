@@ -164,9 +164,9 @@ map('n', '<Right>', ':vertical resize -2<CR>', silent_options)
 map('n', '<C-n>', ':NERDTreeFind<CR>', options)
 
 --tig and git mappings
-map('n', '<leader>vc', '<Plug>TigFileHistory', options)
-map('n', '<leader>vv', '<Plug>TigBlame', options)
-map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', options)
+map('n', '<leader>vc', '<Plug>TigFileHistory', {})
+map('n', '<leader>vv', '<Plug>TigBlame', {})
+map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', {})
 map('n', '<leader>vx', ':Commits<CR>', options)
 map('n', '<leader>vz', ':GFiles?<CR>', options)
 
