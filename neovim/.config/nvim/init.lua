@@ -116,6 +116,11 @@ local options = { noremap = true }
 local silent_options = { noremap = true, silent = true }
 
 map('i', 'jj', '<Esc>', options)
+map('i', ',', ',<c-g>u',  options)
+map('i', '.', '.<c-g>u',  options)
+map('i', '!', ',<c-g>u',  options)
+map('i', '?', '?<c-g>u',  options)
+
 map('n', '<CR>', ':noh<CR><CR>', options)
 map('n', 'S', 'i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$', options) -- split line
 map('n', '<leader>d', ':bd<CR>', options)
@@ -139,6 +144,7 @@ map('n', '<leader><CR>', 'gt', options)
 map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
 map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
 map('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
+
 
 --tmux
 map('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
