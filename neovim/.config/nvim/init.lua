@@ -118,7 +118,7 @@ local silent_options = { noremap = true, silent = true }
 map('i', 'jj', '<Esc>', options)
 map('i', ',', ',<c-g>u',  options)
 map('i', '.', '.<c-g>u',  options)
-map('i', '!', ',<c-g>u',  options)
+map('i', '!', '!<c-g>u',  options)
 map('i', '?', '?<c-g>u',  options)
 
 map('n', '<CR>', ':noh<CR><CR>', options)
