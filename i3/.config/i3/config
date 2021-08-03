@@ -55,7 +55,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # take a screenshot of selected region
-bindsym --release $mod+shift+a exec scrot -s -e 'caja'
+bindsym --release $mod+shift+a exec scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 set $workspace1 "1:   Code"
 set $workspace2 "2:   Browser"
