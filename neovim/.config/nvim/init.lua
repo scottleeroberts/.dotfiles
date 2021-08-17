@@ -199,19 +199,21 @@ cmd("highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cter
 
 -- Statusline
 vim.api.nvim_set_option('statusline', ''
-  ..  '%F'
-  .. '%m'
-  .. '%{coc#status()}'
-  .. '%r'
+  .. '%f '
+  .. '%m '
+  .. '%{coc#status()} '
+  .. '%r '
   .. '%='
-  .. '%y'
+  .. '%y '
   .. '%l:%c'
 )
 
 
 -- NerdTree
-g.NERDTreeMinimalUI = 1
+g.NERDTreeStatusline='%{substitute(system("git branch --show-current"), "\n", " ", "g")}'
+g.NERDTreeMinimalUI=1
 g.NERDTreeShowHidden=1
+g.NERDTreeShowHiddenFirst=1
 g.NERDTreeDirArrowExpandable =  ''
 g.NERDTreeDirArrowCollapsible = ''
 g.WebDevIconsNerdTreeBeforeGlyphPadding = ""
