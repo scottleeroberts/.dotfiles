@@ -139,7 +139,7 @@ map('n', '<leader>z', 'zR', options)
 map('n', 'n', 'nzz', options)
 map('n', 'N', 'Nzz', options)
 map('n', 'J', "mzJ'z", options)
-map('n', '<leader>f', ':tab new<CR>', options)
+map('n', '<leader>g', ':tab new<CR>', options)
 map('n', '<leader><CR>', 'gt', options)
 map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
 map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
