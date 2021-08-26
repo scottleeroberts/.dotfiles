@@ -46,6 +46,7 @@ cmd("Plug 'tpope/vim-surround'")
 cmd("Plug 'unblevable/quick-scope'")
 cmd("Plug 'vim-ruby/vim-ruby'")
 cmd("Plug 'voldikss/vim-floaterm'")
+cmd("Plug 'jiangmiao/auto-pairs'")
 cmd("call plug#end()")
 
 -------------
@@ -144,6 +145,11 @@ map('n', '<leader><CR>', 'gt', options)
 map('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
 map('n', '<leader>/', ':Files<CR>', options) -- Close the buffer and reuse the window for an existing buffer
 map('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
+
+map('v', '<C-c>', '"+y', options)
+map('n', '<C-c>', '"+yy', options)
+map('i', '<C-c>', '<ESC>"+yyi', options)
+
 exec([[
   nnoremap <expr> k (v:count > 5 ? "m'" . v:count: "") . 'k'
   nnoremap <expr> j (v:count > 5 ? "m'" . v:count: "") . 'j'
