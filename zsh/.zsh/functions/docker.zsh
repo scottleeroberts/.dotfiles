@@ -1,11 +1,11 @@
 alias d="docker"
 alias c="docker-compose"
-alias drup="docker-compose up"
-alias down="docker-compose down"
-alias rw="docker-compose run web bundle exec rake resque:work QUEUE=*"
-alias drdus="docker-compose down; RESEED=true docker-compose up"
-alias drdu="docker-compose down; docker-compose up"
-alias drnuke="docker container prune -f; docker volume prune -f; docker image prune -f"
+alias cup="docker-compose up"
+alias cdn="docker-compose down"
+alias cq="docker-compose run web bundle exec rake resque:work QUEUE=*"
+alias cdus="docker-compose down; RESEED=true docker-compose up"
+alias cdu="docker-compose down; docker-compose up"
+alias cnuke="docker container prune -f; docker volume prune -f; docker image prune -f"
 
 dr_db() {
   containers=$(docker ps -a --format "{{.ID}} {{.Names}} {{.Image}}" | grep unsafe_postgres)
