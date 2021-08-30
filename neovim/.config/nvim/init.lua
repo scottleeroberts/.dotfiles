@@ -47,6 +47,7 @@ cmd("Plug 'unblevable/quick-scope'")
 cmd("Plug 'vim-ruby/vim-ruby'")
 cmd("Plug 'voldikss/vim-floaterm'")
 cmd("Plug 'jiangmiao/auto-pairs'")
+cmd("Plug 'wellle/targets.vim'")
 cmd("call plug#end()")
 
 -------------
