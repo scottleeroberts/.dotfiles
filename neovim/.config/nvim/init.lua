@@ -106,9 +106,8 @@ o.wrap = false
 -------------
 -- theme --
 -------------
-vim.g.tokyonight_transparent = 1
-vim.g.tokyonight_italic_variables = 1
-vim.g.tokyonight_italic_functions = 1
+g.tokyonight_transparent = 1
+g.tokyonight_style = "night"
 cmd('colorscheme tokyonight')
 
 -------------
