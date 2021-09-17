@@ -189,6 +189,7 @@ map('n', '<leader>vv', '<Plug>TigBlame', {})
 map('n', '<leader>vb', '<Plug>TigLatestCommitForLine', {})
 map('n', '<leader>vx', ':Commits<CR>', options)
 map('n', '<leader>vz', ':GFiles?<CR>', options)
+map('n', '<leader>vh', '<Plug>GitGoBack', {})
 
 --navigation qwerty vs colemak
 map('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
