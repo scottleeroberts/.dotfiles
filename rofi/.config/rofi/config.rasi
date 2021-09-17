@@ -1,0 +1,8 @@
+/* vim:ft=css */
+configuration {
+modi: "run,ssh";
+show-icons: true;
+terminal: "alacritty";
+theme: "purple";
+font: "hack 15";
+}
