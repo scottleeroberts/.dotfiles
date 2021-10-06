@@ -160,7 +160,7 @@ exec([[
 ]], false)
 
 map('v', 'J', ":m '>+1<CR>gv=gv", options)
-map('v', 'K', ":m '<-1<CR>gv=gv", options)
+map('v', 'K', ":m '<-2<CR>gv=gv", options)
 
 --tmux
 map('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
