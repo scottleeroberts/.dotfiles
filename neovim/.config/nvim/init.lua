@@ -270,10 +270,6 @@ g.AutoPairsMultilineClose=0
 g.argwrap_padded_braces = '{'
 g.argwrap_tail_comma = 1
 
--- config code commentting
-cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
-cmd("autocmd FileType vue setlocal commentstring=//\\ %s")
-
 -- Vue `gf` for components
 o.suffixesadd = '.vue'
 o.path = '.,app/javascript/**'
