@@ -305,7 +305,8 @@ require('telescope').setup {
         '--line-number',
         '--hidden',
         '--column',
-        '--smart-case'
+        '--smart-case',
+        '--follow'
       },
       file_sorter      = require('telescope.sorters').get_fzy_sorter,
       prompt_prefix    = ' 🔍 ',
