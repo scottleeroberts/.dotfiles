@@ -220,7 +220,7 @@ bindsym $mod+Control+k [class=Alacritty] focus
 bindsym $mod+Control+d [class=firefox] focus
 bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=Signal] focus
-bindsym $mod+Control+c [class=Brave] focus
+bindsym $mod+Control+c [class=Chromium] focus
 
 #startup
 bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
@@ -239,10 +239,10 @@ exec --no-startup-id while true; do /usr/bin/gcalcli remind; sleep 300; done
 assign [class="Alacritty"] $workspace1
 assign [class="Firefox"] $workspace2
 assign [class="Slack|Signal"] $workspace3
-assign [class="Brave"] $workspace5
+assign [class="Chromium"] $workspace5
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/alacritty'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
-exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/brave'
+exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/chromium'
