@@ -190,13 +190,15 @@ map('n', '<C-n>', ':NERDTreeFind<CR>', options)
 map('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", options)
 map('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({search = vim.fn.input('Grep For > ')})<CR>", options)
 map('n', '<leader>fs', '<cmd>Telescope grep_string<CR>', options)
+
 map('n', '<leader>vc', '<cmd>Telescope git_commits<CR>', {})
 map('n', '<leader>vb', '<cmd>Telescope git_bcommits<CR>', {})
-map('n', '<leader>vz', '<cmd>Telescope git_status<CR>', options)
 map('n', '<leader>vs', '<cmd>Telescope git_stash<CR>', options)
-map('n', '<leader>b', '<cmd>Telescope buffers<CR>', options)
 map('n', '<leader>vv', '<Plug>TigBlame', {})
 map('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sort=path' }})<cr>", options)
+
+map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', options)
+map('n', '<leader>gb', '<cmd>Telescope buffers<CR>', options)
 
 --navigation qwerty vs colemak
 map('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
