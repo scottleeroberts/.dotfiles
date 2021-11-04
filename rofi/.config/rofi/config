@@ -1,14 +1,14 @@
-rofi.color-enabled:    true
-rofi.color-window:     argb:dd343d46, argb:00000000, argb:00000000
-rofi.color-normal:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #bf616a
-rofi.color-active:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #eff1f5
-rofi.color-urgent:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #eff1f5
-rofi.lines:             10
-rofi.fullscreen:        false
-rofi.font:              fantasquesansmono 24
-rofi.bw:                0
-rofi.eh:                1
-rofi.line-margin:       10
-rofi.hide-scrollbar:    true
-rofi.fake-transparency: true
-rofi.theme: gruvbox
+color-enabled:    true
+color-window:     argb:dd343d46, argb:00000000, argb:00000000
+color-normal:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #bf616a
+color-active:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #eff1f5
+color-urgent:      argb:00000000, #eff1f5, argb:00000000, argb:00000000, #eff1f5
+lines:             10
+fullscreen:        false
+font:              fantasquesansmono 24
+bw:                0
+eh:                1
+line-margin:       10
+hide-scrollbar:    true
+fake-transparency: true
+theme: gruvbox

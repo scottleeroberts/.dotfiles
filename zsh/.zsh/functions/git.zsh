@@ -51,6 +51,18 @@ co() {
   fi
 }
 
+rmf() {
+  if [[ $# > 0 ]]; then
+    rm $@
+  else
+    if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
+      rm -if $(git status -s -u | sort | awk '{ print $2 }' | fzf)
+    else
+      rm -if $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux)
+    fi
+  fi
+}
+
 set_base_branch() {
   git rev-parse --verify develop
   if [[ $? == 0 ]]; then

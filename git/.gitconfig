@@ -38,6 +38,8 @@
       autosquash = true
 [diff]
 	compactionHeuristic = 1
+[merge]
+  conflictstyle = diff3
 [user]
 	email = scott.lee.roberts@gmail.com
 	name = Scott Roberts
