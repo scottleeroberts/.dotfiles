@@ -81,7 +81,7 @@ br() {
   if [[ $# == 0 ]]; then
     set_base_branch
 
-    branches=$(git branch -a)
+    branches=$(git branch)
     if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
       target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $BASE_BRANCH..{} | head')
     else
