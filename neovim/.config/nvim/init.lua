@@ -176,7 +176,7 @@ map('n', '<leader>tt', ':FloatermToggle<CR>', options)
 map('t', '<leader>tt', "<c-\\><C-n>:FloatermToggle<CR>", options)
 
 --vim-surround
-map('n', 'sw', 'ysiw', options)
+map('n', 'ys', 'ysiw', options)
 
 -- Resizing splits
 map('n', '<Up>', ':resize -2<CR>', silent_options)
