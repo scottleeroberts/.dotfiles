@@ -36,15 +36,11 @@ pacaur -S --noconfirm \
   glib2 \
   heroku-cli \
   i3blocks \
-  inkscape \
-  joplin \
-  mpv \
   mosh \
   ncdu \
   nemo \
   neovim \
   nerd-fonts-complete \
-  newsboat \
   nodejs \
   openssh \
   pa-applet \
@@ -57,12 +53,10 @@ pacaur -S --noconfirm \
   redshift-gtk-git \
   ripgrep \
   rofi \
-  rtv \
   ruby-install \
   safe-rm \
   scrot \
   signal-desktop \
-  speedtest-cli \
   teensy-loader-cli \
   tig \
   tmate \
