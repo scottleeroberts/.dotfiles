@@ -94,6 +94,18 @@ br() {
   fi
 }
 
+gbd() {
+  if [[ $# == 0 ]]; then
+    set_base_branch
+    base_branch=$(BASE_BRANCH)
+    branches=$(git branch)
+    targets=$(echo $branches | awk '{$1=$1};1' | $(fzf_prog) -m --preview 'git short-log $base_branch..{} | head')
+
+    echo $targets
+    confirm && git branch -D $(echo $targets)
+  fi
+}
+
 cfu() {
   set_base_branch
   if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
