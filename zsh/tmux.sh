@@ -15,10 +15,12 @@ tmux send-keys "cd ~/Development/baldwin-web" C-m
 tmux send-keys "vim" C-m
 
 tmux new-window -t $session -n "     "
+tmux rename-window "server"
 tmux send-keys "cd ~/Development/baldwin-web" C-m
 
 # create a new window
 tmux new-window -t $session -n "     "
+tmux rename-window "zsh"
 tmux send-keys "cd ~/Development/baldwin-web" C-m
 tmux send-keys "pactl load-module module-dbus-protocol" C-m
 tmux send-keys "pactl load-module module-equalizer-sink " C-m
