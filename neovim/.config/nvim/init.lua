@@ -25,7 +25,7 @@ cmd("Plug 'benmills/vimux'")
 cmd("Plug 'chrisbra/Recover.vim'")
 cmd("Plug 'christoomey/vim-tmux-navigator'")
 cmd("Plug 'digitaltoad/vim-pug'")
-cmd("Plug 'folke/tokyonight.nvim'")
+cmd("Plug 'EdenEast/nightfox.nvim'")
 cmd("Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }")
 cmd("Plug 'junegunn/fzf.vim'")
 cmd("Plug 'kchmck/vim-coffee-script'")
@@ -114,9 +114,8 @@ o.wrap = false
 -------------
 -- theme --
 -------------
-g.tokyonight_transparent = 1
-g.tokyonight_style = "night"
-cmd('colorscheme tokyonight')
+require('nightfox').setup({ options = { transparent = true } })
+cmd('colorscheme nightfox')
 
 -------------
 -- Mappings --
