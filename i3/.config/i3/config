@@ -222,6 +222,9 @@ bindsym $mod+Control+t [class=Slack] focus
 bindsym $mod+Control+w [class=Signal] focus
 bindsym $mod+Control+c [class=Chromium] focus
 
+# shortcut to bring up pavucontrol for audio
+bindsym $mod+Ctrl+p exec pavucontrol for_window [class="Pavucontrol"] floating enable
+
 #startup
 bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
 #exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
