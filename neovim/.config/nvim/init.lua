@@ -198,7 +198,7 @@ map('n', '<leader>vv', '<Plug>TigBlame', {})
 map('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sort=path' }})<cr>", options)
 
 map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', options)
-map('n', '<leader>gb', '<cmd>Telescope buffers<CR>', options)
+map('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
 map('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
 
 --navigation qwerty vs colemak
