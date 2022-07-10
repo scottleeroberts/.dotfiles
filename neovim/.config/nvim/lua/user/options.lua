@@ -17,6 +17,7 @@ local options = {
   ls = 2,
   mouse = 'a',
   number = true,
+  path = '.,app/javascript/**',
   relativenumber = true,
   ruler = true,
   scrolloff = 1,
@@ -26,6 +27,7 @@ local options = {
   smartcase = true,
   splitbelow = true,
   splitright = true,
+  suffixesadd = '.vue',
   termguicolors = true,
   timeout = true,
   timeoutlen = 1000,
@@ -43,3 +45,6 @@ local options = {
 for k,v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.cmd('syntax enable')
+vim.cmd('filetype indent plugin on')

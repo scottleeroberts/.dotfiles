@@ -25,14 +25,6 @@ local g = vim.g
 local o = vim.opt
 
 
--------------
--- Setup --
--------------
-cmd('au FileType * setlocal ai sw=2 sts=2 et')
-cmd('filetype plugin indent on')
-cmd('syntax on')
-
-
 ----------------
 -- Plugins --
 ----------------
@@ -71,11 +63,6 @@ g.AutoPairsMultilineClose=0
 --argwrap
 g.argwrap_padded_braces = '{'
 g.argwrap_tail_comma = 1
-
--- Vue `gf` for components
-o.suffixesadd = '.vue'
-o.path = '.,app/javascript/**'
-g.vue_pre_processors = 'detect_on_enter'
 
 --closetag
 g.closetag_filetypes = 'html,vue,xhtml'
