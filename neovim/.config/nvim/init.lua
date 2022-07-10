@@ -13,6 +13,7 @@ require "user.plugins"
 require "user.theme"
 
 require "user.plugin.telescope"
+require "user.plugin.nerdtree"
 
 
 -------------
@@ -50,32 +51,6 @@ vim.api.nvim_set_option('statusline', ''
   .. '%y '
   .. '%l:%c'
 )
-
-
--- NerdTree
-g.NERDTreeStatusline='%{substitute(system("git branch --show-current"), "\n", " ", "g")}'
-g.NERDTreeMinimalUI=1
-g.NERDTreeShowHidden=1
-g.NERDTreeShowHiddenFirst=1
-g.NERDTreeDirArrowExpandable =  ''
-g.NERDTreeDirArrowCollapsible = ''
-g.WebDevIconsNerdTreeBeforeGlyphPadding = ""
-g.WebDevIconsUnicodeDecorateFolderNodes = true
-g.NERDTreeGitStatusIndicatorMapCustom = {
-  Modified='✹',
-  Staged='+',
-  Untracked='o',
-  Renamed='➜',
-  Unmerged='=',
-  Deleted='x',
-  Dirty='X',
-  Clean='✔︎',
-  Unknown='?'
-}
-exec([[
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-  highlight! link NERDTreeFlags NERDTreeDir
-]], false)
 
 
 -- Highlight current column in active pane only
