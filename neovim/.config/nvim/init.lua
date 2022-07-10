@@ -10,6 +10,7 @@ config = vim.env.HOME .. '/.config/nvim'
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
+require "user.theme"
 
 
 -------------
@@ -28,16 +29,6 @@ cmd('au FileType * setlocal ai sw=2 sts=2 et')
 cmd('filetype plugin indent on')
 cmd('syntax on')
 
-
--------------
--- theme --
--------------
-require('nightfox').setup({ options = { transparent = true } })
-cmd('colorscheme nightfox')
-
--------------
--- Mappings --
--------------
 
 ----------------
 -- Plugins --
