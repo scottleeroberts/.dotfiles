@@ -1,16 +1,24 @@
 -------------
--- Aliases --
+-- Global --
+-------------
+config = vim.env.HOME .. '/.config/nvim'
+
+
+-------------
+-- Requires --
+-------------
+require "user.options"
+
+
+-------------
+-- Local  ---
 -------------
 local exec = vim.api.nvim_exec
 local cmd = vim.cmd
-local fn = vim.fn
 local g = vim.g
 local map = vim.api.nvim_set_keymap
 local o = vim.opt
-local ow = vim.ow
 
-local home = vim.env.HOME
-local config = home .. '/.config/nvim'
 
 -------------
 -- Plugins --
@@ -66,50 +74,6 @@ cmd('let mapleader = " "')
 cmd('filetype plugin indent on')
 cmd('syntax on')
 
--------------
--- Settings --
--------------
-o.backspace = 'indent,eol,start'
-o.backupcopy = 'yes'
-o.backupdir = config .. '/tmp//'
-o.directory = config .. '/tmp//'
-o.clipboard = 'unnamedplus'
-o.colorcolumn = '80'
-o.encoding = 'UTF-8'
-o.fileencoding = 'UTF-8'
-o.gdefault = true
-o.gdefault = true
-o.hidden = true
-o.hlsearch = true
-o.ignorecase = true
-o.incsearch = true
-o.laststatus = 2
-o.ls = 2
-o.mouse = 'a'
-o.number = true
-o.relativenumber = true
-o.ruler = true
-o.scrolloff = 1
-o.shortmess = 'I'
-o.shortmess = 'atc'
-o.showcmd = true
-o.showmatch = true
-o.signcolumn = 'yes'
-o.smartcase = true
-o.splitbelow = true
-o.splitright = true
-o.termguicolors = true
-o.timeout = true
-o.timeoutlen = 1000
-o.ttimeoutlen = 100
-o.undodir = config .. '/undodir//'
-o.undofile = true
-o.undolevels = 1000
-o.undoreload = 10000
-o.updatetime = 300
-o.visualbell = true
-o.wildmenu = true
-o.wrap = false
 
 -------------
 -- theme --
