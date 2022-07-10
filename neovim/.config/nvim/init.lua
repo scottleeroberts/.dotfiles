@@ -8,6 +8,7 @@ config = vim.env.HOME .. '/.config/nvim'
 -- Requires --
 -------------
 require "user.options"
+require "user.plugins"
 
 
 -------------
@@ -19,52 +20,6 @@ local g = vim.g
 local map = vim.api.nvim_set_keymap
 local o = vim.opt
 
-
--------------
--- Plugins --
--------------
-cmd("call plug#begin('~/.config/nvim/plugged')")
-cmd("Plug 'FooSoft/vim-argwrap'")
-cmd("Plug 'Xuyuanp/nerdtree-git-plugin'")
-cmd("Plug 'airblade/vim-gitgutter'")
-cmd("Plug 'alvan/vim-closetag'")
-cmd("Plug 'ap/vim-css-color'")
-cmd("Plug 'benmills/vimux'")
-cmd("Plug 'chrisbra/Recover.vim'")
-cmd("Plug 'christoomey/vim-tmux-navigator'")
-cmd("Plug 'digitaltoad/vim-pug'")
-cmd("Plug 'EdenEast/nightfox.nvim'")
-cmd("Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }")
-cmd("Plug 'junegunn/fzf.vim'")
-cmd("Plug 'kchmck/vim-coffee-script'")
-cmd("Plug 'kthibodeaux/tig.vim'")
-cmd("Plug 'lisinge/vim-slim'")
-cmd("Plug 'neoclide/coc.nvim', {'branch': 'release'}")
-cmd("Plug 'nvim-treesitter/nvim-treesitter'")
-cmd("Plug 'pangloss/vim-javascript'")
-cmd("Plug 'posva/vim-vue'")
-cmd("Plug 'ryanoasis/vim-devicons'")
-cmd("Plug 'scrooloose/nerdtree'")
-cmd("Plug 'slm-lang/vim-slm'")
-cmd("Plug 'thoughtbot/vim-rspec'")
-cmd("Plug 'tpope/vim-abolish'")
-cmd("Plug 'tyru/caw.vim'")
-cmd("Plug 'tpope/vim-endwise'")
-cmd("Plug 'tpope/vim-rails'")
-cmd("Plug 'tpope/vim-repeat'")
-cmd("Plug 'tpope/vim-surround'")
-cmd("Plug 'unblevable/quick-scope'")
-cmd("Plug 'vim-ruby/vim-ruby'")
-cmd("Plug 'voldikss/vim-floaterm'")
-cmd("Plug 'jiangmiao/auto-pairs'")
-cmd("Plug 'wellle/targets.vim'")
-
-cmd("Plug 'kyazdani42/nvim-web-devicons'")
-cmd("Plug 'nvim-lua/plenary.nvim'")
-cmd("Plug 'nvim-lua/popup.nvim'")
-cmd("Plug 'nvim-telescope/telescope.nvim'")
-cmd("Plug 'nvim-telescope/telescope-fzy-native.nvim'")
-cmd("call plug#end()")
 
 -------------
 -- Setup --
