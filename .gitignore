@@ -8,3 +8,4 @@ node_modules
 neovim/.config/nvim/tmp
 neovim/.config/nvim/undodir
 neovim/.config/nvim/plugged
+neovim/.config/nvim/plugin/packer_compiled.lua
