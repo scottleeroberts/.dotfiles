@@ -31,8 +31,7 @@ end
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
-  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "wbthomason/packer.nvim"
   use "EdenEast/nightfox.nvim"
   use "FooSoft/vim-argwrap"
   use "Xuyuanp/nerdtree-git-plugin"
