@@ -64,9 +64,6 @@ keymap('n', '<Down>', ':resize +2<CR>', silent_options)
 keymap('n', '<Left>', ':vertical resize +2<CR>', silent_options)
 keymap('n', '<Right>', ':vertical resize -2<CR>', silent_options)
 
---nerdtree
-keymap('n', '<C-n>', ':NERDTreeFind<CR>', options)
-
 --file and git mappings
 keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", options)
 keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({search = vim.fn.input('Grep For > ')})<CR>", options)
@@ -88,3 +85,7 @@ keymap('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
 
 --argwrap
 keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
+--
+-- Nvimtree
+keymap("n", "<leader>.", ":NvimTreeToggle<cr>", options)
+keymap("n", "<c-n>", ":NvimTreeFindFile<cr>", options)

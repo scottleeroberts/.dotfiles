@@ -34,7 +34,6 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "EdenEast/nightfox.nvim"
   use "FooSoft/vim-argwrap"
-  use "Xuyuanp/nerdtree-git-plugin"
   use "airblade/vim-gitgutter"
   use "alvan/vim-closetag"
   use "ap/vim-css-color"
@@ -47,7 +46,6 @@ return packer.startup(function(use)
   use "junegunn/fzf.vim"
   use "kchmck/vim-coffee-script"
   use "kthibodeaux/tig.vim"
-  use "kyazdani42/nvim-web-devicons"
   use "lisinge/vim-slim"
   use { 'neoclide/coc.nvim', branch = 'release' }
   use "nvim-lua/plenary.nvim"
@@ -58,7 +56,6 @@ return packer.startup(function(use)
   use "pangloss/vim-javascript"
   use "posva/vim-vue"
   use "ryanoasis/vim-devicons"
-  use "scrooloose/nerdtree"
   use "slm-lang/vim-slm"
   use "thoughtbot/vim-rspec"
   use "tpope/vim-abolish"
@@ -71,6 +68,8 @@ return packer.startup(function(use)
   use "vim-ruby/vim-ruby"
   use "voldikss/vim-floaterm"
   use "wellle/targets.vim"
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
