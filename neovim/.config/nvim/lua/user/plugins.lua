@@ -34,7 +34,6 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "EdenEast/nightfox.nvim"
   use "FooSoft/vim-argwrap"
-  use "airblade/vim-gitgutter"
   use "alvan/vim-closetag"
   use "ap/vim-css-color"
   use "benmills/vimux"
@@ -70,6 +69,7 @@ return packer.startup(function(use)
   use "wellle/targets.vim"
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
+  use "lewis6991/gitsigns.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

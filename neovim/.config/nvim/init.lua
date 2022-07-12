@@ -15,4 +15,4 @@ require "user.other_configuration"
 require "user.plugin.telescope"
 require "user.plugin.assorted"
 require "user.plugin.nvim-tree"
-
+require "user.plugin.gitsigns"
