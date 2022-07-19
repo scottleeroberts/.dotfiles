@@ -87,5 +87,4 @@ keymap('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
 keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 --
 -- Nvimtree
-keymap("n", "<leader>.", ":NvimTreeToggle<cr>", options)
 keymap("n", "<c-n>", ":NvimTreeFindFile<cr>", options)
