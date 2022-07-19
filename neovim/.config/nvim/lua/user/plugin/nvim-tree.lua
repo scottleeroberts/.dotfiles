@@ -71,6 +71,14 @@ nvim_tree.setup {
     height = 30,
     hide_root_folder = false,
     side = "left",
+    mappings = {
+      custom_only = false,
+      list = {
+        { key = { "l", "<CR>", "o" }, cb = nvim_tree_config.nvim_tree_callback "edit" },
+        { key = "h", cb = nvim_tree_config.nvim_tree_callback "close_node" },
+        { key = "v", cb = nvim_tree_config.nvim_tree_callback "vsplit" },
+      },
+    },
     number = false,
     relativenumber = false,
   },
