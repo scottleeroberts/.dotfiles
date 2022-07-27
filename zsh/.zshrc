@@ -9,12 +9,6 @@ setopt share_history
 setopt inc_append_history
 setopt extended_history
 
-#use colors
-source ~/.zsh/base16-nord.dark.sh
-# makes color constants available
-autoload -U colors
-colors
-
 #load custom functions
 for function in ~/.zsh/functions/*; do
   source $function

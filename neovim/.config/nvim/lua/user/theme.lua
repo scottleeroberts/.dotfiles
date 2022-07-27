@@ -1,2 +1,3 @@
-require('nightfox').setup( { options = { transparent = true } })
-vim.cmd('colorscheme nightfox')
+vim.g.tokyonight_transparent = true
+vim.g.tokyonight_transparent_sidebar = true
+vim.cmd('colorscheme tokyonight')
