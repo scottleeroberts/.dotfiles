@@ -10,12 +10,13 @@ if ENV['BLOCK_BUTTON'].to_i == 1
 end
 
 class PullRequests
-  READY_TO_REVIEW_LABEL = 'Ready For Review'
-  CHANGES_REQUESTED_LABEL = 'Changes Requested'
   ALREADY_REVIEWED_LABEL = 'Scott Signed Off'
-  GITHUB_USERNAME = 'scottleeroberts'
-  REPO = 'baldwinaviation/baldwin-web'
   AWAITING_RESPONSE_LABEL = 'Awaiting Response'
+  CHANGES_REQUESTED_LABEL = 'Changes Requested'
+  GITHUB_USERNAME = 'scottleeroberts'
+  READY_TO_REVIEW_LABEL = 'Ready For Review'
+  REPO = 'baldwinaviation/baldwin-web'
+  UPSTREAM_DEPENDENT = 'Upstream Dependent'
 
   def self.process
     new.process
@@ -46,6 +47,7 @@ class PullRequests
     pull_requests
       .reject { |pr| pr.creator == GITHUB_USERNAME }
       .reject { |pr| pr.labels.include?(ALREADY_REVIEWED_LABEL) }
+      .reject { |pr| pr.labels.include?(UPSTREAM_DEPENDENT) }
       .select { |pr| pr.labels.include?(READY_TO_REVIEW_LABEL) }
   end
 
