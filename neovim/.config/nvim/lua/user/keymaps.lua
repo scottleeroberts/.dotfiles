@@ -85,6 +85,10 @@ keymap('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
 
 --argwrap
 keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
---
+
 -- Nvimtree
 keymap("n", "<c-n>", ":NvimTreeFindFile<cr>", options)
+
+--coc completion
+vim.cmd('inoremap <silent><expr> <TAB>  coc#pum#visible() ? coc#pum#next(1): CheckBackspace() ? "<Tab>" :  coc#refresh()')
+vim.cmd('inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm(): "<C-g>u<CR><c-r>=coc#on_enter()<CR>"')
