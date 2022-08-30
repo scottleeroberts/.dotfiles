@@ -1,5 +1,15 @@
 # vi: set ft=sh :
 
+base_branch() {
+  if git rev-parse -q --verify develop > /dev/null; then
+    echo "develop"
+  elif git rev-parse -q --verify main > /dev/null; then
+    echo "main"
+  else
+    echo "master"
+  fi
+}
+
 g() {
   if [[ $# > 0 ]]; then
     git $@
@@ -63,29 +73,14 @@ rmf() {
   fi
 }
 
-set_base_branch() {
-  git rev-parse --verify develop
-  if [[ $? == 0 ]]; then
-    BASE_BRANCH="develop"
-  else
-    BASE_BRANCH="master"
-  fi
-}
-
-ir() {
-  set_base_branch
-  git rebase -i $BASE_BRANCH
-}
-
 br() {
   if [[ $# == 0 ]]; then
-    set_base_branch
-
+    base_branch=$(base_branch)
     branches=$(git branch)
     if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-      target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $BASE_BRANCH..{} | head')
+      target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $base_branch..{} | head')
     else
-      target=$(echo $branches | awk '{$1=$1};1' | fzf-tmux --preview 'git short-log $BASE_BRANCH..{} | head')
+      target=$(echo $branches | awk '{$1=$1};1' | fzf-tmux --preview 'git short-log $base_branch..{} | head')
     fi
 
     if [[ $target != '' ]]; then
@@ -96,8 +91,7 @@ br() {
 
 gbd() {
   if [[ $# == 0 ]]; then
-    set_base_branch
-    base_branch=$(BASE_BRANCH)
+    base_branch=$(base_branch)
     branches=$(git branch)
     targets=$(echo $branches | awk '{$1=$1};1' | $(fzf_prog) -m --preview 'git short-log $base_branch..{} | head')
 
@@ -107,11 +101,10 @@ gbd() {
 }
 
 cfu() {
-  set_base_branch
   if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-    target=$(git log --pretty=oneline $BASE_BRANCH.. | fzf --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
+    target=$(git log --pretty=oneline $(base_branch).. | fzf --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
   else
-    target=$(git log --pretty=oneline $BASE_BRANCH.. | fzf-tmux --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
+    target=$(git log --pretty=oneline $(base_branch).. | fzf-tmux --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
   fi
 
   if [[ $target != '' ]]; then
@@ -120,6 +113,8 @@ cfu() {
 }
 
 gdm () {
+  base_branch=$(base_branch)
+
   if [[ $base_branch == "main" ]]
   then
     git branch --merged origin/main | grep -v main | xargs git branch -d
