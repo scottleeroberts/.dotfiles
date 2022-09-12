@@ -32,7 +32,7 @@ end
 -- Install your plugins here
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
-  use "folke/tokyonight.nvim"
+  use "rebelot/kanagawa.nvim"
   use "FooSoft/vim-argwrap"
   use "alvan/vim-closetag"
   use "ap/vim-css-color"
@@ -46,7 +46,7 @@ return packer.startup(function(use)
   use "kchmck/vim-coffee-script"
   use "kthibodeaux/tig.vim"
   use "lisinge/vim-slim"
-  use { 'neoclide/coc.nvim', branch = 'release' }
+  use {'neoclide/coc.nvim', branch = 'release'}
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-telescope/telescope-fzy-native.nvim"
