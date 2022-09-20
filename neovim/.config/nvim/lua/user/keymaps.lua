@@ -36,10 +36,6 @@ keymap('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
 
 keymap('t', 'jj', '<C-\\><C-n>', options)
 
-keymap('v', '<C-c>', '"+y', options)
-keymap('n', '<C-c>', '"+yy', options)
-keymap('i', '<C-c>', '<ESC>"+yyi', options)
-
 keymap('n', 'Y', 'y$', options)
 
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
