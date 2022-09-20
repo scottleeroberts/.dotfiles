@@ -1,5 +1,7 @@
 setlocal iskeyword+=!
 setlocal iskeyword+=?
+setlocal iskeyword+=:
+setlocal iskeyword+=.
 
 " RSpec.vim mappings
 let g:rspec_command = 'call VimuxRunCommand("bes {spec}\n")'

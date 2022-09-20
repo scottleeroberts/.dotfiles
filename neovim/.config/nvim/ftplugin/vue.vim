@@ -1,1 +1,3 @@
 setlocal isfname-=.
+
+setlocal iskeyword+=-
