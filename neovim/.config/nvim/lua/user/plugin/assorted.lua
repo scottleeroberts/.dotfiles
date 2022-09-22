@@ -33,8 +33,15 @@ g.closetag_filetypes = 'html,vue,xhtml'
 g.closetag_xhtml_filetypes = 'html,vue,xhtml'
 
 --coc
-g.coc_snippet_prev = '<c-p>'
-g.coc_snippet_next = '<c-n>'
-g.coc_global_extensions = { 'coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-snippets', 'coc-solargraph', 'coc-tsserver', 'coc-vetur', 'coc-yaml' }
-
+g.coc_global_extensions = {
+  'coc-css',
+  'coc-eslint',
+  'coc-html',
+  'coc-json',
+  'coc-snippets',
+  'coc-solargraph',
+  'coc-tsserver',
+  'coc-vetur',
+  'coc-yaml',
+}
 
