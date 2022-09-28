@@ -1,10 +1,10 @@
 alias d="docker"
-alias c="docker-compose"
-alias cup="docker-compose up"
-alias cdn="docker-compose down"
-alias cq="docker-compose run web bundle exec rake resque:work QUEUE=*"
-alias cdus="docker-compose down; RESEED=true docker-compose up"
-alias cdu="docker-compose down; docker-compose up"
+alias c="docker compose"
+alias cup="docker compose up"
+alias cdn="docker compose down"
+alias cq="docker compose run web bundle exec rake resque:work QUEUE=*"
+alias cdus="docker compose down; RESEED=true docker compose up"
+alias cdu="docker compose down; docker compose up"
 alias cnuke="docker container prune -f; docker volume prune -f; docker image prune -f"
 
 dr_db() {

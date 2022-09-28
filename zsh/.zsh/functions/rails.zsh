@@ -1,4 +1,4 @@
-alias console="docker-compose run web bundle exec rails console"
+alias console="docker compose run web bundle exec rails console"
 
 docker_or_local() {
   local image=""
@@ -19,7 +19,7 @@ docker_or_local() {
   if [[ $image == "" ]]; then
     eval {"SKIP_SIMPLECOV=true $@"}
   else
-    eval {"docker-compose run --rm --no-deps -e SKIP_SIMPLECOV=true $image /bin/bash -c \"$@\""}
+    eval {"docker compose run --rm --no-deps -e SKIP_SIMPLECOV=true $image /bin/bash -c \"$@\""}
   fi
 }
 
@@ -43,7 +43,7 @@ rrs() { docker_or_local "bundle exec rake resque:scheduler" }
 clean_devdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=development" }
 clean_testdb() { docker_or_local "bundle exec rake db:drop db:setup RAILS_ENV=test" }
 pclean_testdb() { docker_or_local "bundle exec rake parallel:drop[$RSPEC_CORES] parallel:setup[$RSPEC_CORES] RAILS_ENV=test" }
-alias reseed="RESEED=true docker-compose up"
+alias reseed="RESEED=true docker compose up"
 
 ya() { docker_or_local "yarn $@" }
 edit_credentials() {
