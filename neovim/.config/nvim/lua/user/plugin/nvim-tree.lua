@@ -9,6 +9,7 @@ if not config_status_ok then
 end
 
 nvim_tree.setup {
+  sort_by = "case_sensitive",
   hijack_directories = {
     enable = false,
   },
@@ -19,7 +20,7 @@ nvim_tree.setup {
   update_cwd = true,
   renderer = {
     add_trailing = false,
-    group_empty = false,
+    group_empty = true,
     highlight_git = false,
     root_folder_modifier = ":t",
     icons = {
@@ -67,10 +68,7 @@ nvim_tree.setup {
     timeout = 500,
   },
   view = {
-    width = 30,
-    height = 30,
-    hide_root_folder = false,
-    side = "left",
+    adaptive_size = true,
     mappings = {
       custom_only = false,
       list = {
@@ -79,7 +77,5 @@ nvim_tree.setup {
         { key = "v", cb = nvim_tree_config.nvim_tree_callback "vsplit" },
       },
     },
-    number = false,
-    relativenumber = false,
   },
 }
