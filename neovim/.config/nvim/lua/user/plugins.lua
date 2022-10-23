@@ -40,7 +40,6 @@ return packer.startup(function(use)
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
   use "digitaltoad/vim-pug"
-  use "jiangmiao/auto-pairs"
   use { "junegunn/fzf", run = ":call fzf#install()" }
   use "junegunn/fzf.vim"
   use "kchmck/vim-coffee-script"
