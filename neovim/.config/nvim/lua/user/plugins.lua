@@ -66,7 +66,6 @@ return packer.startup(function(use)
   use "unblevable/quick-scope"
   use "vim-ruby/vim-ruby"
   use "voldikss/vim-floaterm"
-  use "wellle/targets.vim"
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use "lewis6991/gitsigns.nvim"
