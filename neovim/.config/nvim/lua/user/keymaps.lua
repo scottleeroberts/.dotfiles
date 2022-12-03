@@ -33,6 +33,8 @@ keymap('n', '<leader>gn', ':tabnew %<CR>', options)
 keymap('n', '<leader><CR>', 'gt', options)
 keymap('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
 keymap('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
+keymap('n', '<C-d>', '<C-d>zz', options)
+keymap('n', '<C-u>', '<C-u>zz', options)
 
 keymap('t', 'jj', '<C-\\><C-n>', options)
 
