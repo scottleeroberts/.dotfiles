@@ -39,22 +39,18 @@ return packer.startup(function(use)
   use "benmills/vimux"
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
-  use "digitaltoad/vim-pug"
   use { "junegunn/fzf", run = ":call fzf#install()" }
   use "junegunn/fzf.vim"
-  use "kchmck/vim-coffee-script"
   use "kthibodeaux/tig.vim"
-  use "lisinge/vim-slim"
   use {'neoclide/coc.nvim', branch = 'release'}
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-telescope/telescope-fzy-native.nvim"
   use "nvim-telescope/telescope.nvim"
   use "nvim-treesitter/nvim-treesitter"
-  use "pangloss/vim-javascript"
+  use "sheerun/vim-polyglot"
   use "posva/vim-vue"
   use "ryanoasis/vim-devicons"
-  use "slm-lang/vim-slm"
   use "thoughtbot/vim-rspec"
   use "tpope/vim-abolish"
   use "tpope/vim-endwise"
@@ -64,7 +60,6 @@ return packer.startup(function(use)
   use "suy/vim-context-commentstring"
   use "tpope/vim-commentary"
   use "unblevable/quick-scope"
-  use "vim-ruby/vim-ruby"
   use "voldikss/vim-floaterm"
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
