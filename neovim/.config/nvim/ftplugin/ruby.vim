@@ -13,7 +13,7 @@ nnoremap <leader>m :Emodel<CR>
 nnoremap <leader>v :Eview<CR>
 nnoremap <leader>u :Eunittest<CR>
 
-if expand('%')[len(expand('%'))-4:len(expand('%'))] != 'slim' && expand('%')[len(expand('%'))-3:len(expand('%'))] != 'erb'
+if expand('%')[len(expand('%'))-4:len(expand('%'))] != 'slim' && expand('%')[len(expand('%'))-3:len(expand('%'))] != 'erb'&& expand('%')[len(expand('%'))-3:len(expand('%'))] != 'yml'
   autocmd BufWritePre <buffer> call CocAction('format')
 endif
 
