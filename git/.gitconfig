@@ -43,3 +43,5 @@
 [user]
 	email = scott.lee.roberts@gmail.com
 	name = Scott Roberts
+[init]
+	defaultBranch = develop
