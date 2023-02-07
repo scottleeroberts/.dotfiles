@@ -35,15 +35,14 @@ g.closetag_xhtml_filetypes = 'html,vue,xhtml'
 --coc
 g.coc_global_extensions = {
   'coc-css',
-  'coc-eslint',
   'coc-html',
   'coc-json',
   'coc-snippets',
   'coc-solargraph',
   'coc-tsserver',
-  'coc-vetur',
   'coc-yaml',
   'coc-pairs',
-  'coc-tailwindcss',
+  'coc-vetur',
+  'coc-eslint',
 }
 
