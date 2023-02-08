@@ -86,8 +86,4 @@ keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 
 -- Nvimtree
 keymap("n", "<c-n>", ":NvimTreeFindFile<cr>", options)
-keymap("n", "<leader>cc", ":CocRestart<CR><CR>", options)
 
---coc completion
-vim.cmd('inoremap <silent><expr> <TAB>  coc#pum#visible() ? coc#pum#next(0): CheckBackSpace() ? "<Tab>" :  coc#refresh()')
-vim.cmd('inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm(): "<CR>"')

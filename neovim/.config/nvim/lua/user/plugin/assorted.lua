@@ -11,7 +11,6 @@ cmd("highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cter
 vim.api.nvim_set_option('statusline', ''
   .. '%f '
   .. '%m '
-  .. '%{coc#status()} '
   .. '%r '
   .. '%='
   .. '%y '
@@ -31,18 +30,3 @@ g.argwrap_tail_comma = 1
 --closetag
 g.closetag_filetypes = 'html,vue,xhtml'
 g.closetag_xhtml_filetypes = 'html,vue,xhtml'
-
---coc
-g.coc_global_extensions = {
-  'coc-css',
-  'coc-html',
-  'coc-json',
-  'coc-snippets',
-  'coc-solargraph',
-  'coc-tsserver',
-  'coc-yaml',
-  'coc-pairs',
-  'coc-vetur',
-  'coc-eslint',
-}
-

@@ -1,4 +1,3 @@
-vim.cmd("highlight CocFloating guibg=#152238")
 require('kanagawa').setup({
     undercurl = true,           -- enable undercurls
     commentStyle = { italic = true },
