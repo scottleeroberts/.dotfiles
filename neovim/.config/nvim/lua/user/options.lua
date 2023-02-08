@@ -9,7 +9,6 @@ local options = {
   expandtab = true,
   fileencoding = 'UTF-8',
   gdefault = true,
-  gdefault = true,
   hidden = true,
   hlsearch = true,
   ignorecase = true,
