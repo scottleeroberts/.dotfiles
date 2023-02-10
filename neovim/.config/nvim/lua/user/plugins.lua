@@ -61,6 +61,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
   use "lewis6991/gitsigns.nvim"
   use "sheerun/vim-polyglot"
+  use "tpope/vim-rails"
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
