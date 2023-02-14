@@ -35,7 +35,6 @@ return packer.startup(function(use)
   use "rebelot/kanagawa.nvim"
   use "FooSoft/vim-argwrap"
   use "alvan/vim-closetag"
-  use "ap/vim-css-color"
   use "benmills/vimux"
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
