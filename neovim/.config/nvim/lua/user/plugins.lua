@@ -56,8 +56,12 @@ return packer.startup(function(use)
   use "tpope/vim-commentary"
   use "unblevable/quick-scope"
   use "voldikss/vim-floaterm"
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
   use "lewis6991/gitsigns.nvim"
   use "sheerun/vim-polyglot"
   use "tpope/vim-rails"
