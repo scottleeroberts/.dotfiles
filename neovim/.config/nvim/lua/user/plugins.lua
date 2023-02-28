@@ -56,7 +56,6 @@ return packer.startup(function(use)
   use "tpope/vim-commentary"
   use "unblevable/quick-scope"
   use "voldikss/vim-floaterm"
-  use "m4xshen/autoclose.nvim"
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
