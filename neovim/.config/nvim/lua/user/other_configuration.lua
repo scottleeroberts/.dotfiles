@@ -7,9 +7,6 @@ vim.api.nvim_exec([[
   augroup END
 ]], false)
 
---iabbr
-vim.cmd('iabbr pry ::Kernel.binding.pry')
-
 -- Open to last position in file
 vim.api.nvim_exec([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif  ]], false)
 
