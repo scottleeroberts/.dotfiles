@@ -32,7 +32,7 @@ end
 -- Install your plugins here
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
-  use "rebelot/kanagawa.nvim"
+  use "folke/tokyonight.nvim"
   use "FooSoft/vim-argwrap"
   use "alvan/vim-closetag"
   use "benmills/vimux"
