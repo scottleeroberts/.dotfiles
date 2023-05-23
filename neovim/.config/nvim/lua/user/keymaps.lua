@@ -43,6 +43,9 @@ keymap('n', 'Y', 'y$', options)
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
 keymap('v', 'K', ":m '<-2<CR>gv=gv", options)
 
+keymap('n', 'ni', ':call GoToNextIndent(1)<CR>', options)
+keymap('n', 'np', ':call GoToNextIndent(-1)<CR>', options)
+
 --tmux
 keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
 keymap('n', '<c-j>', ':TmuxNavigateDown<cr>', silent_options)
@@ -76,6 +79,7 @@ keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorti
 keymap('n', '<leader>gs', '<cmd>Telescope git_status<CR>', options)
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
 keymap('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
+
 
 --navigation qwerty vs colemak
 keymap('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
