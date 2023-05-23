@@ -26,17 +26,23 @@ cm() {
   fi
 }
 
-
 dev() {
   git checkout develop && git up
 }
-
 
 a() {
   if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
     git add $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   else
     git add $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
+  fi
+}
+
+grm() {
+  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
+    rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+  else
+    rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
   fi
 }
 
@@ -57,18 +63,6 @@ co() {
       git co $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
     else
       git co $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux -m --preview 'git diff --color=always {}')
-    fi
-  fi
-}
-
-rmf() {
-  if [[ $# > 0 ]]; then
-    rm $@
-  else
-    if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-      rm -if $(git status -s -u | sort | awk '{ print $2 }' | fzf)
-    else
-      rm -if $(git status -s -u | sort | awk '{ print $2 }' | fzf-tmux)
     fi
   fi
 }
@@ -124,6 +118,14 @@ gdm () {
   else
     git branch --merged origin/master | grep -v master | xargs git branch -d
   fi
+}
+
+cherry() {
+  base_branch=$(base_branch)
+  branches=$(git branch)
+  target_branch=$(echo $branches | awk '{$1=$1};1' | $(fzf_prog) --preview 'git short-log $base_branch..{} | head')
+
+  git cherry-pick $(git log --pretty=oneline $(echo $target_branch) | $(fzf_prog) -m --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA"| awk '{ print $1 }' )
 }
 
 alias gco="git checkout"
