@@ -1,4 +1,6 @@
 setlocal isfname-=.
 setlocal iskeyword+=-
 
-autocmd BufWritePre <buffer> EslintFixAll
+if filereadable(expand('.eslintrc'))
+  autocmd BufWritePre <buffer> EslintFixAll
+endif
