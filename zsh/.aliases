@@ -48,9 +48,6 @@ alias pop="git stash pop"
 alias clean="git clean -fd"
 alias t='tig'
 
-#i3 monitor management
-alias xr="xrandr --output eDP1 --mode 1920x1200"
-
 #heroku
 alias hlogin="heroku login"
 alias hremote="heroku git:remote -a "
@@ -65,7 +62,4 @@ alias jd="joplin-desktop"
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
 
 #misc
-alias wtr="curl wttr.in/hhh"
-alias nb="newsboat"
-
-alias deploy='git push; git push --follow --tags; git checkout master; git push; git checkout develop'
+alias wtr="curl wttr.in/chapel+hill"
