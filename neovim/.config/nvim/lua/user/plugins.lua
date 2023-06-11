@@ -38,8 +38,10 @@ return packer.startup(function(use)
   use "benmills/vimux"
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
-  use { "junegunn/fzf", run = ":call fzf#install()" }
-  use "junegunn/fzf.vim"
+  use {
+      'junegunn/fzf.vim',
+      requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+   }
   use "kthibodeaux/tig.vim"
   use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
@@ -56,6 +58,7 @@ return packer.startup(function(use)
   use "tpope/vim-commentary"
   use "unblevable/quick-scope"
   use "voldikss/vim-floaterm"
+  use "github/copilot.vim"
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
