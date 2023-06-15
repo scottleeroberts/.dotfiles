@@ -72,8 +72,11 @@ pacaur -S --noconfirm \
   youtube-dl \
   zsh \
   zsh-syntax-highlighting \
+  rg \
+  fd \
 
 fc-cache -f -v
+
 sudo systemctl enable sshd
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
