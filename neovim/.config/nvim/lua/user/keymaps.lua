@@ -66,7 +66,7 @@ keymap('n', '<Left>', ':vertical resize +2<CR>', silent_options)
 keymap('n', '<Right>', ':vertical resize -2<CR>', silent_options)
 
 --file and git mappings
-keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", options)
+keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) preview={timeout=1000}<cr>", options)
 keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({search = vim.fn.input('Grep For > ')})<CR>", options)
 keymap('n', '<leader>fs', '<cmd>Telescope grep_string<CR>', options)
 
