@@ -52,7 +52,6 @@ return packer.startup(function(use)
   use "tpope/vim-endwise"
   use "tpope/vim-repeat"
   use "tpope/vim-surround"
-  use "suy/vim-context-commentstring"
   use "tpope/vim-commentary"
   use "unblevable/quick-scope"
   use "voldikss/vim-floaterm"
