@@ -20,9 +20,6 @@ vim.api.nvim_set_option('statusline', ''
 -- ruby
 g.ruby_indent_block_style = 'do' -- https://github.com/vim-ruby/vim-ruby/blob/master/doc/vim-ruby.txt#L133
 
--- auto-pairs configuration
-g.AutoPairsMultilineClose=0
-
 --argwrap
 g.argwrap_padded_braces = '{'
 g.argwrap_tail_comma = 1
