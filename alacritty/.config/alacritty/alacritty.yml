@@ -62,19 +62,19 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: monaco #fantasquesansmono #anonymouspro #monoid #monaco #hack #inconsolata #camingocode
+    family: victormono #fantasquesansmono #anonymouspro #monoid #monaco #hack #inconsolata #camingocode
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: monaco # should be "Menlo" or something on macOS.
+    family: victormono # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: monaco # should be "Menlo" or something on macOS.
+    family: victormono # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 

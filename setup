@@ -62,8 +62,8 @@ pacaur -S --noconfirm \
   tmate \
   tmux \
   ttf-fantasque-sans-mono \
-  ttf-hack \
   ttf-monaco \
+  ttf-victor-mono \
   universal-ctags-git \
   unzip \
   urlview-git \
