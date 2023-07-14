@@ -43,8 +43,8 @@ keymap('n', 'Y', 'y$', options)
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
 keymap('v', 'K', ":m '<-2<CR>gv=gv", options)
 
-keymap('n', 'ni', ':call GoToNextIndent(1)<CR>', options)
-keymap('n', 'np', ':call GoToNextIndent(-1)<CR>', options)
+keymap('n', '<leader>p', ':call GoToNextIndent(1)<CR>', options)
+keymap('n', '<leader>P', ':call GoToNextIndent(-1)<CR>', options)
 
 --tmux
 keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
