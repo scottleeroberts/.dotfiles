@@ -56,9 +56,6 @@ keymap('n', '<c-l>', ':TmuxNavigateRight<cr>', silent_options)
 keymap('n', '<leader>tt', ':FloatermToggle<CR>', options)
 keymap('t', '<leader>tt', "<c-\\><C-n>:FloatermToggle<CR>", options)
 
---vim-surround
-keymap('n', 'ys', 'ysiw', options)
-
 -- Resizing splits
 keymap('n', '<Up>', ':resize -2<CR>', silent_options)
 keymap('n', '<Down>', ':resize +2<CR>', silent_options)
@@ -80,7 +77,6 @@ keymap('n', '<leader>gs', '<cmd>Telescope git_status<CR>', options)
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
 keymap('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
 
-
 --navigation qwerty vs colemak
 keymap('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
 keymap('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
@@ -90,4 +86,3 @@ keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 
 -- Nvimtree
 keymap("n", "<c-n>", ":NvimTreeFocus<cr>", options)
-
