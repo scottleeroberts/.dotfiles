@@ -57,6 +57,7 @@ pacaur -S --noconfirm \
   safe-rm \
   scrot \
   signal-desktop \
+  speedtest-cli \
   teensy-loader-cli \
   tig \
   tmate \
