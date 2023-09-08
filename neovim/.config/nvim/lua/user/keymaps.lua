@@ -68,7 +68,7 @@ keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({se
 keymap('n', '<leader>fs', '<cmd>Telescope grep_string<CR>', options)
 
 keymap('n', '<leader>vc', '<cmd>Telescope git_commits<CR>', {})
-keymap('n', '<leader>vb', '<cmd>Telescope git_bcommits<CR>', {})
+keymap('n', '<leader>vb', "<cmd>lua bcommits()<CR>", {})
 keymap('n', '<leader>vs', '<cmd>Telescope git_stash<CR>', options)
 keymap('n', '<leader>vv', '<Plug>TigBlame', {})
 keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sortr=path' }})<cr>", options)
