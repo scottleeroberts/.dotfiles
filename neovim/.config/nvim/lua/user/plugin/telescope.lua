@@ -4,7 +4,7 @@ local previewers = require'telescope.previewers'
 -- Custom previewer for git commits
 local git_commit_previewer = previewers.new_termopen_previewer {
   get_command = function(entry)
-    return {'git', '-c', 'core.pager=cat', 'show', '--date=short', '--pretty=format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s', entry.value}
+    return {'git', 'show', '--date=short', '--pretty=format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s', entry.value}
   end
 }
 
