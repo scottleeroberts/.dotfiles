@@ -1,13 +1,11 @@
-#!/usr/bin/env /home/sroberts/.rubies/ruby-2.7.4/bin/ruby
+#!/usr/bin/env /home/sroberts/.rubies/ruby-3.1.1/bin/ruby
 # frozen_string_literal: true
 
 require 'json'
 
 TOKEN = File.readlines("#{ENV['HOME']}/.github_token").first.chomp
 
-if ENV['BLOCK_BUTTON'].to_i == 1
-  `firefox https://github.com/BaldwinAviation/baldwin-web/pulls`
-end
+`firefox https://github.com/BaldwinAviation/baldwin-web/pulls` if ENV['BLOCK_BUTTON'].to_i == 1
 
 class PullRequests
   ALREADY_REVIEWED_LABEL = 'Scott Signed Off'
