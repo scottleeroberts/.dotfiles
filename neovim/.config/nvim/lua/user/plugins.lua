@@ -44,8 +44,6 @@ return packer.startup(function(use)
   use "benmills/vimux"
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
-  use "junegunn/fzf"
-  use "junegunn/fzf.vim"
   use "kthibodeaux/tig.vim"
   use "nvim-lua/popup.nvim"
   use {
