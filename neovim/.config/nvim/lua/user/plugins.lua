@@ -45,7 +45,6 @@ return packer.startup(function(use)
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
   use "kthibodeaux/tig.vim"
-  use "nvim-lua/popup.nvim"
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
