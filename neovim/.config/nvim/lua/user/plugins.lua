@@ -47,10 +47,14 @@ return packer.startup(function(use)
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
   use "kthibodeaux/tig.vim"
-  use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
-  use "nvim-telescope/telescope-fzy-native.nvim"
-  use "nvim-telescope/telescope.nvim"
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzy-native.nvim",
+    },
+  }
   use "nvim-treesitter/nvim-treesitter"
   use "thoughtbot/vim-rspec"
   use "tpope/vim-endwise"
