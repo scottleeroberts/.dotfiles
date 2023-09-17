@@ -1,6 +1,3 @@
-local telescope = {}
-
-
 function bcommits()
   local pickers = require('telescope.pickers')
   local finders = require('telescope.finders')
@@ -48,17 +45,9 @@ function bcommits()
   }):find()
 end
 
- require('telescope').setup{
+local telescope = {}
+require('telescope').setup{
   defaults = {
-      vimgrep_arguments = {
-        'rg',
-        '--line-number',
-        '--hidden',
-        '--column',
-        '--smart-case',
-        '--follow',
-        '--with-filename',
-      },
       layout_strategy = "flex",
       layout_config = {
         preview_cutoff = 10,
@@ -69,14 +58,5 @@ end
         },
       },
    },
-   pickers = {
-   },
-   extensions = {
-      fzy_native = {
-          override_generic_sorter = false,
-          override_file_sorter = true,
-          case_mode = "smart_case",
-      }
-   }
- }
+}
 return telescope
