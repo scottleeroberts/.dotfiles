@@ -19,3 +19,5 @@ require "user.plugin.gitsigns"
 require "user.plugin.lsp"
 require "user.plugin.copilot"
 require "user.plugin.noice"
+require "user.plugin.treesitter"
+
