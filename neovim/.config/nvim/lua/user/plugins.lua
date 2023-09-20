@@ -52,6 +52,7 @@ return packer.startup(function(use)
       "nvim-telescope/telescope-fzy-native.nvim",
     },
   }
+  use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/nvim-treesitter"
   use "thoughtbot/vim-rspec"
   use "tpope/vim-endwise"
@@ -63,7 +64,7 @@ return packer.startup(function(use)
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      'nvim-tree/nvim-web-devicons',
     },
   }
   use "lewis6991/gitsigns.nvim"
