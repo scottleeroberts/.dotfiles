@@ -48,6 +48,11 @@ end
 local telescope = {}
 require('telescope').setup{
   defaults = {
+     mappings = {
+        i = {
+          ['<esc>'] = 'close',
+        },
+      },
       layout_strategy = "flex",
       layout_config = {
         preview_cutoff = 10,
