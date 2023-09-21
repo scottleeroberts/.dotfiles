@@ -38,7 +38,7 @@ cmp.setup({
   }, {
     { name = "buffer" },
     { name = "path" },
-    { name = "emoji" },
+    { name = "emoji", option = { insert = true } },
   }),
 })
 

@@ -86,6 +86,7 @@ return packer.startup(function(use)
       {'hrsh7th/cmp-path'},         -- Optional
       {'hrsh7th/cmp-cmdline'},         -- Optional
       {'hrsh7th/cmp-nvim-lua'},     -- Optional
+      {'hrsh7th/cmp-emoji'},     -- Optional
     }
   }
   -- Automatically set up your configuration after cloning packer.nvim
