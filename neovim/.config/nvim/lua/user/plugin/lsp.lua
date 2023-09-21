@@ -16,15 +16,10 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
-
-
 lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
 end)
 lsp.setup()
-
-local cmp = require("cmp")
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 cmp.setup({
   window = {
@@ -50,6 +45,8 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.diagnostic.config({
     virtual_text = false
