@@ -38,3 +38,8 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+
+-- diagnostics errors are not done as virtual text (ie inline)
+vim.diagnostic.config({
+    virtual_text = false
+})
