@@ -37,29 +37,21 @@ function bcommits()
         return { 'git', 'show', entry.value, '--', current_file }
       end,
     }),
-    attach_mappings = function(_, map)
-      map('i', '<CR>', actions.git_checkout)
-      map('n', '<CR>', actions.git_checkout)
-      return true
-    end,
   }):find()
 end
 
 local telescope = {}
 require('telescope').setup{
   defaults = {
-     vimgrep_arguments = {
-        'rg',
-        '--hidden',
-        '--color=never',
-        '--no-heading',
-        '--with-filename',
-        '--line-number',
-        '--column',
-        '--smart-case',
-        '--no-ignore',
-        '-uu'
-     },
+    vimgrep_arguments = {
+      'rg',
+      '--line-number',
+      '--hidden',
+      '--column',
+      '--smart-case',
+      '--follow',
+      '--with-filename',
+    },
      mappings = {
         i = {
           ['<esc>'] = 'close',
