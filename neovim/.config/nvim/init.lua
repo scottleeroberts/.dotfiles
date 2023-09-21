@@ -21,4 +21,5 @@ require "user.plugin.copilot"
 require "user.plugin.noice"
 require "user.plugin.treesitter"
 require "user.plugin.ts-context-commentstring"
+require "user.plugin.indent-blankline"
 
