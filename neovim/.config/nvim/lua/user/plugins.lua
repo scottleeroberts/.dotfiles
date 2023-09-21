@@ -32,8 +32,13 @@ end
 -- Install your plugins here
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
+  --themes
   use "folke/tokyonight.nvim"
+  use "EdenEast/nightfox.nvim"
+  use "rebelot/kanagawa.nvim"
+
   use {
+
     'folke/noice.nvim',
     requires = {
       "MunifTanjim/nui.nvim","rcarriga/nvim-notify",
