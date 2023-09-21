@@ -6,7 +6,7 @@ local silent_options = { noremap = true, silent = true }
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", silent_options)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "local map = vim.api.nvim_set_keymap
+vim.g.maplocalleader = " "
 
 -- Keymaps
 keymap('i', 'jj', '<Esc>', options)
@@ -20,7 +20,6 @@ keymap('n', 'S', 'i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$', options) -- s
 keymap('n', '<leader>d', ':bd<CR>', options)
 keymap('n', '<leader>q', ':q<CR>', options)
 keymap('n', '<leader>w', ':update<CR>', options)
-keymap('n', '<leader>g', '<C-]>', options)
 keymap('n', '<leader>.', ":call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>", options)
 keymap('n', '<leader>o', ':vs<CR>', options)
 keymap('n', '<leader>i', ':sp<CR>', options)
@@ -31,8 +30,6 @@ keymap('n', 'K', "mzJx'z", options)
 keymap('n', '<leader>gg', ':tab new<CR>', options)
 keymap('n', '<leader>gn', ':tabnew %<CR>', options)
 keymap('n', '<leader><CR>', 'gt', options)
-keymap('n', '<Leader>s', ':source $MYVIMRC<CR>', options)
-keymap('n', '<leader><tab>', 'mtgg=G`t', options) -- format entire file
 keymap('n', '<C-d>', '<C-d>zz', options)
 keymap('n', '<C-u>', '<C-u>zz', options)
 
@@ -42,9 +39,6 @@ keymap('n', 'Y', 'y$', options)
 
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
 keymap('v', 'K', ":m '<-2<CR>gv=gv", options)
-
-keymap('n', '<leader>p', ':call GoToNextIndent(1)<CR>', options)
-keymap('n', '<leader>P', ':call GoToNextIndent(-1)<CR>', options)
 
 --tmux
 keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
@@ -71,8 +65,8 @@ keymap('n', '<leader>vc', '<cmd>Telescope git_commits<CR>', {})
 keymap('n', '<leader>vb', "<cmd>lua bcommits()<CR>", {})
 keymap('n', '<leader>vs', '<cmd>Telescope git_stash<CR>', options)
 keymap('n', '<leader>vv', '<Plug>TigBlame', {})
+keymap('n', '<leader>vq', "<cmd>lua require'telescope.builtin'.quickfix()<cr>", options)
 keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sortr=path' }})<cr>", options)
-keymap('n', '<leader>mb', "<cmd>lua require'telescope.builtin'.quickfix()<cr>", options)
 
 keymap('n', '<leader>gs', '<cmd>Telescope git_status<CR>', options)
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
