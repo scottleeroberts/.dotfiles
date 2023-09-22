@@ -17,7 +17,11 @@ require('nightfox').setup({
   },
 })
 
-vim.cmd('colorscheme tokyonight-storm')
+require('rose-pine').setup({
+  disable_background = true,
+})
+
+-- vim.cmd('colorscheme tokyonight-storm')
 -- vim.cmd('colorscheme kanagawa')
 -- vim.cmd('colorscheme nightfox')
-
+vim.cmd('colorscheme rose-pine')
