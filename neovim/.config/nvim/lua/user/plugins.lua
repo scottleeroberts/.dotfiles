@@ -36,7 +36,7 @@ return packer.startup(function(use)
   use "folke/tokyonight.nvim"
   use "EdenEast/nightfox.nvim"
   use "rebelot/kanagawa.nvim"
-  use "rose-pine/neovim"
+  use "scottleeroberts/rosepine.nvim"
 
   use {
 
