@@ -82,3 +82,5 @@ keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 
 -- Nvimtree
 keymap("n", "<c-n>", ":NvimTreeFocus<cr>", options)
+
+keymap("i", "<C-l>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
