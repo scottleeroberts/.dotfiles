@@ -74,6 +74,7 @@ pacaur -S --noconfirm \
   zsh \
   zsh-syntax-highlighting \
   rg \
+  rose-pine-gtk-theme
   fd \
 
 fc-cache -f -v
