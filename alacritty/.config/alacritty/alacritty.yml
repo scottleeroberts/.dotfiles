@@ -89,36 +89,46 @@ custom_cursor_colors: false
 
 # Colors (Tomorrow Night Bright)
 colors:
-  # Default colors
   primary:
     background: '#12063b'
-    foreground: '0xc8d3f5'
-
-  # Normal colors
+    foreground: "0xe0def4"
+  cursor:
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  vi_mode_cursor:
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  line_indicator:
+    foreground: None
+    background: None
+  selection:
+    text: "0xe0def4"
+    background: "0x403d52"
   normal:
-    black:   '0x1b1d2b'
-    red:     '0xff757f'
-    green:   '0xc3e88d'
-    yellow:  '0xffc777'
-    blue:    '0x82aaff'
-    magenta: '0xc099ff'
-    cyan:    '0x86e1fc'
-    white:   '0x828bb8'
-
-  # Bright colors
+    black: "0x26233a"
+    red: "0xeb6f92"
+    green: "0x31748f"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xebbcba"
+    white: "0xe0def4"
   bright:
-    black:   '0x444a73'
-    red:     '0xff757f'
-    green:   '0xc3e88d'
-    yellow:  '0xffc777'
-    blue:    '0x82aaff'
-    magenta: '0xc099ff'
-    cyan:    '0x86e1fc'
-    white:   '0xc8d3f5'
-
-  indexed_colors:
-    - { index: 16, color: '0xff966c' }
-    - { index: 17, color: '0xc53b53' }
+    black: "0x6e6a86"
+    red: "0xeb6f92"
+    green: "0x31748f"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xebbcba"
+    white: "0xe0def4"
+  hints:
+    start:
+      foreground: "#908caa"
+      background: "#1f1d2e"
+    end:
+      foreground: "#6e6a86"
+      background: "#1f1d2e"
 # Mouse bindings
 #
 # Currently doesn't support modifiers. Both the `mouse` and `action` fields must
