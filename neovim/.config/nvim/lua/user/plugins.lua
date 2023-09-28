@@ -51,7 +51,10 @@ return packer.startup(function(use)
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
   use "kthibodeaux/tig.vim"
-  use "lukas-reineke/indent-blankline.nvim"
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+      tag = 'v2.*',
+  }
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
