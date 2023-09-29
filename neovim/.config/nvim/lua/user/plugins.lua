@@ -53,7 +53,6 @@ return packer.startup(function(use)
   use "kthibodeaux/tig.vim"
   use {
     "lukas-reineke/indent-blankline.nvim",
-      tag = 'v2.*',
   }
   use {
     "nvim-telescope/telescope.nvim",
