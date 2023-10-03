@@ -1,8 +1,12 @@
 require("noice").setup({
+  background_colour = "#222222",
   messages = {
     -- NOTE: If you enable messages, then the cmdline is enabled automatically.
     -- This is a current Neovim limitation.
     enabled = false, -- enables the Noice messages UI
+  },
+  notifications = {
+    enabled = false
   },
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
