@@ -51,6 +51,8 @@ require('telescope').setup{
       '--smart-case',
       '--follow',
       '--with-filename',
+      '--color=never',
+      '--no-heading',
     },
      mappings = {
         i = {
