@@ -31,6 +31,7 @@ end
 
 -- Install your plugins here
 return packer.startup(function(use)
+  use "andymass/vim-matchup"
   use "EdenEast/nightfox.nvim"
   use "FooSoft/vim-argwrap"
   use "JoosepAlviste/nvim-ts-context-commentstring"
