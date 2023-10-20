@@ -31,28 +31,38 @@ end
 
 -- Install your plugins here
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim"
-  --themes
-  use "folke/tokyonight.nvim"
   use "EdenEast/nightfox.nvim"
-  use "rebelot/kanagawa.nvim"
-  use "scottleeroberts/rosepine.nvim"
-
-  use {
-
-    'folke/noice.nvim',
-    requires = {
-      "MunifTanjim/nui.nvim","rcarriga/nvim-notify",
-    }
-  }
   use "FooSoft/vim-argwrap"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
   use "alvan/vim-closetag"
   use "benmills/vimux"
   use "chrisbra/Recover.vim"
   use "christoomey/vim-tmux-navigator"
+  use "folke/tokyonight.nvim"
+  use "github/copilot.vim"
   use "kthibodeaux/tig.vim"
+  use "lewis6991/gitsigns.nvim"
+  use "nvim-treesitter/nvim-treesitter"
+  use "rebelot/kanagawa.nvim"
+  use "scottleeroberts/rosepine.nvim"
+  use "thoughtbot/vim-rspec"
+  use "tpope/vim-commentary"
+  use "tpope/vim-endwise"
+  use "tpope/vim-rails"
+  use "tpope/vim-repeat"
+  use "tpope/vim-surround"
+  use "unblevable/quick-scope"
+  use "voldikss/vim-floaterm"
+  use "wbthomason/packer.nvim"
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     "lukas-reineke/indent-blankline.nvim",
+  }
+  use {
+    'folke/noice.nvim',
+    requires = {
+      "MunifTanjim/nui.nvim","rcarriga/nvim-notify",
+    }
   }
   use {
     "nvim-telescope/telescope.nvim",
@@ -61,24 +71,12 @@ return packer.startup(function(use)
       "nvim-telescope/telescope-fzy-native.nvim",
     },
   }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "nvim-treesitter/nvim-treesitter"
-  use "thoughtbot/vim-rspec"
-  use "tpope/vim-endwise"
-  use "tpope/vim-repeat"
-  use "tpope/vim-surround"
-  use "tpope/vim-commentary"
-  use "unblevable/quick-scope"
-  use "voldikss/vim-floaterm"
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
     },
   }
-  use "lewis6991/gitsigns.nvim"
-  use "tpope/vim-rails"
-  use "github/copilot.vim"
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
