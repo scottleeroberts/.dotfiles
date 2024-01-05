@@ -85,6 +85,7 @@ return packer.startup(function(use)
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
       {'williamboman/mason.nvim'},           -- Optional
+
       {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
       -- Autocompletion
@@ -96,6 +97,14 @@ return packer.startup(function(use)
       {'hrsh7th/cmp-nvim-lua'},     -- Optional
       {'hrsh7th/cmp-emoji'},     -- Optional
     }
+  }
+
+  use {
+      "Exafunction/codeium.nvim",
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "hrsh7th/nvim-cmp",
+      },
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
