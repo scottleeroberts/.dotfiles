@@ -15,6 +15,8 @@ keymap('i', '.', '.<c-g>u',  options)
 keymap('i', '!', '!<c-g>u',  options)
 keymap('i', '?', '?<c-g>u',  options)
 
+keymap('n', '-', '<CMD>Oil<CR>', options)
+
 keymap('n', '<CR>', ':noh<CR><CR>', options)
 keymap('n', 'S', 'i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$', options) -- split line
 keymap('n', '<leader>d', ':bd<CR>', options)

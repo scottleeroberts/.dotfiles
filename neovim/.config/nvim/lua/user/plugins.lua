@@ -55,6 +55,7 @@ return packer.startup(function(use)
   use "unblevable/quick-scope"
   use "voldikss/vim-floaterm"
   use "wbthomason/packer.nvim"
+  use "savq/melange-nvim"
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     "lukas-reineke/indent-blankline.nvim",
@@ -105,6 +106,9 @@ return packer.startup(function(use)
           "nvim-lua/plenary.nvim",
           "hrsh7th/nvim-cmp",
       },
+  }
+  use {
+    'stevearc/oil.nvim',
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
