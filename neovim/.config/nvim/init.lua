@@ -23,4 +23,5 @@ require "user.plugin.treesitter"
 require "user.plugin.ts-context-commentstring"
 require "user.plugin.indent-blankline"
 require "user.plugin.codeium"
+require "user.plugin.oil"
 
