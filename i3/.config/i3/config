@@ -244,6 +244,7 @@ assign [class="Firefox"] $workspace2
 assign [class="Slack|Signal"] $workspace3
 assign [class="Enpass"] $workspace4
 assign [class="Chromium"] $workspace5
+assign [class="VirtualBox Machine"] $workspace6
 
 exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/alacritty'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
