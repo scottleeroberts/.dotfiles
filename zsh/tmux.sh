@@ -11,24 +11,24 @@ tmux start-server
 # create a new tmux session, starting vim from a saved session in the new window
 tmux new-session -d -s $session
 tmux rename-window "     "
-tmux send-keys "cd ~/Development/baldwin-web" C-m
+tmux send-keys "cd ~/Development/rails_etc/" C-m
 tmux send-keys "vim" C-m
 
 tmux new-window -t $session -n "     "
 tmux rename-window "server"
-tmux send-keys "cd ~/Development/baldwin-web" C-m
+tmux send-keys "cd ~/Development/rails_etc" C-m
 
 # create a new window
 tmux new-window -t $session -n "     "
 tmux rename-window "zsh"
-tmux send-keys "cd ~/Development/baldwin-web" C-m
+tmux send-keys "cd ~/Development/rails_etc" C-m
 tmux send-keys "pactl load-module module-dbus-protocol" C-m
 tmux send-keys "pactl load-module module-equalizer-sink " C-m
 tmux send-keys "clear" C-m
 
 # create a new window
 tmux new-window -t $session -n "     "
-tmux send-keys "cd ~/Development/baldwin-web" C-m
+tmux send-keys "cd ~/Development/rails_etc" C-m
 tmux send-keys "weechat" C-m
 
 # return to main vim window
