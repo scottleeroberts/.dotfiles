@@ -1,0 +1,63 @@
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+  colorflag="--color"
+  else # OS X `ls`
+  colorflag="-G"
+fi
+
+alias ll="ls -Gplh"
+alias vim="nvim"
+alias v="nvim"
+
+# Filesystem aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias cp="cp -v"
+alias mv="mv -v"
+alias rm="rm -v"
+
+alias rt=$RUBY_TAG_COMMAND
+alias vu="nvim +PlugInstall"
+alias :q="exit"
+
+alias ls="ls -lah ${colorflag}"
+alias la="ls -AF ${colorflag}"
+alias ll="ls -lFh ${colorflag}"
+alias lld="ls -l | grep ^d"
+
+#audio helpers
+alias aud="DISPLAY=:0 pavucontrol"
+alias eq="qpaeq"
+alias yadl='youtube-dl --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata'
+alias yyy='youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 160K --yes-playlist '
+
+# Helpers
+alias grep='grep --color=auto'
+alias df='df -h' # disk free, in Gigabytes, not bytes
+alias du='du -h -c' # calculate disk usage for a folder
+alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
+
+#git aliases
+alias stash="git stash --include-untracked"
+alias pop="git stash pop"
+alias clean="git clean -fd"
+alias t='tig'
+
+#heroku
+alias hlogin="heroku login"
+alias hremote="heroku git:remote -a "
+alias hpush="git push heroku master"
+alias hmigrate="heroku run rails db:migrate"
+alias hupdate="heroku update"
+
+alias j="joplin --profile ~/.config/joplin-desktop/"
+alias jd="joplin-desktop"
+
+[[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+#misc
+alias wtr="curl wttr.in/chapel+hill"
