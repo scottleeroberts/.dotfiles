@@ -56,8 +56,12 @@ alias hupdate="heroku update"
 alias j="joplin --profile ~/.config/joplin-desktop/"
 alias jd="joplin-desktop"
 
-[[ -f ~/.zsh/git.sh ]] && source ~/.zsh/git.sh
+[[ -f ~/.bash/git.sh ]] && source ~/.bash/git.sh
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
 
 #misc
 alias wtr="curl wttr.in/chapel+hill"
+
+alias sstart='docker-compose -f docker/swoop/docker-compose.yml up -d'
+alias sstop='docker-compose down'
+alias sstarta='foreman start -f Procfile.dev'

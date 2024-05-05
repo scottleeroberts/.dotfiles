@@ -5,6 +5,7 @@ shopt -u nullglob
 HISTFILE=~/.bash_history
 HISTSIZE=10000
 HISTFILESIZE=10000
+
 shopt -s histappend
 
 export DOTFILES="$HOME/.dotfiles"
@@ -13,6 +14,7 @@ export BROWSER="firefox"
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/scripts:/opt/local/sbin:$PATH"
 export PATH="$DOTFILES/bin:$PATH"
 export PATH="/usr/share:$PATH"
+
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_COMPLETION_TRIGGER=',,'
 export FILTHY_SHOW_EXIT_CODE=1
