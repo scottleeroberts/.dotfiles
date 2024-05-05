@@ -21,3 +21,7 @@ stow -vv urlview
 stow -vv xmodmap
 stow -vv yaourt
 stow -vv zsh
+
+# Mac specific configuration
+# stow -vv  yabai
+# stow -vv skhd
