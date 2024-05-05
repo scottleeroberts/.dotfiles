@@ -30,7 +30,12 @@ require('rose-pine').setup({
   disable_background = true,
 })
 
+require('night-owl').setup({
+  disable_background = true,
+})
+
 -- vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme night-owl')
 -- vim.cmd('colorscheme tokyonight-storm')
-vim.cmd('colorscheme kanagawa')
+-- vim.cmd('colorscheme kanagawa')
 -- vim.cmd('colorscheme nightfox')

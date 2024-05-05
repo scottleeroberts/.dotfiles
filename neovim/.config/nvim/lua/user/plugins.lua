@@ -56,6 +56,7 @@ return packer.startup(function(use)
   use "voldikss/vim-floaterm"
   use "wbthomason/packer.nvim"
   use "savq/melange-nvim"
+  use "oxfist/night-owl.nvim"
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     "lukas-reineke/indent-blankline.nvim",
