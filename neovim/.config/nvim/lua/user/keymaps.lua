@@ -42,6 +42,8 @@ keymap('n', 'Y', 'y$', options)
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
 keymap('v', 'K', ":m '<-2<CR>gv=gv", options)
 
+keymap('n', 'gf', '<cmd> lua vim.lsp.buf.definition()<CR>', options)
+
 --tmux
 keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
 keymap('n', '<c-j>', ':TmuxNavigateDown<cr>', silent_options)
