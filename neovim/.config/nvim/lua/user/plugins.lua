@@ -49,7 +49,6 @@ return packer.startup(function(use)
   use "thoughtbot/vim-rspec"
   use "tpope/vim-commentary"
   use "tpope/vim-endwise"
-  use "tpope/vim-rails"
   use "tpope/vim-repeat"
   use "tpope/vim-surround"
   use "unblevable/quick-scope"
