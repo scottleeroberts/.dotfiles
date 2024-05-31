@@ -47,7 +47,6 @@ return packer.startup(function(use)
   use "rebelot/kanagawa.nvim"
   use "scottleeroberts/rosepine.nvim"
   use "thoughtbot/vim-rspec"
-  use "tpope/vim-commentary"
   use "tpope/vim-endwise"
   use "tpope/vim-repeat"
   use "tpope/vim-surround"
@@ -56,6 +55,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "savq/melange-nvim"
   use "oxfist/night-owl.nvim"
+  use "rhysd/committia.vim"
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     "lukas-reineke/indent-blankline.nvim",
