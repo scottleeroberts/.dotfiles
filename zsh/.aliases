@@ -63,3 +63,6 @@ alias jd="joplin-desktop"
 
 #misc
 alias wtr="curl wttr.in/chapel+hill"
+
+alias cdu='docker compose up'
+alias fstart='./bin/foreman start -f Procfile.dev'
