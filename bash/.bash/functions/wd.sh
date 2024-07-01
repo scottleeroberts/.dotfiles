@@ -9,7 +9,7 @@ function wd() {
       if [ -z "$TMUX" ] || [[ "$TMUX" =~ "tmate" ]]; then
         destination=$(echo "$files" | fzf | sed 's/^.*: //')
       else
-        destination=$(echo "$files" | fzf-tmux | sed 's/^.*: //')
+        destination=$(echo "$files" | fzf | sed 's/^.*: //')
       fi
 
       if [[ -n $destination ]]; then

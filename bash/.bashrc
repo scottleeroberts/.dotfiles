@@ -17,6 +17,8 @@ export PATH="/usr/share:$PATH"
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_COMPLETION_TRIGGER=',,'
+export FZF_DEFAULT_OPTS='--tmux 90%'
+
 export FILTHY_SHOW_EXIT_CODE=1
 
 # Load custom functions
