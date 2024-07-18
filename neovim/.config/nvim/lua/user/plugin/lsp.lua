@@ -10,12 +10,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
-lsp_zero.on_attach(function(client, bufnr)
-    lsp_zero.default_keymaps({buffer = bufnr})
+lsp.on_attach(function(client, bufnr)
+    lsp.default_keymaps({buffer = bufnr})
 
     local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
     if filetype ~= 'cucumber' then
-        lsp_zero.buffer_autoformat()
+        lsp.buffer_autoformat()
     end
 end)
 lsp.setup()
