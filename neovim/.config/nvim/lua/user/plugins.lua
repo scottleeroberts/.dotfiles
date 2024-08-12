@@ -56,10 +56,8 @@ return packer.startup(function(use)
   use "savq/melange-nvim"
   use "oxfist/night-owl.nvim"
   use "rhysd/committia.vim"
+  use  "lukas-reineke/indent-blankline.nvim"
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-  }
   use {
     'folke/noice.nvim',
     requires = {
@@ -107,9 +105,7 @@ return packer.startup(function(use)
           "hrsh7th/nvim-cmp",
       },
   }
-  use {
-    'stevearc/oil.nvim',
-  }
+  use  'stevearc/oil.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
