@@ -56,14 +56,18 @@ return packer.startup(function(use)
   use "savq/melange-nvim"
   use "oxfist/night-owl.nvim"
   use "rhysd/committia.vim"
+  use  'stevearc/oil.nvim'
   use  "lukas-reineke/indent-blankline.nvim"
+
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
   use {
     'folke/noice.nvim',
     requires = {
       "MunifTanjim/nui.nvim","rcarriga/nvim-notify",
     }
   }
+
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
@@ -71,12 +75,14 @@ return packer.startup(function(use)
       "nvim-telescope/telescope-fzy-native.nvim",
     },
   }
+
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
     },
   }
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -105,7 +111,16 @@ return packer.startup(function(use)
           "hrsh7th/nvim-cmp",
       },
   }
-  use  'stevearc/oil.nvim'
+
+  use({
+      'MeanderingProgrammer/render-markdown.nvim',
+      after = { 'nvim-treesitter' },
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+      config = function()
+          require('render-markdown').setup({})
+      end,
+  })
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
