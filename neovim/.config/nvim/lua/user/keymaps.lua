@@ -65,16 +65,16 @@ keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_c
 keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({use_regex=true, search = vim.fn.input('Grep For > ')})<CR>", options)
 keymap('n', '<leader>fs', '<cmd>Telescope grep_string<CR>', options)
 
-keymap('n', '<leader>vc', '<cmd>Telescope git_commits<CR>', {})
-keymap('n', '<leader>vb', "<cmd>lua bcommits()<CR>", {})
-keymap('n', '<leader>vs', '<cmd>Telescope git_stash<CR>', options)
-keymap('n', '<leader>vv', '<Plug>TigBlame', {})
-keymap('n', '<leader>vq', "<cmd>lua require'telescope.builtin'.quickfix()<cr>", options)
+keymap('n', '<leader>gc', '<cmd>Telescope git_commits<CR>', options)
+keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", {})
+keymap('n', '<leader>gs', '<cmd>Telescope git_stash<CR>', options)
+keymap('n', '<leader>gt', '<cmd>Telescope git_status<CR>', options)
+keymap('n', '<leader>gv', '<Plug>TigBlame', {})
+keymap('n', '<leader>gq', "<cmd>lua require'telescope.builtin'.quickfix()<cr>", options)
+keymap('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
 keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sortr=path' }})<cr>", options)
 
-keymap('n', '<leader>gs', '<cmd>Telescope git_status<CR>', options)
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
-keymap('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
 keymap('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<CR>',options)
 
 --navigation qwerty vs colemak
