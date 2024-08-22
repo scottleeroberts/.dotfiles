@@ -66,3 +66,5 @@ alias wtr="curl wttr.in/chapel+hill"
 
 alias cdu='docker compose up'
 alias fstart='./bin/foreman start -f Procfile.dev'
+
+alias notify="terminal-notifier -message 'Specs are done' -sound default -title 'DONE'"
