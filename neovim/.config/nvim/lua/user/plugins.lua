@@ -53,7 +53,6 @@ return packer.startup(function(use)
   use "unblevable/quick-scope"
   use "voldikss/vim-floaterm"
   use "wbthomason/packer.nvim"
-  use "savq/melange-nvim"
   use "oxfist/night-owl.nvim"
   use "rhysd/committia.vim"
   use  'stevearc/oil.nvim'
