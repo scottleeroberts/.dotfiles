@@ -1,3 +1,5 @@
+local actions = require('telescope.actions')
+
 function bcommits()
   local pickers = require('telescope.pickers')
   local finders = require('telescope.finders')
@@ -64,6 +66,16 @@ require('telescope').setup{
      mappings = {
         i = {
           ['<esc>'] = 'close',
+          ["<C-q>"] = function(prompt_bufnr)
+            actions.send_selected_to_qflist(prompt_bufnr)
+            vim.cmd('copen')
+          end,
+        },
+        n = {
+          ["<C-q>"] = function(prompt_bufnr)
+            actions.send_selected_to_qflist(prompt_bufnr)
+            vim.cmd('copen')
+          end,
         },
       },
       layout_strategy = "flex",
