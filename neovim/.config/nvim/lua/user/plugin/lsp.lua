@@ -1,23 +1,22 @@
 local lsp = require("lsp-zero").preset({"recommended"})
-
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
---mappings
+-- Mappings
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Enter>'] = cmp.mapping.confirm({ select = true }),
 })
+
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
+
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({buffer = bufnr})
-
-    local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-    if filetype ~= 'cucumber' then
+    if vim.api.nvim_buf_get_option(bufnr, 'filetype') ~= 'cucumber' then
         lsp.buffer_autoformat()
     end
 end)
+
 lsp.setup()
 
 cmp.setup({
@@ -25,7 +24,7 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-  sources = cmp.config.sources({
+  sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
@@ -33,19 +32,18 @@ cmp.setup({
     { name = "path" },
     { name = "codeium" },
     { name = "emoji", option = { insert = true } },
-  }),
+  },
 })
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
+  sources = {
     { name = "path" },
-  }, {
     { name = "cmdline" },
-  }),
+  },
 })
 
--- diagnostics errors are not done as virtual text (ie inline)
+-- Disable inline virtual text for diagnostics errors
 vim.diagnostic.config({
     virtual_text = false
 })
