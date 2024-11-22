@@ -65,7 +65,7 @@ keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_c
 keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({use_regex=true, search = vim.fn.input('Grep For > '), vimgrep_arguments = {'rg', '--vimgrep', '--hidden', '--glob', '!.git/**'}})<CR>", options)
 keymap('n', '<leader>fs', "<cmd>lua require('telescope.builtin').grep_string({vimgrep_arguments = {'rg', '--vimgrep', '--hidden', '--glob', '!.git/**'}})<CR>", options)
 
-keymap('n', '<leader>gc', '<cmd>Telescope git_commits<CR>', options)
+keymap('n', '<leader>gc', '<cmd>Gitsigns blame_line<CR>', options)
 keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", {})
 keymap('n', '<leader>gs', '<cmd>Telescope git_stash<CR>', options)
 keymap('n', '<leader>gt', '<cmd>Telescope git_status<CR>', options)
