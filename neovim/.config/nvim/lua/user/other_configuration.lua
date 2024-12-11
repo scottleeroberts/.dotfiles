@@ -15,3 +15,8 @@ vim.api.nvim_exec([[
   au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=251, on_visual=true}
 ]], false)
 
+vim.cmd [[
+  highlight CursorLine guibg=#003053
+  set cursorline
+]]
+
