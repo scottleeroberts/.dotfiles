@@ -76,6 +76,7 @@ keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorti
 
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
 keymap('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<CR>',options)
+keymap('n', '<leader>rt', '<cmd>lua vim.fn.VimuxRunCommand("bin/eng_system_tests " .. vim.fn.expand("%:p") .. "; notify")<CR>', options)
 
 --navigation qwerty vs colemak
 keymap('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
