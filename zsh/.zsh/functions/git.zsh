@@ -31,39 +31,23 @@ dev() {
 }
 
 a() {
-  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-    git add $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
-  else
-    git add $(git status -s -u | sort | awk '{ print $2 }' | fzf  -m --preview 'git diff --color=always {}')
-  fi
+  git add $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
 }
 
 grm() {
-  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-    rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
-  else
-    rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf  -m --preview 'git diff --color=always {}')
-  fi
+  rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
 }
 
 
 ap() {
-  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-    git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
-  else
-    git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf  -m --preview 'git diff --color=always {}')
-  fi
+  git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf  -m --preview 'git diff --color=always {}')
 }
 
 co() {
   if [[ $# > 0 ]]; then
     git co $@
   else
-    if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-      git co $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
-    else
-      git co $(git status -s -u | sort | awk '{ print $2 }' | fzf  -m --preview 'git diff --color=always {}')
-    fi
+    git co $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   fi
 }
 
@@ -71,11 +55,7 @@ br() {
   if [[ $# == 0 ]]; then
     base_branch=$(base_branch)
     branches=$(git branch)
-    if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-      target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $base_branch..{} | head')
-    else
-      target=$(echo $branches | awk '{$1=$1};1' | fzf  --preview 'git short-log $base_branch..{} | head')
-    fi
+    target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $base_branch..{} | head')
 
     if [[ $target != '' ]]; then
       git checkout $(echo $target)
@@ -95,11 +75,7 @@ gbd() {
 }
 
 cfu() {
-  if [ "$TMUX" == "" ] || [ "$TMUX" =~ "tmate" ]; then
-    target=$(git log --pretty=oneline $(base_branch).. | fzf --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
-  else
-    target=$(git log --pretty=oneline $(base_branch).. | fzf  --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
-  fi
+  target=$(git log --pretty=oneline $(base_branch).. | fzf  --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
 
   if [[ $target != '' ]]; then
     git commit --fixup $(echo $target)
