@@ -40,7 +40,13 @@ grm() {
 
 
 ap() {
-  git add -p $(git status -s -u | sort | awk '{ print $2 }' | fzf  -m --preview 'git diff --color=always {}')
+  local files
+  files=$(git status --porcelain | sort | cut -c4- | fzf -m --preview 'git diff --color=always "$REPLY"') || return
+  if [[ -n "$files" ]]; then
+    echo "$files" | while IFS= read -r file; do
+      git add -p "$file"
+    done
+  fi
 }
 
 co() {
