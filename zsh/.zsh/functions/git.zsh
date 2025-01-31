@@ -69,13 +69,35 @@ br() {
 }
 
 gbd() {
-  if [[ $# == 0 ]]; then
+  if [[ $# -eq 0 ]]; then
+    local base_branch targets
     base_branch=$(base_branch)
-    branches=$(git branch)
-    targets=$(echo $branches | awk '{$1=$1};1' | $(fzf_prog) -m --preview 'git short-log $base_branch..{} | head')
 
-    echo $targets
-    confirm && git branch -D $(echo $targets)
+    # Fetch the latest branches from the remote
+    git fetch origin
+
+    # Get a list of local branches excluding the base branch
+    targets=$(git branch --format='%(refname:short)' | grep -v "^$base_branch$" | fzf -m --preview "git short-log $base_branch..{} | head") || return
+
+    if [[ -n "$targets" ]]; then
+      echo "Deleting branches:"
+      echo "$targets"
+
+      # Prompt the user for confirmation without using read -p
+      echo -n "Are you sure you want to delete the selected branches? [y/N] "
+      read confirm
+
+      if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        echo "$targets" | xargs -n 1 git branch -D
+        echo "Selected branches have been deleted."
+      else
+        echo "Branch deletion canceled."
+      fi
+    else
+      echo "No branches selected for deletion."
+    fi
+  else
+    echo "gbd: This function does not accept arguments."
   fi
 }
 
