@@ -1,4 +1,4 @@
-alias console="docker compose run web bundle exec rails console"
+alias console="bundle exec rails console"
 
 docker_or_local() {
   local image=""
