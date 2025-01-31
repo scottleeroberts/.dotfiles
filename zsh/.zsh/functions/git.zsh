@@ -102,10 +102,11 @@ gbd() {
 }
 
 cfu() {
-  target=$(git log --pretty=oneline $(base_branch).. | fzf  --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA" | awk '{ print $1 }')
-
-  if [[ $target != '' ]]; then
-    git commit --fixup $(echo $target)
+  local base_branch target
+  base_branch=$(base_branch)
+  target=$(git log --pretty=format:"%H %s" "$base_branch".. | fzf --preview 'git show --color=always --pretty=fuller --stat {1}' | awk '{ print $1 }') || return
+  if [[ -n "$target" ]]; then
+    git commit --fixup "$target"
   fi
 }
 
