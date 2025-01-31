@@ -58,13 +58,12 @@ co() {
 }
 
 br() {
-  if [[ $# == 0 ]]; then
+  if [[ $# -eq 0 ]]; then
+    local base_branch target
     base_branch=$(base_branch)
-    branches=$(git branch)
-    target=$(echo $branches | awk '{$1=$1};1' | fzf --preview 'git short-log $base_branch..{} | head')
-
-    if [[ $target != '' ]]; then
-      git checkout $(echo $target)
+    target=$(git branch --format='%(refname:short)' | fzf --preview "git short-log $base_branch..{} | head") || return
+    if [[ -n "$target" ]]; then
+      git switch "$target"
     fi
   fi
 }
