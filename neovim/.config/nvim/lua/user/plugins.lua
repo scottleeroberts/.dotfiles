@@ -55,15 +55,15 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "oxfist/night-owl.nvim"
   use "rhysd/committia.vim"
-  use  'stevearc/oil.nvim'
-  use  "lukas-reineke/indent-blankline.nvim"
+  use 'stevearc/oil.nvim'
+  use "lukas-reineke/indent-blankline.nvim"
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   use {
     'folke/noice.nvim',
     requires = {
-      "MunifTanjim/nui.nvim","rcarriga/nvim-notify",
+      "MunifTanjim/nui.nvim", "rcarriga/nvim-notify",
     }
   }
 
@@ -83,41 +83,42 @@ return packer.startup(function(use)
   }
 
   use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {'williamboman/mason.nvim'},           -- Optional
-
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},         -- Required
-      {'hrsh7th/cmp-nvim-lsp'},     -- Required
-      {'hrsh7th/cmp-buffer'},       -- Optional
-      {'hrsh7th/cmp-path'},         -- Optional
-      {'hrsh7th/cmp-cmdline'},         -- Optional
-      {'hrsh7th/cmp-nvim-lua'},     -- Optional
-      {'hrsh7th/cmp-emoji'},     -- Optional
-    }
+    'williamboman/mason.nvim',
   }
 
   use {
-      "Exafunction/codeium.nvim",
-      requires = {
-          "nvim-lua/plenary.nvim",
-          "hrsh7th/nvim-cmp",
-      },
+    'saghen/blink.cmp',
+    requires = {
+      'fang2hou/blink-copilot',
+    },
+    config = function()
+      require('blink.cmp').setup {
+        keymap = { preset = 'enter' },
+        completion = { documentation = { auto_show = true } },
+        sources = {
+          default = {'lsp', 'path', 'buffer', 'copilot' },
+          providers = {
+            copilot = {
+              name = "copilot",
+              module = "blink-copilot",
+              score_offset = 100,
+              async = true,
+            },
+          },
+        },
+        fuzzy = { implementation = 'lua' },
+        signature = { enabled = true },
+      }
+    end,
   }
 
   use({
-      'MeanderingProgrammer/render-markdown.nvim',
-      after = { 'nvim-treesitter' },
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-      config = function()
-          require('render-markdown').setup({})
-      end,
+    'MeanderingProgrammer/render-markdown.nvim',
+    after = { 'nvim-treesitter' },
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },   -- if you prefer nvim-web-devicons
+    config = function()
+      require('render-markdown').setup({})
+    end,
   })
 
   -- Automatically set up your configuration after cloning packer.nvim
