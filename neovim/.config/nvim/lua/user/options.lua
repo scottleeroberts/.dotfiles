@@ -43,6 +43,7 @@ local options = {
   visualbell = true,
   wildmenu = true,
   wrap = false,
+  winborder = 'single'
 }
 
 for k,v in pairs(options) do
