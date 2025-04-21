@@ -9,9 +9,10 @@ install_ruby() {
     gem install git-up
     gem install neovim
     gem install rubocop
-    gem install solargraph
+    gem install ruby-lsp
+    gem install ruby-lsp-rails
   fi
   echo ""
 }
 
-install_ruby "3.1.1"
+install_ruby "3.4.2"
