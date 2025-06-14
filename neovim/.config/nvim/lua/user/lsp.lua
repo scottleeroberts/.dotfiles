@@ -1,5 +1,7 @@
 require("mason").setup({})
 
+vim.lsp.enable('golangci_lint_ls')
+vim.lsp.enable('gopls')
 vim.lsp.enable('luals')
 vim.lsp.enable('rubocop')
 vim.lsp.enable('ruby_lsp')
