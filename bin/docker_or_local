@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+# vim:filetype=ruby
+
+ALL_FILES = Dir.entries(Dir.pwd).freeze
+COMMAND = ARGV.reject { |e| e == '--force-local' }.join(' ')
+
+def force_local?
+  ARGV.include?('--force-local')
+end
+
+def prizepicks?
+  @is_prizepicks ||= Dir.pwd.include?('prizepicks')
+end
+
+def default_image
+  'web'
+end
+
+def use_docker?
+  ALL_FILES.include?('docker-compose.yml')
+end
+
+def use_config?
+  ALL_FILES.include?('.docker_or_local')
+end
+
+def config
+  @config ||= {}.tap do |c|
+    File.readlines('.docker_or_local').map do |line|
+      command, container = line.strip.split('=')
+      c[command] = container
+    end
+  end
+end
+
+if force_local? || File.exist?('.nodocker')
+  puts 'forcing local execution'
+  puts
+
+  system COMMAND
+elsif prizepicks?
+  current_directory = Dir.pwd.split('/').last
+
+  folder_map = %w[prizepicks-devenv].flat_map do |devenv_repo|
+    repo_list_path = "#{ENV['WORK_DIR']}/#{devenv_repo}/scripts/repository_list"
+    File.readlines(repo_list_path).map(&:strip).map { |repo| [repo, devenv_repo] }
+  end.to_h
+
+  if folder_map[current_directory]
+    system "#{ENV['WORK_DIR']}/#{folder_map[current_directory]}/scripts/run_in_container \"#{COMMAND}\""
+  else
+    puts "could not determine prizepicks devenv repo for #{current_directory}"
+    puts 'falling back to system'
+    puts
+
+    system COMMAND
+  end
+elsif use_docker?
+  command = COMMAND.split(' ')[0]
+  container = use_config? ? config[command] || default_image : default_image
+
+  puts "running in docker container `#{container}`"
+  puts
+
+  system "docker compose run --rm --no-deps #{container} /bin/bash -c \"#{COMMAND}\""
+else
+  system COMMAND
+end

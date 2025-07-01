@@ -13,4 +13,6 @@ export FILTHY_SHOW_EXIT_CODE=1
 
 export NODE_OPTIONS="--max-old-space-size=16384"
 
+export WORK_DIR="$HOME/Development"
+
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
