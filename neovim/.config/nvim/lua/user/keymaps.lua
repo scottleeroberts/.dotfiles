@@ -90,3 +90,6 @@ keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 keymap("n", "<c-n>", ":NvimTreeFocus<cr>", options)
 
 keymap("i", "<C-l>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
+keymap("n", "<leader>cc", "<cmd>CopilotChat<cr>", options)
+keymap("v", "<leader>cc", ":'<,'>CopilotChat<cr>", options)
+

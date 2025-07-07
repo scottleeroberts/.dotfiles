@@ -121,6 +121,27 @@ return packer.startup(function(use)
     end,
   })
 
+use({
+  "CopilotC-Nvim/CopilotChat.nvim",
+  requires = {
+    "github/copilot.vim",
+    "nvim-lua/plenary.nvim",
+  },
+  build = "make tiktoken",
+  config = function()
+    require("CopilotChat").setup({
+      mappings = {
+        reset = {
+          insert = "<c-.>",
+          normal = "<Leader>c",
+        },
+      },
+      question_header = " You:",
+      answer_header   = " Copilot:",
+    })
+  end,
+})
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
