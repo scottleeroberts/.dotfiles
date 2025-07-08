@@ -24,3 +24,5 @@ require "user.plugin.ts-context-commentstring"
 require "user.plugin.indent-blankline"
 require "user.plugin.oil"
 require "user.plugin.notify"
+
+vim.cmd [[highlight! link SignColumn Normal]]
