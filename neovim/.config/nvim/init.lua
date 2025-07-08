@@ -26,3 +26,5 @@ require "user.plugin.oil"
 require "user.plugin.notify"
 
 vim.cmd [[highlight! link SignColumn Normal]]
+
+_G.tests = require('user/plugin/tests')

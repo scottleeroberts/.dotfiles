@@ -46,7 +46,6 @@ return packer.startup(function(use)
   use "nvim-treesitter/nvim-treesitter"
   use "rebelot/kanagawa.nvim"
   use "scottleeroberts/rosepine.nvim"
-  use "thoughtbot/vim-rspec"
   use "tpope/vim-endwise"
   use "tpope/vim-repeat"
   use "tpope/vim-surround"

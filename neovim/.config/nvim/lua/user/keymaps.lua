@@ -22,7 +22,6 @@ keymap('n', 'S', 'i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$', options) -- s
 keymap('n', '<leader>d', ':bd<CR>', options)
 keymap('n', '<leader>q', ':q<CR>', options)
 keymap('n', '<leader>w', ':update<CR>', options)
-keymap('n', '<leader>.', ":call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>", options)
 keymap('n', '<leader>o', ':vs<CR>', options)
 keymap('n', '<leader>i', ':sp<CR>', options)
 keymap('n', '<leader>z', 'zR', options)
