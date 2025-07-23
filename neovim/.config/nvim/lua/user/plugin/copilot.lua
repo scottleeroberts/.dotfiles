@@ -1,3 +1,5 @@
-local g = vim.g
-g.copilot_assume_mapped = true
-g.copilot_filetypes = { VimspectorPrompt = false }
+require("copilot").setup({
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+  filetypes = { VimspectorPrompt = false },
+})

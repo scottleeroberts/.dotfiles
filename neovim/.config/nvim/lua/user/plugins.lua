@@ -22,7 +22,7 @@ require("lazy").setup({
   "chrisbra/Recover.vim",
   "christoomey/vim-tmux-navigator",
   "folke/tokyonight.nvim",
-  "github/copilot.vim",
+  "zbirenbaum/copilot.lua",
   "kthibodeaux/tig.vim",
   "lewis6991/gitsigns.nvim",
   "nvim-treesitter/nvim-treesitter",
