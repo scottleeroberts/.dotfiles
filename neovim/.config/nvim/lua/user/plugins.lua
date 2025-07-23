@@ -33,7 +33,6 @@ require("lazy").setup({
   "tpope/vim-surround",
   "unblevable/quick-scope",
   "voldikss/vim-floaterm",
-  "wbthomason/packer.nvim",
   "oxfist/night-owl.nvim",
   "rhysd/committia.vim",
   "stevearc/oil.nvim",
