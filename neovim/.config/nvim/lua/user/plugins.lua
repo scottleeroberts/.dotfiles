@@ -1,95 +1,75 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+-- Bootstrap lazy.nvim if not installed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+require("lazy").setup({
+  "andymass/vim-matchup",
+  "EdenEast/nightfox.nvim",
+  "FooSoft/vim-argwrap",
+  "JoosepAlviste/nvim-ts-context-commentstring",
+  "alvan/vim-closetag",
+  "benmills/vimux",
+  "chrisbra/Recover.vim",
+  "christoomey/vim-tmux-navigator",
+  "folke/tokyonight.nvim",
+  "github/copilot.vim",
+  "kthibodeaux/tig.vim",
+  "lewis6991/gitsigns.nvim",
+  "nvim-treesitter/nvim-treesitter",
+  "rebelot/kanagawa.nvim",
+  "scottleeroberts/rosepine.nvim",
+  "tpope/vim-endwise",
+  "tpope/vim-repeat",
+  "tpope/vim-surround",
+  "unblevable/quick-scope",
+  "voldikss/vim-floaterm",
+  "wbthomason/packer.nvim",
+  "oxfist/night-owl.nvim",
+  "rhysd/committia.vim",
+  "stevearc/oil.nvim",
+  "lukas-reineke/indent-blankline.nvim",
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
--- Install your plugins here
-return packer.startup(function(use)
-  use "andymass/vim-matchup"
-  use "EdenEast/nightfox.nvim"
-  use "FooSoft/vim-argwrap"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "alvan/vim-closetag"
-  use "benmills/vimux"
-  use "chrisbra/Recover.vim"
-  use "christoomey/vim-tmux-navigator"
-  use "folke/tokyonight.nvim"
-  use "github/copilot.vim"
-  use "kthibodeaux/tig.vim"
-  use "lewis6991/gitsigns.nvim"
-  use "nvim-treesitter/nvim-treesitter"
-  use "rebelot/kanagawa.nvim"
-  use "scottleeroberts/rosepine.nvim"
-  use "tpope/vim-endwise"
-  use "tpope/vim-repeat"
-  use "tpope/vim-surround"
-  use "unblevable/quick-scope"
-  use "voldikss/vim-floaterm"
-  use "wbthomason/packer.nvim"
-  use "oxfist/night-owl.nvim"
-  use "rhysd/committia.vim"
-  use 'stevearc/oil.nvim'
-  use "lukas-reineke/indent-blankline.nvim"
-
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  use {
-    'folke/noice.nvim',
-    requires = {
+  {
+    "folke/noice.nvim",
+    dependencies = {
       "MunifTanjim/nui.nvim", "rcarriga/nvim-notify",
     }
-  }
+  },
 
-  use {
+  {
     "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
     },
-  }
+  },
 
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
     },
-  }
+  },
 
-  use {
-    'williamboman/mason.nvim',
-  }
+  { "williamboman/mason.nvim" },
 
-  use {
-    'saghen/blink.cmp',
-    requires = {
-      'fang2hou/blink-copilot',
+  {
+    "saghen/blink.cmp",
+    dependencies = {
+      "fang2hou/blink-copilot",
     },
     config = function()
       require('blink.cmp').setup {
@@ -110,41 +90,34 @@ return packer.startup(function(use)
         signature = { enabled = true },
       }
     end,
-  }
+  },
 
-  use({
-    'MeanderingProgrammer/render-markdown.nvim',
-    after = { 'nvim-treesitter' },
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },   -- if you prefer nvim-web-devicons
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require('render-markdown').setup({})
     end,
-  })
-
-use({
-  "CopilotC-Nvim/CopilotChat.nvim",
-  requires = {
-    "github/copilot.vim",
-    "nvim-lua/plenary.nvim",
   },
-  build = "make tiktoken",
-  config = function()
-    require("CopilotChat").setup({
-      mappings = {
-        reset = {
-          insert = "<c-.>",
-          normal = "<Leader>c",
-        },
-      },
-      question_header = " You:",
-      answer_header   = " Copilot:",
-    })
-  end,
-})
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      "github/copilot.vim",
+      "nvim-lua/plenary.nvim",
+    },
+    build = "make tiktoken",
+    config = function()
+      require("CopilotChat").setup({
+        mappings = {
+          reset = {
+            insert = "<c-.>",
+            normal = "<Leader>c",
+          },
+        },
+        question_header = " You:",
+        answer_header   = " Copilot:",
+      })
+    end,
+  },
+})
