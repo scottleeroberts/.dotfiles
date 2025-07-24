@@ -90,3 +90,4 @@ keymap("v", "<leader>cc", ":'<,'>CopilotChat<cr>", options)
 --copilot review
 keymap('n', '<leader>cr', "<cmd>CopilotChat @Review #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
 keymap('v', '<leader>cf', "<cmd>CopilotChat @Refactor #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
+keymap('n', '<leader>cp', [[:!git diff main...HEAD > /tmp/pr.diff<CR>:CopilotChat @Review #file:/tmp/pr.diff #file:copilot-instructions.md Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<CR>]], options)
