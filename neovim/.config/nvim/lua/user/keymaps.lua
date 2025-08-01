@@ -1,4 +1,4 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 local options = { noremap = true }
 local silent_options = { noremap = true, silent = true }
@@ -87,7 +87,21 @@ keymap("i", "<C-l>", "copilot#Accept('<CR>')", {noremap = true, silent = true, e
 keymap("n", "<leader>cc", "<cmd>CopilotChat<cr>", options)
 keymap("v", "<leader>cc", ":'<,'>CopilotChat<cr>", options)
 
---copilot review
-keymap('n', '<leader>cr', "<cmd>CopilotChat @Review #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
+--copilotchat
+keymap('n', '<leader>cv', "<cmd>CopilotChat @Review #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
 keymap('v', '<leader>cf', "<cmd>CopilotChat @Refactor #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
-keymap('n', '<leader>cp', [[:!git diff main...HEAD > /tmp/pr.diff<CR>:CopilotChat @Review #file:/tmp/pr.diff #file:copilot-instructions.md Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<CR>]], options)
+keymap('n', '<leader>cp', [[:!git diff main...HEAD > /tmp/pr.diff<CR>:CopilotChat @Review #file:/tmp/pr.diff #file:copilot-instructions.md Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>]], options)
+keymap("n", "<leader>cv", function()
+  local filename = vim.fn.expand("%")
+  vim.fn.setreg("+", filename)
+
+  vim.cmd("CopilotChat")
+
+  vim.defer_fn(function()
+    vim.cmd("CopilotChat #file:" .. filename)
+    vim.api.nvim_feedkeys(vim.fn.getreg("+"), "n", false)
+    vim.defer_fn(function()
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-s>", true, false, true), "i", false)
+    end, 50)
+  end, 100)
+end)
