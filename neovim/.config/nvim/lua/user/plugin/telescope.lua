@@ -96,8 +96,10 @@ require('telescope').setup{
       dynamic_preview_title = true,
       prompt_prefix = "🔍 ",
       selection_caret = "➜ ",
-      border = false,
+      border = true,
+      winblend=0,
       color_devicons = true,
    },
 }
+vim.cmd([[highlight TelescopeBorder guibg=NONE ctermbg=NONE]])
 return telescope
