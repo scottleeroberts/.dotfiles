@@ -42,9 +42,10 @@ require("lazy").setup({
 
   {
     "folke/noice.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim", "rcarriga/nvim-notify",
-    }
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
+      }
   },
 
   {
@@ -95,7 +96,9 @@ require("lazy").setup({
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require('render-markdown').setup({})
+      require('render-markdown').setup({
+        code = { disable_background = true },
+      })
     end,
   },
 
