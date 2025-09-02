@@ -86,12 +86,22 @@ keymap("n", "<c-n>", ":NvimTreeFocus<cr>", options)
 keymap("i", "<C-l>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })
 keymap("n", "<leader>cc", "<cmd>CopilotChat<cr>", options)
 keymap("v", "<leader>cc", ":'<,'>CopilotChat<cr>", options)
+keymap("v", "<leader>cx", ":'<,'>CopilotChatReset<cr>", options)
 
 --copilotchat
 keymap('n', '<leader>cv', "<cmd>CopilotChat @Review #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
 keymap('v', '<leader>cf', "<cmd>CopilotChat @Refactor #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
-keymap('n', '<leader>cp', [[:!git diff main...HEAD > /tmp/pr.diff<CR>:CopilotChat @Review #file:/tmp/pr.diff #file:copilot-instructions.md Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>]], options)
-keymap("n", "<leader>cv", function()
+
+-- CopilotChat for PR review
+keymap('n', '<leader>cp', function()
+  vim.cmd('!git diff master...HEAD > /tmp/pr.diff')
+  vim.cmd('e /tmp/pr.diff')
+  vim.cmd('normal! ggVGy') -- Yank the entire buffer into the unnamed register
+  vim.cmd('CopilotChat @Review Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.')
+end, { noremap = true, silent = true })
+
+-- add file to CopilotChat context
+keymap("n", "<leader>co", function()
   local filename = vim.fn.expand("%")
   vim.fn.setreg("+", filename)
 
