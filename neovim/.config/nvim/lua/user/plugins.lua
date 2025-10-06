@@ -82,25 +82,65 @@ require("lazy").setup({
   -- AI Assistants
   "zbirenbaum/copilot.lua",
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    build = "make tiktoken",
-    config = function()
-      require("CopilotChat").setup({
-        mappings = {
-          reset = {
-            insert = "<c-.>",
-            normal = "<Leader>c",
-          },
+    "folke/sidekick.nvim",
+    opts = {
+      cli = {
+        mux = {
+          -- backend = "tmux",
+          -- enabled = true,
         },
-        question_header = " You:",
-        answer_header   = " Copilot:",
-      })
-    end,
+      },
+    },
+    keys = {
+      {
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion",
+      },
+      {
+        "<leader>aa",
+        function() require("sidekick.cli").toggle() end,
+        desc = "Sidekick Toggle CLI",
+      },
+      {
+        "<leader>as",
+        function() require("sidekick.cli").select() end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } }),
+        desc = "Select CLI",
+      },
+      {
+        "<leader>at",
+        function() require("sidekick.cli").send({ msg = "{this}" }) end,
+        mode = { "x", "n" },
+        desc = "Send This",
+      },
+      {
+        "<leader>av",
+        function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+        mode = { "x" },
+        desc = "Send Visual Selection",
+      },
+      {
+        "<leader>ap",
+        function() require("sidekick.cli").prompt() end,
+        mode = { "n", "x" },
+        desc = "Sidekick Select Prompt",
+      },
+      {
+        "<c-.>",
+        function() require("sidekick.cli").focus() end,
+        mode = { "n", "x", "i", "t" },
+        desc = "Sidekick Switch Focus",
+      },
+    },
   },
-
   -- UI Enhancements
   {
     "folke/noice.nvim",
@@ -132,7 +172,13 @@ require("lazy").setup({
 
   -- Terminal & TMUX
   "benmills/vimux",
-  "christoomey/vim-tmux-navigator",
+  {
+    "christoomey/vim-tmux-navigator",
+    init = function()
+      -- Disable default keymaps so we can set our own in keymaps.lua
+      vim.g.tmux_navigator_no_mappings = 1
+    end,
+  },
   "voldikss/vim-floaterm",
 
   -- Utilities

@@ -48,6 +48,10 @@ keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
 keymap('n', '<c-j>', ':TmuxNavigateDown<cr>', silent_options)
 keymap('n', '<c-k>', ':TmuxNavigateUp<cr>', silent_options)
 keymap('n', '<c-l>', ':TmuxNavigateRight<cr>', silent_options)
+keymap('t', '<c-h>', '<cmd>TmuxNavigateLeft<cr>', silent_options)
+keymap('t', '<c-j>', '<cmd>TmuxNavigateDown<cr>', silent_options)
+keymap('t', '<c-k>', '<cmd>TmuxNavigateUp<cr>', silent_options)
+keymap('t', '<c-l>', '<cmd>TmuxNavigateRight<cr>', silent_options)
 
 --floaterm
 keymap('n', '<leader>tt', ':FloatermToggle<CR>', options)
