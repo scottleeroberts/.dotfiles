@@ -13,70 +13,51 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "andymass/vim-matchup",
+  -- Colorschemes
   "EdenEast/nightfox.nvim",
-  "FooSoft/vim-argwrap",
-  "JoosepAlviste/nvim-ts-context-commentstring",
-  "alvan/vim-closetag",
-  "benmills/vimux",
-  "chrisbra/Recover.vim",
-  "christoomey/vim-tmux-navigator",
   "folke/tokyonight.nvim",
-  "zbirenbaum/copilot.lua",
-  "kthibodeaux/tig.vim",
-  "lewis6991/gitsigns.nvim",
-  "nvim-treesitter/nvim-treesitter",
   "rebelot/kanagawa.nvim",
   "scottleeroberts/rosepine.nvim",
-  "tpope/vim-endwise",
-  "tpope/vim-repeat",
-  "tpope/vim-surround",
-  "unblevable/quick-scope",
-  "voldikss/vim-floaterm",
   "oxfist/night-owl.nvim",
-  "rhysd/committia.vim",
-  "stevearc/oil.nvim",
-  "lukas-reineke/indent-blankline.nvim",
 
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  -- Treesitter
+  "nvim-treesitter/nvim-treesitter",
+  "JoosepAlviste/nvim-ts-context-commentstring",
 
-  {
-    "folke/noice.nvim",
-      dependencies = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-      }
-  },
-
+  -- Navigation & Search
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
   },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
+  -- File Management
   {
     "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  "stevearc/oil.nvim",
 
+  -- Git
+  "lewis6991/gitsigns.nvim",
+  "kthibodeaux/tig.vim",
+  "rhysd/committia.vim",
+
+  -- LSP & Completion
   { "williamboman/mason.nvim" },
-
   {
     "saghen/blink.cmp",
-    dependencies = {
-      "fang2hou/blink-copilot",
-    },
+    dependencies = { "fang2hou/blink-copilot" },
     config = function()
       require('blink.cmp').setup {
         keymap = { preset = 'enter' },
         completion = { documentation = { auto_show = true } },
         sources = {
-          default = {'lsp', 'path', 'buffer', 'copilot' },
+          default = { 'lsp', 'path', 'buffer', 'copilot' },
           providers = {
             copilot = {
               name = "copilot",
@@ -92,16 +73,8 @@ require("lazy").setup({
     end,
   },
 
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require('render-markdown').setup({
-        code = { disable_background = true },
-      })
-    end,
-  },
-
+  -- AI Assistants
+  "zbirenbaum/copilot.lua",
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
@@ -117,9 +90,47 @@ require("lazy").setup({
             normal = "<Leader>c",
           },
         },
-        question_header = " You:",
-        answer_header   = " Copilot:",
+        question_header = " You:",
+        answer_header   = " Copilot:",
       })
     end,
   },
+
+  -- UI Enhancements
+  {
+    "folke/noice.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
+  "lukas-reineke/indent-blankline.nvim",
+
+  -- Markdown
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require('render-markdown').setup({
+        code = { disable_background = true },
+      })
+    end,
+  },
+
+  -- Editing & Text Objects
+  "andymass/vim-matchup",
+  "FooSoft/vim-argwrap",
+  "alvan/vim-closetag",
+  "tpope/vim-endwise",
+  "tpope/vim-repeat",
+  "tpope/vim-surround",
+  "unblevable/quick-scope",
+
+  -- Terminal & TMUX
+  "benmills/vimux",
+  "christoomey/vim-tmux-navigator",
+  "voldikss/vim-floaterm",
+
+  -- Utilities
+  "chrisbra/Recover.vim",
 })
