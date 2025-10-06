@@ -49,5 +49,4 @@ source "$(brew --prefix)/opt/chruby/share/chruby/auto.sh"
 # export PATH="$(ruby -r rubygems -e 'print Gem.bindir'):$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
-chruby ruby-3.4.1
 export PATH=~/.npm-global/bin:$PATH
