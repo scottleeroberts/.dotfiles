@@ -23,6 +23,12 @@ require("lazy").setup({
   -- Treesitter
   "nvim-treesitter/nvim-treesitter",
   "JoosepAlviste/nvim-ts-context-commentstring",
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
 
   -- Navigation & Search
   {
@@ -119,7 +125,6 @@ require("lazy").setup({
   -- Editing & Text Objects
   "andymass/vim-matchup",
   "FooSoft/vim-argwrap",
-  "alvan/vim-closetag",
   "tpope/vim-endwise",
   "tpope/vim-repeat",
   "tpope/vim-surround",
