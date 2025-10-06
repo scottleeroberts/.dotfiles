@@ -92,12 +92,29 @@ keymap("v", "<leader>cx", ":'<,'>CopilotChatReset<cr>", options)
 keymap('n', '<leader>cv', "<cmd>CopilotChat @Review #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
 keymap('v', '<leader>cf', "<cmd>CopilotChat @Refactor #git Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.<cr>", options)
 
--- CopilotChat for PR review
 keymap('n', '<leader>cp', function()
-  vim.cmd('!git diff master...HEAD > /tmp/pr.diff')
-  vim.cmd('e /tmp/pr.diff')
-  vim.cmd('normal! ggVGy') -- Yank the entire buffer into the unnamed register
-  vim.cmd('CopilotChat @Review Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.')
+  local handle = io.popen("git remote show origin | grep 'HEAD branch' | awk '{print $NF}'")
+  local base_branch = handle:read("*a"):gsub("%s+", "")
+  handle:close()
+  local diff_file = "/tmp/pr.diff"
+  vim.fn.jobstart({ "git", "diff", base_branch .. "...HEAD" }, {
+    stdout_buffered = true,
+    on_stdout = function(_, data)
+      if data then
+        local f = io.open(diff_file, "w")
+        if f then
+          f:write(table.concat(data, "\n"))
+          f:close()
+          vim.schedule(function()
+            vim.cmd('e ' .. diff_file)
+            vim.defer_fn(function()
+              vim.cmd('CopilotChat @Review Only provide actionable comments. For each issue, suggest a concrete fix and show a code example. Exclude general feedback.')
+            end, 500) -- Increased delay
+          end, 100)
+        end
+      end
+    end,
+  })
 end, { noremap = true, silent = true })
 
 -- add file to CopilotChat context
