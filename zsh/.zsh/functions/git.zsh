@@ -41,10 +41,10 @@ grm() {
 
 ap() {
   local files
-  files=$(git status --porcelain | sort | cut -c4- | fzf -m --preview 'git diff --color=always "$REPLY"') || return
+  files=$(git status --porcelain | sort | cut -c4- | fzf -m --preview 'git diff --color=always {}') || return
   if [[ -n "$files" ]]; then
     echo "$files" | while IFS= read -r file; do
-      git add -p "$file"
+      git add -p "$file" < /dev/tty
     done
   fi
 }
