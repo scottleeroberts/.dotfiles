@@ -70,7 +70,7 @@ keymap('n', '<leader>fs', "<cmd>lua require('telescope.builtin').grep_string({vi
 keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
 
 keymap('n', '<leader>gc', '<cmd>Gitsigns blame_line<CR>', options)
-keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", options)
+keymap('n', '<leader>gb', '<cmd>Telescope git_bcommits<CR>', options)
 keymap('n', '<leader>gs', '<cmd>Telescope git_stash<CR>', options)
 keymap('n', '<leader>gt', '<cmd>Telescope git_status<CR>', options)
 keymap('n', '<leader>gv', '<Plug>TigBlame', options)
