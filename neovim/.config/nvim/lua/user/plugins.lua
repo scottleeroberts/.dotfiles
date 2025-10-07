@@ -57,21 +57,12 @@ require("lazy").setup({
   { "williamboman/mason.nvim" },
   {
     "saghen/blink.cmp",
-    dependencies = { "fang2hou/blink-copilot" },
     config = function()
       require('blink.cmp').setup {
         keymap = { preset = 'enter' },
         completion = { documentation = { auto_show = true } },
         sources = {
-          default = { 'lsp', 'path', 'buffer', 'copilot' },
-          providers = {
-            copilot = {
-              name = "copilot",
-              module = "blink-copilot",
-              score_offset = 100,
-              async = true,
-            },
-          },
+          default = { 'lsp', 'path', 'buffer' },
         },
         fuzzy = { implementation = 'lua' },
         signature = { enabled = true },
@@ -86,8 +77,8 @@ require("lazy").setup({
     opts = {
       cli = {
         mux = {
-          -- backend = "tmux",
-          -- enabled = true,
+          backend = "tmux",
+          enabled = true,
         },
       },
     },
@@ -105,14 +96,13 @@ require("lazy").setup({
       },
       {
         "<leader>aa",
-        function() require("sidekick.cli").toggle() end,
+        function() require("sidekick.cli").toggle("claude") end,
         desc = "Sidekick Toggle CLI",
       },
       {
         "<leader>as",
-        function() require("sidekick.cli").select() end,
-        -- Or to select only installed tools:
-        -- require("sidekick.cli").select({ filter = { installed = true } }),
+        function() require("sidekick.cli").select({ filter = { installed = true
+       } }) end,
         desc = "Select CLI",
       },
       {
@@ -126,18 +116,6 @@ require("lazy").setup({
         function() require("sidekick.cli").send({ msg = "{selection}" }) end,
         mode = { "x" },
         desc = "Send Visual Selection",
-      },
-      {
-        "<leader>ap",
-        function() require("sidekick.cli").prompt() end,
-        mode = { "n", "x" },
-        desc = "Sidekick Select Prompt",
-      },
-      {
-        "<c-.>",
-        function() require("sidekick.cli").focus() end,
-        mode = { "n", "x", "i", "t" },
-        desc = "Sidekick Switch Focus",
       },
     },
   },

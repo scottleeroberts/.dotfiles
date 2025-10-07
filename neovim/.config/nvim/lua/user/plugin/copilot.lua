@@ -1,5 +1,11 @@
 require("copilot").setup({
-  suggestion = { enabled = false },
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    keymap = {
+      accept = "<C-l>",
+    },
+  },
   panel = { enabled = false },
   filetypes = { VimspectorPrompt = false },
 })
