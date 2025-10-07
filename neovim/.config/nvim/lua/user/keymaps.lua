@@ -41,7 +41,7 @@ keymap('n', 'Y', 'y$', options)
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
 keymap('v', 'K', ":m '<-2<CR>gv=gv", options)
 
-keymap('n', 'gf', '<cmd> lua vim.lsp.buf.definition()<CR>', options)
+keymap('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
 
 --tmux
 keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
@@ -70,16 +70,16 @@ keymap('n', '<leader>fs', "<cmd>lua require('telescope.builtin').grep_string({vi
 keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
 
 keymap('n', '<leader>gc', '<cmd>Gitsigns blame_line<CR>', options)
-keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", {})
+keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", options)
 keymap('n', '<leader>gs', '<cmd>Telescope git_stash<CR>', options)
 keymap('n', '<leader>gt', '<cmd>Telescope git_status<CR>', options)
-keymap('n', '<leader>gv', '<Plug>TigBlame', {})
+keymap('n', '<leader>gv', '<Plug>TigBlame', options)
 keymap('n', '<leader>gq', "<cmd>lua require'telescope.builtin'.quickfix()<cr>", options)
 keymap('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
 keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sortr=path' }})<cr>", options)
 
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
-keymap('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<CR>',options)
+keymap('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<CR>', options)
 
 --argwrap
 keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
