@@ -38,9 +38,8 @@ white = "0xe0def4"
 yellow = "0xf6c177"
 
 [colors.primary]
-# background = "#12063b"
-background = "#011627"
-foreground = "0xe0def4"
+# background = "#0a0a0a"
+background = "#000015"
 
 [colors.selection]
 background = "0x403d52"
@@ -63,7 +62,8 @@ family = "monaco"
 family = "monaco"
 
 [font.normal]
-family = "monaco"
+# family = "SeriousShanns Nerd Font Mono"
+family = "Monaco"
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -88,20 +88,15 @@ mods = "Command"
 [mouse]
 hide_when_typing = true
 
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
-
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-decorations = "none"
-opacity = 0.9
+opacity = 0.92
 
-[window.dimensions]
-columns = 80
-lines = 24
+# [window.dimensions]
+# columns = 80
+# lines = 24
 
 [window.padding]
 x = 10
@@ -109,3 +104,4 @@ y = 2
 
 [general]
 live_config_reload = true
+

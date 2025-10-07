@@ -1,4 +1,4 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 local options = { noremap = true }
 local silent_options = { noremap = true, silent = true }
@@ -22,7 +22,6 @@ keymap('n', 'S', 'i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>$', options) -- s
 keymap('n', '<leader>d', ':bd<CR>', options)
 keymap('n', '<leader>q', ':q<CR>', options)
 keymap('n', '<leader>w', ':update<CR>', options)
-keymap('n', '<leader>.', ":call RailsOpenAltCommand(expand('%'), ':vsplit')<cr>", options)
 keymap('n', '<leader>o', ':vs<CR>', options)
 keymap('n', '<leader>i', ':sp<CR>', options)
 keymap('n', '<leader>z', 'zR', options)
@@ -42,13 +41,17 @@ keymap('n', 'Y', 'y$', options)
 keymap('v', 'J', ":m '>+1<CR>gv=gv", options)
 keymap('v', 'K', ":m '<-2<CR>gv=gv", options)
 
-keymap('n', 'gf', '<cmd> lua vim.lsp.buf.definition()<CR>', options)
+keymap('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
 
 --tmux
 keymap('n', '<c-h>', ':TmuxNavigateLeft<cr>', silent_options)
 keymap('n', '<c-j>', ':TmuxNavigateDown<cr>', silent_options)
 keymap('n', '<c-k>', ':TmuxNavigateUp<cr>', silent_options)
 keymap('n', '<c-l>', ':TmuxNavigateRight<cr>', silent_options)
+keymap('t', '<c-h>', '<cmd>TmuxNavigateLeft<cr>', silent_options)
+keymap('t', '<c-j>', '<cmd>TmuxNavigateDown<cr>', silent_options)
+keymap('t', '<c-k>', '<cmd>TmuxNavigateUp<cr>', silent_options)
+keymap('t', '<c-l>', '<cmd>TmuxNavigateRight<cr>', silent_options)
 
 --floaterm
 keymap('n', '<leader>tt', ':FloatermToggle<CR>', options)
@@ -61,32 +64,25 @@ keymap('n', '<Left>', ':vertical resize +2<CR>', silent_options)
 keymap('n', '<Right>', ':vertical resize -2<CR>', silent_options)
 
 --file and git mappings
-keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) preview={timeout=1000}<cr>", options)
+keymap('n', '<leader>/', "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }, preview={timeout=1000}})<cr>", options)
 keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').grep_string({use_regex=true, search = vim.fn.input('Grep For > '), vimgrep_arguments = {'rg', '--vimgrep', '--hidden', '--glob', '!.git/**'}})<CR>", options)
 keymap('n', '<leader>fs', "<cmd>lua require('telescope.builtin').grep_string({vimgrep_arguments = {'rg', '--vimgrep', '--hidden', '--glob', '!.git/**'}})<CR>", options)
+keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
 
 keymap('n', '<leader>gc', '<cmd>Gitsigns blame_line<CR>', options)
-keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", {})
+keymap('n', '<leader>gb', "<cmd>lua bcommits()<CR>", options)
 keymap('n', '<leader>gs', '<cmd>Telescope git_stash<CR>', options)
 keymap('n', '<leader>gt', '<cmd>Telescope git_status<CR>', options)
-keymap('n', '<leader>gv', '<Plug>TigBlame', {})
+keymap('n', '<leader>gv', '<Plug>TigBlame', options)
 keymap('n', '<leader>gq', "<cmd>lua require'telescope.builtin'.quickfix()<cr>", options)
 keymap('n', '<leader>gr', '<cmd>Telescope git_branches<CR>', options)
 keymap('n', '<leader>mi', "<cmd>lua require'telescope.builtin'.find_files({sorting_strategy='descending', cwd='db/migrate', find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--sortr=path' }})<cr>", options)
 
 keymap('n', '<leader>bb', '<cmd>Telescope buffers<CR>', options)
-keymap('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<CR>',options)
-keymap('n', '<leader>rt', '<cmd>lua vim.fn.VimuxRunCommand("bin/eng_system_tests " .. vim.fn.expand("%:p") .. "; notify")<CR>', options)
-keymap('n', '<leader>rd', '<cmd>lua vim.fn.VimuxRunCommand("bin/debug_eng_system_tests " .. vim.fn.expand("%:p") .. "; notify")<CR>', options)
-
---navigation qwerty vs colemak
-keymap('n', '<leader>lq', '<Plug>UseQwertyNavigation', options)
-keymap('n', '<leader>lc', '<Plug>UseColemakNavigation', options)
+keymap('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<CR>', options)
 
 --argwrap
 keymap('n', '<leader>a', ':ArgWrap<CR>', silent_options)
 
 -- Nvimtree
 keymap("n", "<c-n>", ":NvimTreeFocus<cr>", options)
-
-keymap("i", "<C-l>", "copilot#Accept('<CR>')", {noremap = true, silent = true, expr=true, replace_keycodes = false })

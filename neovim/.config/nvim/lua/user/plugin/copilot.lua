@@ -1,3 +1,11 @@
-local g = vim.g
-g.copilot_assume_mapped = true
-g.copilot_filetypes = { VimspectorPrompt = false }
+require("copilot").setup({
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    keymap = {
+      accept = "<C-l>",
+    },
+  },
+  panel = { enabled = false },
+  filetypes = { VimspectorPrompt = false },
+})

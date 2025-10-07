@@ -1,41 +1,38 @@
 [include]
-        path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
 [core]
-        editor = nvim
+  editor = nvim
 	excludesfile = ~/.dotfiles/git/.gitignore
 [color]
-	ui = true
 	ui = true
 [format]
         pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an %ae>%Creset
 [alias]
-        a = add
-        aa = add --all
+  a = add
+  aa = add --all
 	st = status --short --branch
 	co = checkout
-
-        cv = commit -v
-        unstage = reset HEAD
-        short-log = log --pretty=format:'%C(yellow)%h%Creset %s'
-        wip = !git add --all && git commit -m 'WIP' && git push
-        ls = log --graph --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
-        lst = log --graph --abbrev-commit --date=relative --stat
-        lg = !"git lg1-specific "
-        lgx = !"git lg2-specific "
-        lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-        lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-        gclean = !git branch --merged origin/develop | grep -v master | grep -v develop | xargs git branch -d
-        la = "!git config -l | grep alias | cut -c 7-" # list aliases
+  up = !git-up
+  cv = commit -v
+  unstage = reset HEAD
+  short-log = log --pretty=format:'%C(yellow)%h%Creset %s'
+  wip = !git add --all && git commit -m 'WIP' && git push
+  ls = log --graph --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+  lst = log --graph --abbrev-commit --date=relative --stat
+  lg = !"git lg1-specific "
+  lgx = !"git lg2-specific "
+  lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+  lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  gclean = !git branch --merged origin/develop | grep -v master | grep -v develop | xargs git branch -d
+  la = "!git config -l | grep alias | cut -c 7-" # list aliases
 [pull]
   default = current
   rebase = true
 [push]
 	default = current
-[commit]
-	template = ~/.gitmessage
 [rebase]
-      autostash = true
-      autosquash = true
+  autostash = true
+  autosquash = true
 [diff]
 	compactionHeuristic = 1
 [merge]

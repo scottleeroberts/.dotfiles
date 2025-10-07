@@ -1,9 +1,9 @@
+require("telescope").load_extension("ui-select")
 local actions = require('telescope.actions')
 
 function bcommits()
   local pickers = require('telescope.pickers')
   local finders = require('telescope.finders')
-  local actions = require('telescope.actions')
   local previewers = require('telescope.previewers')
   local conf = require('telescope.config').values
 
@@ -45,6 +45,9 @@ end
 local telescope = {}
 require('telescope').setup{
   extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {}
+    },
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
       override_generic_sorter = true,  -- override the generic sorter
@@ -53,6 +56,7 @@ require('telescope').setup{
     }
   },
   defaults = {
+    file_ignore_patterns = { "node_modules", ".git/" },
     vimgrep_arguments = {
           "rg",
           "--color=never",
@@ -87,6 +91,15 @@ require('telescope').setup{
           flip_columns = 170,
         },
       },
+      preview = true,
+      sorting_strategy = "descending",
+      dynamic_preview_title = true,
+      prompt_prefix = "🔍 ",
+      selection_caret = "➜ ",
+      border = true,
+      winblend=0,
+      color_devicons = true,
    },
 }
+vim.cmd([[highlight TelescopeBorder guibg=NONE ctermbg=NONE]])
 return telescope

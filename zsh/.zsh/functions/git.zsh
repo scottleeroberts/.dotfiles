@@ -41,19 +41,19 @@ grm() {
 
 ap() {
   local files
-  files=$(git status --porcelain | sort | cut -c4- | fzf -m --preview 'git diff --color=always "$REPLY"') || return
+  files=$(git status --porcelain | sort | cut -c4- | fzf -m --preview 'git diff --color=always {}') || return
   if [[ -n "$files" ]]; then
     echo "$files" | while IFS= read -r file; do
-      git add -p "$file"
+      git add -p "$file" < /dev/tty
     done
   fi
 }
 
 co() {
   if [[ $# > 0 ]]; then
-    git co $@
+    git checkout HEAD -- $@
   else
-    git co $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+    git checkout $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   fi
 }
 
@@ -103,10 +103,34 @@ gbd() {
 
 cfu() {
   local base_branch target
+
+  # Check if there are changes to commit
+  if [[ -z $(git status --porcelain) ]]; then
+    echo "No changes to commit"
+    return 1
+  fi
+
   base_branch=$(base_branch)
-  target=$(git log --pretty=format:"%H %s" "$base_branch".. | fzf --preview 'git show --color=always --pretty=fuller --stat {1}' | awk '{ print $1 }') || return
+
+  # Better formatting: show relative date and author
+  target=$(git log --pretty=format:"%H %ad %an | %s" --date=relative "$base_branch".. | \
+    fzf --preview 'git show --color=always --pretty=fuller --stat {1}' | \
+    awk '{ print $1 }') || return
+
   if [[ -n "$target" ]]; then
+    # Stage all changes if needed
+    if [[ -n $(git diff --name-only) ]]; then
+      git add -A
+    fi
+
     git commit --fixup "$target"
+
+    # Offer to auto-rebase
+    echo -n "Run autosquash rebase now? [y/N] "
+    read response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+      git rebase -i --autosquash "$base_branch"
+    fi
   fi
 }
 

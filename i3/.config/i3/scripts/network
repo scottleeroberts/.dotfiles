@@ -1,23 +1,19 @@
 #!/bin/bash
 
-device="${BLOCK_INSTANCE:-wlan0}"
-status=$(cat /sys/class/net/${device}/operstate)
+# The file where the last result will be stored
+OUTPUT_FILE="/tmp/speedtest.log"
 
-URGENT_VALUE=20
-
-if [[ "${status}" == "up" ]]; then
-  if [[ -d "/sys/class/net/${device}/wireless" ]]; then
-    quality=$(grep ${device} /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-    echo "${quality}%"
-    echo "${quality}%"
-    echo ""
-
-    if [[ "${quality}" -le "${URGENT_VALUE}" ]]; then
-      exit 33
-    fi
-  else
-    echo "on"
-    echo "on"
-    echo ""
-  fi
-fi
+# Run speedtest, select only the Download and Upload lines, and format them.
+# The 'stdbuf -o0' command prevents buffering issues.
+# We round the numbers to the nearest integer for a clean look.
+/usr/bin/stdbuf -o0 speedtest --accept-license --accept-gdpr -f json-pretty | \
+awk '
+  /download/ {d=$2; getline; getline; down=d}
+  /upload/ {u=$2; getline; getline; up=u}
+  END {
+    # Convert from Bytes/s to Megabits/s (Mbps) by multiplying by 8/1000000
+    down_mbps = down * 8 / 1000000;
+    up_mbps = up * 8 / 1000000;
+    printf "↓ %.0f ↑ %.0f Mbps\n", down_mbps, up_mbps
+  }
+' > "$OUTPUT_FILE"
