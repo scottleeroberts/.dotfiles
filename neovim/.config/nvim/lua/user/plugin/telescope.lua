@@ -44,6 +44,14 @@ end
 
 local telescope = {}
 require('telescope').setup{
+  pickers = {
+    git_bcommits = {
+      git_command = { "git", "log", "--pretty=%h %an | %s (%cr)", "--abbrev-commit", "--follow", "--" },
+    },
+    git_commits = {
+      git_command = { "git", "log", "--pretty=%h %an %s (%cr)", "--abbrev-commit" },
+    },
+  },
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {}
