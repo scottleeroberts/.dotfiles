@@ -1,52 +1,11 @@
 require("telescope").load_extension("ui-select")
 local actions = require('telescope.actions')
 
-function bcommits()
-  local pickers = require('telescope.pickers')
-  local finders = require('telescope.finders')
-  local previewers = require('telescope.previewers')
-  local conf = require('telescope.config').values
-
-  local current_file = vim.fn.expand('%')
-  local git_commits = io.popen('git log --pretty=format:"%h %aE %s %cd" --date=short -- ' .. current_file):read('*all')
-
-  local git_commits_table = {}
-  for line in git_commits:gmatch("[^\r\n]+") do
-    table.insert(git_commits_table, line)
-  end
-
-  pickers.new({}, {
-    prompt_title = 'Git Commits',
-    finder = finders.new_table {
-      results = git_commits_table,
-      entry_maker = function(line)
-        local parts = vim.split(line, " ")
-        local sha = table.remove(parts, 1)
-        local author = table.remove(parts, 1)
-        local date = table.remove(parts, #parts)
-        local message = table.concat(parts, " ")
-        return {
-          value = sha,
-          ordinal = line,
-          display = "[" .. sha .."] " .. date .. " (" .. author .. ") " .. message,
-          date = date,
-        }
-      end,
-    },
-    sorter = conf.generic_sorter({}),
-    previewer = previewers.new_termopen_previewer({
-      get_command = function(entry)
-        return { 'git', 'show', entry.value, '--', current_file }
-      end,
-    }),
-  }):find()
-end
-
 local telescope = {}
 require('telescope').setup{
   pickers = {
     git_bcommits = {
-      git_command = { "git", "log", "--pretty=%h %an | %s (%cr)", "--abbrev-commit", "--follow", "--" },
+      git_command = { "git", "log", "--pretty=%h %an |require %s (%cr)", "--abbrev-commit", "--follow", "--" },
     },
     git_commits = {
       git_command = { "git", "log", "--pretty=%h %an %s (%cr)", "--abbrev-commit" },
