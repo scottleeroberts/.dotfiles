@@ -26,15 +26,11 @@ cm() {
   fi
 }
 
-dev() {
-  git checkout develop && git up
-}
-
 a() {
   git add $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
 }
 
-grm() {
+r() {
   rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
 }
 
@@ -51,7 +47,13 @@ ap() {
 
 co() {
   if [[ $# > 0 ]]; then
-    git checkout HEAD -- $@
+    # If it's a valid git ref (branch/tag) and not an existing file, switch to it
+    if git rev-parse --verify "$1" &>/dev/null && ! [[ -e "$1" ]]; then
+      git checkout "$1"
+    else
+      # Otherwise treat as file path(s) to revert
+      git checkout HEAD -- "$@"
+    fi
   else
     git checkout $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
   fi
@@ -77,7 +79,7 @@ gbd() {
     git fetch origin
 
     # Get a list of local branches excluding the base branch
-    targets=$(git branch --format='%(refname:short)' | grep -v "^$base_branch$" | fzf -m --preview "git short-log $base_branch..{} | head") || return
+    targets=$(git branch --format='%(refname:short)' | grep -v "^$base_branch$" | fzf -m --preview "git log --oneline $base_branch..{} | head") || return
 
     if [[ -n "$targets" ]]; then
       echo "Deleting branches:"
