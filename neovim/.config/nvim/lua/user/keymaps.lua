@@ -97,7 +97,7 @@ keymap("n", "-", "<CMD>Oil<CR>", options)
 -- Plugin: Telescope - File Finding
 -- ============================================================================
 keymap("n", "<leader>/", "<cmd>lua require'telescope.builtin'.find_files({find_command = {'rg', '--files', '--hidden', '-g', '!.git' }, preview={timeout=1000}})<cr>", options)
-keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').grep_string({use_regex=true, search = vim.fn.input('Grep For > '), vimgrep_arguments = {'rg', '--vimgrep', '--hidden', '--glob', '!.git/**'}})<CR>", options)
+keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').grep_string({use_regex=true, search = vim.fn.input('Grep For > '), vimgrep_arguments = {'rg', '--vimgrep', '--smart-case', '--hidden', '--glob', '!.git/**'}})<CR>", options)
 keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').grep_string({vimgrep_arguments = {'rg', '--vimgrep', '--hidden', '--glob', '!.git/**'}})<CR>", options)
 keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", options)
 keymap("n", "<leader>bb", "<cmd>Telescope buffers<CR>", options)
