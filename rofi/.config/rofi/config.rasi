@@ -5,4 +5,4 @@ show-icons: true;
 terminal: "alacritty";
 font: "hack 15";
 }
-@theme "purple"
+@theme "DarkBlue"
