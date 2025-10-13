@@ -106,34 +106,17 @@ gbd() {
 cfu() {
   local base_branch target
 
-  # Check if there are changes to commit
-  if [[ -z $(git status --porcelain) ]]; then
-    echo "No changes to commit"
-    return 1
-  fi
+  [[ -z $(git status --porcelain) ]] && echo "No changes to commit" && return 1
 
   base_branch=$(base_branch)
 
-  # Better formatting: show relative date and author
   target=$(git log --pretty=format:"%H %ad %an | %s" --date=relative "$base_branch".. | \
     fzf --preview 'git show --color=always --pretty=fuller --stat {1}' | \
     awk '{ print $1 }') || return
 
-  if [[ -n "$target" ]]; then
-    # Stage all changes if needed
-    if [[ -n $(git diff --name-only) ]]; then
-      git add -A
-    fi
-
-    git commit --fixup "$target"
-
-    # Offer to auto-rebase
-    echo -n "Run autosquash rebase now? [y/N] "
-    read response
-    if [[ "$response" =~ ^[Yy]$ ]]; then
-      git rebase -i --autosquash "$base_branch"
-    fi
-  fi
+  git add -A
+  git commit --fixup "$target"
+  git rebase -i --autosquash "$base_branch"
 }
 
 gdm () {
