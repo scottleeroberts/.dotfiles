@@ -95,12 +95,12 @@ require("lazy").setup({
         desc = "Goto/Apply Next Edit Suggestion",
       },
       {
-        "<leader>aa",
+        "<leader>at",
         function() require("sidekick.cli").toggle("claude") end,
         desc = "Sidekick Toggle CLI",
       },
       {
-        "<leader>at",
+        "<leader>aa",
         function() require("sidekick.cli").send({ msg = "{this}" }) end,
         mode = { "x", "n" },
         desc = "Send This",
