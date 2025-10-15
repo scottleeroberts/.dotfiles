@@ -14,7 +14,6 @@ local options = {
   ignorecase = true,
   incsearch = true,
   laststatus = 2,
-  ls = 2,
   mouse = 'a',
   number = true,
   path = '.,app/javascript/**',
