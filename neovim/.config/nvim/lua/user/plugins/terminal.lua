@@ -11,8 +11,14 @@ return {
   },
   {
     "christoomey/vim-tmux-navigator",
+    keys = {
+      { "<c-h>", "<cmd>TmuxNavigateLeft<cr>", mode = { "n", "t" }, desc = "Tmux Navigate Left" },
+      { "<c-j>", "<cmd>TmuxNavigateDown<cr>", mode = { "n", "t" }, desc = "Tmux Navigate Down" },
+      { "<c-k>", "<cmd>TmuxNavigateUp<cr>", mode = { "n", "t" }, desc = "Tmux Navigate Up" },
+      { "<c-l>", "<cmd>TmuxNavigateRight<cr>", mode = { "n", "t" }, desc = "Tmux Navigate Right" },
+    },
     init = function()
-      -- Disable default keymaps so we can set our own in keymaps.lua
+      -- Disable default keymaps so we define our own
       vim.g.tmux_navigator_no_mappings = 1
     end,
   },
@@ -20,7 +26,7 @@ return {
     "voldikss/vim-floaterm",
     cmd = { "FloatermNew", "FloatermToggle", "FloatermPrev", "FloatermNext" },
     keys = {
-      { "<leader>ft", "<cmd>FloatermToggle<cr>", desc = "Toggle Floaterm" },
+      { "<leader>tt", "<cmd>FloatermToggle<cr>", mode = { "n", "t" }, desc = "Toggle Floaterm" },
     },
   },
   {

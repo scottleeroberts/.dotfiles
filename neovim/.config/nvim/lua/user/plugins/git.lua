@@ -3,6 +3,10 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPost", "BufNewFile" },
+    keys = {
+      { "<leader>gc", "<cmd>Gitsigns blame_line<cr>", desc = "Git Blame Line" },
+      { "<leader>gv", "<cmd>Gitsigns blame<cr>", desc = "Git Blame" },
+    },
     config = function()
       require("gitsigns").setup({
         signs = {

@@ -10,6 +10,14 @@ return {
     },
   },
   {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPost", "BufNewFile" },
+    keys = {
+      { "gf", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to Definition" },
+      { "<leader>ll", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "LSP Diagnostics" },
+    },
+  },
+  {
     "saghen/blink.cmp",
     event = "InsertEnter",
     config = function()
