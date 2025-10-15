@@ -25,6 +25,14 @@ return {
       { "<leader>lr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
     },
     config = function()
+      -- Configure LSP servers with custom settings
+      vim.lsp.config("gopls", require("user.lsp.gopls"))
+      vim.lsp.config("ruby_lsp", require("user.lsp.ruby_lsp"))
+      vim.lsp.config("ts_ls", require("user.lsp.ts_ls"))
+      vim.lsp.config("lua_ls", require("user.lsp.lua_ls"))
+      vim.lsp.config("rubocop", require("user.lsp.rubocop"))
+      vim.lsp.config("golangci_lint_ls", require("user.lsp.golangci_lint_ls"))
+
       -- Enable LSP servers
       vim.lsp.enable("golangci_lint_ls")
       vim.lsp.enable("gopls")
