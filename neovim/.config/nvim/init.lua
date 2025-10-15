@@ -11,7 +11,6 @@ require "user.keymaps"
 require "user.lazy_bootstrap"
 require "user.theme"
 require "user.other_configuration"
-require "user.lsp"
 
 vim.cmd [[highlight! link SignColumn Normal]]
 
