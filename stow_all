@@ -5,8 +5,6 @@ stow -vv dunst
 stow -vv fonts
 stow -vv gem
 stow -vv git
-stow -vv gtk2
-stow -vv gtk3
 stow -vv i3
 stow -vv ignore
 stow -vv less
