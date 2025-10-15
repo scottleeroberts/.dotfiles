@@ -10,7 +10,7 @@ local function ensure_spec(filename)
   if filename:find("spec", 1, true) then
     return filename
   else
-    return require('user/plugin/open_alt').get_alternate_filename(filename)
+    return require('user.utils.open_alt').get_alternate_filename(filename)
   end
 end
 
