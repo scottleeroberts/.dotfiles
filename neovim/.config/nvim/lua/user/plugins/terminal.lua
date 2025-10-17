@@ -7,6 +7,10 @@ return {
       { "<leader>vl", "<cmd>VimuxRunLastCommand<cr>", desc = "Vimux Run Last" },
       { "<leader>vi", "<cmd>VimuxInspectRunner<cr>", desc = "Vimux Inspect" },
       { "<leader>vz", "<cmd>VimuxZoomRunner<cr>", desc = "Vimux Zoom" },
+      -- Test runner keys (loads Vimux for test execution)
+      { "<leader>rr", desc = "Run nearest test" },
+      { "<leader>rf", desc = "Run test file" },
+      { "<leader>ra", desc = "Run all tests" },
     },
   },
   {
