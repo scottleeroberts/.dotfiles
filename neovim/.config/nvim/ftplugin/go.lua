@@ -11,4 +11,4 @@ buffer_map(0, 'n', '<leader>rf', ":lua _G.tests.go.run_file()<CR>", { noremap = 
 buffer_map(0, 'n', '<leader>ra', ':lua _G.tests.go.run_all()<CR>', { noremap = true, desc = 'all files' })
 buffer_map(0, 'n', '<leader>rl', ":lua _G.tests.run_last()<CR>", { noremap = true, desc = 'last test' })
 
-buffer_map(0, 'n', '<leader>.', ':lua require("user/plugin/open_alt").open()<CR>', { noremap = true, desc = 'open alt' })
+buffer_map(0, 'n', '<leader>.', ':lua require("user.utils.open_alt").open()<CR>', { noremap = true, desc = 'open alt' })

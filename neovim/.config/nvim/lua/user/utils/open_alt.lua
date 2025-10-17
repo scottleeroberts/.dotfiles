@@ -38,7 +38,7 @@ local function open()
   local filename = vim.api.nvim_eval("expand('%')")
   local alternate_filename = get_alternate_filename(filename)
 
-  if(alternate_filename == "") then
+  if not alternate_filename or alternate_filename == "" then
     print "No alternate file found"
   else
     vim.api.nvim_command('vsplit ' .. alternate_filename)
