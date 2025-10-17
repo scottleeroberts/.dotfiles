@@ -9,6 +9,8 @@ require("nvim-treesitter.configs").setup({
     "javascript",
     "json",
     "lua",
+    "markdown",
+    "markdown_inline",
     "ruby",
     "vim",
     "vue",
