@@ -56,6 +56,21 @@ return {
         mode = { "n", "x" },
         desc = "Sidekick Select Prompt",
       },
+      {
+        "<leader>ar",
+        function()
+          local Terminal = require("sidekick.cli.terminal")
+          local Config = require("sidekick.config")
+          local tool = vim.deepcopy(Config.cli.tools["claude"])
+          tool.name = "claude"
+          table.insert(tool.cmd, "--resume")
+
+          local terminal = Terminal.new(tool)
+          terminal:show()
+          terminal:focus()
+        end,
+        desc = "Resume Claude Session",
+      },
     },
   },
 }
