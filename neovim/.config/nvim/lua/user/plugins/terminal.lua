@@ -2,6 +2,7 @@
 return {
   {
     "benmills/vimux",
+    lazy = false,
     keys = {
       { "<leader>vp", "<cmd>VimuxPromptCommand<cr>", desc = "Vimux Prompt" },
       { "<leader>vl", "<cmd>VimuxRunLastCommand<cr>", desc = "Vimux Run Last" },
