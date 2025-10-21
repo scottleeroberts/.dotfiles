@@ -36,14 +36,14 @@ return {
       {
         "<leader>at",
         function()
-          require("sidekick.cli").toggle("claude")
+          require("sidekick.cli").toggle({ name = "claude", focus = true })
         end,
-        desc = "Sidekick Toggle CLI",
+        desc = "Sidekick Toggle Claude",
       },
       {
         "<leader>aa",
         function()
-          require("sidekick.cli").send({ msg = "{this}" })
+          require("sidekick.cli").send({ msg = "{position}" })
         end,
         mode = { "x", "n" },
         desc = "Send This",
