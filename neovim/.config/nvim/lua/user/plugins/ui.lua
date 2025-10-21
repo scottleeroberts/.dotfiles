@@ -1,6 +1,19 @@
 -- UI enhancement plugins
 return {
   {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      picker = { enabled = true },
+    },
+    init = function()
+      vim.ui.select = function(...)
+        require("snacks").picker.ui_select(...)
+      end
+    end,
+  },
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {

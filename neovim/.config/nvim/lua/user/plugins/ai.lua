@@ -20,6 +20,12 @@ return {
   {
     "folke/sidekick.nvim",
     opts = {
+      cli = {
+        picker = "snacks",
+        tools = {
+          claude = { cmd = { "claude" } },
+        },
+      },
     },
     keys = {
       {
@@ -36,7 +42,7 @@ return {
       {
         "<leader>at",
         function()
-          require("sidekick.cli").toggle({ name = "claude", focus = true })
+          require("sidekick.cli").toggle({ name = "claude" })
         end,
         desc = "Sidekick Toggle Claude",
       },
