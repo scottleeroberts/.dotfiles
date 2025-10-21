@@ -127,7 +127,11 @@ return {
       { "-", "<cmd>Oil<cr>", desc = "Oil File Browser" },
     },
     config = function()
-      require("oil").setup()
+      require("oil").setup({
+        view_options = {
+          show_hidden = true,
+        },
+      })
     end,
   },
 }
