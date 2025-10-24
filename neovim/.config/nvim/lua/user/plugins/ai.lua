@@ -79,6 +79,17 @@ return {
         end,
         desc = "Resume Claude Session",
       },
+      {
+        "<C-k>",
+        function()
+          local chan = vim.bo.channel
+          if chan then
+            vim.api.nvim_chan_send(chan, "\x11") -- \x11 is Ctrl-Q
+          end
+        end,
+        mode = "t",
+        desc = "break into scrolly mode in terminal",
+      },
     },
   },
 }
