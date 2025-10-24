@@ -66,13 +66,14 @@ return {
       {
         "<leader>ar",
         function()
+          local Session = require("sidekick.cli.session")
           local Terminal = require("sidekick.cli.terminal")
           local Config = require("sidekick.config")
-          local tool = vim.deepcopy(Config.cli.tools["claude"])
-          tool.name = "claude"
-          table.insert(tool.cmd, "--resume")
 
-          local terminal = Terminal.new(tool)
+          Session.setup() -- Ensure backends are registered
+
+          local tool = Config.get_tool("claude"):clone({ cmd = { "claude", "--resume" } })
+          local terminal = Terminal.new({ tool = tool })
           terminal:show()
           terminal:focus()
         end,
