@@ -20,6 +20,7 @@ return {
   {
     "folke/sidekick.nvim",
     opts = {
+      nes = { enabled = false },
       cli = {
         picker = "snacks",
         tools = {
