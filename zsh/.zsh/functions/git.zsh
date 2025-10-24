@@ -34,6 +34,19 @@ r() {
   rm -dir $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
 }
 
+rmf() {
+  if [[ $# > 0 ]]; then
+    rm "$@"
+  else
+    local files
+    files=$(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}') || return
+    if [[ -n "$files" ]]; then
+      echo "$files" | while IFS= read -r file; do
+        rm "$file"
+      done
+    fi
+  fi
+}
 
 ap() {
   local files
