@@ -122,22 +122,25 @@ mode "resize" {
 ########
 # Multi Monitor Support
 ########
-set $mon_lap eDP1
-set $mon_ext DP1
-set $mon_ext_hdmi HDMI3
+set $mon_lap eDP
+set $mon_ext HDMI-A-0
 
 bindsym $mod+m mode "monitor_select"
 
 #{{{   Monitor mode
 mode "monitor_select" {
 
-  # only one
-  bindsym 1 exec --no-startup-id xrandr --output $mon_ext --off; mode "default"
+  # laptop only
+  bindsym 1 exec --no-startup-id xrandr --output $mon_ext --off --output $mon_lap --auto; mode "default"
 
-  # new left and right monitors
-  bindsym l exec --no-startup-id xrandr --output $mon_lap --mode 1920x1200 --output $mon_ext --auto --left-of $mon_lap ; mode "default"; exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
-  bindsym r exec --no-startup-id xrandr --output $mon_lap --mode 1920x1200 --output $mon_ext --auto --right-of $mon_lap ; mode "default"; exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
-  bindsym h exec --no-startup-id xrandr --output $mon_lap --mode 1920x1200 --output $mon_ext_hdmi --auto --left-of $mon_lap ; mode "default; exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg"
+  # external monitor on left of laptop
+  bindsym l exec --no-startup-id xrandr --output $mon_lap --mode 2880x1800 --output $mon_ext --auto --left-of $mon_lap ; mode "default"; exec --no-startup-id feh --image-bg black --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
+
+  # external monitor on right of laptop
+  bindsym r exec --no-startup-id xrandr --output $mon_lap --mode 2880x1800 --output $mon_ext --auto --right-of $mon_lap ; mode "default"; exec --no-startup-id feh --image-bg black --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
+
+  # external only
+  bindsym e exec --no-startup-id xrandr --output $mon_lap --off --output $mon_ext --auto; mode "default"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -201,10 +204,10 @@ bindsym $mod+z mode "$mode_system"
         status_command    i3blocks -c ~/.config/i3/i3blocks.conf
         position          top
         colors {
-		separator  #757575
-		background #09090990
-		focused_workspace #09090990 #09090990 #0096FF
-		inactive_workspace #09090990 #09090990 #7393B3
+          separator  #757575
+          background #000020
+          # focused_workspace #09090990 #09090990 #0096FF
+          # inactive_workspace #09090990 #09090990 #7393B3
         }
   }
 
@@ -217,10 +220,9 @@ smart_borders on
 smart_gaps on
 
 bindsym $mod+Control+k [class=Alacritty] focus
-bindsym $mod+Control+d [class=firefox] focus
+bindsym $mod+Control+d [class=Google-chrome] focus
 bindsym $mod+Control+t [class=Slack] focus
-bindsym $mod+Control+w [class=Signal] focus
-bindsym $mod+Control+c [class=Chromium] focus
+bindsym $mod+Control+c [class=Google-chrome] focus
 
 # shortcut to bring up pavucontrol for audio
 bindsym $mod+Ctrl+p exec pavucontrol for_window [class="Pavucontrol"] floating enable
@@ -229,7 +231,7 @@ bindsym $mod+Ctrl+p exec pavucontrol for_window [class="Pavucontrol"] floating e
 bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
 #exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
 #exec --no-startup-id xrandr --output eDP1 --mode 1920x1200
-exec --no-startup-id xrandr --output HDMI1 --mode 2560x1440
+exec --no-startup-id sh -c 'sleep 2; xrandr --output HDMI-A-0 --mode 3440x1440 --primary --pos 0x0 --output eDP --mode 2880x1800 --pos 3440x0'
 exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
