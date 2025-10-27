@@ -2,7 +2,7 @@ alias console="bundle exec rails console"
 
 alias be="bundle exec"
 alias bu="bundle update"
-alias bi="bundle install && bundle install --force-local"
+alias bi="bundle install"
 
 alias ber="bundle exec rails"
 alias bes="bundle exec rspec"
