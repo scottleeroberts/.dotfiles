@@ -33,7 +33,7 @@ def config
   end
 end
 
-if force_local? || File.exist?('.nodocker')
+if force_local?
   puts 'forcing local execution'
   puts
 
@@ -42,12 +42,12 @@ elsif prizepicks?
   current_directory = Dir.pwd.split('/').last
 
   folder_map = %w[prizepicks-devenv].flat_map do |devenv_repo|
-    repo_list_path = "#{ENV['WORK_DIR']}/#{devenv_repo}/scripts/repository_list"
+    repo_list_path = "#{ENV['HOME']}/prizepicks/#{devenv_repo}/scripts/repository_list"
     File.readlines(repo_list_path).map(&:strip).map { |repo| [repo, devenv_repo] }
   end.to_h
 
   if folder_map[current_directory]
-    system "#{ENV['WORK_DIR']}/#{folder_map[current_directory]}/scripts/run_in_container \"#{COMMAND}\""
+    system "#{ENV['HOME']}/prizepicks/#{folder_map[current_directory]}/scripts/run_in_container \"#{COMMAND}\""
   else
     puts "could not determine prizepicks devenv repo for #{current_directory}"
     puts 'falling back to system'
