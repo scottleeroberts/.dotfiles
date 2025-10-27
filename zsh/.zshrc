@@ -38,14 +38,14 @@ source ~/.fzf/shell/completion.zsh
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.zshrc.local ]] &&  source ~/.zshrc.local
 
-opentmux
-
-# — Homebrew (Linuxbrew) setup —
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 source "$(brew --prefix)/opt/chruby/share/chruby/chruby.sh"
-source "$(brew --prefix)/opt/chruby/share/chruby/auto.sh"
+chruby ruby-3.4.1 2>/dev/null || chruby ruby-3.4.4 2>/dev/null
+
+opentmux
+
 # export PATH="$(ruby -r rubygems -e 'print Gem.bindir'):$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
