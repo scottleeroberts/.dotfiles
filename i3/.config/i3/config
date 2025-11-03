@@ -233,7 +233,7 @@ bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/
 #exec --no-startup-id xrandr --output eDP1 --mode 1920x1200
 exec --no-startup-id sh -c 'sleep 2; xrandr --output HDMI-A-0 --mode 3440x1440 --primary --pos 0x0 --output eDP --mode 2880x1800 --pos 3440x0'
 exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
-exec --no-startup-id redshift-gtk
+exec --no-startup-id gammastep -m randr -l 35.78:-78.64 -t 6500:3500
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
@@ -252,4 +252,4 @@ exec --no-startup-id i3-msg 'workspace $workspace1; exec /usr/bin/alacritty'
 exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
-exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/chromium'
+exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/google-chrome'

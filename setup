@@ -50,7 +50,7 @@ pacaur -S --noconfirm \
   pulseaudio-equalizer \
   python-neovim \
   python-websocket-client \
-  redshift-gtk-git \
+  gammastep \
   ripgrep \
   rofi \
   ruby-install \
