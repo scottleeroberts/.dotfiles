@@ -11,3 +11,5 @@ node_modules/
 public/packs/
 public/sprockets/
 bundle/
+
+.claude/
