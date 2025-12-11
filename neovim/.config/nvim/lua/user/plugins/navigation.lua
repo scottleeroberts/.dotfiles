@@ -61,7 +61,12 @@ return {
         desc = "Find Migrations",
       },
       {
-        "<leader>gb",
+        "<leader>gc",
+        "<cmd>Telescope git_commits<cr>",
+        desc = "Git Commits",
+      },
+      {
+        "<leader>gv",
         "<cmd>Telescope git_bcommits<cr>",
         desc = "Git Buffer Commits",
       },
