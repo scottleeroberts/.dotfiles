@@ -48,6 +48,26 @@ return {
         desc = "Sidekick Toggle Claude",
       },
       {
+        "<leader>ad",
+        function()
+          local Session = require("sidekick.cli.session")
+          local Terminal = require("sidekick.cli.terminal")
+          local Config = require("sidekick.config")
+
+          Session.setup()
+
+          -- Create a tool with a unique session ID or different working directory
+          local tool = Config.get_tool("claude"):clone()
+          local terminal = Terminal.new({
+            tool = tool,
+            id = "claude_secondary", -- Unique identifier for the second instance
+          })
+          terminal:show()
+          terminal:focus()
+        end,
+        desc = "Toggle Second Claude Instance",
+      },
+      {
         "<leader>aa",
         function()
           require("sidekick.cli").send({ msg = "{position}" })
