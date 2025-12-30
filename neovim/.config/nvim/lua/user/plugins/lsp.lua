@@ -22,7 +22,7 @@ return {
       { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
       { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover Documentation" },
       { "<leader>ld", "<c-]>", desc = "Go to Definition (ctags fallback)" },
-      { "<leader>lr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
+      { "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
     },
     config = function()
       -- Configure LSP servers with custom settings

@@ -1,3 +1,15 @@
+TESTS_LAST_COMMAND = ""
+
+local function get_line_content(n)
+  local l = vim.api.nvim_buf_get_lines(0, n - 1, n, false)
+  return l[1] or ""
+end
+
+local function get_line_number()
+  local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  return line
+end
+
 local function get_filename()
   local cwd = vim.fn.getcwd()
   local full_path = vim.fn.expand('%:p')
@@ -10,7 +22,7 @@ local function ensure_spec(filename)
   if filename:find("spec", 1, true) then
     return filename
   else
-    return require('user.utils.open_alt').get_alternate_filename(filename)
+    return require('open_alt').get_alternate_filename(filename)
   end
 end
 
@@ -24,54 +36,92 @@ local function remove_until(original_string, until_string)
   end
 end
 
-local function get_line_number()
-  local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
-  return line
+local function find_go_test_name()
+  local cur_line = get_line_number()
+  local line_text = get_line_content(cur_line)
+  local on_name = line_text:match("^%s*func%s+(Test[%w_]+)%s*%(")
+  if on_name then
+    return on_name
+  end
+
+  for line_number = cur_line, 1, -1 do
+    local txt = get_line_content(line_number)
+    local name = txt:match("^%s*func%s+(Test[%w_]+)%s*%(")
+    if name then
+      return name
+    end
+  end
+
+  return nil
+end
+
+local function run_in_split(command)
+  TESTS_LAST_COMMAND = command
+  vim.cmd('silent !run_in_split ' .. command)
 end
 
 local go = {
   run_all = function()
-    vim.cmd("VimuxRunCommand('go test ./...')")
+    run_in_split("go test ./...")
   end,
   run_file = function()
     local filename = get_filename()
 
     local directory = filename:match("(.*/)")
-
-    if directory ~= "./" then
+    if not directory then
+      directory = "..."
+    elseif directory ~= "./" then
       directory = directory:sub(1, #directory - 1)
     end
 
-    vim.cmd('VimuxRunCommand("go test ./' .. directory .. '")')
+    run_in_split('"go test -v ./' .. directory .. '"')
+  end,
+  run_nearest = function()
+    local filename = get_filename()
+
+    local directory = filename:match("(.*/)")
+    if not directory then
+      directory = "..."
+    elseif directory ~= "./" then
+      directory = directory:sub(1, #directory - 1)
+    end
+
+    local test_name = find_go_test_name()
+
+    if test_name then
+      run_in_split('"go test -v ./' .. directory .. ' -run ' .. test_name .. '"')
+    else
+      run_in_split('"go test -v ./' .. directory .. '"')
+    end
   end,
 }
 
 local js = {
   run_all = function()
-    vim.cmd("VimuxRunCommand('yarn test')")
+    run_in_split('yarn test')
   end,
   run_file = function()
     local filename = get_filename()
-    vim.cmd('VimuxRunCommand("yarn test ./' .. filename .. '")')
+    run_in_split('"yarn test ./' .. filename .. '"')
   end,
 }
 
 local rspec = {
   run_all = function()
-    vim.cmd("VimuxRunCommand('bundle exec rspec')")
+    run_in_split("bundle exec rspec")
   end,
   run_file = function()
     local filename = remove_until(ensure_spec(get_filename()), "spec")
-    vim.cmd('VimuxRunCommand("bundle exec rspec -f doc ./' .. filename .. '")')
+    run_in_split('"bundle exec rspec -f doc ./' .. filename .. '"')
   end,
   run_nearest = function()
     local filename = remove_until(ensure_spec(get_filename()), "spec")
-    vim.cmd('VimuxRunCommand("bundle exec rspec -f doc ./' .. filename .. ':' .. get_line_number() .. '")')
+    run_in_split('"bundle exec rspec -f doc ./' .. filename .. ':' .. get_line_number() .. '"')
   end,
 }
 
 local function run_last()
-  vim.cmd("VimuxRunLastCommand")
+  run_in_split(TESTS_LAST_COMMAND)
 end
 
 return {
