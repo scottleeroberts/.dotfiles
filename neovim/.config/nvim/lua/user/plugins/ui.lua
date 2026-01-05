@@ -45,4 +45,26 @@ return {
       })
     end,
   },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        width = 120,
+        options = {
+        signcolumn = "yes",
+        number = true,
+        relativenumber = true
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>z",
+        function()
+          require("zen-mode").toggle()
+        end,
+        desc = "Toggle Zen Mode",
+      },
+    },
+  },
 }
