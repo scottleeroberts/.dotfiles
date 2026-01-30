@@ -56,6 +56,11 @@ return {
         relativenumber = true
         },
       },
+      plugins = {
+        options = {
+          laststatus = 3,
+        },
+      },
     },
     keys = {
       {
