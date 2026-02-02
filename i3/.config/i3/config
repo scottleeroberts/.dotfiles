@@ -57,6 +57,9 @@ bindsym $mod+space focus mode_toggle
 # take a screenshot of selected region
 bindsym --release $mod+shift+a exec scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
+# dictation
+bindsym $mod+y exec --no-startup-id /home/scott.roberts/.dotfiles/bin/dictation-toggle
+
 set $workspace1 "1: Code  "
 set $workspace2 "2: Browser  "
 set $workspace3 "3: Chat  "

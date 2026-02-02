@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+STATE_FILE="/tmp/nerd-dictation.state"
+
+if [[ -f "${STATE_FILE}" ]]; then
+    STATE=$(cat "${STATE_FILE}")
+    if [[ "${STATE}" == "processing" ]]; then
+        echo "󰍬"
+        echo ""
+        echo "#ff0000"
+    else
+        echo "󰍬"
+        echo ""
+        echo "#00ff00"
+    fi
+fi
