@@ -17,12 +17,16 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "williamboman/mason.nvim" },
     keys = {
-      { "gf", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to Definition" },
+      { "gf", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition" },
+      { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition" },
+      { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to Implementation" },
       { "<leader>ll", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "LSP Diagnostics" },
       { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
       { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover Documentation" },
       { "<leader>ld", "<c-]>", desc = "Go to Definition (ctags fallback)" },
-      { "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
+      { "<leader>gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+      { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+      { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
     },
     config = function()
       -- Configure LSP servers with custom settings
