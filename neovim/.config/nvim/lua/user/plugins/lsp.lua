@@ -44,6 +44,7 @@ return {
       vim.lsp.enable("rubocop")
       vim.lsp.enable("ruby_lsp")
       vim.lsp.enable("ts_ls")
+      -- Note: copilot LSP is managed by copilot.lua plugin, not here
     end,
   },
   {
@@ -51,7 +52,20 @@ return {
     event = "InsertEnter",
     config = function()
       require("blink.cmp").setup({
-        keymap = { preset = "enter" },
+        keymap = {
+          preset = "enter",
+          ["<Tab>"] = {
+            function()
+              -- Try sidekick NES first
+              if require("sidekick").nes_jump_or_apply() then
+                return true
+              end
+            end,
+            "select_next",
+            "snippet_forward",
+            "fallback",
+          },
+        },
         completion = {
           documentation = { auto_show = true },
         },

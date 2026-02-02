@@ -2,7 +2,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("copilot").setup({
         suggestion = {
@@ -20,9 +20,13 @@ return {
   {
     "folke/sidekick.nvim",
     opts = {
-      nes = { enabled = false },
+      nes = { enabled = true },
       cli = {
         picker = "snacks",
+        mux = {
+          enabled = true,
+          backend = "tmux",
+        },
         tools = {
           claude = { cmd = { "claude" } },
         },
@@ -37,6 +41,7 @@ return {
             return "<Tab>" -- fallback to normal tab
           end
         end,
+        mode = "n",
         expr = true,
         desc = "Goto/Apply Next Edit Suggestion",
       },

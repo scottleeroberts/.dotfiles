@@ -6,6 +6,7 @@ return {
     lazy = false,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
       require("user.config.treesitter")
