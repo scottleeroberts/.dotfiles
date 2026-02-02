@@ -49,7 +49,7 @@ return {
     "folke/zen-mode.nvim",
     opts = {
       window = {
-        width = 120,
+        width = 150,
         options = {
         signcolumn = "yes",
         number = true,
