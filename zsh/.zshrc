@@ -48,5 +48,5 @@ opentmux
 
 # export PATH="$(ruby -r rubygems -e 'print Gem.bindir'):$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-
+export PATH="$HOME/.local/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
