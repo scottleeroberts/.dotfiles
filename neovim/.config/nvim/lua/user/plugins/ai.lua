@@ -48,9 +48,9 @@ return {
       {
         "<leader>at",
         function()
-          require("sidekick.cli").toggle({ name = "claude" })
+          require("sidekick.cli").select({ filter = { name = "claude" } })
         end,
-        desc = "Sidekick Toggle Claude",
+        desc = "Select Claude Session",
       },
       {
         "<leader>ad",
