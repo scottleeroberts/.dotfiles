@@ -154,10 +154,17 @@ cherry() {
   git cherry-pick $(git log --pretty=oneline $(echo $target_branch) | $(fzf_prog) -m --preview "echo {} | cut -f 1 -d' ' | xargs -I SHA git show --color=always --pretty=fuller --stat SHA"| awk '{ print $1 }' )
 }
 
+gcm() {
+  if git rev-parse -q --verify main > /dev/null; then
+    git checkout main
+  else
+    git checkout master
+  fi
+}
+
 alias gco="git checkout"
 alias gss="git status"
 alias gcd="git checkout develop"
-alias gcm="git checkout master "
 alias gstash="git stash"
 alias gpop="git stash pop"
 alias gback='git reset HEAD~1'
