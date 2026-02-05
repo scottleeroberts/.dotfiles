@@ -23,10 +23,6 @@ return {
       nes = { enabled = true },
       cli = {
         picker = "snacks",
-        mux = {
-          enabled = true,
-          backend = "tmux",
-        },
         tools = {
           claude = { cmd = { "claude" } },
         },
@@ -48,29 +44,32 @@ return {
       {
         "<leader>at",
         function()
-          require("sidekick.cli").select({ filter = { name = "claude" } })
-        end,
-        desc = "Select Claude Session",
-      },
-      {
-        "<leader>ad",
-        function()
           local Session = require("sidekick.cli.session")
           local Terminal = require("sidekick.cli.terminal")
           local Config = require("sidekick.config")
 
           Session.setup()
 
-          -- Create a tool with a unique session ID or different working directory
           local tool = Config.get_tool("claude"):clone()
-          local terminal = Terminal.new({
-            tool = tool,
-            id = "claude_secondary", -- Unique identifier for the second instance
-          })
+          local terminal = Terminal.new({ tool = tool })
           terminal:show()
           terminal:focus()
         end,
-        desc = "Toggle Second Claude Instance",
+        desc = "Start New Claude Session",
+      },
+      {
+        "<leader>as",
+        function()
+          require("sidekick.cli").select({ filter = { name = "claude" } })
+        end,
+        desc = "Sidekick Select Claude",
+      },
+      {
+        "<leader>ad",
+        function()
+          require("sidekick.cli").close()
+        end,
+        desc = "Sidekick Close Claude",
       },
       {
         "<leader>aa",
