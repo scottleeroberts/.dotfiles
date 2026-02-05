@@ -2,6 +2,7 @@ tags
 gems.ctags
 .DS_Store
 .ruby-gemset
+.secrets
 metadocs/
 weechat/.weechat/*.log
 weechat/.weechat/logs

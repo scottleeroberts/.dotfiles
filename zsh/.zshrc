@@ -50,3 +50,19 @@ opentmux
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
+
+# Load secrets (tokens, API keys) from non-tracked file
+if [ -f ~/.secrets ]; then
+    source ~/.secrets
+fi
+
+# bun completions
+[ -s "/home/scott.roberts/.bun/_bun" ] && source "/home/scott.roberts/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.local/share/../bin/env"
+
+alias claude-mem='/home/scott.roberts/.bun/bin/bun "/home/scott.roberts/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
