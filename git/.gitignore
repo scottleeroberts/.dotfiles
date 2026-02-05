@@ -12,4 +12,22 @@ public/packs/
 public/sprockets/
 bundle/
 
-.claude/
+# Claude Code - only exclude sensitive/cache files, allow tracking of config
+.claude/.credentials.json
+.claude/history.jsonl
+.claude/stats-cache.json
+.claude/cache/
+.claude/debug/
+.claude/file-history/
+.claude/paste-cache/
+.claude/plans/
+.claude/projects/
+.claude/session-env/
+.claude/shell-snapshots/
+.claude/statsig/
+.claude/tasks/
+.claude/telemetry/
+.claude/todos/
+.claude/plugins/marketplaces/
+.claude/plugins/cache/
+.claude/plugins/install-counts-cache.json
