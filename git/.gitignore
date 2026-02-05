@@ -32,3 +32,9 @@ bundle/
 .claude/plugins/marketplaces/
 .claude/plugins/cache/
 .claude/plugins/install-counts-cache.json
+
+# Ignore all claude.md files system-wide (created by claude-mem everywhere)
+# but allow the main global CLAUDE.md in .claude/ directory
+CLAUDE.md
+claude.md
+!.claude/CLAUDE.md
