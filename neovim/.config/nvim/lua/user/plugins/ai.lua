@@ -2,7 +2,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "InsertEnter",
     config = function()
       require("copilot").setup({
         suggestion = {
@@ -20,7 +20,7 @@ return {
   {
     "folke/sidekick.nvim",
     opts = {
-      nes = { enabled = true },
+      nes = { enabled = false },
       cli = {
         picker = "snacks",
         tools = {
@@ -29,18 +29,6 @@ return {
       },
     },
     keys = {
-      {
-        "<tab>",
-        function()
-          -- if there is a next edit, jump to it, otherwise apply it if any
-          if not require("sidekick").nes_jump_or_apply() then
-            return "<Tab>" -- fallback to normal tab
-          end
-        end,
-        mode = "n",
-        expr = true,
-        desc = "Goto/Apply Next Edit Suggestion",
-      },
       {
         "<leader>at",
         function()

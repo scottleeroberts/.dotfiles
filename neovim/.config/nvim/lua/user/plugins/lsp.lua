@@ -52,20 +52,7 @@ return {
     event = "InsertEnter",
     config = function()
       require("blink.cmp").setup({
-        keymap = {
-          preset = "enter",
-          ["<Tab>"] = {
-            function()
-              -- Try sidekick NES first
-              if require("sidekick").nes_jump_or_apply() then
-                return true
-              end
-            end,
-            "select_next",
-            "snippet_forward",
-            "fallback",
-          },
-        },
+        keymap = { preset = "enter" },
         completion = {
           documentation = { auto_show = true },
         },
