@@ -10,6 +10,7 @@ fi
 alias ll="ls -Gplh"
 alias vim="nvim"
 alias v="nvim"
+alias cc="claude"
 
 # Filesystem aliases
 alias ..='cd ..'
