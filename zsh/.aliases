@@ -47,6 +47,7 @@ alias pg_start="pg_ctl -D /var/lib/postgres/data -l logfile start"
 alias stash="git stash --include-untracked"
 alias pop="git stash pop"
 alias clean="git clean -fd"
+alias gfp="git push --force-with-lease"
 alias t='tig'
 
 #heroku
