@@ -173,10 +173,14 @@ client.unfocused $inactive-bg-color  $inactive-bg-color  $inactive-text-color  #
 client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 
 # pomodoro management
-set $pomo Pomorodo (g) Start, (f) Cancel
+set $pomo Pomodoro: (w)ork (b)reak (p)ause (r)esume (s)top (t)atus
 mode "$pomo" {
-    bindsym g exec --no-startup-id start_pomo, mode "default"
-    bindsym f exec --no-startup-id cancel_pomo, mode "default"
+    bindsym w exec --no-startup-id pomogori work, mode "default"
+    bindsym b exec --no-startup-id pomogori break, mode "default"
+    bindsym p exec --no-startup-id pomogori pause, mode "default"
+    bindsym r exec --no-startup-id pomogori resume, mode "default"
+    bindsym s exec --no-startup-id pomogori stop, mode "default"
+    bindsym t exec --no-startup-id alacritty -e pomogori watch, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
