@@ -175,12 +175,12 @@ client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 # pomodoro management
 set $pomo Pomodoro: (w)ork (b)reak (p)ause (r)esume (s)top (t)atus
 mode "$pomo" {
-    bindsym w exec --no-startup-id pomogori work, mode "default"
-    bindsym b exec --no-startup-id pomogori break, mode "default"
-    bindsym p exec --no-startup-id pomogori pause, mode "default"
-    bindsym r exec --no-startup-id pomogori resume, mode "default"
-    bindsym s exec --no-startup-id pomogori stop, mode "default"
-    bindsym t exec --no-startup-id alacritty -e pomogori watch, mode "default"
+    bindsym w exec --no-startup-id ~/.dotfiles/bin/pomogori work, mode "default"
+    bindsym b exec --no-startup-id ~/.dotfiles/bin/pomogori break, mode "default"
+    bindsym p exec --no-startup-id ~/.dotfiles/bin/pomogori pause, mode "default"
+    bindsym r exec --no-startup-id ~/.dotfiles/bin/pomogori resume, mode "default"
+    bindsym s exec --no-startup-id ~/.dotfiles/bin/pomogori stop, mode "default"
+    bindsym t exec --no-startup-id alacritty -e ~/.dotfiles/bin/pomogori watch, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
