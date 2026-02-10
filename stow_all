@@ -1,25 +1,41 @@
+#!/bin/bash
+# Stow all dotfile modules
+
+# Verify we're in the correct directory
+if [ ! -f "stow_all" ]; then
+  echo "Error: Must run from .dotfiles directory"
+  exit 1
+fi
+
+echo "Stowing dotfile modules..."
+
+# Core modules
 stow -vv alacritty
 stow -vv picom
-stow -vv ctags
 stow -vv dunst
 stow -vv fonts
 stow -vv gem
 stow -vv git
 stow -vv i3
 stow -vv ignore
-stow -vv less
 stow -vv neovim
 stow -vv readline
-stow -vv redshift
-stow -vv reek
 stow -vv rofi
 stow -vv tmux
-stow -vv tmate
 stow -vv urlview
 stow -vv xmodmap
-stow -vv yaourt
 stow -vv zsh
 
-# Mac specific configuration
-# stow -vv  yabai
+# Optional modules (may not exist on all systems)
+[ -d "ctags" ] && stow -vv ctags || echo "Skipping ctags (not found)"
+[ -d "less" ] && stow -vv less || echo "Skipping less (not found)"
+[ -d "redshift" ] && stow -vv redshift || echo "Skipping redshift (not found)"
+[ -d "reek" ] && stow -vv reek || echo "Skipping reek (not found)"
+[ -d "tmate" ] && stow -vv tmate || echo "Skipping tmate (not found)"
+[ -d "yaourt" ] && echo "Skipping yaourt (Arch-only)" || true
+
+# Mac-specific configuration (commented out for Linux)
+# stow -vv yabai
 # stow -vv skhd
+
+echo "Dotfiles stowed successfully"
