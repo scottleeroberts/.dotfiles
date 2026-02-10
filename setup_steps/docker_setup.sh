@@ -3,6 +3,12 @@
 
 echo "Installing Docker CE..."
 
+# Skip if already in Docker container
+if [ -f /.dockerenv ]; then
+  echo "Running inside Docker container - skipping Docker installation"
+  return 0
+fi
+
 # Remove old versions
 sudo apt remove -y docker docker-engine docker.io containerd runc 2>/dev/null || true
 

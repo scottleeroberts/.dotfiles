@@ -3,8 +3,16 @@
 # Last updated: 2026-02-10
 # Target: Fresh Ubuntu installation
 
-# Exit on error
+# Exit on error, but allow individual steps to handle their own errors
 set -e
+
+# Detect if running in Docker
+if [ -f /.dockerenv ]; then
+  echo "⚠️  Docker environment detected"
+  echo "Some features (snap, systemd services) may be skipped"
+  echo ""
+  export DOCKER_ENV=true
+fi
 
 echo "========================================"
 echo "  Ubuntu i3 Dotfiles Installation"
@@ -41,28 +49,28 @@ echo "  Installing System Components"
 echo "========================================"
 echo ""
 
-source ~/.dotfiles/setup_steps/apt_packages.sh
+source ~/.dotfiles/setup_steps/apt_packages.sh || echo "Warning: APT packages step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/homebrew.sh
+source ~/.dotfiles/setup_steps/homebrew.sh || echo "Warning: Homebrew step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/snap_packages.sh
+source ~/.dotfiles/setup_steps/snap_packages.sh || echo "Warning: Snap packages step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/version_managers.sh
+source ~/.dotfiles/setup_steps/version_managers.sh || echo "Warning: Version managers step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/docker_setup.sh
+source ~/.dotfiles/setup_steps/docker_setup.sh || echo "Warning: Docker setup step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/shell.sh
+source ~/.dotfiles/setup_steps/shell.sh || echo "Warning: Shell setup step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/ruby.sh
+source ~/.dotfiles/setup_steps/ruby.sh || echo "Warning: Ruby setup step had issues"
 echo ""
 
-source ~/.dotfiles/setup_steps/claude_config.sh
+source ~/.dotfiles/setup_steps/claude_config.sh || echo "Warning: Claude config step had issues"
 echo ""
 
 # Stow dotfiles
