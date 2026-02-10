@@ -48,9 +48,9 @@ The script will:
    ```
 4. Verify installations:
    ```bash
-   ruby --version    # Should show 3.4.x
-   nvim --version    # Should show 0.11.6
-   node --version    # Should show v24.13.0
+   ruby --version    # Should show latest 3.x
+   nvim --version    # Should show latest stable
+   node --version    # Should show latest v24.x LTS
    docker --version  # Should work without sudo
    claude --version  # Verify Claude Code
    ```
@@ -61,9 +61,9 @@ After running the setup script, verify:
 
 - [ ] ZSH is the default shell: `echo $SHELL` → `/usr/bin/zsh`
 - [ ] Homebrew is installed: `brew --version`
-- [ ] Ruby 3.4.x via chruby: `ruby --version`
-- [ ] Neovim 0.11.6 via bob: `nvim --version`
-- [ ] Node v24.x: `node --version`
+- [ ] Ruby 3.x (latest) via chruby: `ruby --version`
+- [ ] Neovim (latest stable) via bob: `nvim --version`
+- [ ] Node v24.x LTS (latest): `node --version`
 - [ ] Python 3.13.x: `python3 --version`
 - [ ] Docker without sudo: `docker ps` (no permission error)
 - [ ] GitHub CLI: `gh --version`

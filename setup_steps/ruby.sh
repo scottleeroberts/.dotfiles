@@ -15,4 +15,5 @@ install_ruby() {
   echo ""
 }
 
-install_ruby "3.4.2"
+# Install latest stable Ruby 3.x
+install_ruby "3"

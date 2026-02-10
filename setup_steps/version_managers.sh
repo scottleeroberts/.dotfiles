@@ -38,9 +38,9 @@ if ! command -v bob &> /dev/null; then
     mkdir -p ~/.local/bin
     ln -sf ~/.cargo/bin/bob ~/.local/bin/bob
 
-    # Install Neovim 0.11.6
-    echo "Installing Neovim 0.11.6 via bob..."
-    if bob install 0.11.6 && bob use 0.11.6; then
+    # Install latest stable Neovim
+    echo "Installing latest stable Neovim via bob..."
+    if bob install stable && bob use stable; then
       # Create symlink to nvim
       ln -sf ~/.local/share/bob/nvim-bin/nvim ~/.local/bin/nvim
       echo "Neovim installed successfully"
