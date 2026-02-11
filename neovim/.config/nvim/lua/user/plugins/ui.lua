@@ -6,12 +6,17 @@ return {
     lazy = false,
     opts = {
       picker = { enabled = true },
+      gh = { enabled = true },
     },
     init = function()
       vim.ui.select = function(...)
         require("snacks").picker.ui_select(...)
       end
     end,
+    keys = {
+      { "<leader>gp", function() require("snacks").picker.gh_pr() end, desc = "GitHub PRs (open)" },
+      { "<leader>gP", function() require("snacks").picker.gh_pr({ state = "all" }) end, desc = "GitHub PRs (all)" },
+    },
   },
   {
     "folke/noice.nvim",
