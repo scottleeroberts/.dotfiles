@@ -17,6 +17,13 @@ done
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -v
+
+# Ensure we always start in insert mode
+function zle-line-init {
+    zle -K viins
+}
+zle -N zle-line-init
+
 bindkey jj vi-cmd-mode
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
