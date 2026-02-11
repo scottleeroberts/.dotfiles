@@ -56,8 +56,8 @@ require('night-owl').setup({
 
 -- vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme night-owl')
--- vim.cmd('colorscheme tokyonight-storm')
-vim.cmd('colorscheme kanagawa-wave')
+vim.cmd('colorscheme tokyonight')
+-- vim.cmd('colorscheme kanagawa-wave')
 -- vim.cmd('colorscheme nightfox')
 
 vim.cmd 'highlight TelescopeBorder guibg=none'
