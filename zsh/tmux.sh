@@ -10,23 +10,16 @@ tmux start-server
 
 # create a new tmux session, starting vim from a saved session in the new window
 tmux new-session -d -s $session
-# tmux rename-window " NVIM "
-tmux send-keys "cd ~/Development/swoop/" C-m
-tmux send-keys "vim" C-m
 
 tmux new-window -t $session
-# tmux rename-window "Server"
-tmux send-keys "cd ~/Development/swoop" C-m
+tmux send-keys -t $session:1 "cd ~/Development/prizepicks-rails" C-m
+tmux send-keys -t $session:1 "vim" C-m
 
-# create a new window
 tmux new-window -t $session
-# tmux rename-window "Shell"
-tmux send-keys "cd ~/Development/swoop" C-m
-tmux send-keys "clear" C-m
+tmux send-keys -t $session:2 "cd ~/Development/prizepicks-devenv" C-m
 
-# create a new window
-# tmux new-window -t $session -n "     "
-tmux send-keys "cd ~/Development/swoop" C-m
+tmux new-window -t $session
+tmux send-keys -t $session:3 "cd ~/.dotfiles" C-m
 
 # return to main vim window
 tmux select-window -t $session:1
