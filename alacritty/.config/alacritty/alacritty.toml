@@ -103,8 +103,8 @@ opacity = 0.96
 # lines = 24
 
 [window.padding]
-x = 10
-y = 2
+x = 5
+y = 1
 
 [general]
 live_config_reload = true
