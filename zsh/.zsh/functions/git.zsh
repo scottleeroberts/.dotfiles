@@ -59,16 +59,45 @@ ap() {
 }
 
 co() {
-  if [[ $# > 0 ]]; then
-    # If it's a valid git ref (branch/tag) and not an existing file, switch to it
-    if git rev-parse --verify "$1" &>/dev/null && ! [[ -e "$1" ]]; then
-      git checkout "$1"
+  # Handle -b flag for branch operations
+  if [[ "$1" == "-b" ]]; then
+    if [[ $# -eq 1 ]]; then
+      # co -b: fzf branch selection
+      local base_branch target
+      base_branch=$(base_branch)
+      target=$(git branch --format='%(refname:short)' | fzf --preview "git log --oneline $base_branch..{} | head -20") || return
+      if [[ -n "$target" ]]; then
+        git checkout "$target" && echo "Switched to branch '$target'"
+      fi
+    else
+      # co -b new-branch: create new branch
+      shift
+      git checkout -b "$1" && echo "Created and switched to new branch '$1'"
+    fi
+  elif [[ $# -gt 0 ]]; then
+    # If it's a valid git ref (branch/tag), switch to it
+    if git rev-parse --verify "$1" &>/dev/null; then
+      local ref_type
+      if git show-ref --verify --quiet "refs/heads/$1"; then
+        ref_type="branch"
+      else
+        ref_type="ref"
+      fi
+      git checkout "$1" && echo "Switched to $ref_type '$1'"
     else
       # Otherwise treat as file path(s) to revert
-      git checkout HEAD -- "$@"
+      git checkout HEAD -- "$@" && echo "Reverted: $@"
     fi
   else
-    git checkout $(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}')
+    # No args: fzf file selection
+    local files
+    files=$(git status -s -u | sort | awk '{ print $2 }' | fzf -m --preview 'git diff --color=always {}') || return
+    if [[ -n "$files" ]]; then
+      echo "$files" | while IFS= read -r file; do
+        git checkout HEAD -- "$file"
+      done
+      echo "Reverted selected files"
+    fi
   fi
 }
 
