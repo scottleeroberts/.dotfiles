@@ -11,7 +11,7 @@ fi
 # Start nerd-dictation (default: types directly into focused window)
 cd "${NERD_DIR}"
 source .venv/bin/activate
-nohup ./nerd-dictation begin --vosk-model-dir=./model 2>&1 &
+nohup ./nerd-dictation begin --vosk-model-dir=./model --idle-time=2.0 2>&1 &
 
 # Create state file
 echo "recording" > "${STATE_FILE}"
