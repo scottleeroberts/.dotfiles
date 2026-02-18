@@ -23,4 +23,13 @@ return {
       require("nvim-ts-autotag").setup()
     end,
   },
+  {
+    'm-demare/hlargs.nvim',
+    config = function()
+      require('hlargs').setup({
+        color = '#AA33AA',
+        hl_priority = 1000,
+      })
+    end,
+  },
 }
