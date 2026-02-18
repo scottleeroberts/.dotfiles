@@ -156,8 +156,8 @@ bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
 
 # brightness
-bindsym XF86MonBrightnessUp exec light -A 20
-bindsym XF86MonBrightnessDown exec light -U 20
+bindsym XF86MonBrightnessUp exec brightnessctl set +20%
+bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
 
 # Volume
 bindsym $mod+shift+x exec i3lock
@@ -175,12 +175,12 @@ client.urgent $urgent-bg-color  $urgent-bg-color  $urgent-text-color  #00ff00
 # pomodoro management
 set $pomo Pomodoro: (w)ork (b)reak (p)ause (r)esume (s)top (t)atus
 mode "$pomo" {
-    bindsym w exec --no-startup-id ~/.dotfiles/bin/pomogori work, mode "default"
-    bindsym b exec --no-startup-id ~/.dotfiles/bin/pomogori break, mode "default"
-    bindsym p exec --no-startup-id ~/.dotfiles/bin/pomogori pause, mode "default"
-    bindsym r exec --no-startup-id ~/.dotfiles/bin/pomogori resume, mode "default"
-    bindsym s exec --no-startup-id ~/.dotfiles/bin/pomogori stop, mode "default"
-    bindsym t exec --no-startup-id alacritty -e ~/.dotfiles/bin/pomogori watch, mode "default"
+    bindsym w exec --no-startup-id /home/scott.roberts/go/bin/pomogori work, mode "default"
+    bindsym b exec --no-startup-id /home/scott.roberts/go/bin/pomogori break, mode "default"
+    bindsym p exec --no-startup-id /home/scott.roberts/go/bin/pomogori pause, mode "default"
+    bindsym r exec --no-startup-id /home/scott.roberts/go/bin/pomogori resume, mode "default"
+    bindsym s exec --no-startup-id /home/scott.roberts/go/bin/pomogori stop, mode "default"
+    bindsym t exec --no-startup-id alacritty -e /home/scott.roberts/go/bin/pomogori watch, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -239,6 +239,7 @@ bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/
 #exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
 #exec --no-startup-id xrandr --output eDP1 --mode 1920x1200
 exec --no-startup-id sh -c 'sleep 2; xrandr --output HDMI-A-0 --mode 3440x1440 --primary --pos 0x0 --output eDP --mode 2880x1800 --pos 3440x0'
+exec --no-startup-id brightnessctl set 80%
 exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id gammastep -m randr -l 35.78:-78.64 -t 6500:3500
 exec --no-startup-id blueman-applet
