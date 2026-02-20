@@ -207,12 +207,15 @@ bindsym $mod+z mode "$mode_system"
 # Bar
   bar {
 	font pango: monaco 14
-	i3bar_command i3bar -t
+	i3bar_command i3bar
         status_command    i3blocks -c ~/.config/i3/i3blocks.conf
         position          top
+        tray_output primary
+        tray_padding 2
         colors {
           separator  #757575
           background #000020
+          statusline #ffffff
           # focused_workspace #09090990 #09090990 #0096FF
           # inactive_workspace #09090990 #09090990 #7393B3
         }
