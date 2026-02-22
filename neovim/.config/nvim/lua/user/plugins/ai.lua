@@ -24,7 +24,7 @@ return {
       cli = {
         picker = "snacks",
         tools = {
-          claude = { cmd = { "claude" } },
+          claude = { cmd = { "claude" }, env = { NVIM = false } },
         },
       },
     },
