@@ -19,6 +19,26 @@ return {
   },
   {
     "folke/sidekick.nvim",
+    -- Patch sidekick's terminal readiness detection to be less aggressive.
+    -- Claude Code's dynamic status line keeps changing the terminal line count during
+    -- startup, which resets the stability check and forces a full 5s timeout before
+    -- the send queue is processed and input is accepted.
+    -- See: https://github.com/folke/sidekick.nvim/issues/150
+    build = function()
+      local path = vim.fn.stdpath("data")
+        .. "/lazy/sidekick.nvim/lua/sidekick/cli/terminal.lua"
+      local f = io.open(path, "r")
+      if not f then return end
+      local content = f:read("*a")
+      f:close()
+      content = content:gsub("READY_MAX_WAIT = %d+", "READY_MAX_WAIT = 500")
+      content = content:gsub("READY_CHECK_INTERVAL = %d+", "READY_CHECK_INTERVAL = 200")
+      content = content:gsub("READY_INIT_DELAY = %d+", "READY_INIT_DELAY = 200")
+      f = io.open(path, "w")
+      if not f then return end
+      f:write(content)
+      f:close()
+    end,
     opts = {
       nes = { enabled = false },
       cli = {
