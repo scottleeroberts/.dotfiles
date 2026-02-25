@@ -59,15 +59,16 @@ size = 18.0
 y = -3
 
 [font.bold]
-family = "monaco"
+family = "Lilex Nerd Font Mono"
 
 [font.italic]
-family = "monaco"
+family = "Lilex Nerd Font Mono"
 
 [font.normal]
 # family = "SeriousShanns Nerd Font Mono"
 # family = "Monaco"
-family = "Recursive Mono Linear Static"
+# family = "Recursive Mono Linear Static"
+family = "Lilex Nerd Font Mono"
 
 [[keyboard.bindings]]
 action = "Paste"

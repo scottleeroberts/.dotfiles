@@ -56,6 +56,14 @@ sudo apt install -y \
   fonts-noto-color-emoji \
   fonts-ubuntu
 
+# Lilex Nerd Font (used by Alacritty)
+echo "Installing Lilex Nerd Font..."
+mkdir -p ~/.local/share/fonts/lilex
+LILEX_ZIP=$(mktemp)
+curl -sL -o "$LILEX_ZIP" "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Lilex.zip"
+unzip -o "$LILEX_ZIP" 'LilexNerdFontMono-*' -d ~/.local/share/fonts/lilex/
+rm -f "$LILEX_ZIP"
+
 # Font cache rebuild
 fc-cache -f -v
 
