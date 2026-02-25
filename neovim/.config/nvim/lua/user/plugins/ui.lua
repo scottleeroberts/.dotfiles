@@ -51,6 +51,16 @@ return {
     end,
   },
   {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {
+      user_default_options = {
+        names = false,
+        AARRGGBB = true,
+      },
+    },
+  },
+  {
     "folke/zen-mode.nvim",
     opts = {
       window = {
