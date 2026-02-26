@@ -13,7 +13,7 @@ return {
     lazy = true,
   },
   {
-    "scottleeroberts/rosepine.nvim",
+    "rose-pine/neovim",
     lazy = true,
   },
   {

@@ -47,6 +47,33 @@ require('nightfox').setup({
 
 require('rose-pine').setup({
   disable_background = true,
+  styles = {
+    italic = false,
+  },
+  highlight_groups = {
+    Comment = { italic = true },
+    Normal = { bg = 'none' },
+    NormalNC = { bg = 'none' },
+    NormalFloat = { bg = 'base' },
+    ['@variable'] = { fg = 'text' },
+    ['@variable.member'] = { fg = 'foam' },
+    ['@function'] = { fg = 'rose' },
+    ['@function.call'] = { fg = 'rose' },
+    ['@function.method'] = { fg = 'rose' },
+    ['@function.method.call'] = { fg = 'rose' },
+    ['@type'] = { fg = 'gold' },
+    ['@type.builtin'] = { fg = 'gold' },
+    ['@module'] = { fg = 'iris' },
+    ['@property'] = { fg = 'foam' },
+    ['@field'] = { fg = 'foam' },
+    ['@constant'] = { fg = 'gold' },
+    ['@lsp.type.function'] = { fg = 'rose' },
+    ['@lsp.type.method'] = { fg = 'rose' },
+    ['@lsp.type.property'] = { fg = 'foam' },
+    ['@lsp.type.variable'] = { fg = 'text' },
+    ['@lsp.type.parameter'] = { fg = 'iris' },
+    ['@lsp.type.type'] = { fg = 'gold' },
+  },
 })
 
 require('night-owl').setup({
@@ -54,12 +81,14 @@ require('night-owl').setup({
   transparent_background = true,
 })
 
--- vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme night-owl')
-vim.cmd('colorscheme tokyonight')
+-- vim.cmd('colorscheme tokyonight')
 -- vim.cmd('colorscheme kanagawa-wave')
 -- vim.cmd('colorscheme nightfox')
 
+vim.cmd 'highlight Cursor guibg=#ff2040 guifg=#000000'
+vim.opt.guicursor = 'n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor'
 vim.cmd 'highlight TelescopeBorder guibg=none'
 vim.cmd 'highlight TelescopeTitle guibg=none'
 
