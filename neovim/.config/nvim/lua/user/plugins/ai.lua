@@ -42,9 +42,20 @@ return {
     opts = {
       nes = { enabled = false },
       cli = {
+        default = "claude",
         picker = "snacks",
         tools = {
           claude = { cmd = { "claude" }, env = { NVIM = false } },
+          aider = { enabled = false },
+          amazon_q = { enabled = false },
+          codex = { enabled = false },
+          copilot = { enabled = false },
+          crush = { enabled = false },
+          cursor = { enabled = false },
+          gemini = { enabled = false },
+          grok = { enabled = false },
+          opencode = { enabled = false },
+          qwen = { enabled = false },
         },
       },
     },
