@@ -9,6 +9,7 @@ config = vim.env.HOME .. ''
 require "user.options"
 require "user.keymaps"
 require "user.lazy_bootstrap"
+require "user.lsp"
 require "user.theme"
 require "user.other_configuration"
 
