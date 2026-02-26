@@ -3,7 +3,7 @@ export DOTFILES=$HOME/.dotfiles
 export EDITOR=nvim
 export BROWSER="chrome"
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH:/home/sroberts/.local/share/bob/nvim-bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:~/scripts:/opt/local/sbin:$PATH:$HOME/.local/share/bob/nvim-bin"
 export PATH="$DOTFILES/bin:$PATH"
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
