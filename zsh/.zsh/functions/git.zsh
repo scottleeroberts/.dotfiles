@@ -75,19 +75,7 @@ co() {
       git checkout -b "$1" && echo "Created and switched to new branch '$1'"
     fi
   elif [[ $# -gt 0 ]]; then
-    # If it's a valid git ref (branch/tag), switch to it
-    if git rev-parse --verify "$1" &>/dev/null; then
-      local ref_type
-      if git show-ref --verify --quiet "refs/heads/$1"; then
-        ref_type="branch"
-      else
-        ref_type="ref"
-      fi
-      git checkout "$1" && echo "Switched to $ref_type '$1'"
-    else
-      # Otherwise treat as file path(s) to revert
-      git checkout HEAD -- "$@" && echo "Reverted: $@"
-    fi
+    git checkout "$@"
   else
     # No args: fzf file selection
     local files
