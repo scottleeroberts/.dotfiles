@@ -7,7 +7,6 @@ vim.lsp.enable('rubocop')
 vim.lsp.enable('ruby_lsp')
 vim.lsp.enable('ts_ls')
 
-vim.keymap.set('n', 'gf', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to Implementation' })
 vim.keymap.set('n', '<leader>lr', '<cmd>Telescope lsp_references<cr>', { desc = 'References' })
