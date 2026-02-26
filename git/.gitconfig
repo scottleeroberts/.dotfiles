@@ -26,11 +26,12 @@
   gclean = !git branch --merged origin/develop | grep -v master | grep -v develop | xargs git branch -d
   la = "!git config -l | grep alias | cut -c 7-" # list aliases
 [pull]
-  default = current
   rebase = true
 [push]
 	default = current
 	autoSetupRemote = true
+[fetch]
+  prune = true
 [rebase]
   autostash = true
   autosquash = true
