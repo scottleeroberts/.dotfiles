@@ -15,7 +15,9 @@ sudo apt install -y \
   tmux \
   openssh-client \
   unzip \
-  ripgrep
+  ripgrep \
+  xclip \
+  xsel
 
 # i3 window manager and utilities
 sudo apt install -y \

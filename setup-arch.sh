@@ -1,4 +1,5 @@
 # vi: set ft=sh :
+# DEPRECATED: This script is unmaintained. See setup-ubuntu.sh for the current setup.
 mkdir ~/opt
 mkdir ~/src
 mkdir -p ~/.local/share
