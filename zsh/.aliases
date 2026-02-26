@@ -7,7 +7,6 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
   colorflag="-G"
 fi
 
-alias ll="ls -Gplh"
 alias vim="nvim"
 alias v="nvim"
 alias cc="claude"
@@ -22,8 +21,6 @@ alias cp="cp -v"
 alias mv="mv -v"
 alias rm="rm -v"
 
-alias rt=$RUBY_TAG_COMMAND
-alias vu="nvim +PlugInstall"
 alias :q="exit"
 
 alias ls="ls -lah ${colorflag}"
@@ -34,8 +31,8 @@ alias lld="ls -l | grep ^d"
 #audio helpers
 alias aud="DISPLAY=:0 pavucontrol"
 alias eq="qpaeq"
-alias yadl='youtube-dl --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata'
-alias yyy='youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 160K --yes-playlist '
+alias yadl='yt-dlp --yes-playlist --extract-audio --audio-format mp3 --audio-quality 0 --embed-metadata'
+alias yyy='yt-dlp --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 160K --yes-playlist '
 
 # Helpers
 alias grep='grep --color=auto'
@@ -49,13 +46,6 @@ alias pop="git stash pop"
 alias clean="git clean -fd"
 alias gfp="git push --force-with-lease"
 alias t='tig'
-
-#heroku
-alias hlogin="heroku login"
-alias hremote="heroku git:remote -a "
-alias hpush="git push heroku master"
-alias hmigrate="heroku run rails db:migrate"
-alias hupdate="heroku update"
 
 alias j="joplin --profile ~/.config/joplin-desktop/"
 alias jd="joplin-desktop"
