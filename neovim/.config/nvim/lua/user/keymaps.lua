@@ -47,9 +47,6 @@ keymap("n", "<leader>gg", ":tab new<CR>", options)
 keymap("n", "<leader>gn", ":tabnew %<CR>", options)
 keymap("n", "<leader><CR>", "gt", options)
 
--- Normal Mode - Folding
-keymap("n", "<leader>z", "zR", options)
-
 -- ============================================================================
 -- Visual Mode
 -- ============================================================================
