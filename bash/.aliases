@@ -52,6 +52,6 @@ alias jd="joplin-desktop"
 #misc
 alias wtr="curl wttr.in/chapel+hill"
 
-alias sstart='docker-compose -f docker/swoop/docker-compose.yml up -d'
-alias sstop='docker-compose down'
+alias sstart='docker compose -f docker/swoop/docker-compose.yml up -d'
+alias sstop='docker compose down'
 alias sstarta='foreman start -f Procfile.dev'
