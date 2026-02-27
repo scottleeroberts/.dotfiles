@@ -35,8 +35,6 @@
 [rebase]
   autostash = true
   autosquash = true
-[diff]
-  compactionHeuristic = 1
 [merge]
   conflictstyle = diff3
 [user]
