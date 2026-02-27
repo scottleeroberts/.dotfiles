@@ -48,7 +48,7 @@ source ~/.fzf/shell/completion.zsh
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-source "$(brew --prefix)/opt/chruby/share/chruby/chruby.sh"
+source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
 chruby ruby-3.4.1 2>/dev/null || chruby ruby-3.4.4 2>/dev/null
 
 opentmux
