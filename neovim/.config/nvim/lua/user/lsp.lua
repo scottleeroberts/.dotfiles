@@ -1,11 +1,11 @@
 vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
 
-vim.lsp.enable('golangci_lint_ls')
-vim.lsp.enable('gopls')
-vim.lsp.enable('lua_ls')
-vim.lsp.enable('rubocop')
-vim.lsp.enable('ruby_lsp')
-vim.lsp.enable('ts_ls')
+local lsp_dir = vim.fn.stdpath('config') .. '/lsp/'
+local servers = { 'golangci_lint_ls', 'gopls', 'lua_ls', 'rubocop', 'ruby_lsp', 'ts_ls' }
+for _, server in ipairs(servers) do
+  vim.lsp.config(server, dofile(lsp_dir .. server .. '.lua'))
+end
+vim.lsp.enable(servers)
 
 vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to Implementation' })
