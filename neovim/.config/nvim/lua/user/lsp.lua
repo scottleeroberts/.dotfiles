@@ -7,6 +7,41 @@ for _, server in ipairs(servers) do
 end
 vim.lsp.enable(servers)
 
+function _G.navic_location()
+  local navic = require("nvim-navic")
+  local location = navic.is_available() and navic.get_location() or ""
+  if vim.bo.filetype == "go" then
+    local lines = vim.api.nvim_buf_get_lines(0, 0, 10, false)
+    for _, line in ipairs(lines) do
+      local pkg = line:match("^package%s+(%S+)")
+      if pkg then
+        if location ~= "" then
+          return pkg .. " > " .. location
+        end
+        return pkg
+      end
+    end
+  end
+  return location
+end
+
+local function set_statusline_italic()
+  local sl = vim.api.nvim_get_hl(0, { name = "StatusLine", link = false })
+  sl.italic = true
+  vim.api.nvim_set_hl(0, "StatusLineItalic", sl)
+end
+set_statusline_italic()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_statusline_italic })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client:supports_method("textDocument/documentSymbol") then
+      vim.opt_local.statusline = " %f >>%#StatusLineItalic#%m %{%v:lua.navic_location()%}%#StatusLine# %= %l:%c "
+    end
+  end,
+})
+
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to Implementation' })

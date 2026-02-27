@@ -13,6 +13,14 @@ return {
     end,
   },
   {
+    "SmiteshP/nvim-navic",
+    opts = {
+      lsp = { auto_attach = true },
+      highlight = false,
+      separator = " > ",
+    },
+  },
+  {
     "saghen/blink.cmp",
     config = function()
       require("blink.cmp").setup({
