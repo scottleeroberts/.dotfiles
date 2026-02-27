@@ -1,5 +1,3 @@
-vim.cmd("highlight CocFloating guibg=#152238")
-
 require('tokyonight').setup({
   transparent = true,
   styles = {
