@@ -1,7 +1,7 @@
 -------------
 -- Global --
 -------------
-config = vim.env.HOME .. ''
+config = vim.env.HOME
 
 -------------
 -- Requires --
