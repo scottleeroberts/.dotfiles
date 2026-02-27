@@ -65,7 +65,7 @@ if [ -f ~/.secrets ]; then
 fi
 
 # bun completions
-[ -s "/home/scott.roberts/.bun/_bun" ] && source "/home/scott.roberts/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
