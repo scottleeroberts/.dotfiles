@@ -16,4 +16,4 @@ vim.keymap.set('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = '
 vim.keymap.set('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<cr>', { desc = 'LSP Diagnostics' })
 vim.keymap.set('n', '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', { desc = 'Document Symbols' })
 vim.keymap.set('n', '<leader>lw', '<cmd>Telescope lsp_workspace_symbols<cr>', { desc = 'Workspace Symbols' })
-vim.api.nvim_set_keymap('n', '<leader>ln', '<CMD> lua vim.lsp.buf.rename()<CR>', { noremap = true, desc = 'rename' })
+vim.keymap.set('n', '<leader>ln', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
