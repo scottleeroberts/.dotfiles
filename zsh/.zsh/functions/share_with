@@ -3,13 +3,13 @@
 share_with() {
   if [ -z "$SLACK_TOKEN" ]; then
     echo 'error: missing $SLACK_TOKEN'
-    exit
+    return 1
   fi
 
   ssh_url=$(tmate display -p '#{tmate_ssh}')
   if [ $? != 0 ]; then
     echo 'error: not in tmate'
-    exit
+    return 1
   fi
 
   user="$1"
