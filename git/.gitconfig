@@ -2,16 +2,16 @@
   path = ~/.gitconfig.local
 [core]
   editor = nvim
-	excludesfile = ~/.dotfiles/git/.gitignore
+  excludesfile = ~/.dotfiles/git/.gitignore
 [color]
-	ui = true
+  ui = true
 [format]
-        pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an %ae>%Creset
+  pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an %ae>%Creset
 [alias]
   a = add
   aa = add --all
-	st = status --short --branch
-	co = checkout
+  st = status --short --branch
+  co = checkout
   up = !git-up
   cv = commit -v
   unstage = reset HEAD
@@ -28,19 +28,19 @@
 [pull]
   rebase = true
 [push]
-	default = current
-	autoSetupRemote = true
+  default = current
+  autoSetupRemote = true
 [fetch]
   prune = true
 [rebase]
   autostash = true
   autosquash = true
 [diff]
-	compactionHeuristic = 1
+  compactionHeuristic = 1
 [merge]
   conflictstyle = diff3
 [user]
-	email = scott.lee.roberts@gmail.com
-	name = Scott Roberts
+  email = scott.lee.roberts@gmail.com
+  name = Scott Roberts
 [init]
-	defaultBranch = develop
+  defaultBranch = develop
