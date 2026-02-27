@@ -7,7 +7,8 @@ for _, server in ipairs(servers) do
 end
 vim.lsp.enable(servers)
 
-vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Go to Definition' })
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
+vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to Implementation' })
 vim.keymap.set('n', '<leader>lr', '<cmd>Telescope lsp_references<cr>', { desc = 'References' })
 vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Code Action' })
