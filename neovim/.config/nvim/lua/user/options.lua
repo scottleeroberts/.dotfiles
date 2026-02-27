@@ -48,6 +48,3 @@ local options = {
 for k,v in pairs(options) do
   vim.opt[k] = v
 end
-
-vim.cmd('syntax enable')
-vim.cmd('filetype indent plugin on')
