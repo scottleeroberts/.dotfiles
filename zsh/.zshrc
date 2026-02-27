@@ -71,6 +71,6 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-. "$HOME/.local/share/../bin/env"
+. "$HOME/.local/bin/env"
 
 alias claude-mem='/home/scott.roberts/.bun/bin/bun "/home/scott.roberts/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
