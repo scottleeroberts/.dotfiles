@@ -44,7 +44,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
 vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
-vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to Implementation' })
+vim.keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Go to Definition' })
+vim.keymap.set('n', '<leader>li', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Go to Implementation' })
 vim.keymap.set('n', '<leader>lr', '<cmd>Telescope lsp_references<cr>', { desc = 'References' })
 vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Code Action' })
 vim.keymap.set('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'Hover Documentation' })
