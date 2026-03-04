@@ -18,7 +18,6 @@ stow -vv gem
 stow -vv git
 stow -vv i3
 stow -vv ignore
-stow -vv nerd-dictation
 stow -vv neovim
 stow -vv readline
 stow -vv rofi

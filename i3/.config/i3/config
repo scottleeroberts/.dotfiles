@@ -57,8 +57,8 @@ bindsym $mod+space focus mode_toggle
 # take a screenshot of selected region
 bindsym --release $mod+shift+a exec scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
-# dictation
-bindsym $mod+y exec --no-startup-id /home/scott.roberts/.dotfiles/bin/dictation-toggle
+# dictation (handy)
+bindsym $mod+y exec --no-startup-id handy --toggle-transcription
 
 set $workspace1 "1: Code  "
 set $workspace2 "2: Browser  "
@@ -248,6 +248,7 @@ exec --no-startup-id gammastep -m randr -l 35.78:-78.64 -t 6500:3500
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
+exec --no-startup-id handy --start-hidden
 exec --no-startup-id picom
 exec --no-startup-id while true; do /usr/bin/gcalcli remind; sleep 300; done
 
