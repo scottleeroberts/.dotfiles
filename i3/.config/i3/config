@@ -265,3 +265,5 @@ exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace $workspace3; exec /usr/bin/signal-desktop'
 exec --no-startup-id i3-msg 'workspace $workspace4; exec /usr/bin/enpass'
 exec --no-startup-id i3-msg 'workspace $workspace5; exec /usr/bin/google-chrome'
+
+include ~/.config/i3/config.local
