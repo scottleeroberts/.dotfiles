@@ -15,8 +15,8 @@ vim.opt_local.wrapmargin = 0
 vim.opt_local.colorcolumn = ""
 
 -- Make j/k move by visual lines instead of actual lines when wrapped
-vim.keymap.set('n', 'j', 'gj', { buffer = true, noremap = true })
-vim.keymap.set('n', 'k', 'gk', { buffer = true, noremap = true })
+vim.keymap.set('n', 'j', 'gj', { buffer = true, noremap = true, desc = "Move down (visual line)" })
+vim.keymap.set('n', 'k', 'gk', { buffer = true, noremap = true, desc = "Move up (visual line)" })
 
 -- Prevent editing generated markdown files
 local first_lines = vim.api.nvim_buf_get_lines(0, 0, 10, false)
