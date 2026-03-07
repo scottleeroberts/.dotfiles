@@ -55,7 +55,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # take a screenshot of selected region
-bindsym --release $mod+shift+a exec scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym --release $mod+shift+a exec scrot -s -e 'xclip -selection clipboard -t image/png -i $$f'
 
 # dictation (handy)
 bindsym $mod+y exec --no-startup-id handy --toggle-transcription
