@@ -7,7 +7,21 @@ return {
   {
     "FooSoft/vim-argwrap",
     keys = {
-      { "<leader>a", "<cmd>ArgWrap<cr>", desc = "Argument Wrap" },
+      { "<leader>aw", "<cmd>ArgWrap<cr>", desc = "Argument Wrap" },
+    },
+  },
+  {
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    keys = {
+      { "<leader>ae", "<cmd>AerialToggle!<cr>", desc = "Aerial (Symbol Outline)" },
+    },
+    opts = {
+      layout = { default_direction = "right" },
+      filter_kind = { "Class", "Constructor", "Enum", "Function", "Interface", "Method", "Module", "Struct" },
     },
   },
   {
