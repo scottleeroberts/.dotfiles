@@ -151,7 +151,13 @@ cfu() {
 
 gdm () {
   local bb=$(base_branch)
-  git branch --merged "origin/$bb" | grep -v "$bb" | xargs git branch -d
+  git fetch --prune origin
+
+  git branch --format='%(refname:short)' | grep -v "^${bb}$" | while read branch; do
+    if gh pr list --head "$branch" --state merged --json number --jq '.[0].number' 2>/dev/null | grep -q .; then
+      git branch -D "$branch"
+    fi
+  done
 }
 
 cherry() {
