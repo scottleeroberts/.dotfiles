@@ -1,4 +1,26 @@
 -- AI assistant plugins
+
+-- Ensure a claude session exists and is visible, bypassing sidekick's picker.
+-- Returns (terminal, tool) for direct sending via terminal:send().
+local function ensure_claude_visible()
+  local Terminal = require("sidekick.cli.terminal")
+  local Session = require("sidekick.cli.session")
+  Session.setup()
+  for _, t in ipairs(Terminal.sessions()) do
+    if t.tool.name == "claude" and not t.closed and t:is_running() then
+      t:show()
+      t:focus()
+      return t, t.tool
+    end
+  end
+  local Config = require("sidekick.config")
+  local tool = Config.get_tool("claude"):clone()
+  local terminal = Terminal.new({ tool = tool })
+  terminal:show()
+  terminal:focus()
+  return terminal, tool
+end
+
 return {
   {
     "zbirenbaum/copilot.lua",
@@ -63,18 +85,21 @@ return {
       {
         "<leader>at",
         function()
-          local Session = require("sidekick.cli.session")
           local Terminal = require("sidekick.cli.terminal")
-          local Config = require("sidekick.config")
-
-          Session.setup()
-
-          local tool = Config.get_tool("claude"):clone()
-          local terminal = Terminal.new({ tool = tool })
-          terminal:show()
-          terminal:focus()
+          for _, t in ipairs(Terminal.sessions()) do
+            if t.tool.name == "claude" and not t.closed and t:is_running() then
+              if t:is_open() then
+                t:hide()
+              else
+                t:show()
+                t:focus()
+              end
+              return
+            end
+          end
+          ensure_claude_visible()
         end,
-        desc = "Start New Claude Session",
+        desc = "Toggle Claude Session",
       },
       {
         "<leader>as",
@@ -84,16 +109,15 @@ return {
         desc = "Sidekick Select Claude",
       },
       {
-        "<leader>ad",
-        function()
-          require("sidekick.cli").close()
-        end,
-        desc = "Sidekick Close Claude",
-      },
-      {
         "<leader>aa",
         function()
-          require("sidekick.cli").send({ msg = "{position}" })
+          local cli = require("sidekick.cli")
+          -- Render while still in the file buffer (before focus changes)
+          local msg, text = cli.render({ msg = "{position}" })
+          local terminal, tool = ensure_claude_visible()
+          if msg and msg ~= "" and text and terminal and tool then
+            terminal:send(tool:format(text) .. "\n")
+          end
         end,
         mode = { "x", "n" },
         desc = "Send This",
@@ -105,22 +129,6 @@ return {
         end,
         mode = { "n", "x" },
         desc = "Sidekick Select Prompt",
-      },
-      {
-        "<leader>ar",
-        function()
-          local Session = require("sidekick.cli.session")
-          local Terminal = require("sidekick.cli.terminal")
-          local Config = require("sidekick.config")
-
-          Session.setup() -- Ensure backends are registered
-
-          local tool = Config.get_tool("claude"):clone({ cmd = { "claude", "--resume" } })
-          local terminal = Terminal.new({ tool = tool })
-          terminal:show()
-          terminal:focus()
-        end,
-        desc = "Resume Claude Session",
       },
       {
         "<C-k>",
