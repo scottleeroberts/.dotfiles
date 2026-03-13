@@ -3,6 +3,7 @@ set $inactive-bg-color  #2f343f
 set $text-color         #f3f4f5
 set $inactive-text-color #676e7d
 set $urgent-bg-color    #E53935
+set $urgent-text-color  #f3f4f5
 
 set $mod Mod4
 
@@ -55,7 +56,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # take a screenshot of selected region
-bindsym --release $mod+shift+a exec --no-startup-id scrot -s ~/Pictures/screenshots/%Y-%m-%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $mod+shift+a exec --no-startup-id ~/.config/i3/scripts/screenshot
 
 # dictation (handy)
 bindsym $mod+y exec --no-startup-id handy --toggle-transcription
