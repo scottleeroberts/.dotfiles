@@ -27,8 +27,6 @@ return {
       vim.g.mkdp_auto_close = 1
       -- Refresh on save (not continuous)
       vim.g.mkdp_refresh_slow = 1
-      -- Use port 8090
-      vim.g.mkdp_port = '8090'
       -- Don't auto-start
       vim.g.mkdp_auto_start = 0
 
