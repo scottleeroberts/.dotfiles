@@ -83,23 +83,21 @@ return {
     },
     keys = {
       {
-        "<leader>at",
+        "<leader>aa",
         function()
-          local Terminal = require("sidekick.cli.terminal")
-          for _, t in ipairs(Terminal.sessions()) do
-            if t.tool.name == "claude" and not t.closed and t:is_running() then
-              if t:is_open() then
-                t:hide()
-              else
-                t:show()
-                t:focus()
-              end
-              return
-            end
+          local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+          vim.api.nvim_feedkeys(esc, "nx", false)
+
+          local file = vim.fn.expand("%:.")
+          local line = vim.fn.line(".")
+          local t = ensure_claude_visible()
+
+          if file ~= "" and t and t.job then
+            vim.api.nvim_chan_send(t.job, file .. ":" .. line)
           end
-          ensure_claude_visible()
         end,
-        desc = "Toggle Claude Session",
+        mode = { "n", "x" },
+        desc = "Send file:line to Claude",
       },
       {
         "<leader>as",
@@ -107,20 +105,6 @@ return {
           require("sidekick.cli").select({ filter = { name = "claude" } })
         end,
         desc = "Sidekick Select Claude",
-      },
-      {
-        "<leader>aa",
-        function()
-          local cli = require("sidekick.cli")
-          -- Render while still in the file buffer (before focus changes)
-          local msg, text = cli.render({ msg = "{position}" })
-          local terminal, tool = ensure_claude_visible()
-          if msg and msg ~= "" and text and terminal and tool then
-            terminal:send(tool:format(text) .. "\n")
-          end
-        end,
-        mode = { "x", "n" },
-        desc = "Send This",
       },
       {
         "<leader>ap",
