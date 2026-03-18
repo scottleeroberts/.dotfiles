@@ -85,15 +85,21 @@ return {
       {
         "<leader>aa",
         function()
+          local mode = vim.fn.mode()
+          local file = vim.fn.expand("%:.")
+          local range
+          if mode == "v" or mode == "V" or mode == "\22" then
+            range = vim.fn.line("v") .. "-" .. vim.fn.line(".")
+          else
+            range = tostring(vim.fn.line("."))
+          end
+
           local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
           vim.api.nvim_feedkeys(esc, "nx", false)
-
-          local file = vim.fn.expand("%:.")
-          local line = vim.fn.line(".")
           local t = ensure_claude_visible()
 
           if file ~= "" and t and t.job then
-            vim.api.nvim_chan_send(t.job, file .. ":" .. line .. " ")
+            vim.api.nvim_chan_send(t.job, file .. ":" .. range .. " ")
           end
         end,
         mode = { "n", "x" },
