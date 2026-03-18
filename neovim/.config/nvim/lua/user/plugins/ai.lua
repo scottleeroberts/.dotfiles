@@ -93,7 +93,7 @@ return {
           local t = ensure_claude_visible()
 
           if file ~= "" and t and t.job then
-            vim.api.nvim_chan_send(t.job, file .. ":" .. line)
+            vim.api.nvim_chan_send(t.job, file .. ":" .. line .. " ")
           end
         end,
         mode = { "n", "x" },
