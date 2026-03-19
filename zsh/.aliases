@@ -9,7 +9,7 @@ fi
 
 alias vim="nvim"
 alias v="nvim"
-alias cc="claude"
+alias c="claude"
 
 # Filesystem aliases
 alias ..='cd ..'
@@ -56,7 +56,7 @@ alias jd="joplin-desktop"
 #misc
 alias wtr="curl wttr.in/chapel+hill"
 
-alias cdu='docker compose up'
+alias dcdu='docker compose up'
 alias fstart='./bin/foreman start -f Procfile.dev'
 
 alias notify="terminal-notifier -message 'Specs are done' -sound default -title 'DONE'"
