@@ -1,7 +1,7 @@
 vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
 
 local lsp_dir = vim.fn.stdpath('config') .. '/lsp/'
-local servers = { 'golangci_lint_ls', 'gopls', 'lua_ls', 'rubocop', 'ruby_lsp', 'ts_ls' }
+local servers = { 'buf_ls', 'golangci_lint_ls', 'gopls', 'lua_ls', 'rubocop', 'ruby_lsp', 'ts_ls' }
 for _, server in ipairs(servers) do
   vim.lsp.config(server, dofile(lsp_dir .. server .. '.lua'))
 end

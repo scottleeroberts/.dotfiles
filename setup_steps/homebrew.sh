@@ -23,6 +23,7 @@ echo "Installing Homebrew packages..."
 
 # Development tools
 brew install \
+  buf \
   gh \
   tig \
   fzf \
