@@ -1,24 +1,26 @@
 -- AI assistant plugins
 
--- Ensure a claude session exists and is visible, bypassing sidekick's picker.
--- Returns (terminal, tool) for direct sending via terminal:send().
+-- Ensure a claude terminal exists and is visible, bypassing sidekick's picker.
+-- Returns the terminal for direct sending via vim.api.nvim_chan_send(t.job, ...).
 local function ensure_claude_visible()
+  local Cli = require("sidekick.cli")
+  local Config = require("sidekick.config")
   local Terminal = require("sidekick.cli.terminal")
-  local Session = require("sidekick.cli.session")
-  Session.setup()
-  for _, t in ipairs(Terminal.sessions()) do
-    if t.tool.name == "claude" and not t.closed and t:is_running() then
+
+  for _, t in ipairs(Cli.get_terminals({ name = "claude" })) do
+    if not t.closed and t:is_running() then
       t:show()
       t:focus()
-      return t, t.tool
+      return t
     end
   end
-  local Config = require("sidekick.config")
-  local tool = Config.get_tool("claude"):clone()
-  local terminal = Terminal.new({ tool = tool })
+
+  local tool = vim.deepcopy(Config.cli.tools["claude"])
+  tool.name = "claude"
+  local terminal = Terminal.new(tool)
   terminal:show()
   terminal:focus()
-  return terminal, tool
+  return terminal
 end
 
 return {
@@ -41,26 +43,6 @@ return {
   },
   {
     "folke/sidekick.nvim",
-    -- Patch sidekick's terminal readiness detection to be less aggressive.
-    -- Claude Code's dynamic status line keeps changing the terminal line count during
-    -- startup, which resets the stability check and forces a full 5s timeout before
-    -- the send queue is processed and input is accepted.
-    -- See: https://github.com/folke/sidekick.nvim/issues/150
-    build = function()
-      local path = vim.fn.stdpath("data")
-        .. "/lazy/sidekick.nvim/lua/sidekick/cli/terminal.lua"
-      local f = io.open(path, "r")
-      if not f then return end
-      local content = f:read("*a")
-      f:close()
-      content = content:gsub("READY_MAX_WAIT = %d+", "READY_MAX_WAIT = 500")
-      content = content:gsub("READY_CHECK_INTERVAL = %d+", "READY_CHECK_INTERVAL = 200")
-      content = content:gsub("READY_INIT_DELAY = %d+", "READY_INIT_DELAY = 200")
-      f = io.open(path, "w")
-      if not f then return end
-      f:write(content)
-      f:close()
-    end,
     opts = {
       nes = { enabled = false },
       cli = {
