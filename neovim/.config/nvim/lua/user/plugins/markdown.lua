@@ -9,7 +9,25 @@ return {
     },
     config = function()
       require("render-markdown").setup({
-        code = { disable_background = true },
+        heading = {
+          sign = false,
+          icons = { '# ', '## ', '### ', '#### ', '##### ', '###### ' },
+          width = 'block',
+          left_pad = 1,
+          right_pad = 1,
+        },
+        code = {
+          disable_background = true,
+          sign = false,
+          border = 'thin',
+          width = 'block',
+        },
+        sign = { enabled = false },
+        anti_conceal = {
+          enabled = true,
+          above = 1,
+          below = 1,
+        },
       })
     end,
   },

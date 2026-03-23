@@ -18,6 +18,10 @@ vim.opt_local.colorcolumn = ""
 vim.keymap.set('n', 'j', 'gj', { buffer = true, noremap = true, desc = "Move down (visual line)" })
 vim.keymap.set('n', 'k', 'gk', { buffer = true, noremap = true, desc = "Move up (visual line)" })
 
+-- Toggle render-markdown on/off
+vim.keymap.set('n', '<leader>mr', ':RenderMarkdown toggle<CR>',
+  { buffer = true, noremap = true, silent = true, desc = "Toggle render-markdown" })
+
 -- Prevent editing generated markdown files
 local first_lines = vim.api.nvim_buf_get_lines(0, 0, 10, false)
 for _, line in ipairs(first_lines) do

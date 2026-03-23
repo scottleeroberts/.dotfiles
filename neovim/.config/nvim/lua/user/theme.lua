@@ -71,6 +71,15 @@ require('rose-pine').setup({
     ['@lsp.type.variable'] = { fg = 'text' },
     ['@lsp.type.parameter'] = { fg = 'iris' },
     ['@lsp.type.type'] = { fg = 'gold' },
+    -- render-markdown.nvim: subtle heading tints that work with transparency
+    RenderMarkdownH1Bg = { bg = 'love', blend = 10 },
+    RenderMarkdownH2Bg = { bg = 'gold', blend = 10 },
+    RenderMarkdownH3Bg = { bg = 'rose', blend = 10 },
+    RenderMarkdownH4Bg = { bg = 'iris', blend = 10 },
+    RenderMarkdownH5Bg = { bg = 'foam', blend = 10 },
+    RenderMarkdownH6Bg = { bg = 'pine', blend = 10 },
+    RenderMarkdownCode = { bg = 'surface' },
+    RenderMarkdownCodeInline = { bg = 'surface' },
   },
 })
 
