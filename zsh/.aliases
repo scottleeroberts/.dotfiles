@@ -10,6 +10,7 @@ fi
 alias vim="nvim"
 alias v="nvim"
 alias c="claude"
+alias ccc='echo "/do-git-commits" | claude --dangerously-skip-permissions --allowedTools "Bash,Read,Grep"'
 
 # Filesystem aliases
 alias ..='cd ..'
