@@ -1,24 +1,20 @@
 -- AI assistant plugins
 
--- Ensure a claude session exists and is visible, bypassing sidekick's picker.
--- Returns (terminal, tool) for direct sending via terminal:send().
+-- Ensure a claude session exists and is focused, bypassing sidekick's picker.
 local function ensure_claude_visible()
   local Terminal = require("sidekick.cli.terminal")
   local Session = require("sidekick.cli.session")
   Session.setup()
   for _, t in ipairs(Terminal.sessions()) do
     if t.tool.name == "claude" and not t.closed and t:is_running() then
-      t:show()
       t:focus()
-      return t, t.tool
+      return t
     end
   end
   local Config = require("sidekick.config")
-  local tool = Config.get_tool("claude"):clone()
-  local terminal = Terminal.new({ tool = tool })
-  terminal:show()
+  local terminal = Terminal.new({ tool = Config.get_tool("claude"):clone() })
   terminal:focus()
-  return terminal, tool
+  return terminal
 end
 
 return {
@@ -94,12 +90,10 @@ return {
             range = tostring(vim.fn.line("."))
           end
 
-          local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
-          vim.api.nvim_feedkeys(esc, "nx", false)
+          vim.api.nvim_feedkeys("\27", "nx", false)
           local t = ensure_claude_visible()
-
-          if file ~= "" and t and t.job then
-            vim.api.nvim_chan_send(t.job, file .. ":" .. range .. " ")
+          if file ~= "" and t:is_running() then
+            t:send(file .. ":" .. range .. " ")
           end
         end,
         mode = { "n", "x" },
