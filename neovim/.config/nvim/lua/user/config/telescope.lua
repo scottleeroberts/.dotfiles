@@ -57,9 +57,7 @@ require("telescope").setup({
         flip_columns = 170,
       },
     },
-    preview = {
-      treesitter = false, -- disabled: workaround for nvim 0.12 highlighter nil node bug
-    },
+    preview = true,
     sorting_strategy = "descending",
     dynamic_preview_title = true,
     prompt_prefix = "🔍 ",
