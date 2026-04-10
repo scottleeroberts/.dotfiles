@@ -4,7 +4,16 @@
 -- (configured in config/treesitter.lua).
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    init = function()
+      vim.g.loaded_nvim_treesitter = 1 -- prevent built-in setup, only used for parser registry
+    end,
+  },
+  {
     "lewis6991/ts-install.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     lazy = false,
     opts = {
       ensure_install = {
