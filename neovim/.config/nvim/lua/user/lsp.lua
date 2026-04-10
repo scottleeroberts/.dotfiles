@@ -39,6 +39,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client and client:supports_method("textDocument/documentSymbol") then
       vim.opt_local.statusline = " %f %m  %#StatusLineItalic# [[ %{%v:lua.navic_location()%} ]]%#StatusLine# %= %l:%c "
     end
+    if client and client:supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
   end,
 })
 
@@ -53,3 +56,6 @@ vim.keymap.set('n', '<leader>ll', '<cmd>lua vim.diagnostic.open_float()<cr>', { 
 vim.keymap.set('n', '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', { desc = 'Document Symbols' })
 vim.keymap.set('n', '<leader>lw', '<cmd>Telescope lsp_workspace_symbols<cr>', { desc = 'Workspace Symbols' })
 vim.keymap.set('n', '<leader>ln', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Rename' })
+vim.keymap.set('n', '<leader>lI', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = 'Toggle Inlay Hints' })
