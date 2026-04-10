@@ -1,39 +1,42 @@
 -- Treesitter and related plugins
--- NOTE: nvim-treesitter archived on 2026-04-03. Pinned to `master` (frozen,
--- old API) since `main` has a breaking rewrite requiring tree-sitter CLI.
+-- Parser installation handled by ts-install.nvim.
+-- Highlighting, indentation, and folding use Neovim 0.12 built-in APIs
+-- (configured in config/treesitter.lua).
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "master",
-    build = ":TSUpdate",
+    "lewis6991/ts-install.nvim",
     lazy = false,
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "nvim-treesitter/nvim-treesitter-textobjects",
+    opts = {
+      ensure_install = {
+        "diff",
+        "git_rebase",
+        "gitcommit",
+        "go",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "proto",
+        "ruby",
+        "vim",
+        "vue",
+      },
+      auto_install = true,
     },
-    config = function()
-      require("user.config.treesitter")
-    end,
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     lazy = true,
     opts = {
-      enable_autocmd = false, -- disable CursorHold autocmd, fixes nil language_tree crash
+      enable_autocmd = false,
     },
   },
   {
-    "windwp/nvim-ts-autotag",
-    event = { "BufReadPost", "BufNewFile" },
+    "m-demare/hlargs.nvim",
     config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-  {
-    'm-demare/hlargs.nvim',
-    config = function()
-      require('hlargs').setup({
-        color = '#AA33AA',
+      require("hlargs").setup({
+        color = "#AA33AA",
         hl_priority = 1000,
       })
     end,
