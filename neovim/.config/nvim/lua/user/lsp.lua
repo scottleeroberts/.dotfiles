@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client and client:supports_method("textDocument/documentSymbol") then
-      vim.opt_local.statusline = " %f %m  %#StatusLineItalic# [[ %{%v:lua.navic_location()%} ]]%#StatusLine# %= %{v:lua.vim.diagnostic.status()} %{v:lua.vim.ui.progress_status()} %l:%c "
+      vim.opt_local.statusline = " %f %m  %#StatusLineItalic# [[ %{%v:lua.navic_location()%} ]]%#StatusLine# %= %{%v:lua.vim.diagnostic.status()%} %{%v:lua.vim.ui.progress_status()%} %l:%c "
     end
     if client and client:supports_method("textDocument/inlayHint") then
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
