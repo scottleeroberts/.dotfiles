@@ -17,4 +17,11 @@ return {
     "rhysd/committia.vim",
     ft = "gitcommit",
   },
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewRefresh" },
+    keys = {
+      { "<leader>gd", ":DiffviewOpen<CR>", desc = "Diff View" },
+    },
+  },
 }
