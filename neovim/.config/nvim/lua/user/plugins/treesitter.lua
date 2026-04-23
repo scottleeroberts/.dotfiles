@@ -35,11 +35,9 @@ return {
     },
   },
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true,
-    opts = {
-      enable_autocmd = false,
-    },
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
   },
   {
     "m-demare/hlargs.nvim",
