@@ -57,6 +57,8 @@ alias jd="joplin-desktop"
 #misc
 alias wtr="curl wttr.in/chapel+hill"
 
+alias tmate='env -u TMUX tmate'
+
 alias dcdu='docker compose up'
 alias fstart='./bin/foreman start -f Procfile.dev'
 
