@@ -1,8 +1,22 @@
 require('tokyonight').setup({
   transparent = true,
   styles = {
-    sidebars = "transparent"
-  }
+    sidebars = "transparent",
+  },
+  on_highlights = function(hl, c)
+    -- Ruby: symbols visually distinct from strings (target .ruby variant directly)
+    hl["@string.special.symbol.ruby"] = { fg = c.cyan }
+    -- Ruby: regex literals
+    hl["@string.regexp"] = { fg = c.teal }
+    -- Go: interface vs struct distinction (gopls provides these)
+    hl["@lsp.type.interface"] = { fg = c.cyan, italic = true }
+    hl["@lsp.type.struct"] = { fg = c.yellow }
+    -- Go: generics type params
+    hl["@lsp.type.typeParameter"] = { fg = c.cyan }
+    -- Go: parameters purple (intentional, matches rose-pine iris setup)
+    hl["@variable.parameter"] = { fg = c.purple }
+    hl["@lsp.type.parameter"] = { fg = c.purple }
+  end,
 })
 
 require('kanagawa').setup({
@@ -29,10 +43,31 @@ require('kanagawa').setup({
       PmenuSbar = { bg = theme.ui.bg_m1 },
       PmenuThumb = { bg = theme.ui.bg_p2 },
 
+      NormalFloat = { bg = theme.ui.bg_p1 },
+
       DiagnosticVirtualTextHint  = makeDiagnosticColor(theme.diag.hint),
       DiagnosticVirtualTextInfo  = makeDiagnosticColor(theme.diag.info),
       DiagnosticVirtualTextWarn  = makeDiagnosticColor(theme.diag.warning),
       DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+
+      -- Ruby: symbols visually distinct from strings (.ruby suffix needs explicit override)
+      ["@string.special.symbol.ruby"] = { fg = theme.syn.identifier },
+      ["@string.regexp"] = { fg = theme.syn.regex },
+
+      -- Go: interface vs struct distinction; generics type params
+      ["@lsp.type.interface"]     = { fg = theme.syn.type, italic = true },
+      ["@lsp.type.struct"]        = { fg = theme.syn.identifier },
+      ["@lsp.type.typeParameter"] = { fg = theme.syn.type },
+
+      -- render-markdown.nvim: heading tints and code block backgrounds
+      RenderMarkdownH1Bg        = { bg = theme.syn.special2,  blend = 10 },
+      RenderMarkdownH2Bg        = { bg = theme.syn.constant,  blend = 10 },
+      RenderMarkdownH3Bg        = { bg = theme.syn.string,    blend = 10 },
+      RenderMarkdownH4Bg        = { bg = theme.syn.statement, blend = 10 },
+      RenderMarkdownH5Bg        = { bg = theme.syn.special1,  blend = 10 },
+      RenderMarkdownH6Bg        = { bg = theme.syn.type,      blend = 10 },
+      RenderMarkdownCode        = { bg = theme.ui.bg_m1 },
+      RenderMarkdownCodeInline  = { bg = theme.ui.bg_m1 },
     }
   end
 })
@@ -88,10 +123,10 @@ require('night-owl').setup({
   transparent_background = true,
 })
 
-vim.cmd('colorscheme rose-pine')
+-- vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme night-owl')
 -- vim.cmd('colorscheme tokyonight')
--- vim.cmd('colorscheme kanagawa-wave')
+vim.cmd('colorscheme kanagawa-wave')
 -- vim.cmd('colorscheme nightfox')
 
 vim.cmd 'highlight Cursor guibg=#ff2040 guifg=#000000'
