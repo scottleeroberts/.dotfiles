@@ -71,6 +71,8 @@ require("telescope").setup({
 -- Load extensions
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("fzf")
+require("git-worktree").setup()
+require("telescope").load_extension("git_worktree")
 
 -- Custom telescope border highlight
 vim.cmd([[highlight TelescopeBorder guibg=NONE ctermbg=NONE]])

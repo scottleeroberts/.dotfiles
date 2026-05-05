@@ -7,6 +7,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-fzf-native.nvim",
+      "ThePrimeagen/git-worktree.nvim",
     },
     keys = {
       {
@@ -90,6 +91,13 @@ return {
         "<cmd>Telescope git_branches<cr>",
         desc = "Git Branches",
       },
+      {
+        "<leader>gw",
+        function()
+          require("telescope").extensions.git_worktree.git_worktrees()
+        end,
+        desc = "Git Worktrees",
+      },
     },
     config = function()
       require("user.config.telescope")
@@ -102,6 +110,10 @@ return {
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
+    lazy = true,
+  },
+  {
+    "ThePrimeagen/git-worktree.nvim",
     lazy = true,
   },
   {
