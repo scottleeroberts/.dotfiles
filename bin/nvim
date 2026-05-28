@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# Sandboxed nvim using bubblewrap.
+#
+# Hides host credentials (~/.ssh, ~/.gnupg, ~/.aws, browser data, keyrings,
+# shell history, etc.) from neovim and its plugins via a fail-closed whitelist:
+# $HOME is replaced with a tmpfs and only the paths nvim actually needs are
+# bound back in. Host nvim, toolchains, clipboard, and tmux integration all
+# work natively — no container image, no daemon, no UID juggling.
+#
+# See bin/nvim-sandbox.README.md for threat model and residual risks.
+
+set -euo pipefail
+
+if ! command -v bwrap >/dev/null 2>&1; then
+  echo "nvim sandbox: bwrap not found. Install with: sudo pacman -S bubblewrap" >&2
+  exit 1
+fi
+
+# Resolve real nvim, skipping this wrapper.
+NVIM_BIN=""
+IFS=: read -ra path_parts <<<"$PATH"
+self="$(readlink -f "$0")"
+for p in "${path_parts[@]}"; do
+  candidate="$p/nvim"
+  [[ -x "$candidate" ]] || continue
+  [[ "$(readlink -f "$candidate")" == "$self" ]] && continue
+  NVIM_BIN="$candidate"
+  break
+done
+: "${NVIM_BIN:=/usr/bin/nvim}"
+
+# Bind extra directories for file arguments outside $PWD (e.g. `nvim /etc/hosts`,
+# `nvim ../other-project/foo`). Matches the Docker wrapper's behaviour.
+extra=()
+for arg in "$@"; do
+  [[ "$arg" == -* || "$arg" == +* ]] && continue
+  if [[ "$arg" == /* ]]; then
+    filepath="$arg"
+  else
+    filepath="$PWD/$arg"
+  fi
+  dir="$(dirname "$filepath")"
+  if [[ "$dir" != "$PWD" && "$dir" != "$PWD"/* ]]; then
+    extra+=(--bind-try "$dir" "$dir")
+  fi
+done
+
+# tmux socket lives under /tmp/tmux-$UID or $TMPDIR; bind its dir back over the
+# tmpfs so vim-tmux-navigator and run_in_split keep working.
+tmux_bind=()
+if [[ -n "${TMUX:-}" ]]; then
+  tmux_sock_dir="$(dirname "${TMUX%%,*}")"
+  tmux_bind=(--bind "$tmux_sock_dir" "$tmux_sock_dir")
+fi
+
+exec bwrap \
+  --ro-bind /usr /usr \
+  --ro-bind /etc /etc \
+  --ro-bind-try /opt /opt \
+  --symlink usr/bin /bin \
+  --symlink usr/lib /lib \
+  --symlink usr/lib64 /lib64 \
+  --symlink usr/sbin /sbin \
+  --dev /dev \
+  --proc /proc \
+  --tmpfs /tmp \
+  --tmpfs /run \
+  --tmpfs "$HOME" \
+  --ro-bind "$HOME/.config/nvim" "$HOME/.config/nvim" \
+  --ro-bind-try "$HOME/.gitconfig" "$HOME/.gitconfig" \
+  --ro-bind-try "$HOME/.claude" "$HOME/.claude" \
+  --ro-bind-try "$HOME/.claude.json" "$HOME/.claude.json" \
+  --ro-bind-try "$HOME/.config/github-copilot" "$HOME/.config/github-copilot" \
+  --bind-try "$HOME/.local/share/nvim" "$HOME/.local/share/nvim" \
+  --bind-try "$HOME/.local/state/nvim" "$HOME/.local/state/nvim" \
+  --bind-try "$HOME/.cache/nvim" "$HOME/.cache/nvim" \
+  --bind-try "$HOME/go" "$HOME/go" \
+  --bind-try "$HOME/.cache/go-build" "$HOME/.cache/go-build" \
+  --ro-bind-try "$HOME/.rubies" "$HOME/.rubies" \
+  --bind-try "$HOME/.gem" "$HOME/.gem" \
+  --bind "$PWD" "$PWD" \
+  "${tmux_bind[@]}" \
+  "${extra[@]}" \
+  --unsetenv SSH_AUTH_SOCK \
+  --unsetenv GPG_AGENT_INFO \
+  --unsetenv GNUPGHOME \
+  --unsetenv DBUS_SESSION_BUS_ADDRESS \
+  --setenv NVIM_SANDBOX 1 \
+  --share-net \
+  --die-with-parent \
+  --new-session \
+  --chdir "$PWD" \
+  "$NVIM_BIN" "$@"
