@@ -1,0 +1,111 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+#
+# i3blocks: Atlassian-Statuspage health monitor.
+#   i3blocks.conf:  interval=60   markup=pango
+# Launched via i3blocks.conf with an explicit Ruby path, because i3blocks' PATH
+# does not include chruby's ~/.rubies.
+#
+# Polls each service's <base>/api/v2/status.json and renders one recolored
+# brand glyph per service. Click the block:
+#   left-click  -> open the most-degraded service's status page
+#   right-click -> notify-send a full human-readable summary
+
+require 'net/http'
+require 'uri'
+require 'json'
+
+# ─── ADD A SERVICE: one line, "codepoint|label|base-url" ────────────────────
+# codepoint = Nerd Font hex (no 0x/U+). Find glyphs at nerdfonts.com/cheat-sheet
+SERVICES = [
+  'F09B|GitHub|https://www.githubstatus.com', # nf-fa-github
+  'F069|Claude|https://status.claude.com'     # nf-fa-asterisk (Claude sunburst)
+].freeze
+# More glyphs:  GitLab F296   AWS E7AD   Docker E7B0   Slack F198
+
+# Spacing rendered between each service icon.
+ICON_SEP = '  '
+
+# Flip the whole block to i3bar's "urgent" style when a service hits critical.
+URGENT_ON_CRITICAL = true
+
+# Per-request network timeout (seconds).
+HTTP_TIMEOUT = 4
+
+# indicator -> color
+COLOR = {
+  'none'        => '#a7c080', # operational     green (pastel)
+  'minor'       => '#ffcc00', # partial outage  amber
+  'major'       => '#ff8800', # major outage    orange
+  'critical'    => '#ff1e1e', # critical outage red
+  'maintenance' => '#1e90ff', # maintenance     blue
+  'unknown'     => '#888888'  # unreachable     gray
+}.freeze
+
+# indicator -> severity rank (higher = worse); picks the page left-click opens
+RANK = {
+  'none' => 0, 'maintenance' => 1, 'unknown' => 2,
+  'minor' => 2, 'major' => 3, 'critical' => 4
+}.freeze
+
+# Fetch one service's status. Returns [indicator, description].
+def fetch_status(base_url)
+  uri = URI.parse("#{base_url}/api/v2/status.json")
+  res = Net::HTTP.start(uri.host, uri.port,
+                        use_ssl: uri.scheme == 'https',
+                        open_timeout: HTTP_TIMEOUT,
+                        read_timeout: HTTP_TIMEOUT) { |http| http.get(uri.request_uri) }
+  raise "HTTP #{res.code}" unless res.is_a?(Net::HTTPSuccess)
+
+  status = JSON.parse(res.body).fetch('status', {})
+  ind  = status['indicator'].to_s
+  ind  = 'unknown' if ind.empty?
+  desc = status['description'].to_s
+  desc = 'Unknown' if desc.empty?
+  [ind, desc]
+rescue StandardError
+  ['unknown', 'Unreachable']
+end
+
+# Poll every service in parallel (Ruby releases the GVL on blocking I/O).
+results = SERVICES.map do |entry|
+  cp, label, url = entry.split('|', 3)
+  Thread.new { [cp, label, url, *fetch_status(url)] }
+end.map(&:value)
+
+glyphs        = []
+summary_lines = []
+worst_rank    = -1
+worst_url     = nil
+
+results.each do |cp, label, url, ind, desc|
+  glyph = [cp.to_i(16)].pack('U')
+  color = COLOR.fetch(ind, COLOR['unknown'])
+  glyphs << "<span foreground='#{color}'>#{glyph}</span>"
+  summary_lines << "#{label}: #{desc}"
+  rank = RANK.fetch(ind, 2)
+  if rank > worst_rank
+    worst_rank = rank
+    worst_url  = url
+  end
+end
+
+case ENV['BLOCK_BUTTON']
+when '1' # left-click: open the most-degraded status page, detached
+  if worst_url
+    begin
+      pid = Process.spawn('setsid', 'xdg-open', worst_url, out: File::NULL, err: File::NULL)
+      Process.detach(pid)
+    rescue StandardError
+      # xdg-open/setsid unavailable; ignore
+    end
+  end
+when '3' # right-click: human-readable summary notification
+  system('notify-send', 'Service status', summary_lines.join("\n"))
+end
+
+row = glyphs.join(ICON_SEP)
+puts row # full_text
+puts row # short_text
+
+exit 33 if URGENT_ON_CRITICAL && worst_rank >= 4
