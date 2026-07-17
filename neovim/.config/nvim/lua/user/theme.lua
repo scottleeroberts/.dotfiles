@@ -38,6 +38,9 @@ require('kanagawa').setup({
     end
 
     return {
+      Normal = { bg = "#0c1021" },
+      NormalNC = { bg = "#0c1021" },
+
       Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
       PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
       PmenuSbar = { bg = theme.ui.bg_m1 },
@@ -123,10 +126,10 @@ require('night-owl').setup({
   transparent_background = true,
 })
 
--- vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme night-owl')
 -- vim.cmd('colorscheme tokyonight')
-vim.cmd('colorscheme kanagawa-wave')
+-- vim.cmd('colorscheme kanagawa-wave')
 -- vim.cmd('colorscheme nightfox')
 
 vim.cmd 'highlight Cursor guibg=#ff2040 guifg=#000000'
