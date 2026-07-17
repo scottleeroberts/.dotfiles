@@ -39,7 +39,7 @@ yellow = "0xf6c177"
 
 [colors.primary]
 # background = "#0a0a0a"
-background = "#060615"
+background = "#0c1021"
 
 [colors.selection]
 background = "0x403d52"
@@ -97,7 +97,7 @@ hide_when_typing = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-opacity = 0.94
+opacity = 1.0
 
 # [window.dimensions]
 # columns = 80
