@@ -1,4 +1,4 @@
-set $bg-color           #0096FF
+set $bg-color           #7C3AED
 set $inactive-bg-color  #2f343f
 set $text-color         #f3f4f5
 set $inactive-text-color #676e7d
@@ -217,7 +217,7 @@ bindsym $mod+z mode "$mode_system"
           separator  #757575
           background #000020
           statusline #ffffff
-          # focused_workspace #09090990 #09090990 #0096FF
+          focused_workspace  #7C3AED    #7C3AED    #ffffff
           # inactive_workspace #09090990 #09090990 #7393B3
         }
   }
@@ -239,12 +239,12 @@ bindsym $mod+Control+c [class=Google-chrome] focus
 bindsym $mod+Ctrl+p exec pavucontrol for_window [class="Pavucontrol"] floating enable
 
 #startup
-bindsym $mod+b exec --no-startup-id feh --image-bg black   --bg-fill ~/Pictures/background.jpg --bg-fill ~/Pictures/background.jpg
+bindsym $mod+b exec --no-startup-id feh --image-bg black --bg-fill ~/Pictures/background.jpg
 #exec --no-startup-id xrandr --output HDMI1 --mode 3440x1440 --rate 60
 #exec --no-startup-id xrandr --output eDP1 --mode 1920x1200
 exec --no-startup-id sh -c 'sleep 2; xrandr --output HDMI-A-0 --mode 3440x1440 --primary --pos 0x0 --output eDP --mode 2880x1800 --pos 3440x0'
 exec --no-startup-id brightnessctl set 80%
-exec --no-startup-id feh --image-bg black   --bg-scale ~/Pictures/background.jpg --bg-scale ~/Pictures/background.jpg
+exec --no-startup-id feh --image-bg black  --bg-fill ~/Pictures/background.jpg
 exec --no-startup-id gammastep -m randr -l 35.78:-78.64 -t 6500:3500
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
