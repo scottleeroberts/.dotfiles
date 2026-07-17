@@ -38,3 +38,5 @@ bundle/
 CLAUDE.md
 claude.md
 !.claude/CLAUDE.md
+
+**/.claude/settings.local.json
