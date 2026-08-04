@@ -40,6 +40,32 @@ return {
     event = "VeryLazy",
   },
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("nvim-treesitter-textobjects").setup({
+        move = { set_jumps = true },
+      })
+    end,
+    keys = {
+      {
+        "<leader>js",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+        end,
+        desc = "Jump to start of next function",
+      },
+      {
+        "<leader>je",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+        end,
+        desc = "Jump to end of next function",
+      },
+    },
+  },
+  {
     "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({
