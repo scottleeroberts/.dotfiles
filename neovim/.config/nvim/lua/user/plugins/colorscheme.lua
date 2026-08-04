@@ -20,4 +20,8 @@ return {
     "oxfist/night-owl.nvim",
     lazy = true,
   },
+  {
+    "Aejkatappaja/cendre",
+    lazy = true,
+  },
 }

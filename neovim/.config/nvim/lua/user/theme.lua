@@ -62,13 +62,8 @@ require('kanagawa').setup({
       ["@lsp.type.struct"]        = { fg = theme.syn.identifier },
       ["@lsp.type.typeParameter"] = { fg = theme.syn.type },
 
-      -- render-markdown.nvim: heading tints and code block backgrounds
-      RenderMarkdownH1Bg        = { bg = theme.syn.special2,  blend = 10 },
-      RenderMarkdownH2Bg        = { bg = theme.syn.constant,  blend = 10 },
-      RenderMarkdownH3Bg        = { bg = theme.syn.string,    blend = 10 },
-      RenderMarkdownH4Bg        = { bg = theme.syn.statement, blend = 10 },
-      RenderMarkdownH5Bg        = { bg = theme.syn.special1,  blend = 10 },
-      RenderMarkdownH6Bg        = { bg = theme.syn.type,      blend = 10 },
+      -- render-markdown.nvim: code block backgrounds (heading bg left at plugin defaults,
+      -- which link to Diff*/Visual/CursorColumn for readable contrast on any colorscheme)
       RenderMarkdownCode        = { bg = theme.ui.bg_m1 },
       RenderMarkdownCodeInline  = { bg = theme.ui.bg_m1 },
     }
@@ -109,13 +104,8 @@ require('rose-pine').setup({
     ['@lsp.type.variable'] = { fg = 'text' },
     ['@lsp.type.parameter'] = { fg = 'iris' },
     ['@lsp.type.type'] = { fg = 'gold' },
-    -- render-markdown.nvim: subtle heading tints that work with transparency
-    RenderMarkdownH1Bg = { bg = 'love', blend = 10 },
-    RenderMarkdownH2Bg = { bg = 'gold', blend = 10 },
-    RenderMarkdownH3Bg = { bg = 'rose', blend = 10 },
-    RenderMarkdownH4Bg = { bg = 'iris', blend = 10 },
-    RenderMarkdownH5Bg = { bg = 'foam', blend = 10 },
-    RenderMarkdownH6Bg = { bg = 'pine', blend = 10 },
+    -- render-markdown.nvim: code block background (heading bg left at plugin defaults,
+    -- which link to Diff*/Visual/CursorColumn for readable contrast on any colorscheme)
     RenderMarkdownCode = { bg = 'surface' },
     RenderMarkdownCodeInline = { bg = 'surface' },
   },
@@ -126,15 +116,32 @@ require('night-owl').setup({
   transparent_background = true,
 })
 
-vim.cmd('colorscheme rose-pine')
+require('cendre').setup({
+  background = 'hard',
+  transparent = false,
+  italic = false,
+  on_highlights = function(hl, c)
+    -- Go: interface vs struct distinction (cendre ships both as c.frost)
+    hl["@lsp.type.interface"] = { fg = c.frost, italic = true }
+    hl["@lsp.type.struct"] = { fg = c.ember }
+    -- Ruby: symbols visually distinct from strings (target .ruby variant directly)
+    hl["@string.special.symbol.ruby"] = { fg = c.frost }
+    -- sidekick.nvim's terminal splits (e.g. the <leader>aa Claude split)
+    -- default SidekickChat to link NormalFloat, which cendre uses for a
+    -- darker floats/sidebars background. Link it to Normal instead so the
+    -- split matches the rest of the editor.
+    hl["SidekickChat"] = { link = "Normal" }
+  end,
+})
+
+-- vim.cmd('colorscheme rose-pine')
 -- vim.cmd('colorscheme night-owl')
 -- vim.cmd('colorscheme tokyonight')
 -- vim.cmd('colorscheme kanagawa-wave')
 -- vim.cmd('colorscheme nightfox')
+vim.cmd('colorscheme cendre')
 
 vim.cmd 'highlight Cursor guibg=#ff2040 guifg=#000000'
 vim.opt.guicursor = 'n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor'
 vim.cmd 'highlight TelescopeBorder guibg=none'
 vim.cmd 'highlight TelescopeTitle guibg=none'
-
-
