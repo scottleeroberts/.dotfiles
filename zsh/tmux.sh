@@ -1,28 +1,28 @@
 #!/bin/sh
 
+set -eu
+
 session="work"
+rails_dir="$HOME/prizepicks/prizepicks-rails"
+devenv_dir="$HOME/prizepicks/prizepicks-devenv"
+dotfiles_dir="$HOME/.dotfiles"
 
-# detach from a tmux session if in one
-tmux detach > /dev/null ^ /dev/null
+attach_session() {
+  if [ -n "${TMUX:-}" ]; then
+    exec tmux switch-client -t "=$session"
+  fi
 
-# set up tmux
-tmux start-server
+  exec tmux attach-session -t "=$session"
+}
 
-# create a new tmux session, starting vim from a saved session in the new window
-tmux new-session -d -s $session
+if tmux has-session -t "=$session" 2>/dev/null; then
+  attach_session
+fi
 
-tmux new-window -t $session
-tmux send-keys -t $session:1 "cd ~/Development/prizepicks-rails" C-m
-tmux send-keys -t $session:1 "vim" C-m
+tmux new-session -d -s "$session" -n rails -c "$rails_dir"
+tmux send-keys -t "$session:rails" vim C-m
 
-tmux new-window -t $session
-tmux send-keys -t $session:2 "cd ~/Development/prizepicks-devenv" C-m
+tmux new-window -d -t "$session:" -n devenv -c "$devenv_dir"
+tmux new-window -d -t "$session:" -n dotfiles -c "$dotfiles_dir"
 
-tmux new-window -t $session
-tmux send-keys -t $session:3 "cd ~/.dotfiles" C-m
-
-# return to main vim window
-tmux select-window -t $session:1
-
-# Finished setup, attach to the tmux session!
-tmux attach-session -t $session
+attach_session
