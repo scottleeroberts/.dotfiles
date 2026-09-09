@@ -13,6 +13,9 @@ public/packs/
 public/sprockets/
 bundle/
 
+# In-repo git worktrees created by tooling (superpowers using-git-worktrees)
+.worktrees/
+
 # Claude Code - only exclude sensitive/cache files, allow tracking of config
 .claude/.credentials.json
 .claude/history.jsonl
