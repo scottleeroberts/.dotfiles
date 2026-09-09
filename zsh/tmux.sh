@@ -15,14 +15,23 @@ attach_session() {
   exec tmux attach-session -t "=$session"
 }
 
+enable_automatic_rename() {
+  tmux list-windows -t "=$session" -F '#{window_id}' |
+    while IFS= read -r window_id; do
+      tmux set-window-option -t "$window_id" automatic-rename on
+    done
+}
+
 if tmux has-session -t "=$session" 2>/dev/null; then
+  enable_automatic_rename
   attach_session
 fi
 
-tmux new-session -d -s "$session" -n rails -c "$rails_dir"
-tmux send-keys -t "$session:rails" vim C-m
+rails_window=$(tmux new-session -d -P -F '#{window_id}' -s "$session" -c "$rails_dir")
+tmux send-keys -t "$rails_window" vim C-m
 
-tmux new-window -d -t "$session:" -n devenv -c "$devenv_dir"
-tmux new-window -d -t "$session:" -n dotfiles -c "$dotfiles_dir"
+tmux new-window -d -t "$session:" -c "$devenv_dir"
+tmux new-window -d -t "$session:" -c "$dotfiles_dir"
 
+enable_automatic_rename
 attach_session
