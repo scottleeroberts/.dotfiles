@@ -1,18 +1,18 @@
 -- AI assistant plugins
 
--- Ensure a claude session exists and is focused, bypassing sidekick's picker.
-local function ensure_claude_visible()
+-- Ensure a session for the given tool exists and is focused, bypassing sidekick's picker.
+local function ensure_tool_visible(tool_name)
   local Terminal = require("sidekick.cli.terminal")
   local Session = require("sidekick.cli.session")
   Session.setup()
   for _, t in ipairs(Terminal.sessions()) do
-    if t.tool.name == "claude" and not t.closed and t:is_running() then
+    if t.tool.name == tool_name and not t.closed and t:is_running() then
       t:focus()
       return t
     end
   end
   local Config = require("sidekick.config")
-  local terminal = Terminal.new({ tool = Config.get_tool("claude"):clone() })
+  local terminal = Terminal.new({ tool = Config.get_tool(tool_name):clone() })
   terminal:focus()
   return terminal
 end
@@ -66,7 +66,6 @@ return {
           claude = { cmd = { "claude" }, env = { NVIM = false } },
           aider = { enabled = false },
           amazon_q = { enabled = false },
-          codex = { enabled = false },
           copilot = { enabled = false },
           crush = { enabled = false },
           cursor = { enabled = false },
@@ -91,13 +90,36 @@ return {
           end
 
           vim.api.nvim_feedkeys("\27", "nx", false)
-          local t = ensure_claude_visible()
-          if file ~= "" and t:is_running() then
-            t:send(file .. ":" .. range .. " ")
+
+          local function send_to(tool_name)
+            local t = ensure_tool_visible(tool_name)
+            if file ~= "" and t:is_running() then
+              t:send(file .. ":" .. range .. " ")
+            end
+          end
+
+          -- If exactly one of claude/codex already has a running session, jump
+          -- straight to it instead of prompting.
+          local Terminal = require("sidekick.cli.terminal")
+          local running = {}
+          for _, t in ipairs(Terminal.sessions()) do
+            if (t.tool.name == "claude" or t.tool.name == "codex") and not t.closed and t:is_running() then
+              table.insert(running, t.tool.name)
+            end
+          end
+
+          if #running == 1 then
+            send_to(running[1])
+          else
+            vim.ui.select({ "claude", "codex" }, { prompt = "AI tool:" }, function(tool_name)
+              if tool_name then
+                send_to(tool_name)
+              end
+            end)
           end
         end,
         mode = { "n", "x" },
-        desc = "Send file:line to Claude",
+        desc = "Send file:line to AI tool",
       },
       {
         "<leader>as",
