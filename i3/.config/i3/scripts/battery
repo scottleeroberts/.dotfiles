@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BATTERY=0
-BATTERY_INFO=$(acpi -b | grep "Battery ${BATTERY}") || exit
-BATTERY_STATE=$(echo "${BATTERY_INFO}" | grep -wo "Full\|Charging\|Discharging")
-BATTERY_POWER=$(echo "${BATTERY_INFO}" | grep -o '[0-9]\+%' | tr -d '%')
+BATTERY_PATH=/sys/class/power_supply/BAT0
+
+BATTERY_POWER=$(cat "${BATTERY_PATH}/capacity") || exit
+BATTERY_STATE=$(cat "${BATTERY_PATH}/status")
 
 URGENT_VALUE=10
 
