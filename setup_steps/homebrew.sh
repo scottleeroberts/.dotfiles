@@ -33,10 +33,9 @@ brew install \
   htop \
   speedtest-cli
 
-# Ruby tools
+# Version manager
 brew install \
-  chruby \
-  ruby-install
+  mise
 
 # Docker tools
 brew install \

@@ -48,12 +48,18 @@ source ~/.fzf/shell/completion.zsh
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
-chruby ruby-3.4.1 2>/dev/null || chruby ruby-3.4.4 2>/dev/null
+
+# Discard Ruby state inherited from the retired version manager, including tmux.
+unset GEM_HOME GEM_PATH GEM_ROOT RUBY_ENGINE RUBY_ROOT RUBY_VERSION RUBYLIB RUBYOPT
+path=(${path:#$HOME/.gem/ruby/*})
+path=(${path:#$HOME/.rubies/*})
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
 opentmux
 
-# export PATH="$(ruby -r rubygems -e 'print Gem.bindir'):$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"

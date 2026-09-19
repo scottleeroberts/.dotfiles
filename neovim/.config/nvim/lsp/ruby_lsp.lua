@@ -1,5 +1,9 @@
 return {
-  cmd = { 'ruby-lsp' },
+  cmd = {
+    'env', '-u', 'GEM_HOME', '-u', 'GEM_PATH', '-u', 'GEM_ROOT',
+    '-u', 'RUBY_ENGINE', '-u', 'RUBY_ROOT', '-u', 'RUBY_VERSION', '-u', 'RUBYLIB', '-u', 'RUBYOPT',
+    'mise', 'x', '--', 'ruby-lsp', '--use-launcher',
+  },
   filetypes = { 'ruby' },
   root_markers = { 'Gemfile', '.git' },
   init_options = {

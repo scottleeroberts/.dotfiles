@@ -42,6 +42,14 @@ echo ""
 echo "Installing base dependencies..."
 sudo apt install -y git curl build-essential stow
 
+# Deploy dotfiles before setup steps consume their configuration
+echo ""
+echo "========================================"
+echo "  Deploying Dotfiles"
+echo "========================================"
+echo ""
+source ~/.dotfiles/stow_all
+
 # Execute installation steps
 echo ""
 echo "========================================"
@@ -73,13 +81,6 @@ echo ""
 source ~/.dotfiles/setup_steps/claude_config.sh || echo "Warning: Claude config step had issues"
 echo ""
 
-# Stow dotfiles
-echo "========================================"
-echo "  Deploying Dotfiles"
-echo "========================================"
-echo ""
-source ~/.dotfiles/stow_all
-
 # Optional components (commented by default)
 # source ~/.dotfiles/setup_steps/gtk.sh
 
@@ -95,7 +96,7 @@ echo "3. Start a new terminal to load ZSH configuration"
 echo "4. Configure Claude Code: add Linear API key to ~/.claude/.credentials.json"
 echo ""
 echo "To verify installation:"
-echo "  ruby --version    # Should show latest 3.x"
+echo "  ruby --version    # Should show the project version or global Ruby 4.0.4"
 echo "  nvim --version    # Should show latest stable"
 echo "  node --version    # Should show latest v24.x LTS"
 echo "  docker ps         # Should work without sudo"

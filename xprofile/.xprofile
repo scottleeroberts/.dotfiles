@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Make Homebrew and mise-managed tools available to the graphical session.
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# Machine-specific session autostart (tray icons, etc.); lives in $HOME, not
+# in the dotfiles repo, so per-machine setup never gets committed.
+[ -f "$HOME/.xprofile.local" ] && . "$HOME/.xprofile.local"

@@ -25,7 +25,7 @@ bash setup-ubuntu.sh
 The script will:
 - Install system packages via APT (i3, rofi, dunst, fonts, etc.)
 - Install Homebrew and development tools (gh, tig, fzf, btop, etc.)
-- Set up version managers (bob for Neovim, chruby for Ruby)
+- Set up version managers (bob for Neovim, mise for Ruby)
 - Configure Docker
 - Deploy dotfiles via GNU Stow
 - Clone and deploy Claude Code configuration
@@ -48,7 +48,7 @@ The script will:
    ```
 4. Verify installations:
    ```bash
-   ruby --version    # Should show latest 3.x
+   ruby --version    # Should show the project version or global Ruby 4.0.4
    nvim --version    # Should show latest stable
    node --version    # Should show latest v24.x LTS
    docker --version  # Should work without sudo
@@ -61,7 +61,7 @@ After running the setup script, verify:
 
 - [ ] ZSH is the default shell: `echo $SHELL` → `/usr/bin/zsh`
 - [ ] Homebrew is installed: `brew --version`
-- [ ] Ruby 3.x (latest) via chruby: `ruby --version`
+- [ ] Ruby via mise: `ruby --version`
 - [ ] Neovim (latest stable) via bob: `nvim --version`
 - [ ] Node v24.x LTS (latest): `node --version`
 - [ ] Python 3.13.x: `python3 --version`

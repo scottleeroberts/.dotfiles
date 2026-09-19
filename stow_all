@@ -18,12 +18,14 @@ stow -vv gem
 stow -vv git
 stow -vv i3
 stow -vv ignore
+stow -vv mise
 stow -vv neovim
 stow -vv readline
 stow -vv rofi
 stow -vv tmux
 stow -vv urlview
 stow -vv xmodmap
+stow -vv xprofile
 stow -vv zsh
 
 # Optional modules (may not exist on all systems)

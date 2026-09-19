@@ -48,21 +48,30 @@ This installation uses a **"latest stable"** approach to keep your system curren
 ---
 
 ### 💎 Ruby
-**Strategy:** Latest 3.x
-**Current:** Installs newest Ruby 3.x.x
-**Managed by:** ruby-install + chruby
-**Updates:** Re-run `ruby-install ruby-3`
+**Strategy:** Project-pinned with a global fallback
+**Current:** Uses each project's `.ruby-version`, with Ruby 4.0.4 as the global default
+**Managed by:** mise
+**Configuration:** `mise/.config/mise/config.toml`, deployed with GNU Stow
+**Updates:** Run `mise install` in a project or change the global fallback
 
 **Why:**
-- Major version (3.x) provides stability
-- Minor/patch versions (3.x.x) provide features and security
-- No specific patch version needed
+- Projects run the Ruby version they declare
+- Missing project versions are installed with one command
+- Precompiled Rubies avoid local source builds
 
 **Upgrade:**
 ```bash
-ruby-install ruby-3  # Installs latest 3.x
-chruby 3.x.x         # Switch to new version
+# Install a project's Ruby and gem dependencies
+mise install
+mise x -- bundle install
+
+# Change the global fallback
+mise use --global ruby@<version>
 ```
+
+Run `mise x -- bundle install` after cloning a Ruby project, changing its Ruby
+version, or pulling a changed `Gemfile.lock`. You can also run it whenever
+`mise x -- bundle check` reports missing gems.
 
 ---
 
@@ -134,8 +143,7 @@ brew update && brew upgrade           # Homebrew packages
 When you want the absolute latest:
 ```bash
 # Ruby
-ruby-install ruby-3
-chruby <new-version>
+mise use --global ruby@<version>
 
 # Neovim
 bob update
@@ -162,8 +170,10 @@ If needed, edit the setup scripts:
 
 **Ruby:**
 ```bash
-# setup_steps/ruby.sh
-install_ruby "3.4.2"  # Specific version
+# .ruby-version
+4.0.4
+
+mise install
 ```
 
 **Neovim:**
@@ -198,7 +208,7 @@ curl -fsSL https://deb.nodesource.com/setup_22.x  # Change major version
 | APT packages | Latest stable | `apt upgrade` |
 | Homebrew | Latest stable | `brew upgrade` |
 | Snap | Latest | Automatic |
-| Ruby | Latest 3.x | `ruby-install ruby-3` |
+| Ruby | Project `.ruby-version`, global 4.0.4 | `mise install` |
 | Node.js | Latest v24.x LTS | `apt upgrade nodejs` |
 | Neovim | Latest stable | `bob update` |
 | Python | Latest 3.13.x | `brew upgrade python@3.13` |
