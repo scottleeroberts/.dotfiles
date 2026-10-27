@@ -8,8 +8,17 @@ def force_local?
   ARGV.include?('--force-local')
 end
 
-def prizepicks?
-  @is_prizepicks ||= Dir.pwd.include?('prizepicks')
+# WORK_DIR and WORK_DEVENV_REPOS are set outside this repo (e.g. ~/.zshenv.local)
+def work_dir
+  ENV['WORK_DIR'] && File.expand_path(ENV['WORK_DIR'])
+end
+
+def work_devenv_repos
+  ENV.fetch('WORK_DEVENV_REPOS', '').split
+end
+
+def work?
+  @is_work ||= !work_dir.nil? && Dir.pwd.start_with?("#{work_dir}/")
 end
 
 def default_image
@@ -38,18 +47,18 @@ if force_local?
   puts
 
   system COMMAND
-elsif prizepicks?
+elsif work?
   current_directory = Dir.pwd.split('/').last
 
-  folder_map = %w[prizepicks-devenv].flat_map do |devenv_repo|
-    repo_list_path = "#{ENV['HOME']}/prizepicks/#{devenv_repo}/scripts/repository_list"
+  folder_map = work_devenv_repos.flat_map do |devenv_repo|
+    repo_list_path = "#{work_dir}/#{devenv_repo}/scripts/repository_list"
     File.readlines(repo_list_path).map(&:strip).map { |repo| [repo, devenv_repo] }
   end.to_h
 
   if folder_map[current_directory]
-    system "#{ENV['HOME']}/prizepicks/#{folder_map[current_directory]}/scripts/run_in_container \"#{COMMAND}\""
+    system "#{work_dir}/#{folder_map[current_directory]}/scripts/run_in_container \"#{COMMAND}\""
   else
-    puts "could not determine prizepicks devenv repo for #{current_directory}"
+    puts "could not determine work devenv repo for #{current_directory}"
     puts 'falling back to system'
     puts
 

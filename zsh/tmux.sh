@@ -3,8 +3,9 @@
 set -eu
 
 session="work"
-rails_dir="$HOME/prizepicks/prizepicks-rails"
-devenv_dir="$HOME/prizepicks/prizepicks-devenv"
+# WORK_RAILS_DIR and WORK_DOCKER_DIR are set outside this repo (e.g. ~/.zshenv.local)
+rails_dir="${WORK_RAILS_DIR:-$HOME}"
+devenv_dir="${WORK_DOCKER_DIR:-$HOME}"
 dotfiles_dir="$HOME/.dotfiles"
 
 attach_session() {
