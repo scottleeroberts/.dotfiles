@@ -19,7 +19,6 @@ keymap("i", "?", "?<c-g>u", { noremap = true, desc = "Undo breakpoint ?" })
 -- Normal Mode - General
 -- ============================================================================
 keymap("n", "<CR>", ":noh<CR><CR>", { noremap = true, desc = "Clear search highlight" })
-keymap("n", "Y", "y$", { noremap = true, desc = "Yank to end of line" })
 keymap("n", "n", "nzz", { noremap = true, desc = "Next search result (centered)" })
 keymap("n", "N", "Nzz", { noremap = true, desc = "Prev search result (centered)" })
 keymap("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "Half page down (centered)" })
