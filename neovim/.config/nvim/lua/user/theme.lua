@@ -86,6 +86,11 @@ require('rose-pine').setup({
     Normal = { bg = 'none' },
     NormalNC = { bg = 'none' },
     NormalFloat = { bg = 'base' },
+    -- sidekick.nvim's terminal splits default to NormalFloat's opaque 'base'
+    -- background, which stands out against the transparent Normal background
+    -- everywhere else. Link it to Normal so the split matches (same fix as
+    -- the cendre colorscheme below).
+    SidekickChat = { link = 'Normal' },
     ['@variable'] = { fg = 'text' },
     ['@variable.member'] = { fg = 'foam' },
     ['@function'] = { fg = 'rose' },
