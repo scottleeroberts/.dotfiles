@@ -1,5 +1,5 @@
 [colors]
-draw_bold_text_with_bright_colors = true
+draw_bold_text_with_bright_colors = false
 
 [colors.bright]
 black = "0x6e6a86"
@@ -12,8 +12,8 @@ white = "0xe0def4"
 yellow = "0xf6c177"
 
 [colors.cursor]
-cursor = "0x524f67"
-text = "0xe0def4"
+cursor = "#f6c177"
+text = "#1d1917"
 
 [colors.hints.end]
 background = "#1f1d2e"
@@ -39,15 +39,33 @@ yellow = "0xf6c177"
 
 [colors.primary]
 # background = "#0a0a0a"
-background = "#0c1021"
+background = "#171412"
+foreground = "#e0def4"
+
+[colors.search.matches]
+foreground = "#1d1917"
+background = "#908caa"
+
+[colors.search.focused_match]
+foreground = "#1d1917"
+background = "#f6c177"
+
+[colors.footer_bar]
+foreground = "#e0def4"
+background = "#26233a"
 
 [colors.selection]
 background = "0x403d52"
 text = "0xe0def4"
 
 [colors.vi_mode_cursor]
-cursor = "0x524f67"
-text = "0xe0def4"
+cursor = "#c4a7e7"
+text = "#1d1917"
+
+[bell]
+animation = "EaseOutExpo"
+duration = 120
+color = "#f6c177"
 
 [env]
 TERM = "xterm-256color"
@@ -56,13 +74,8 @@ TERM = "xterm-256color"
 size = 18.0
 
 [font.offset]
-y = -3
-
-[font.bold]
-family = "Lilex Nerd Font Mono"
-
-[font.italic]
-family = "Lilex Nerd Font Mono"
+y = -5
+# x = -1
 
 [font.normal]
 # family = "SeriousShanns Nerd Font Mono"
@@ -93,19 +106,27 @@ mods = "Command"
 [mouse]
 hide_when_typing = true
 
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "Off" }
+blink_interval = 550
+blink_timeout = 5
+unfocused_hollow = true
+
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 opacity = 1.0
+dynamic_padding = true
 
 # [window.dimensions]
 # columns = 80
 # lines = 24
 
 [window.padding]
-x = 5
-y = 1
+x = 7
+y = 5
 
 [general]
 live_config_reload = true
