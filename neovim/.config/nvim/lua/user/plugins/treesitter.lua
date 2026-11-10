@@ -35,11 +35,6 @@ return {
     },
   },
   {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = "VeryLazy",
-  },
-  {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
