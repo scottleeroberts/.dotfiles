@@ -60,3 +60,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
   desc = "Highlight yanked text briefly",
 })
+
+-- ============================================================================
+-- Indent Guide Color
+-- ============================================================================
+-- 'listchars' draws indent guides with the Whitespace highlight. Link it to
+-- LineNr so guides match the muted color indent-blankline used.
+local function link_whitespace()
+  vim.api.nvim_set_hl(0, "Whitespace", { link = "LineNr" })
+end
+link_whitespace()
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = link_whitespace,
+  desc = "Keep indent guides muted across colorscheme changes",
+})

@@ -38,19 +38,6 @@ return {
     lazy = true,
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("ibl").setup({
-        indent = { highlight = { "LineNr" }, char = "│" },
-        scope = {
-          show_start = false,
-          show_end = false,
-        },
-      })
-    end,
-  },
-  {
     "catgoose/nvim-colorizer.lua",
     event = "BufReadPre",
     opts = {

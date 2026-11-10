@@ -8,6 +8,10 @@ local options = {
   fileencoding = 'UTF-8',
   gdefault = true,
   ignorecase = true,
+  -- Indent guides: leading spaces and tabs. No `trail` entry, so trailing
+  -- whitespace stays highlighted by plugin/highlight_trailing_whitespace.vim.
+  list = true,
+  listchars = 'tab:│ ,nbsp:+,leadmultispace:│ ',
   mouse = 'a',
   number = true,
   path = '.,app/javascript/**',
