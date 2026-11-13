@@ -44,6 +44,9 @@ return {
         "<cmd>Telescope live_grep<cr>",
         desc = "Live Grep",
       },
+      { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume Last Picker" },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
       {
         "<leader>bb",
         "<cmd>Telescope buffers<cr>",

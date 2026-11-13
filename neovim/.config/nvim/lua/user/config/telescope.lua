@@ -23,6 +23,7 @@ require("telescope").setup({
   },
   defaults = {
     file_ignore_patterns = { "node_modules", ".git/" },
+    path_display = { "filename_first" },
     vimgrep_arguments = {
       "rg",
       "--color=never",
