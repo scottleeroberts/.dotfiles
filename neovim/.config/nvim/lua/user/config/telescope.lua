@@ -11,9 +11,6 @@ require("telescope").setup({
     },
   },
   extensions = {
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown({}),
-    },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -60,7 +57,6 @@ require("telescope").setup({
 })
 
 -- Load extensions
-require("telescope").load_extension("ui-select")
 require("telescope").load_extension("fzf")
 require("git-worktree").setup()
 require("telescope").load_extension("git_worktree")

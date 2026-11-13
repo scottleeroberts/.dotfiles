@@ -10,7 +10,7 @@ return {
     },
     init = function()
       vim.ui.select = function(...)
-        require("snacks").picker.ui_select(...)
+        require("snacks").picker.select(...)
       end
     end,
     keys = {

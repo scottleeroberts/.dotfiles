@@ -5,7 +5,6 @@ return {
     cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-fzf-native.nvim",
       "ThePrimeagen/git-worktree.nvim",
     },
@@ -108,10 +107,6 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
-    lazy = true,
-  },
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
     lazy = true,
   },
   {
