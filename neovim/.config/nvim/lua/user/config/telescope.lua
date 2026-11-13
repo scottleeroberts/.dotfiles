@@ -52,14 +52,9 @@ require("telescope").setup({
         flip_columns = 170,
       },
     },
-    preview = true,
-    sorting_strategy = "descending",
     dynamic_preview_title = true,
     prompt_prefix = "🔍 ",
     selection_caret = "➜ ",
-    border = true,
-    winblend = 0,
-    color_devicons = true,
   },
 })
 

@@ -26,7 +26,6 @@ return {
           require("telescope.builtin").grep_string({
             use_regex = true,
             search = vim.fn.input("Grep For > "),
-            vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--hidden", "--glob", "!.git/**" },
           })
         end,
         desc = "Grep For String",
