@@ -1,28 +1,32 @@
 -- Navigation, search, and file management plugins
 return {
   {
-    -- Pickers. snacks.nvim itself is configured in plugins/ui.lua.
-    "folke/snacks.nvim",
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
+      "ThePrimeagen/git-worktree.nvim",
+    },
     keys = {
       {
         "<leader>/",
         function()
-          require("snacks").picker.files({ hidden = true, exclude = { ".git", "node_modules" } })
+          require("telescope.builtin").find_files({
+            find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+            preview = { timeout = 1000 },
+          })
         end,
         desc = "Find Files",
       },
       {
         "<leader>ff",
         function()
-          local search = vim.fn.input("Grep For > ")
-          if search == "" then
-            return
-          end
-          require("snacks").picker.grep({
-            search = search,
-            live = false,
-            hidden = true,
-            exclude = { "node_modules" },
+          require("telescope.builtin").grep_string({
+            use_regex = true,
+            search = vim.fn.input("Grep For > "),
+            vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--hidden", "--glob", "!.git/**" },
           })
         end,
         desc = "Grep For String",
@@ -30,47 +34,91 @@ return {
       {
         "<leader>fs",
         function()
-          require("snacks").picker.grep_word({ hidden = true, exclude = { "node_modules" } })
+          require("telescope.builtin").grep_string({
+            vimgrep_arguments = { "rg", "--vimgrep", "--hidden", "--glob", "!.git/**" },
+          })
         end,
-        mode = { "n", "x" },
         desc = "Grep Current Word",
       },
       {
         "<leader>fg",
-        function()
-          require("snacks").picker.grep({ hidden = true, exclude = { "node_modules" } })
-        end,
+        "<cmd>Telescope live_grep<cr>",
         desc = "Live Grep",
       },
-      { "<leader>bb", function() require("snacks").picker.buffers() end, desc = "Buffers" },
+      {
+        "<leader>bb",
+        "<cmd>Telescope buffers<cr>",
+        desc = "Buffers",
+      },
       {
         "<leader>mi",
         function()
-          -- Newest migration first: keep rg's reverse path order, no re-sorting.
-          require("snacks").picker.files({
+          require("telescope.builtin").find_files({
+            sorting_strategy = "descending",
             cwd = "db/migrate",
-            hidden = true,
-            exclude = { ".git" },
-            args = { "--sortr=path" },
-            matcher = { sort_empty = false },
+            find_command = { "rg", "--files", "--hidden", "-g", "!.git", "--sortr=path" },
           })
         end,
         desc = "Find Migrations",
       },
-      { "<leader>gc", function() require("snacks").picker.git_log() end, desc = "Git Commits" },
-      { "<leader>gv", function() require("snacks").picker.git_log_file() end, desc = "Git Buffer Commits" },
-      { "<leader>gs", function() require("snacks").picker.git_stash() end, desc = "Git Stash" },
-      { "<leader>gt", function() require("snacks").picker.git_status() end, desc = "Git Status" },
-      { "<leader>gq", function() require("snacks").picker.qflist() end, desc = "Quickfix" },
-      { "<leader>gr", function() require("snacks").picker.git_branches() end, desc = "Git Branches" },
+      {
+        "<leader>gc",
+        "<cmd>Telescope git_commits<cr>",
+        desc = "Git Commits",
+      },
+      {
+        "<leader>gv",
+        "<cmd>Telescope git_bcommits<cr>",
+        desc = "Git Buffer Commits",
+      },
+      {
+        "<leader>gs",
+        "<cmd>Telescope git_stash<cr>",
+        desc = "Git Stash",
+      },
+      {
+        "<leader>gt",
+        "<cmd>Telescope git_status<cr>",
+        desc = "Git Status",
+      },
+      {
+        "<leader>gq",
+        "<cmd>Telescope quickfix<cr>",
+        desc = "Quickfix",
+      },
+      {
+        "<leader>gr",
+        "<cmd>Telescope git_branches<cr>",
+        desc = "Git Branches",
+      },
       {
         "<leader>gw",
         function()
-          require("user.worktrees").pick()
+          require("telescope").extensions.git_worktree.git_worktrees()
         end,
         desc = "Git Worktrees",
       },
     },
+    config = function()
+      require("user.config.telescope")
+    end,
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    lazy = true,
+  },
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    lazy = true,
+  },
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    lazy = true,
+  },
+  {
+    "nvim-lua/plenary.nvim",
+    lazy = true,
   },
   {
     "nvim-tree/nvim-tree.lua",
