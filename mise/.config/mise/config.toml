@@ -6,3 +6,5 @@ compile = false
 
 [tools]
 ruby = "4.0.4"
+# ts-install.nvim needs the tree-sitter CLI to build parsers
+tree-sitter = "0.27.2"
