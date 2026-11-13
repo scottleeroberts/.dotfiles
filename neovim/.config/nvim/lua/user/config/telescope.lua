@@ -4,7 +4,7 @@ local actions = require("telescope.actions")
 require("telescope").setup({
   pickers = {
     git_bcommits = {
-      git_command = { "git", "log", "--pretty=%h %an |require %s (%cr)", "--abbrev-commit", "--follow", "--" },
+      git_command = { "git", "log", "--pretty=%h %an %s (%cr)", "--abbrev-commit", "--follow", "--" },
     },
     git_commits = {
       git_command = { "git", "log", "--pretty=%h %an %s (%cr)", "--abbrev-commit" },
@@ -36,16 +36,11 @@ require("telescope").setup({
     mappings = {
       i = {
         ["<esc>"] = "close",
-        ["<C-q>"] = function(prompt_bufnr)
-          actions.send_selected_to_qflist(prompt_bufnr)
-          vim.cmd("copen")
-        end,
+        -- Send the Tab-selected entries, or all results when none are selected.
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
       },
       n = {
-        ["<C-q>"] = function(prompt_bufnr)
-          actions.send_selected_to_qflist(prompt_bufnr)
-          vim.cmd("copen")
-        end,
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
       },
     },
     layout_strategy = "flex",
