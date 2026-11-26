@@ -19,3 +19,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo[args.buf].indentexpr = "v:lua.vim.treesitter.indentexpr()"
   end,
 })
+
+return {
+  languages = {
+    "diff", "git_rebase", "gitcommit", "go", "javascript", "json", "lua",
+    "markdown", "markdown_inline", "proto", "ruby", "vim", "vue",
+  },
+}

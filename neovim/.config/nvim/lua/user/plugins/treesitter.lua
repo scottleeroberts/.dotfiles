@@ -16,23 +16,16 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     lazy = false,
     opts = {
-      ensure_install = {
-        "diff",
-        "git_rebase",
-        "gitcommit",
-        "go",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "proto",
-        "ruby",
-        "vim",
-        "vue",
-      },
+      ensure_install = require("user.config.treesitter").languages,
       auto_install = true,
     },
+    config = function(_, opts)
+      if vim.env.DOTFILES_NVIM_MODE then
+        -- Setup and verification manage parser installation explicitly.
+        opts = vim.tbl_extend("force", opts, { ensure_install = {}, auto_install = false, auto_update = false })
+      end
+      require("ts-install").setup(opts)
+    end,
   },
   {
     "folke/ts-comments.nvim",

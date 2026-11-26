@@ -18,7 +18,7 @@ return {
     lazy = false,
     opts = {
       -- ts-install.nvim needs the tree-sitter CLI to build parsers
-      ensure_installed = { "tree-sitter-cli" },
+      ensure_installed = vim.fn.executable("tree-sitter") == 1 and {} or { "tree-sitter-cli" },
     },
   },
   {

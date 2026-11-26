@@ -2,7 +2,7 @@
   path = ~/.gitconfig.local
 [core]
   editor = nvim
-  excludesfile = ~/.dotfiles/git/.gitignore
+  excludesfile = ~/.gitignore
 [color]
   ui = true
 [format]

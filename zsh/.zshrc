@@ -38,9 +38,18 @@ autoload -Uz compinit && compinit
 prompt filthy
 
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.fzf/shell/key-bindings.zsh
-source ~/.fzf/shell/completion.zsh
+# Modern fzf exposes both widgets and completion through its executable.
+if [[ -r ~/.fzf.zsh ]]; then
+  source ~/.fzf.zsh
+elif (( $+commands[fzf] )); then
+  if fzf_init=$(fzf --zsh 2>/dev/null); then
+    source <(print -r -- "$fzf_init")
+  else
+    for file in ~/.fzf/shell/{completion,key-bindings}.zsh /usr/share/doc/fzf/examples/{completion,key-bindings}.zsh; do
+      [[ -r $file ]] && source "$file"
+    done
+  fi
+fi
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.zshrc.local ]] &&  source ~/.zshrc.local
@@ -48,14 +57,14 @@ source ~/.fzf/shell/completion.zsh
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
-chruby ruby-3.4.1 2>/dev/null || chruby ruby-3.4.4 2>/dev/null
+if [[ -r /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh ]]; then
+  source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
+  chruby ruby-3.4.1 2>/dev/null || chruby ruby-3.4.4 2>/dev/null || true
+fi
 
-opentmux
 
 # export PATH="$(ruby -r rubygems -e 'print Gem.bindir'):$PATH"
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 
@@ -80,4 +89,14 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=~/.npm-global/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Syntax highlighting must hook in after widgets and completion.
+for file in /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  if [[ -r $file ]]; then
+    source "$file"
+    break
+  fi
+done
+
+if [[ -t 0 && -t 1 && -z ${DOTFILES_NO_AUTOTMUX:-} ]] && (( $+commands[tmux] )); then
+  opentmux
+fi
