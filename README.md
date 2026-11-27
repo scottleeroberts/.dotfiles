@@ -76,6 +76,29 @@ After running the setup script, verify:
 
 ### Optional Components
 
+#### Claude Code notifications in tmux on Linux
+
+Install the Claude hooks and reload tmux from the dotfiles checkout.
+
+```bash
+python3 setup_steps/claude_notifications.py --install
+tmux source-file "$PWD/tmux/.tmux.conf"
+```
+
+Start a fresh `claude` session. The tab shows a cyan moon while any split is
+working, a yellow bubble when input is needed and no split is working, and a
+green checkmark when a reply is ready. Desktop alerts use `notify-send` and
+also work outside tmux. Input requests ring the pane’s terminal bell so
+Alacritty can mark its i3 tab or workspace urgent while it is unfocused.
+
+If you tried the earlier Code-Notify setup, use `cn off claude` before switching.
+Check `/hooks` for any other older notification commands to avoid duplicate
+toasts. The installer preserves unrelated settings and hooks.
+
+Run `python3 setup_steps/claude_notifications.py --disable` to remove these hooks.
+An interruption without a Claude hook event can leave the working marker up
+until the next prompt, session exit, or pane closure.
+
 #### GTK Theme
 To install the Numix Solarized GTK theme:
 ```bash
