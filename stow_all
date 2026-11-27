@@ -1,43 +1,28 @@
-#!/bin/bash
-# Stow all dotfile modules
-
-# Verify we're in the correct directory
-if [ ! -f "stow_all" ]; then
-  echo "Error: Must run from .dotfiles directory"
+#!/usr/bin/env bash
+set -euo pipefail
+root=$(cd -- "$(dirname -- "$0")" && pwd)
+desktop=1
+check=0
+for arg in "$@"; do
+  case "$arg" in
+    --core) desktop=0 ;;
+    --desktop) desktop=1 ;;
+    --check) check=1 ;;
+    *) echo 'Usage: stow_all [--core|--desktop] [--check]' >&2; exit 2 ;;
+  esac
+done
+modules=(gem git ignore mise neovim readline tmux urlview zsh tmate)
+if (( desktop )); then modules+=(alacritty picom dunst fonts i3 rofi xmodmap xprofile); fi
+options=(--dir "$root" --target "$HOME")
+# A local .stowrc can enable --adopt or override the operation.
+stow_home=$(mktemp -d)
+trap 'rmdir -- "$stow_home"' EXIT
+run_stow() (
+  cd "$stow_home"
+  HOME="$stow_home" stow "$@" "${options[@]}" "${modules[@]}"
+)
+if ! run_stow --simulate; then
+  echo 'Stow found existing config. Review the conflicts, then back up or merge those files yourself.' >&2
   exit 1
 fi
-
-echo "Stowing dotfile modules..."
-
-# Core modules
-stow -vv alacritty
-stow -vv picom
-stow -vv dunst
-stow -vv fonts
-stow -vv gem
-stow -vv git
-stow -vv i3
-stow -vv ignore
-stow -vv mise
-stow -vv neovim
-stow -vv readline
-stow -vv rofi
-stow -vv tmux
-stow -vv urlview
-stow -vv xmodmap
-stow -vv xprofile
-stow -vv zsh
-
-# Optional modules (may not exist on all systems)
-[ -d "ctags" ] && stow -vv ctags || echo "Skipping ctags (not found)"
-[ -d "less" ] && stow -vv less || echo "Skipping less (not found)"
-[ -d "redshift" ] && stow -vv redshift || echo "Skipping redshift (not found)"
-[ -d "reek" ] && stow -vv reek || echo "Skipping reek (not found)"
-[ -d "tmate" ] && stow -vv tmate || echo "Skipping tmate (not found)"
-[ -d "yaourt" ] && echo "Skipping yaourt (Arch-only)" || true
-
-# Mac-specific configuration (commented out for Linux)
-# stow -vv yabai
-# stow -vv skhd
-
-echo "Dotfiles stowed successfully"
+if (( ! check )); then run_stow; fi
