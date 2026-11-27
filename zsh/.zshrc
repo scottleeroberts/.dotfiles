@@ -38,7 +38,16 @@ autoload -Uz compinit && compinit
 prompt filthy
 
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+for highlighting_script in \
+  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  if [[ -r "$highlighting_script" ]]; then
+    source "$highlighting_script"
+    break
+  fi
+done
+unset highlighting_script
+
 source ~/.fzf/shell/key-bindings.zsh
 source ~/.fzf/shell/completion.zsh
 
@@ -77,6 +86,8 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-. "$HOME/.local/bin/env"
+if [[ -r "$HOME/.local/bin/env" ]]; then
+  source "$HOME/.local/bin/env"
+fi
 
 alias claude-mem='/home/scott.roberts/.bun/bin/bun "/home/scott.roberts/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
